@@ -1,0 +1,43 @@
+---
+title: "Workflow notes"
+author: "Kyle McCarty"
+date: "9/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Air Quality Project
+
+## 1. Package Arrives
+## 2. Assemble items
+### Understanding of electronics
+## 3. Connect to GUI
+## 4. Upload/uprade
+## 5. Packages and dependencies
+## 6. write python code
+### PMS
+### EM208 (basic air quality)
+### MQ - NOx
+  
+## 7. Test
+## 8. Implement monitoring
+## 9. Download data
+
+## 10. WiFI upload automatic
+
+# Practical Steps
+
+## LED Light (Hello World)
+## Packing List
+## Test
+## Test Python code
+### 1. B208
+### 2. PMS
+### 3. MQ
+### 4. ALL.csv
+	
+## CLOCK?!
+### Clock vs Adruino
