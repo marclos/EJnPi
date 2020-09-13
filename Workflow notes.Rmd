@@ -12,9 +12,31 @@ knitr::opts_chunk$set(echo = TRUE)
 # Air Quality Project
 
 ## 1. Package Arrives
-## 2. Assemble items
-### Understanding of electronics
-## 3. Connect to GUI
+  * Package list
+    1. Raspberry Pi Zero W board
+    2. Case
+    3. 2.5A power supply
+    4. Heatsink
+    5. HDMI to mini-HDMI adapter
+    6. USB to micro-USB adapter
+    7. Header pin diagram
+    8. SD card
+    9. SD card to USB adapter
+    
+## 2. Install Raspberry Pi OS (previously Raspbian) on SD Card
+* Use either a SD card slot or USB/SD card adapter on ***another*** computer to connect SD card for OS installation.
+    1. Download Raspberry Pi Imager for your OS at [https://www.raspberrypi.org/downloads/](https://www.raspberrypi.org/downloads/)
+    2. Install Raspberry Pi Imager
+    3. Use Raspberry Pi Imager to install/write Raspberry Pi OS to SD card
+* Alternatively, manually copy Raspberry Pi OS and NOOBS to SD card, using the link above.
+
+## 3. Assemble and setup the Raspberry Pi Zero W
+  1. Insert the SD card with Raspberry Pi OS into the Raspberry Pi Zero W.
+  2. Attached the heatsink to the processor; the heatsink has double-sided tape.
+  3. "Clip" the Pi Zero board into the case making sure to line up the I/O slots, and attach the top case.
+  4. Connect the power supply to the Raspberry Pi Zero W.
+
+
 ## 4. Upload/uprade
 ## 5. Packages and dependencies
 ## 6. write python code
