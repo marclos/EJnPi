@@ -24,6 +24,8 @@ knitr::opts_chunk$set(echo = TRUE)
     9. SD card to USB adapter
 
 ***
+
+we need to list out sensors, wires, etc...
     
 ## 2. Install Raspberry Pi OS (previously Raspbian) on SD Card
 * Use either a SD card slot or USB/SD card adapter on ***another*** computer to connect SD card for OS installation.
