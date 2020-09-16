@@ -1,0 +1,22 @@
+\documentclass{article}
+
+\title{Deploying Sensors}
+
+\begin{document}
+
+\section{Introduction}
+
+\section{Developing a Reasonable Question}
+
+
+
+\subsection{Testing Methods}
+
+\subsection{Creating Reliable Data Sources}
+
+
+
+
+
+
+\end{document}

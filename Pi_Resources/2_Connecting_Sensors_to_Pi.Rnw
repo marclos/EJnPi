@@ -1,0 +1,20 @@
+\documentclass{article}
+
+\title{Connecting Sensors to Pi}
+
+\begin{document}
+
+\section{Introduction}
+
+\section{Sensor 1}
+
+\subsection{Wiring}
+
+\subsection{Code and Testing}
+
+
+
+\section{Sensor 2}
+
+
+\end{document}
