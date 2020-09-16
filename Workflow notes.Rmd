@@ -22,20 +22,82 @@ knitr::opts_chunk$set(echo = TRUE)
     7. Header pin diagram
     8. SD card
     9. SD card to USB adapter
+
+***
     
 ## 2. Install Raspberry Pi OS (previously Raspbian) on SD Card
 * Use either a SD card slot or USB/SD card adapter on ***another*** computer to connect SD card for OS installation.
-    1. Download Raspberry Pi Imager for your OS at [https://www.raspberrypi.org/downloads/](https://www.raspberrypi.org/downloads/)
+    1. Download Raspberry Pi Imager for your operating system (OS) at [https://www.raspberrypi.org/downloads/](https://www.raspberrypi.org/downloads/)
     2. Install Raspberry Pi Imager
-    3. Use Raspberry Pi Imager to install/write Raspberry Pi OS to SD card
-* Alternatively, manually copy Raspberry Pi OS and NOOBS to SD card, using the link above.
+    3. Use Raspberry Pi Imager to install/write Raspberry Pi OS to SD card.
+    + Alternatively, manually copy Raspberry Pi OS and NOOBS to SD card, using the link above.
+* Add network configuration file to SD card for SSH connection.
+  1. Add "ssh" file to boot partition on SD card.
+  2. Add "wpa_supplicant.conf" file to boot partition on SD card
+    + The "wpa_supplicant.conf" needs to have the WiFi network information in it for the Raspberry Pi Zero W to connect.
+      + Modify this file with a text editor and include the following information:
+      
+```
+country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 
-## 3. Assemble and setup the Raspberry Pi Zero W
+update_config=1
+network={
+ssid="WIFI_SSID"
+scan_ssid=1
+psk="WIFI_PASSWORD"
+key_mgmt=WPA-PSK
+}
+``` 
+  + Make sure to change "**WIFI_SSID**" to your WiFi network name.
+  + Make sure to cahnge "**WIFI_PASSWORD**" to your WiFi network's password.
+  
+***
+
+## 3. Assemble and Setup the Raspberry Pi Zero W
   1. Insert the SD card with Raspberry Pi OS into the Raspberry Pi Zero W.
   2. Attached the heatsink to the processor; the heatsink has double-sided tape.
   3. "Clip" the Pi Zero board into the case making sure to line up the I/O slots, and attach the top case.
   4. Connect the power supply to the Raspberry Pi Zero W.
+  5. Turn on Raspberry Pi Zero W.
+  6. Download and install the stable release of "nmap" on other computer. [https://nmap.org/download.html](https://nmap.org/download.html)
+  7. Use nmap to figure out the IP address of the Raspberry Pi Zero W.
+  8. Ping Raspberry Pi Zero W.
+  9. SSH into Raspberry Pi Zero W.
+  + The "pi" user password is "raspberry" by default on Raspberry Pi OS.
+  10. Configure setup options and make sure SSH is enabled.
+  + Once a SSH connection is made, make sure to enable the SSH interface is on by running the following command:
 
+```
+sudo systemctl enable ssh
+sudo systemctl start ssh
+```
+
+  11. Update Raspberry Pi Zero W.
+  + To make sure the Raspberry Pi Zero W is up to date, run the following commands, one after the other, making sure the process completes each time:
+
+```
+sudo apt-get upgrade
+sudo apt-get update
+```
+  + If you are uncomfortable with the command line interface (CLI), set up a VNC connection.
+    + Raspberry Pi OS comes with virtual network computing (VNC) capabilties already, but you must enable VNC in its configuration. Run the following command:
+
+```
+sudo raspi-config
+```
+  + Navigtate to "**Interfacing Options**"
+  + Scroll down and select "**VNC > Yes**"
+  + Download the RealVNC viewer, for you computer's OS, from [https://www.realvnc.com/en/connect/download/viewer/](https://www.realvnc.com/en/connect/download/viewer/)
+  + Run RealVNC Viewer and us the Raspberry Pi Zero W's IP address that was determined earlier and enter it as the **VNC Server address** in RealVNC's address bar.
+      * Enter username as "**pi**" and the password as "**raspberry**" as before.
+  + You should now see that the Raspberry Pi wants you to change the password used for SSH. This is a good idea as the Raspberry Pi is connected to the internet. There will also be a graphical user interface (GUI) for setting up the Raspberry Pi.
+  + Go through the settings and change the password for the Pi. You will use this password for it from now on.
+  + Verify the interface options include the SSH and VNC options are **on**.
+    
+  12. Reboot Raspberry Pi Zero W and verify you can SSH, or VNC, into it successfully.
+
+***
 
 ## 4. Upload/uprade
 ## 5. Packages and dependencies
