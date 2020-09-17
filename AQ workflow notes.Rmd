@@ -23,9 +23,10 @@ knitr::opts_chunk$set(echo = TRUE)
     8. SD card
     9. SD card to USB adapter
 
+we need to list out sensors, wires, etc...
+
 ***
 
-we need to list out sensors, wires, etc...
     
 ## 2. Install Raspberry Pi OS (previously Raspbian) on SD Card
 * Use either a SD card slot or USB/SD card adapter on ***another*** computer to connect SD card for OS installation.
@@ -34,8 +35,10 @@ we need to list out sensors, wires, etc...
     3. Use Raspberry Pi Imager to install/write Raspberry Pi OS to SD card.
     + Alternatively, manually copy Raspberry Pi OS and NOOBS to SD card, using the link above.
 * Add network configuration file to SD card for SSH connection.
-  1. Add "ssh" file to boot partition on SD card.
-  2. Add "wpa_supplicant.conf" file to boot partition on SD card
+  1. Add "**ssh**" file to boot partition on SD card.
+    + Make sure the file you create has **no** extension.
+  2. Create and add a file called "**wpa_supplicant.conf**" to boot partition on SD card. This can be created with any text editor.
+    + Make sure the file you created has the "**.conf**" extension in the name.
     + The "wpa_supplicant.conf" needs to have the WiFi network information in it for the Raspberry Pi Zero W to connect.
       + Modify this file with a text editor and include the following information:
       
@@ -51,6 +54,7 @@ psk="WIFI_PASSWORD"
 key_mgmt=WPA-PSK
 }
 ``` 
+  + If you are not in the US, input your country's ISO code instead of "**US**" on the "**country=US**" line.
   + Make sure to change "**WIFI_SSID**" to your WiFi network name.
   + Make sure to cahnge "**WIFI_PASSWORD**" to your WiFi network's password.
   
@@ -62,9 +66,9 @@ key_mgmt=WPA-PSK
   3. "Clip" the Pi Zero board into the case making sure to line up the I/O slots, and attach the top case.
   4. Connect the power supply to the Raspberry Pi Zero W.
   5. Turn on Raspberry Pi Zero W.
-  6. Download and install the stable release of "nmap" on other computer. [https://nmap.org/download.html](https://nmap.org/download.html)
-  7. Use nmap to figure out the IP address of the Raspberry Pi Zero W.
-  8. Ping Raspberry Pi Zero W.
+  6. Download and install the latest release of PiFinder for your OS. [https://github.com/adafruit/Adafruit-Pi-Finder/releases/latest](https://github.com/adafruit/Adafruit-Pi-Finder/releases/latest)
+  7. Use PiFinder to figure out the IP address of the Raspberry Pi Zero W.
+  8. Ping Raspberry Pi Zero W to verify your computer can communicate with it.
   9. SSH into Raspberry Pi Zero W.
   + The "pi" user password is "raspberry" by default on Raspberry Pi OS.
   10. Configure setup options and make sure SSH is enabled.
