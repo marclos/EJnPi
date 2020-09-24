@@ -1,4 +1,30 @@
-\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass{article}
+\usepackage[]{graphicx}
+\usepackage[]{color}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=bash,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{red},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
 % maxwidth is the original width if it is less than linewidth
 % otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -52,13 +78,142 @@
 
 \title{Getting Started with Raspberry Pi}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+
+\author{Anna Burns, Marc Los Huertos, and Kyle McCarty}
+\title{Getting Started with Raspberry Pi}
+
 \begin{document}
 
+\maketitle
+
+\newpage
+
 \section{Introduction}
+\subsection{What is a Raspberry Pi?}
 
-\section{Unpacking and Connecting Pi}
+The Raspberry Pi is an tiny computer, that includes a microprocessor, a bit of memory, a slot for an SD card, input/output (I/O) ports, e.g. HDMI, USB, headphone, camera, and some general purpose input/output (GPIO) pins for various types of electrical connectors.
 
-\section{Accessing and updating Pi OS}
+\subsection{Why use the Raspberry Pi?}
+
+Generally, Raspberry Pis draw considerably less power than regular computers, are a lot smaller, and are relatively cost-effective. In addition, the GPIO pins allow for connecting and controlling various types of electrical components, such as LEDs and sensors. Raspberry Pis are very flexible devices. They can be used for personal computers, home survaillance systems, weather stations, adblockers for your home network, retro gaming machines, as an AI assistant, and so much more! In this class, we'll be using it as an environmental monitoring device.
+
+\section{Unpacking and Connecting the Pi}
+\subsection{Packaging List}
+\subsubsection{``Vilros RP Zero W Basics Kit''}
+\begin{enumerate}
+  \item Raspberry Pi Zero W board
+  \item Case, with 3 covers
+  \item 2.5A power supply
+  \item Heatsink
+  \item HDMI to mini-HDMI adapter
+  \item USB to micro-USB adapter
+  \item Header pin diagram
+  \item Camera module adapter (not used)
+\end{enumerate}
+
+\subsubsection{Other items}
+\begin{enumerate}
+  \item SD card
+  \item SD card to USB adapter
+  \item USB multiport adapter
+  \item Breadboard
+  \item Wires
+  \item MCP3008
+  \item MQ-135
+  \item MQ-XXX
+  \item MQ-XXX
+\end{enumerate}
+
+\subsection{Install Raspberry Pi OS on SD card}
+\begin{enumerate}
+  \item Download Raspberry Pi Imager for your operating system (OS) at \url{https://www.raspberrypi.org/downloads/}
+  \item Install Raspberry Pi Imager
+  \item Use Raspberry Pi Imager to install/write Raspberry Pi OS to SD card.
+  \item Alternatively, manually copy Raspberry Pi OS and NOOBS to SD card, using the link above.
+\end{enumerate}
+
+\subsection{Add network configuration file to SD card for a secure shell (SSH) connection.} \label{networkssh}
+
+\begin{enumerate}
+  \item Add a ``ssh'' file to your boot partition on the SD card.
+  \begin{itemize}
+  \item Do this by creating a text file named \textbf{``ssh''}.
+  \item Make sure the file you create has no extension.
+  \end{itemize}
+  \item Create and add a file called \textbf{``wpa\_supplicant.conf''} to the boot partition on the SD card. This can be created with any text editor.
+  \begin{itemize}
+  \item Make sure the file you created has the \textbf{``.conf''} extension in the name.
+  \item The \textbf{``wpa\_supplicant.conf''} needs to have the WiFi network information in it for the Raspberry Pi to connect on boot up.
+  \item Modify this file with a text editor and include the following information:
+  \end{itemize}
+  
+\begin{lstlisting}
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+ ssid="WIFI NETWORK NAME"
+ psk="WIFI PASSWORD"
+}
+\end{lstlisting}
+
+  \begin{itemize}
+  \item If you are not in the United States, input your country's ISO code instead of \textbf{``US''} on the \textbf{\textit{``country=US''}} line.
+  \item Make sure to change \textbf{``WIFI NETWORK NAME''} to your WiFi network name.
+  \item Make sure to change \textbf{``WIFI\_PASSWORD''} to your WiFi network's password.
+  \end{itemize}
+  
+\end{enumerate}
+
+\subsection{Assemble and Connecting the Pi}
+\subsubsection{Putting the Pi together}
+\begin{enumerate}
+  \item Safely eject the SD card from your computer.
+  \item Place the SD card in the Raspberry Pi Zero W's SD card slot.
+  \item Attach the Pi to the bottom Vilros case making sure to line the dowels within the case with the mouting holes on the Pi.
+  \item \textbf{Do not} attached the top part of the case yet. Being able to see the Pi's board will help you with pin determination.
+  \item Attach your peripheral devices, \textit{if you have them}. This includes a monitor, mouse, and keyboard. It is okay to not have them.
+  \begin{itemize}
+    \item You will need to use the HDMI to micro-HDMI adapter to hook a monitor up to the Raspberry Pi Zero W.
+    \item Also, you'll need to use the Anker multiport USB adapter to use a keyboard \textbf{and} a mouse. The Raspberry Pi Zero W only has one micro-usb port.
+    \begin{itemize}
+      \item You can get away with using just a monitor and keyboard, but if you are not comfortable navigating with a keyboad only, it'll be difficult.
+    \end{itemize}
+  \end{itemize}
+  \item Lastly, making sure the the power adapter for the Pi is plugged in to a power source, and verifying the switch on the adapter is in the \textbf{``off''} position, connect the power cable into the Pi.
+  \item Now, turn the power switch on.
+
+\textbf{NOTE!} Make sure not to turn the device off, or on/off/on, otherwise the \textbf{``ssh''} and \textbf{``wpa\_supplicant.conf''} files will not be in your boot directory on the SD card anymore. If, for whatever reason, the Pi loses power after putting those file in the boot directory, you will have to go back and add them, as in step \textbf{\ref{networkssh}}. This is \textbf{especially} important for \textbf{\textit{headless}} users (users with no monitor).
+
+\textbf{NOTE!} This is where \textbf{\textit{headless}} users will have to remotely connect to the Pi, while people who have monitors, mice, and keyboards won't have to remotely connect. For those who aren't connecting remotely, skip ahead to step \textbf{\ref{Update and Upgrade}}.
+
+\end{enumerate}
+
+\section{Accessing and updating Raspberry Pi OS}
+
+\subsection{Remote connection via SSH}
+\subsubsection{Installing Raspberry Pi Finder}
+The goal with this step is to find the \textbf{local IP address} of the Pi. There are a lot of different ways to do this. If you are computer savvy, go ahead and find the IP address of your Pi and ingnore this step.
+
+\begin{enumerate}
+  \item The easiest way to find the IP address of your Pi, if you don't know networking or computers that well, is to use the \textbf{Raspberry Pi Finder} by Adafruit.
+  \item Go to this website \url{https://github.com/adafruit/Adafruit-Pi-Finder/} to download the application for your OS.
+  \item Scroll down and click the link that says \textbf{``Download the latest release''}
+  \item Scroll down to \textbf{``Assets''} and there you will see the .zip files of the program for the different OSs.
+  \begin{itemize}
+    \item \textbf{``osx''} is for Mac users.
+    \item \textbf{``win32''} is for Windows user.
+  \end{itemize}
+  \item Download the .zip file for your system and then unzip it when finished downloading.
+  \item Run Raspberry Pi finder.
+  \item Click \textbf{``Find my Pi!''} for the program to locate your Pi. Wait a few minutes if it doesn't find it immediately. Sometimes it can take quite a while!
+  \item The IP address should be listed when finished. It should look something like \textbf{``192.168.1.XXX''}.
+  
+\end{enumerate}
+
+\subsection{Update and Upgrading Raspberry Pi OS} \label{Update and Upgrade}
 
 
 \end{document}
