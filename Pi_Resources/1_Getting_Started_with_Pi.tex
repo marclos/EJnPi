@@ -119,6 +119,7 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
   \item USB multiport adapter
   \item Breadboard
   \item Wires
+  \item Line level converter (LLC)
   \item MCP3008
   \item MQ-135
   \item MQ-XXX
@@ -127,8 +128,9 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
 
 \subsection{Install Raspberry Pi OS on SD card}
 \begin{enumerate}
-  \item Download Raspberry Pi Imager for your operating system (OS) at \url{https://www.raspberrypi.org/downloads/}
+  \item Download Raspberry Pi Imager for your main computer's operating system (OS) at \url{https://www.raspberrypi.org/downloads/}
   \item Install Raspberry Pi Imager
+  \item Connect the Pi's SD card to your main computer.
   \item Use Raspberry Pi Imager to install/write Raspberry Pi OS to SD card.
   \item Alternatively, manually copy Raspberry Pi OS and NOOBS to SD card, using the link above.
 \end{enumerate}
@@ -139,11 +141,11 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
   \item Add a ``ssh'' file to your boot partition on the SD card.
   \begin{itemize}
   \item Do this by creating a text file named \textbf{``ssh''}.
-  \item Make sure the file you create has no extension.
+  \item Make sure the file you create has no file extension.
   \end{itemize}
   \item Create and add a file called \textbf{``wpa\_supplicant.conf''} to the boot partition on the SD card. This can be created with any text editor.
   \begin{itemize}
-  \item Make sure the file you created has the \textbf{``.conf''} extension in the name.
+  \item Make sure the file you created has the \textbf{``.conf''} file extension in the name.
   \item The \textbf{``wpa\_supplicant.conf''} needs to have the WiFi network information in it for the Raspberry Pi to connect on boot up.
   \item Modify this file with a text editor and include the following information:
   \end{itemize}
@@ -170,7 +172,7 @@ network={
 \subsection{Assemble and Connecting the Pi}
 \subsubsection{Putting the Pi together}
 \begin{enumerate}
-  \item Safely eject the SD card from your computer.
+  \item Safely eject the SD card from your main computer.
   \item Place the SD card in the Raspberry Pi Zero W's SD card slot.
   \item Attach the Pi to the bottom Vilros case making sure to line the dowels within the case with the mouting holes on the Pi.
   \item \textbf{Do not} attached the top part of the case yet. Being able to see the Pi's board will help you with pin determination.
@@ -199,7 +201,7 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
 
 \begin{enumerate}
   \item The easiest way to find the IP address of your Pi, if you don't know networking or computers that well, is to use the \textbf{Raspberry Pi Finder} by Adafruit.
-  \item Go to this website \url{https://github.com/adafruit/Adafruit-Pi-Finder/} to download the application for your OS.
+  \item With your main computer, go to this website \url{https://github.com/adafruit/Adafruit-Pi-Finder/} to download the application for your OS.
   \item Scroll down and click the link that says \textbf{``Download the latest release''}
   \item Scroll down to \textbf{``Assets''} and there you will see the .zip files of the program for the different OSs.
   \begin{itemize}
