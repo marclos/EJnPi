@@ -1,6 +1,6 @@
 import serial
 from collections import OrderedDict
-classSensor():
+class Sensor():
   def __init__(self, tty = '/dev/ttyS0'):
     self.tty = tty
     
