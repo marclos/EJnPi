@@ -17,7 +17,7 @@ class Sensor():
     data = self.serial.read(32)
     data = ["{:02X}".format(d) for d in data]
     
-    ifdata[0] != '42' or data[1] !='4D':
+    if data[0] != '42' or data[1] !='4D':
       return None
       
       res = OrderedDict()
@@ -27,3 +27,16 @@ class Sensor():
       res['pm1'] = self.read_bytes(data, 10)
       res['pm25'] = self.read_bytes(data, 12)
       res['pm10'] = self.read_bytes(data, 14)
+      res['temperature'] = self.read_bytes(data, 24)/10
+      res['humidity'] = self.read_bytes(data, 26)/10
+      return res
+      
+if __name__ == '__main__':
+  '''
+  Test code
+  '''
+  sensor = Sensor()
+  sensor.open()
+  data = sensor.read()
+  sensor.close()
+  print(data)
