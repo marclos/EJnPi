@@ -4,7 +4,7 @@ Example sketch to connect to PM2.5 sensor with either I2C or UART.
 
 # pylint: disable=unused-import
 import time
-import board
+# import board
 import busio
 from digitalio import DigitalInOut, Direction, Pull
 import adafruit_pm25
@@ -33,7 +33,7 @@ uart = serial.Serial("/dev/ttyS0", baudrate=9600, timeout=0.25)
 # uart = serial.Serial("/dev/ttyUSB0", baudrate=9600, timeout=0.25)
 
 # Connect to a PM2.5 sensor over UART
-pm25 = adafruit_pm25.PM25_UART(uart, reset_pin)
+# pm25 = adafruit_pm25.PM25_UART(uart, reset_pin)
 
 # Create library object, use 'slow' 100KHz frequency!
 # i2c = busio.I2C(board.SCL, board.SDA, frequency=100000)
