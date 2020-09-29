@@ -51,7 +51,7 @@
 
 \usepackage{framed}
 \makeatletter
-\newenvironment{kframe}{%
+
  \def\at@end@of@kframe{}%
  \ifinner\ifhmode%
   \def\at@end@of@kframe{\end{minipage}}%
@@ -89,7 +89,12 @@
 
 \newpage
 
+\tableofcontents
+
+\newpage
+
 \section{Introduction}
+
 \subsection{What is a Raspberry Pi?}
 
 The Raspberry Pi is an tiny computer, that includes a microprocessor, a bit of memory, a slot for an SD card, input/output (I/O) ports, e.g. HDMI, USB, headphone, camera, and some general purpose input/output (GPIO) pins for various types of electrical connectors.
@@ -99,8 +104,11 @@ The Raspberry Pi is an tiny computer, that includes a microprocessor, a bit of m
 Generally, Raspberry Pis draw considerably less power than regular computers, are a lot smaller, and are relatively cost-effective. In addition, the GPIO pins allow for connecting and controlling various types of electrical components, such as LEDs and sensors. Raspberry Pis are very flexible devices. They can be used for personal computers, home survaillance systems, weather stations, adblockers for your home network, retro gaming machines, as an AI assistant, and so much more! In this class, we'll be using it as an environmental monitoring device.
 
 \section{Unpacking and Connecting the Pi}
+
 \subsection{Packaging List}
+
 \subsubsection{``Vilros RP Zero W Basics Kit''}
+
 \begin{enumerate}
   \item Raspberry Pi Zero W board
   \item Case, with 3 covers
@@ -113,6 +121,7 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
 \end{enumerate}
 
 \subsubsection{Other items}
+
 \begin{enumerate}
   \item SD card
   \item SD card to USB adapter
@@ -127,6 +136,7 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
 \end{enumerate}
 
 \subsection{Install Raspberry Pi OS on SD card}
+
 \begin{enumerate}
   \item Download Raspberry Pi Imager for your main computer's operating system (OS) at \url{https://www.raspberrypi.org/downloads/}
   \item Install Raspberry Pi Imager
@@ -170,7 +180,9 @@ network={
 \end{enumerate}
 
 \subsection{Assemble and Connecting the Pi}
+
 \subsubsection{Putting the Pi together}
+
 \begin{enumerate}
   \item Safely eject the SD card from your main computer.
   \item Place the SD card in the Raspberry Pi Zero W's SD card slot.
@@ -189,19 +201,23 @@ network={
 
 \textbf{NOTE!} Make sure not to turn the device off, or on/off/on, otherwise the \textbf{``ssh''} and \textbf{``wpa\_supplicant.conf''} files will not be in your boot directory on the SD card anymore. If, for whatever reason, the Pi loses power after putting those file in the boot directory, you will have to go back and add them, as in step \textbf{\ref{networkssh}}. This is \textbf{especially} important for \textbf{\textit{headless}} users (users with no monitor).
 
-\textbf{NOTE!} This is where \textbf{\textit{headless}} users will have to remotely connect to the Pi, while people who have monitors, mice, and keyboards won't have to remotely connect. For those who aren't connecting remotely, skip ahead to step \textbf{\ref{Update and Upgrade}}.
+\textbf{NOTE!} This is where \textbf{\textit{headless}} users will have to remotely connect to the Pi, while people who have monitors, mice, and keyboards won't have to remotely connect. For those who aren't connecting remotely, skip ahead to step \textbf{\ref{updateupgrade}}
 
 \end{enumerate}
 
 \section{Accessing and updating Raspberry Pi OS}
 
+Now, there are different ways to remotely connect with the Raspberry Pi if you are a \textbf{\textit{headless}} user. Unfortunately though, you will have to connect to the Pi using \textbf{SSH} the \textbf{first time}. After that, you can install a remote server on the Pi so you can connect with it using a program with a GUI. I recommend using SSH, though, as it is a \textbf{\textit{much}} quicker connection.
+
 \subsection{Remote connection via SSH}
-\subsubsection{Installing Raspberry Pi Finder}
+
+\subsubsection{Installing Raspberry Pi Finder and finding Pi's IP address}
+
 The goal with this step is to find the \textbf{local IP address} of the Pi. There are a lot of different ways to do this. If you are computer savvy, go ahead and find the IP address of your Pi and ingnore this step.
 
 \begin{enumerate}
   \item The easiest way to find the IP address of your Pi, if you don't know networking or computers that well, is to use the \textbf{Raspberry Pi Finder} by Adafruit.
-  \item With your main computer, go to this website \url{https://github.com/adafruit/Adafruit-Pi-Finder/} to download the application for your OS.
+  \item With your main computer, go to this websiteto download the application for your OS: \newline \url{https://github.com/adafruit/Adafruit-Pi-Finder/}
   \item Scroll down and click the link that says \textbf{``Download the latest release''}
   \item Scroll down to \textbf{``Assets''} and there you will see the .zip files of the program for the different OSs.
   \begin{itemize}
@@ -211,11 +227,61 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
   \item Download the .zip file for your system and then unzip it when finished downloading.
   \item Run Raspberry Pi finder.
   \item Click \textbf{``Find my Pi!''} for the program to locate your Pi. Wait a few minutes if it doesn't find it immediately. Sometimes it can take quite a while!
-  \item The IP address should be listed when finished. It should look something like \textbf{``192.168.1.XXX''}.
-  
+  \item The IP address should be listed when finished. It should look something like \textbf{``192.168.1.XXX''}. \label{ipaddress}
+  \item Use the IP address to connect to the Pi.
 \end{enumerate}
 
-\subsection{Update and Upgrading Raspberry Pi OS} \label{Update and Upgrade}
+\subsubsection{SSH connection}  
 
+\begin{itemize}
+    \item For Windows users, you will want to use the \textbf{Command Prompt}.
+    \begin{enumerate}
+      \item Press the \textbf{\textit{Windows}} key on your keyboard, type \textbf{``CMD''}, and \textbf{Enter}.
+      \item In the Command Prompt, type the command below making sure to substitute ``192.168.1.XXX'' with the IP address found in step \ref{ipaddress}
+      \begin{lstlisting}
+      ssh pi@192.168.1.XXX 
+      \end{lstlisting}
+    \end{enumerate}
+    \item For Mac users, you will want to use the \textbf{\textit{Terminal}}.
+    \begin{enumerate}
+      \item Press the \textbf{\textit{Command + Spacebar}} keys on your keyboard, type \textbf{``Terminal''}, and \textbf{Enter}.
+      \item In Terminal, type the command below making sure to substitute ``192.168.1.XXX'' with the IP address found in step \ref{ipaddress}
+      \begin{lstlisting}
+      ssh pi@192.168.1.XXX 
+      \end{lstlisting}
+    \end{enumerate}
+\end{itemize}
+\begin{enumerate}
+  \item For both Mac and Windows users, you should now see a prompt in the command line asking for the Pi's password. \newline \newline By default, the password is \textbf{``raspberry''}. \newline \newline The command line won't show the password while you are typing it, nor will it show placeholder characters. You will need to just type it and \textbf{Enter}.
+  \item If all went well, you should see that you've connected to your Pi via the command line interface (CLI). You should see the text: 
+  \begin{lstlisting}
+  pi@raspberrypi/:~ $_ 
+  \end{lstlisting}
+  \item There will also be a warning that the Pi's password hasn't been changed. We will want to change that, but we are not going to do that right now.
+\end{enumerate}
+
+\subsection{Update and Upgrading Raspberry Pi OS} 
+\label{updateupgrade}
+
+Here we will be updating the Raspberry Pi. This is the first thing we are going to want to do to make sure there are now errors later on. We will need to implement a few commands into the Pi's command line. Don't be afraid! Its easy!
+
+\begin{enumerate}
+  \item First we are going to want the Pi to talk to the official Raspberry Pi servers to get the latest version list of our programs on the Pi. In your SSH session, type the following command:
+  \begin{lstlisting} 
+  sudo apt update
+  \end{lstlisting}
+  \item Secondly, we want the Pi to compare the version list with its current packages and programs and update where needed. In your SSH session, type:
+  \begin{lstlisting}
+  sudo apt full-upgrade
+  \end{lstlisting}
+  \item You will be asked if you are sure you want to upgrade. Type \textbf{``y''} and \textbf{Enter}.
+  \item Once it is finished, it will show this once again:
+  \begin{lstlisting}
+  pi@raspberrypi/:~ $_ 
+  \end{lstlisting}
+  \item Congratulations! Your Pi has been upgraded!
+\end{enumerate}
+
+\section{Configuring the Pi} 
 
 \end{document}

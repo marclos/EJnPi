@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}
+\contentsline {subsection}{\numberline {1.1}What is a Raspberry Pi?}{4}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Why use the Raspberry Pi?}{4}{subsection.1.2}
+\contentsline {section}{\numberline {2}Unpacking and Connecting the Pi}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Packaging List}{4}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}``Vilros RP Zero W Basics Kit''}{4}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Other items}{4}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Install Raspberry Pi OS on SD card}{5}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Add network configuration file to SD card for a secure shell (SSH) connection.}{5}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Assemble and Connecting the Pi}{6}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Putting the Pi together}{6}{subsubsection.2.4.1}
+\contentsline {section}{\numberline {3}Accessing and updating Raspberry Pi OS}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Remote connection via SSH}{7}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Installing Raspberry Pi Finder and finding Pi's IP address}{7}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}SSH connection}{8}{subsubsection.3.1.2}
+\contentsline {subsection}{\numberline {3.2}Update and Upgrading Raspberry Pi OS}{9}{subsection.3.2}
+\contentsline {section}{\numberline {4}Configuring the Pi}{9}{section.4}
