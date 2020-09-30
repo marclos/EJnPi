@@ -239,10 +239,14 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
     \item For Windows users, you will want to use the \textbf{Command Prompt}.
     \begin{enumerate}
       \item Press the \textbf{\textit{Windows}} key on your keyboard, type \textbf{``CMD''}, and \textbf{Enter}.
+\newline
+\newline
+\includegraphics[scale=0.70]{cmd}
       \item In the Command Prompt, type the command below making sure to substitute ``192.168.1.XXX'' with the IP address found in step \ref{ipaddress}
       \begin{lstlisting}
       ssh pi@192.168.1.XXX 
       \end{lstlisting}
+      \includegraphics[width=1.00\textwidth]{cmdssh}
     \end{enumerate}
     \item For Mac users, you will want to use the \textbf{\textit{Terminal}}.
     \begin{enumerate}
@@ -254,17 +258,21 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
     \end{enumerate}
 \end{itemize}
 \begin{enumerate}
-  \item For both Mac and Windows users, you should now see a prompt in the command line asking for the Pi's password. 
+  \item For both Mac and Windows users, you should now see a prompt in the command line asking for the Pi's password.
   \newline 
   \newline 
+  \includegraphics[width=1.00\textwidth]{cmdsshpw}
+  \newline
+  \newline
   By default, the password is \textbf{``raspberry''}. 
   \newline 
   \newline 
-  The command line won't show the password while you are typing it, nor will it show placeholder characters. You will need to just type it and \textbf{Enter}.
+  \textbf{NOTE} The command line won't show the password while you are typing it, nor will it show placeholder characters. You will need to just type it and \textbf{Enter}.
   \item If all went well, you should see that you've connected to your Pi via the command line interface (CLI). You should see the text: 
   \begin{lstlisting}
   pi@raspberrypi/:~ $_ 
   \end{lstlisting}
+  \includegraphics[width=1.00\textwidth]{cmdsshrp}
   \item There will also be a warning that the Pi's password hasn't been changed. We will want to change that, but we are not going to do that right now.
 \end{enumerate}
 
@@ -278,15 +286,20 @@ Here we will be updating the Raspberry Pi. This is the first thing we are going 
   \begin{lstlisting} 
   sudo apt update
   \end{lstlisting}
+  \includegraphics[width=1.00\textwidth]{aptupdate}
   \item Secondly, we want the Pi to compare the version list with its current packages and programs and update where needed. In your SSH session, type:
   \begin{lstlisting}
   sudo apt full-upgrade
   \end{lstlisting}
   \item You will be asked if you are sure you want to upgrade. Type \textbf{``y''} and \textbf{Enter}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{aptupgradecont}
   \item Once it is finished, it will show this once again:
   \begin{lstlisting}
   pi@raspberrypi/:~ $_ 
   \end{lstlisting}
+  \includegraphics[width=1.00\textwidth]{aptupgradedone}
   \item Congratulations! Your Pi has been upgraded!
 \end{enumerate}
 
@@ -385,6 +398,9 @@ This may or may not be a problem for some people. I had to make sure my time zon
   \newline
   \includegraphics[width=1.00\textwidth]{rctimeus}
   \item It will then tell ask you what  your \textbf{time zone} is. Select what applies. In my case is was Pacific Ocean.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rctimepo}
   \item Then, it will flash the CLI with the Coordinated Universal Time (UTC) and your time zone's time and go back to the configuration utility.
 \end{enumerate}
 
