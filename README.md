@@ -1,8 +1,4 @@
----
-title: "5C Remote Air Quality Station"
----
-
-# Getting Familiarized
+# Getting Started
 
 * This Github repository (repo) holds all the information and files you will need to get your remote air quality station (AQS) working.
 
