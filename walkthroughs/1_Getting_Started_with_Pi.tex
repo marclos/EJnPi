@@ -51,7 +51,7 @@
 
 \usepackage{framed}
 \makeatletter
-
+\newenvironment{kframe}{%
  \def\at@end@of@kframe{}%
  \ifinner\ifhmode%
   \def\at@end@of@kframe{\end{minipage}}%
@@ -80,7 +80,7 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
 
-\author{Anna Burns, Marc Los Huertos, and Kyle McCarty}
+\author{Anna Burns, Kyle McCarty, and Marc Los Huertos}
 \title{Getting Started with Raspberry Pi}
 
 \begin{document}
@@ -159,7 +159,7 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
   \item The \textbf{``wpa\_supplicant.conf''} needs to have the WiFi network information in it for the Raspberry Pi to connect on boot up.
   \item Modify this file with a text editor and include the following information:
   \end{itemize}
-  
+\newpage  
 \begin{lstlisting}
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
@@ -231,7 +231,8 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
   \item Use the IP address to connect to the Pi.
 \end{enumerate}
 
-\subsubsection{SSH connection}  
+\subsubsection{SSH connection}
+\label{ssh}
 
 \begin{itemize}
     \item For Windows users, you will want to use the \textbf{Command Prompt}.
@@ -252,7 +253,13 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
     \end{enumerate}
 \end{itemize}
 \begin{enumerate}
-  \item For both Mac and Windows users, you should now see a prompt in the command line asking for the Pi's password. \newline \newline By default, the password is \textbf{``raspberry''}. \newline \newline The command line won't show the password while you are typing it, nor will it show placeholder characters. You will need to just type it and \textbf{Enter}.
+  \item For both Mac and Windows users, you should now see a prompt in the command line asking for the Pi's password. 
+  \newline 
+  \newline 
+  By default, the password is \textbf{``raspberry''}. 
+  \newline 
+  \newline 
+  The command line won't show the password while you are typing it, nor will it show placeholder characters. You will need to just type it and \textbf{Enter}.
   \item If all went well, you should see that you've connected to your Pi via the command line interface (CLI). You should see the text: 
   \begin{lstlisting}
   pi@raspberrypi/:~ $_ 
@@ -282,6 +289,107 @@ Here we will be updating the Raspberry Pi. This is the first thing we are going 
   \item Congratulations! Your Pi has been upgraded!
 \end{enumerate}
 
-\section{Configuring the Pi} 
+\section{Configuring the Pi}
+
+\begin{itemize}
+  \item Hopefully you still have your current SSH connection going with your Pi. If not, try to create one. If you exited the Command Prompt/Terminal, and severed the SSH connection, just reopen them and reconnect via SSH as in step \ref{ssh}.
+  \item If \textbf{power} was severed from the Pi, you will need to repeat section \ref{networkssh} over again. The Pi discards these files after it boots up, so if you shut off the Pi, or lose power, you'll have to re-add them to the boot directory.
+\end{itemize}
+
+\subsection{Changing the Pi User Password}
+
+As a security measure, since your Pi is in your WiFi network, you'll want to change the password for the Pi.
+
+\begin{enumerate}
+  \item Run the Raspberry Pi configuration utility by using this command in the CLI:
+  \begin{lstlisting}
+  sudo raspi-config
+  \end{lstlisting}
+  \item Navigate to \textbf{``Change User password for the 'pi' user''} and hit \textbf{Enter}.
+  \item It will prompt you that it is going to ask for the new password. Press \textbf{Enter}, and type your new password followed by \textbf{Enter} again.
+  \item Verify the password by typing it again.
+  \item Your Pi now has your new password. Don't forget it!
+\end{enumerate}
+
+\subsection{Network Options}
+
+We want to make sure the Pi's network options are configured properly so we don't have to add a \textbf{wpa\_supplicant.conf} file to the boot directory when booting anymore.
+
+\begin{enumerate}
+  \item While still in the raspi-config utility, navigate to \textbf{``Network Options''}.
+  \item Navigate to \textbf{``Wireless LAN''} and hit \textbf{Enter}.
+  \item It will prompt you to enter your WiFi \textbf{SSID}. This is the name of the WiFi network. Enter it and press \textbf{Enter}.
+  \item Next it will ask for the WiFi password/passphrase. Type that in and hit \textbf{Enter}.
+  \item If done correctly, it will notify you it was successfully done via the CLI.
+  \item Your Pi now has the wireless network configured properly.
+\end{enumerate}
+
+\subsection{Boot Options}
+
+This next configuration is more for fun and is \textbf{OPTIONAL}. We are going to make the Raspberry Pi \textbf{``text boot''} instead of just showing a splash screen. This is fun because it shows you the boot process via the CLI so you can see \textbf{\textit{exactly}} what is starting during boot up!
+
+\begin{enumerate}
+  \item While still in the raspi-config utility, navigate to \textbf{``Boot Options''}.
+  \item Navigate to \textbf{``Splash Screen''}.
+  \item It will prompt you if you want to see the \textbf{splash screen} at boot. Select \textbf{``NO''}
+  \item It will then tell you that the splash screen at boot is disabled. Woohoo!
+\end{enumerate}
+
+\subsection{Localization Options}
+
+This may or may not be a problem for some people. I had to make sure my time zone was set correctly. I believe by default the Pi's time zone is set for Europe.
+
+\begin{enumerate}
+  \item While still in the raspi-config utility, navigate to \textbf{``Localisation Options''}.
+  \item Navigate to \textbf{``Change Time Zone''}.
+  \item In a few seconds it will prompt you to choose your \textbf{geographic area}. Select whichever corresponds to yours. In my case it was the US.
+  \item It will then tell ask you what  your \textbf{time zone} is. Select what applies. In my case is was Pacific Ocean.
+  \item Then, it will flash the CLI with the Coordinated Universal Time (UTC) and your time zone's time and go back to the configuration utility.
+\end{enumerate}
+
+\subsection{Interfacing Options (enable SSH)}
+
+\textbf{IMPORTANT} We need to make sure we enable SSH in the Pi's configuration. This is extremely important and allows us to connect to the Pi via SSH in all future instances without having to add a ssh file to the boot directory.
+
+\begin{enumerate}
+  \item While still in the raspi-config utility, navigate to \textbf{``Interfacing Options''}. Remember where this is located because we will need to access this later on.
+  \item Navigate to \textbf{``SSH''}.
+  \item The Pi will then ask if you want the \textbf{SSH server} enabled. Select \textbf{Yes}.
+  \item Wait a few seconds and the Pi should notify you the SSH server is enabled.
+\end{enumerate}
+
+\subsection{Virtual network Computing (VNC) Option}
+
+\textbf{NOTE} For those who find the CLI a bit tricky, or just don't like it, you can enable a virtual network computing software called RealVNC before shutting down the Pi. This will let you control the Pi via a graphical user interface (GUI), like what people are normally used to on MacOS or Windows.
+
+\begin{enumerate}
+  \item While still in the raspi-config utility, navigate to \textbf{``Interfacing Options''}.
+  \item Navigate to \textbf{``VNC''} and select it.
+  \item The Pi will prompt you if you want the \textbf{VNC Server} enabled. Select \textbf{``Yes''}.
+  \item Wait a second and the Pi should let you know that the \textbf{VNC Server} is now enabled. This server will start automatically when the Pi boots up.
+  \item You still need to download \textbf{RealVNC} \textbf{\textit{Viewer}} on the computer you want to remotely access the Pi with.
+  \item \textbf{RealVNC Viewer} can be downloaded at:
+  \newline
+  \url{https://www.realvnc.com/en/connect/download/viewer/}
+  \item Download the client that is for your OS and then install it.  
+\end{enumerate}
+
+\subsection{Finishing Up}
+
+You Pi should be configured now! When the Pi does get turned off and turned back on, it should boot and connect to your WiFi and allow you to SSH into it. Now, we still need to close the Pi's configuration utility and shut down the Pi.
+
+\begin{enumerate}
+  \item While still in the raspi-config utility, navigate down as far as it lets you \textbf{(About raspi-config)}.
+  \item You will have to press the right arrow key to get down to \textbf{``FINISH''}. Tricky and a little unintuitive, I know...
+  \item Select \textbf{FINISH} and it should exit the utility back to the CLI.
+  \item Next, run this last command in the CLI to shutdown the Pi:
+  \begin{lstlisting}
+  sudo shutdown -h now
+  \end{lstlisting}
+  \item Soon the Pi will shutdown and you'll get a message in your Command Prompt/Terminal something along the lines that the connection was closed or lost.
+  \item Flip the switch on the power supply to the Pi to make sure power is not going to the Pi.
+\end{enumerate}
+
+\textbf{CONGRATULATIONS}! You done configuring the Pi. \textit{Whew}...
 
 \end{document}
