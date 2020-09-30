@@ -21,4 +21,4 @@
 \contentsline {subsection}{\numberline {4.4}Localization Options}{19}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Interfacing Options (enable SSH)}{21}{subsection.4.5}
 \contentsline {subsection}{\numberline {4.6}Virtual network Computing (VNC) Option}{22}{subsection.4.6}
-\contentsline {subsection}{\numberline {4.7}Finishing Up}{25}{subsection.4.7}
+\contentsline {section}{\numberline {5}Finishing Up}{25}{section.5}
