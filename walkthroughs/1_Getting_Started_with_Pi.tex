@@ -251,6 +251,9 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
     \item For Mac users, you will want to use the \textbf{\textit{Terminal}}.
     \begin{enumerate}
       \item Press the \textbf{\textit{Command + Spacebar}} keys on your keyboard, type \textbf{``Terminal''}, and \textbf{Enter}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{term}
       \item In Terminal, type the command below making sure to substitute ``192.168.1.XXX'' with the IP address found in step \ref{ipaddress}
       \begin{lstlisting}
       ssh pi@192.168.1.XXX 
@@ -447,6 +450,11 @@ This may or may not be a problem for some people. I had to make sure my time zon
   \newline
   \url{https://www.realvnc.com/en/connect/download/viewer/}
   \item Download the client that is for your OS and then install it.  
+  \item When you open VNC Viewer, you should see something like the image below. In the top toolbar, input the IP address of the Pi and hit \textbf{``Enter''}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{realvnc}
+  \item Wait a minute and you should eventually see the desktop of the Pi. You can can browse and manipulate with your mouse etc.
 \end{enumerate}
 
 \subsection{Finishing Up}

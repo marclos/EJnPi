@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  29 SEP 2020 18:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  30 SEP 2020 12:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -421,489 +421,522 @@ Overfull \hbox (47.00003pt too wide) in paragraph at lines 249--250
 [] 
  []
 
-<./images/cmdsshpw.PNG, id=228, 520.19344pt x 365.11406pt>
-File: ./images/cmdsshpw.PNG Graphic file (type png)
+<./images/term.png, id=227, 656.4525pt x 451.6875pt>
+File: ./images/term.png Graphic file (type png)
+ <use ./images/term.png>
+Package pdftex.def Info: ./images/term.png used on input line 256.
+(pdftex.def)             Requested size: 345.0pt x 237.3876pt.
 
-<use ./images/cmdsshpw.PNG>
-Package pdftex.def Info: ./images/cmdsshpw.PNG used on input line 264.
-(pdftex.def)             Requested size: 345.0pt x 242.14597pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 261--271
+Underfull \hbox (badness 10000) in paragraph at lines 253--257
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 261--271
+Overfull \hbox (47.00003pt too wide) in paragraph at lines 253--257
+[] 
+ []
+
+[8 <./images/cmdssh.PNG>]
+<./images/cmdsshpw.PNG, id=238, 520.19344pt x 365.11406pt>
+File: ./images/cmdsshpw.PNG Graphic file (type png)
+
+<use ./images/cmdsshpw.PNG>
+Package pdftex.def Info: ./images/cmdsshpw.PNG used on input line 267.
+(pdftex.def)             Requested size: 345.0pt x 242.14597pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--274
+
+ []
+
+
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 264--274
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--271
+Underfull \hbox (badness 10000) in paragraph at lines 264--274
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--271
+Underfull \hbox (badness 10000) in paragraph at lines 264--274
 
  []
 
-[8 <./images/cmdssh.PNG>]
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 273
+[9 <./images/term.png>]
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 276
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-<./images/cmdsshrp.PNG, id=242, 598.48593pt x 385.44pt>
+<./images/cmdsshrp.PNG, id=248, 598.48593pt x 385.44pt>
 File: ./images/cmdsshrp.PNG Graphic file (type png)
 
 <use ./images/cmdsshrp.PNG>
-Package pdftex.def Info: ./images/cmdsshrp.PNG used on input line 275.
+Package pdftex.def Info: ./images/cmdsshrp.PNG used on input line 278.
 (pdftex.def)             Requested size: 345.0pt x 222.19089pt.
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 275--276
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 278--279
 [] 
  []
 
-[9 <./images/cmdsshpw.PNG>]
-<./images/aptupdate.PNG, id=252, 737.00343pt x 385.44pt>
+[10 <./images/cmdsshpw.PNG>]
+<./images/aptupdate.PNG, id=258, 737.00343pt x 385.44pt>
 File: ./images/aptupdate.PNG Graphic file (type png)
 
 <use ./images/aptupdate.PNG>
-Package pdftex.def Info: ./images/aptupdate.PNG used on input line 289.
+Package pdftex.def Info: ./images/aptupdate.PNG used on input line 292.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 289--290
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 292--293
 [] 
  []
 
-[10 <./images/cmdsshrp.PNG>]
-<./images/aptupgradecont.PNG, id=262, 737.00343pt x 385.44pt>
+[11 <./images/cmdsshrp.PNG>]
+<./images/aptupgradecont.PNG, id=268, 737.00343pt x 385.44pt>
 File: ./images/aptupgradecont.PNG Graphic file (type png)
 
 <use ./images/aptupgradecont.PNG>
-Package pdftex.def Info: ./images/aptupgradecont.PNG used on input line 297.
+Package pdftex.def Info: ./images/aptupgradecont.PNG used on input line 300.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 294--298
+Underfull \hbox (badness 10000) in paragraph at lines 297--301
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 294--298
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 297--301
 [] 
  []
 
-<./images/aptupgradedone.PNG, id=263, 688.82344pt x 398.23781pt>
+<./images/aptupgradedone.PNG, id=269, 688.82344pt x 398.23781pt>
 File: ./images/aptupgradedone.PNG Graphic file (type png)
 
 <use ./images/aptupgradedone.PNG>
-Package pdftex.def Info: ./images/aptupgradedone.PNG used on input line 302.
+Package pdftex.def Info: ./images/aptupgradedone.PNG used on input line 305.
 (pdftex.def)             Requested size: 345.0pt x 199.4587pt.
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 302--303
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 305--306
 [] 
  []
 
-[11 <./images/aptupdate.PNG> <./images/aptupgradecont.PNG>]
-<./images/rcpw.PNG, id=280, 737.00343pt x 385.44pt>
+[12 <./images/aptupdate.PNG> <./images/aptupgradecont.PNG>]
+<./images/rcpw.PNG, id=286, 737.00343pt x 385.44pt>
 File: ./images/rcpw.PNG Graphic file (type png)
  <use ./images/rcpw.PNG>
-Package pdftex.def Info: ./images/rcpw.PNG used on input line 322.
+Package pdftex.def Info: ./images/rcpw.PNG used on input line 325.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 322--323
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 325--326
 [] 
  []
 
-[12 <./images/aptupgradedone.PNG>]
-<./images/rcpwconf.PNG, id=290, 737.00343pt x 385.44pt>
+[13 <./images/aptupgradedone.PNG>]
+<./images/rcpwconf.PNG, id=297, 737.00343pt x 385.44pt>
 File: ./images/rcpwconf.PNG Graphic file (type png)
 
 <use ./images/rcpwconf.PNG>
-Package pdftex.def Info: ./images/rcpwconf.PNG used on input line 327.
+Package pdftex.def Info: ./images/rcpwconf.PNG used on input line 330.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--328
+Underfull \hbox (badness 10000) in paragraph at lines 327--331
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 324--328
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 327--331
 [] 
  []
 
-<./images/rcpwretype.PNG, id=291, 737.00343pt x 385.44pt>
+<./images/rcpwretype.PNG, id=298, 737.00343pt x 385.44pt>
 File: ./images/rcpwretype.PNG Graphic file (type png)
 
 <use ./images/rcpwretype.PNG>
-Package pdftex.def Info: ./images/rcpwretype.PNG used on input line 331.
+Package pdftex.def Info: ./images/rcpwretype.PNG used on input line 334.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 328--332
+Underfull \hbox (badness 10000) in paragraph at lines 331--335
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 328--332
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 331--335
 [] 
  []
 
-[13 <./images/rcpw.PNG> <./images/rcpwconf.PNG>]
-<./images/rcnet.PNG, id=302, 737.00343pt x 385.44pt>
+[14 <./images/rcpw.PNG> <./images/rcpwconf.PNG>]
+<./images/rcnet.PNG, id=308, 737.00343pt x 385.44pt>
 File: ./images/rcnet.PNG Graphic file (type png)
  <use ./images/rcnet.PNG>
-Package pdftex.def Info: ./images/rcnet.PNG used on input line 343.
+Package pdftex.def Info: ./images/rcnet.PNG used on input line 346.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 340--344
+Underfull \hbox (badness 10000) in paragraph at lines 343--347
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 340--344
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 343--347
 [] 
  []
 
-<./images/rcnetwlan.PNG, id=303, 737.00343pt x 385.44pt>
+<./images/rcnetwlan.PNG, id=309, 737.00343pt x 385.44pt>
 File: ./images/rcnetwlan.PNG Graphic file (type png)
 
 <use ./images/rcnetwlan.PNG>
-Package pdftex.def Info: ./images/rcnetwlan.PNG used on input line 347.
+Package pdftex.def Info: ./images/rcnetwlan.PNG used on input line 350.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--348
+Underfull \hbox (badness 10000) in paragraph at lines 347--351
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 344--348
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 347--351
 [] 
  []
 
-[14 <./images/rcpwretype.PNG> <./images/rcnet.PNG>]
-<./images/rcnetwlanssid.PNG, id=313, 737.00343pt x 385.44pt>
+[15 <./images/rcpwretype.PNG> <./images/rcnet.PNG>]
+<./images/rcnetwlanssid.PNG, id=319, 737.00343pt x 385.44pt>
 File: ./images/rcnetwlanssid.PNG Graphic file (type png)
 
 <use ./images/rcnetwlanssid.PNG>
-Package pdftex.def Info: ./images/rcnetwlanssid.PNG used on input line 351.
+Package pdftex.def Info: ./images/rcnetwlanssid.PNG used on input line 354.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--352
+Underfull \hbox (badness 10000) in paragraph at lines 351--355
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 348--352
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 351--355
 [] 
  []
 
-<./images/rcnetwlanpw.PNG, id=314, 737.00343pt x 385.44pt>
+<./images/rcnetwlanpw.PNG, id=320, 737.00343pt x 385.44pt>
 File: ./images/rcnetwlanpw.PNG Graphic file (type png)
 
 <use ./images/rcnetwlanpw.PNG>
-Package pdftex.def Info: ./images/rcnetwlanpw.PNG used on input line 355.
+Package pdftex.def Info: ./images/rcnetwlanpw.PNG used on input line 358.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--356
+Underfull \hbox (badness 10000) in paragraph at lines 355--359
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 352--356
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 355--359
 [] 
  []
 
-[15 <./images/rcnetwlan.PNG> <./images/rcnetwlanssid.PNG>]
-<./images/rcnetwlansuccess.PNG, id=323, 737.00343pt x 385.44pt>
+[16 <./images/rcnetwlan.PNG> <./images/rcnetwlanssid.PNG>]
+<./images/rcnetwlansuccess.PNG, id=329, 737.00343pt x 385.44pt>
 File: ./images/rcnetwlansuccess.PNG Graphic file (type png)
 
 <use ./images/rcnetwlansuccess.PNG>
-Package pdftex.def Info: ./images/rcnetwlansuccess.PNG used on input line 359.
+Package pdftex.def Info: ./images/rcnetwlansuccess.PNG used on input line 362.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--360
+Underfull \hbox (badness 10000) in paragraph at lines 359--363
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 356--360
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 359--363
 [] 
  []
 
-<./images/rcboot.PNG, id=324, 737.00343pt x 385.44pt>
+<./images/rcboot.PNG, id=330, 737.00343pt x 385.44pt>
 File: ./images/rcboot.PNG Graphic file (type png)
 
 <use ./images/rcboot.PNG>
-Package pdftex.def Info: ./images/rcboot.PNG used on input line 371.
+Package pdftex.def Info: ./images/rcboot.PNG used on input line 374.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--372
+Underfull \hbox (badness 10000) in paragraph at lines 371--375
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 368--372
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 371--375
 [] 
  []
 
-[16 <./images/rcnetwlanpw.PNG> <./images/rcnetwlansuccess.PNG>]
-<./images/rcboottext.PNG, id=334, 737.00343pt x 385.44pt>
+[17 <./images/rcnetwlanpw.PNG> <./images/rcnetwlansuccess.PNG>]
+<./images/rcboottext.PNG, id=340, 737.00343pt x 385.44pt>
 File: ./images/rcboottext.PNG Graphic file (type png)
 
 <use ./images/rcboottext.PNG>
-Package pdftex.def Info: ./images/rcboottext.PNG used on input line 375.
+Package pdftex.def Info: ./images/rcboottext.PNG used on input line 378.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--376
+Underfull \hbox (badness 10000) in paragraph at lines 375--379
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 372--376
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 375--379
 [] 
  []
 
-<./images/rcboottextconf.PNG, id=335, 737.00343pt x 385.44pt>
+<./images/rcboottextconf.PNG, id=341, 737.00343pt x 385.44pt>
 File: ./images/rcboottextconf.PNG Graphic file (type png)
 
 <use ./images/rcboottextconf.PNG>
-Package pdftex.def Info: ./images/rcboottextconf.PNG used on input line 379.
+Package pdftex.def Info: ./images/rcboottextconf.PNG used on input line 382.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 376--380
+Underfull \hbox (badness 10000) in paragraph at lines 379--383
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 376--380
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 379--383
 [] 
  []
 
-[17 <./images/rcboot.PNG> <./images/rcboottext.PNG>]
-<./images/rclocale.PNG, id=344, 737.00343pt x 385.44pt>
+[18 <./images/rcboot.PNG> <./images/rcboottext.PNG>]
+<./images/rclocale.PNG, id=350, 737.00343pt x 385.44pt>
 File: ./images/rclocale.PNG Graphic file (type png)
 
 <use ./images/rclocale.PNG>
-Package pdftex.def Info: ./images/rclocale.PNG used on input line 391.
+Package pdftex.def Info: ./images/rclocale.PNG used on input line 394.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--392
+Underfull \hbox (badness 10000) in paragraph at lines 391--395
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 388--392
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 391--395
 [] 
  []
 
-<./images/rctime.PNG, id=345, 737.00343pt x 385.44pt>
+<./images/rctime.PNG, id=351, 737.00343pt x 385.44pt>
 File: ./images/rctime.PNG Graphic file (type png)
 
 <use ./images/rctime.PNG>
-Package pdftex.def Info: ./images/rctime.PNG used on input line 395.
+Package pdftex.def Info: ./images/rctime.PNG used on input line 398.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 392--396
+Underfull \hbox (badness 10000) in paragraph at lines 395--399
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 392--396
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 395--399
 [] 
  []
 
-[18 <./images/rcboottextconf.PNG> <./images/rclocale.PNG>]
-<./images/rctimeus.PNG, id=355, 737.00343pt x 385.44pt>
+[19 <./images/rcboottextconf.PNG> <./images/rclocale.PNG>]
+<./images/rctimeus.PNG, id=362, 737.00343pt x 385.44pt>
 File: ./images/rctimeus.PNG Graphic file (type png)
 
 <use ./images/rctimeus.PNG>
-Package pdftex.def Info: ./images/rctimeus.PNG used on input line 399.
+Package pdftex.def Info: ./images/rctimeus.PNG used on input line 402.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 396--400
+Underfull \hbox (badness 10000) in paragraph at lines 399--403
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 396--400
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 399--403
 [] 
  []
 
-<./images/rctimepo.PNG, id=356, 737.00343pt x 385.44pt>
+<./images/rctimepo.PNG, id=363, 737.00343pt x 385.44pt>
 File: ./images/rctimepo.PNG Graphic file (type png)
 
 <use ./images/rctimepo.PNG>
-Package pdftex.def Info: ./images/rctimepo.PNG used on input line 403.
+Package pdftex.def Info: ./images/rctimepo.PNG used on input line 406.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 400--404
+Underfull \hbox (badness 10000) in paragraph at lines 403--407
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 400--404
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 403--407
 [] 
  []
 
-[19 <./images/rctime.PNG> <./images/rctimeus.PNG>]
-<./images/rcifoptions.PNG, id=366, 737.00343pt x 385.44pt>
+[20 <./images/rctime.PNG> <./images/rctimeus.PNG>]
+<./images/rcifoptions.PNG, id=372, 737.00343pt x 385.44pt>
 File: ./images/rcifoptions.PNG Graphic file (type png)
 
 <use ./images/rcifoptions.PNG>
-Package pdftex.def Info: ./images/rcifoptions.PNG used on input line 415.
+Package pdftex.def Info: ./images/rcifoptions.PNG used on input line 418.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 412--416
+Underfull \hbox (badness 10000) in paragraph at lines 415--419
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 412--416
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 415--419
 [] 
  []
 
-<./images/rcssh.PNG, id=367, 737.00343pt x 385.44pt>
+<./images/rcssh.PNG, id=373, 737.00343pt x 385.44pt>
 File: ./images/rcssh.PNG Graphic file (type png)
  <use ./images/rcssh.PNG>
-Package pdftex.def Info: ./images/rcssh.PNG used on input line 419.
+Package pdftex.def Info: ./images/rcssh.PNG used on input line 422.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--420
+Underfull \hbox (badness 10000) in paragraph at lines 419--423
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 416--420
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 419--423
 [] 
  []
 
-[20 <./images/rctimepo.PNG> <./images/rcifoptions.PNG>]
+[21 <./images/rctimepo.PNG> <./images/rcifoptions.PNG>]
 File: ./images/rcifoptions.PNG Graphic file (type png)
 
 <use ./images/rcifoptions.PNG>
-Package pdftex.def Info: ./images/rcifoptions.PNG used on input line 432.
+Package pdftex.def Info: ./images/rcifoptions.PNG used on input line 435.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 429--433
+Underfull \hbox (badness 10000) in paragraph at lines 432--436
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 429--433
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 432--436
 [] 
  []
 
-<./images/rcvnc.PNG, id=377, 737.00343pt x 385.44pt>
+<./images/rcvnc.PNG, id=383, 737.00343pt x 385.44pt>
 File: ./images/rcvnc.PNG Graphic file (type png)
  <use ./images/rcvnc.PNG>
-Package pdftex.def Info: ./images/rcvnc.PNG used on input line 436.
+Package pdftex.def Info: ./images/rcvnc.PNG used on input line 439.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 433--437
+Underfull \hbox (badness 10000) in paragraph at lines 436--440
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 433--437
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 436--440
 [] 
  []
 
-[21 <./images/rcssh.PNG>]
-<./images/rcvncenable.PNG, id=386, 737.00343pt x 385.44pt>
+[22 <./images/rcssh.PNG>]
+<./images/rcvncenable.PNG, id=392, 737.00343pt x 385.44pt>
 File: ./images/rcvncenable.PNG Graphic file (type png)
 
 <use ./images/rcvncenable.PNG>
-Package pdftex.def Info: ./images/rcvncenable.PNG used on input line 440.
+Package pdftex.def Info: ./images/rcvncenable.PNG used on input line 443.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 437--441
+Underfull \hbox (badness 10000) in paragraph at lines 440--444
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 437--441
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 440--444
 [] 
  []
 
-<./images/rcvncconf.PNG, id=387, 737.00343pt x 385.44pt>
+<./images/rcvncconf.PNG, id=393, 737.00343pt x 385.44pt>
 File: ./images/rcvncconf.PNG Graphic file (type png)
 
 <use ./images/rcvncconf.PNG>
-Package pdftex.def Info: ./images/rcvncconf.PNG used on input line 444.
+Package pdftex.def Info: ./images/rcvncconf.PNG used on input line 447.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 441--445
+Underfull \hbox (badness 10000) in paragraph at lines 444--448
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 441--445
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 444--448
 [] 
  []
 
-[22 <./images/rcvnc.PNG> <./images/rcvncenable.PNG>]
-<./images/rcfinish.PNG, id=398, 737.00343pt x 385.44pt>
+[23 <./images/rcvnc.PNG> <./images/rcvncenable.PNG>]
+<./images/realvnc.png, id=404, 1015.795pt x 776.9025pt>
+File: ./images/realvnc.png Graphic file (type png)
+
+<use ./images/realvnc.png>
+Package pdftex.def Info: ./images/realvnc.png used on input line 456.
+(pdftex.def)             Requested size: 345.0pt x 263.85884pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 453--457
+
+ []
+
+
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 453--457
+[] 
+ []
+
+[24 <./images/rcvncconf.PNG>]
+<./images/rcfinish.PNG, id=414, 737.00343pt x 385.44pt>
 File: ./images/rcfinish.PNG Graphic file (type png)
 
 <use ./images/rcfinish.PNG>
-Package pdftex.def Info: ./images/rcfinish.PNG used on input line 460.
+Package pdftex.def Info: ./images/rcfinish.PNG used on input line 468.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 457--461
+Underfull \hbox (badness 10000) in paragraph at lines 465--469
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 457--461
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 465--469
 [] 
  []
 
-[23 <./images/rcvncconf.PNG>]
-<./images/sudoshutdown.PNG, id=408, 737.00343pt x 385.44pt>
+[25 <./images/realvnc.png>]
+<./images/sudoshutdown.PNG, id=423, 737.00343pt x 385.44pt>
 File: ./images/sudoshutdown.PNG Graphic file (type png)
 
 <use ./images/sudoshutdown.PNG>
-Package pdftex.def Info: ./images/sudoshutdown.PNG used on input line 467.
+Package pdftex.def Info: ./images/sudoshutdown.PNG used on input line 475.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 467--468
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 475--476
 [] 
  []
 
-<./images/sshshutdown.PNG, id=409, 737.00343pt x 385.44pt>
+<./images/sshshutdown.PNG, id=424, 737.00343pt x 385.44pt>
 File: ./images/sshshutdown.PNG Graphic file (type png)
 
 <use ./images/sshshutdown.PNG>
-Package pdftex.def Info: ./images/sshshutdown.PNG used on input line 471.
+Package pdftex.def Info: ./images/sshshutdown.PNG used on input line 479.
 (pdftex.def)             Requested size: 345.0pt x 180.42754pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 468--472
+Underfull \hbox (badness 10000) in paragraph at lines 476--480
 
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 468--472
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 476--480
 [] 
  []
 
-[24 <./images/rcfinish.PNG> <./images/sudoshutdown.PNG>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 477.
- [25 <./images/sshshutdown.PNG>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 477.
+[26 <./images/rcfinish.PNG> <./images/sudoshutdown.PNG>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 485.
+ [27 <./images/sshshutdown.PNG>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 485.
  (./1_Getting_Started_with_Pi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 477.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 477.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 485.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 485.
 Package rerunfilecheck Info: File `1_Getting_Started_with_Pi.out' has not chang
 ed.
 (rerunfilecheck)             Checksum: 11A04F7D07F2FC3E0ED3429689EC397D;1850.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 477.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 485.
  ) 
 Here is how much of TeX's memory you used:
- 7335 strings out of 494820
- 109692 string characters out of 3178050
+ 7349 strings out of 494820
+ 109925 string characters out of 3178050
  205319 words of memory out of 3000000
- 10252 multiletter control sequences out of 15000+200000
+ 10260 multiletter control sequences out of 15000+200000
  9866 words of font info for 35 fonts, out of 3000000 for 9000
  198 hyphenation exceptions out of 8191
  32i,6n,49p,587b,1246s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -919,10 +952,10 @@ ic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/s
 frm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt0900
 .pfb>
-Output written on 1_Getting_Started_with_Pi.pdf (25 pages, 685712 bytes).
+Output written on 1_Getting_Started_with_Pi.pdf (27 pages, 1034149 bytes).
 PDF statistics:
- 504 PDF objects out of 1000 (max. 8388607)
- 401 compressed objects within 5 object streams
- 166 named destinations out of 1000 (max. 500000)
- 343 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 519 PDF objects out of 1000 (max. 8388607)
+ 410 compressed objects within 5 object streams
+ 170 named destinations out of 1000 (max. 500000)
+ 353 words of extra memory for PDF output out of 10000 (max. 10000000)
 
