@@ -12,5 +12,5 @@ while True:                                 # A while loop, meaning have it run 
   GPIO.output(24,GPIO.HIGH)                 # Turns 'on' the GPIO pin, meaning it supplies power (3.3V) enough to turn hte LED on
   sleep(1)                                  # Pauses the Python program for 1 second
   print("LED off")                          # Outputs this info to terminal
-  GPIO.output(24),GPIO.LOW)                 # Turns 'off' the GPIO pin, meaning it no longer supplies power
+  GPIO.output(24,GPIO.LOW)                  # Turns 'off' the GPIO pin, meaning it no longer supplies power
   sleep(1)                                  # Pauses the Python program for 1 second
