@@ -9,6 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+*If you have a problem in RStudio with checking commits, it may be a bug. Use RStudio's Terminal and run this command:
+
+git commit -v -a
+
+Then uncomment one line and enter. This should fix the rest of the unselectable commits.
+
 # Air Quality Project
 
 ## 1. Package Arrives
