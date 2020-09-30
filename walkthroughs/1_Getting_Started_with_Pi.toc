@@ -16,9 +16,9 @@
 \contentsline {subsection}{\numberline {3.2}Update and Upgrading Raspberry Pi OS}{8}{subsection.3.2}
 \contentsline {section}{\numberline {4}Configuring the Pi}{8}{section.4}
 \contentsline {subsection}{\numberline {4.1}Changing the Pi User Password}{8}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Network Options}{9}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Boot Options}{9}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Localization Options}{10}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Interfacing Options (enable SSH)}{10}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Virtual network Computing (VNC) Option}{10}{subsection.4.6}
-\contentsline {subsection}{\numberline {4.7}Finishing Up}{11}{subsection.4.7}
+\contentsline {subsection}{\numberline {4.2}Network Options}{10}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Boot Options}{12}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Localization Options}{14}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Interfacing Options (enable SSH)}{15}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Virtual network Computing (VNC) Option}{16}{subsection.4.6}
+\contentsline {subsection}{\numberline {4.7}Finishing Up}{18}{subsection.4.7}

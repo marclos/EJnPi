@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[]{graphicx}
+\graphicspath{ {./images/} }
 \usepackage[]{color}
 \usepackage{hyperref}
 \usepackage{listings}
@@ -305,9 +306,16 @@ As a security measure, since your Pi is in your WiFi network, you'll want to cha
   \begin{lstlisting}
   sudo raspi-config
   \end{lstlisting}
+  \includegraphics[width=1.00\textwidth]{rcpw}
   \item Navigate to \textbf{``Change User password for the 'pi' user''} and hit \textbf{Enter}.
   \item It will prompt you that it is going to ask for the new password. Press \textbf{Enter}, and type your new password followed by \textbf{Enter} again.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcpwconf}
   \item Verify the password by typing it again.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcpwretype}
   \item Your Pi now has your new password. Don't forget it!
 \end{enumerate}
 
@@ -317,10 +325,25 @@ We want to make sure the Pi's network options are configured properly so we don'
 
 \begin{enumerate}
   \item While still in the raspi-config utility, navigate to \textbf{``Network Options''}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcnet}
   \item Navigate to \textbf{``Wireless LAN''} and hit \textbf{Enter}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcnetwlan}
   \item It will prompt you to enter your WiFi \textbf{SSID}. This is the name of the WiFi network. Enter it and press \textbf{Enter}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcnetwlanssid}
   \item Next it will ask for the WiFi password/passphrase. Type that in and hit \textbf{Enter}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcnetwlanpw}
   \item If done correctly, it will notify you it was successfully done via the CLI.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcnetwlansuccess}
   \item Your Pi now has the wireless network configured properly.
 \end{enumerate}
 
@@ -330,8 +353,17 @@ This next configuration is more for fun and is \textbf{OPTIONAL}. We are going t
 
 \begin{enumerate}
   \item While still in the raspi-config utility, navigate to \textbf{``Boot Options''}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcboot}
   \item Navigate to \textbf{``Splash Screen''}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcboottext}
   \item It will prompt you if you want to see the \textbf{splash screen} at boot. Select \textbf{``NO''}
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcboottextconf}
   \item It will then tell you that the splash screen at boot is disabled. Woohoo!
 \end{enumerate}
 
@@ -341,8 +373,17 @@ This may or may not be a problem for some people. I had to make sure my time zon
 
 \begin{enumerate}
   \item While still in the raspi-config utility, navigate to \textbf{``Localisation Options''}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rclocale}
   \item Navigate to \textbf{``Change Time Zone''}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rctime}
   \item In a few seconds it will prompt you to choose your \textbf{geographic area}. Select whichever corresponds to yours. In my case it was the US.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rctimeus}
   \item It will then tell ask you what  your \textbf{time zone} is. Select what applies. In my case is was Pacific Ocean.
   \item Then, it will flash the CLI with the Coordinated Universal Time (UTC) and your time zone's time and go back to the configuration utility.
 \end{enumerate}
@@ -353,7 +394,13 @@ This may or may not be a problem for some people. I had to make sure my time zon
 
 \begin{enumerate}
   \item While still in the raspi-config utility, navigate to \textbf{``Interfacing Options''}. Remember where this is located because we will need to access this later on.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcifoptions}
   \item Navigate to \textbf{``SSH''}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcssh}
   \item The Pi will then ask if you want the \textbf{SSH server} enabled. Select \textbf{Yes}.
   \item Wait a few seconds and the Pi should notify you the SSH server is enabled.
 \end{enumerate}
@@ -364,9 +411,21 @@ This may or may not be a problem for some people. I had to make sure my time zon
 
 \begin{enumerate}
   \item While still in the raspi-config utility, navigate to \textbf{``Interfacing Options''}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcifoptions}
   \item Navigate to \textbf{``VNC''} and select it.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcvnc}
   \item The Pi will prompt you if you want the \textbf{VNC Server} enabled. Select \textbf{``Yes''}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcvncenable}
   \item Wait a second and the Pi should let you know that the \textbf{VNC Server} is now enabled. This server will start automatically when the Pi boots up.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcvncconf}
   \item You still need to download \textbf{RealVNC} \textbf{\textit{Viewer}} on the computer you want to remotely access the Pi with.
   \item \textbf{RealVNC Viewer} can be downloaded at:
   \newline
@@ -380,13 +439,20 @@ You Pi should be configured now! When the Pi does get turned off and turned back
 
 \begin{enumerate}
   \item While still in the raspi-config utility, navigate down as far as it lets you \textbf{(About raspi-config)}.
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{rcfinish}
   \item You will have to press the right arrow key to get down to \textbf{``FINISH''}. Tricky and a little unintuitive, I know...
   \item Select \textbf{FINISH} and it should exit the utility back to the CLI.
   \item Next, run this last command in the CLI to shutdown the Pi:
   \begin{lstlisting}
   sudo shutdown -h now
   \end{lstlisting}
-  \item Soon the Pi will shutdown and you'll get a message in your Command Prompt/Terminal something along the lines that the connection was closed or lost.
+  \includegraphics[width=1.00\textwidth]{sudoshutdown}
+  \item Soon the Pi will shutdown and you'll get a message in your Command Prompt/Terminal something along the lines that the connection was closed or lost. 
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{sshshutdown}
   \item Flip the switch on the power supply to the Pi to make sure power is not going to the Pi.
 \end{enumerate}
 
