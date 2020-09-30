@@ -8,7 +8,7 @@ GPIO.setup(24,GPIO.OUT, initial=GPIO.LOW)   # Set GPIO pin 24 for output and set
 print("Press Ctrl + C to exit")             # Outputs this info to terminal
 
 while True:                                 # A while loop, meaning have it run forever
-  print("LED on"}                           # Outputs this info to terminal
+  print("LED on")                           # Outputs this info to terminal
   GPIO.output(24,GPIO.HIGH)                 # Turns 'on' the GPIO pin, meaning it supplies power (3.3V) enough to turn hte LED on
   sleep(1)                                  # Pauses the Python program for 1 second
   print("LED off")                          # Outputs this info to terminal
