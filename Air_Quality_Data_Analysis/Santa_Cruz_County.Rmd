@@ -1,0 +1,42 @@
+---
+title: "Santa Cruz County"
+author: "Marc Los Huertos"
+date: "10/1/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+## Read Data
+
+```{r echo=TRUE, results='hide'}
+SCZ2020.csv <- "/home/CAMPUS/mwl04747/github/EJnPi/Air_Quality_Data_Analysis/ad_viz_plotval_data.csv"
+SCZ2020 = read.csv(SCZ2020.csv)
+str(SCZ2020)[1:10]
+
+## Fix dates
+Date.char = as.character(SCZ2020$Date)
+# testing to make sure this owrks...
+# as.Date(Date.char, format="%m/%d/%Y")
+SCZ2020$Date = as.Date(Date.char, format="%m/%d/%Y")
+
+str(SCZ2020)
+names(SCZ2020)
+```
+
+## Graphic Analysis
+
+I have two stations together, might need to decide which one to focus on!
+
+
+
+```{r}
+par(las=1)
+plot(Daily.Mean.PM2.5.Concentration~Date, data=SCZ2020)
+abline(h=35, col='red')
+
+```
