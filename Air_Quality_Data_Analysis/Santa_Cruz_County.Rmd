@@ -11,21 +11,31 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
+Collect data...
+
+(https://www.epa.gov/outdoor-air-quality-data/download-daily-data
+)
+
 ## Read Data
 
 ```{r echo=TRUE, results='hide'}
-SCZ2020.csv <- "/home/CAMPUS/mwl04747/github/EJnPi/Air_Quality_Data_Analysis/ad_viz_plotval_data.csv"
-SCZ2020 = read.csv(SCZ2020.csv)
+SCZ2020.csv <- "/home/CAMPUS/mwl04747/github/EJnPi/Air_Quality_Data_Analysis/ad_viz_plotval_data2020.csv"
+SCZ2019.csv <- "/home/CAMPUS/mwl04747/github/EJnPi/Air_Quality_Data_Analysis/ad_viz_plotval_data2019.csv"
+SCZ2018.csv <- "/home/CAMPUS/mwl04747/github/EJnPi/Air_Quality_Data_Analysis/ad_viz_plotval_data2018.csv"
+
+SCZ2019 = read.csv(SCZ2019.csv); SCZ2020 = read.csv(SCZ2020.csv)
+SCZ2018 = read.csv(SCZ2018.csv)
 str(SCZ2020)[1:10]
+SCZ=rbind(SCZ2018, SCZ2019, SCZ2020)
 
 ## Fix dates
-Date.char = as.character(SCZ2020$Date)
+Date.char = as.character(SCZ$Date)
 # testing to make sure this owrks...
 # as.Date(Date.char, format="%m/%d/%Y")
-SCZ2020$Date = as.Date(Date.char, format="%m/%d/%Y")
+SCZ$Date = as.Date(Date.char, format="%m/%d/%Y")
 
-str(SCZ2020)
-names(SCZ2020)
+str(SCZ)
+names(SCZ)
 ```
 
 ## Graphic Analysis
@@ -36,7 +46,7 @@ I have two stations together, might need to decide which one to focus on!
 
 ```{r}
 par(las=1)
-plot(Daily.Mean.PM2.5.Concentration~Date, data=SCZ2020)
+plot(Daily.Mean.PM2.5.Concentration~Date, data=SCZ)
 abline(h=35, col='red')
 
 ```
