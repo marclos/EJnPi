@@ -161,7 +161,7 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
   \begin{itemize}
   \item Make sure the file you created has the \textbf{``.conf''} file extension in the name.
   \item The \textbf{``wpa\_supplicant.conf''} needs to have the WiFi network information in it for the Raspberry Pi to connect on boot up.
-  \item Modify this file with a text editor and include the following information:
+  \item Modify this file with a text editor and type the lines below. NOTE: DO NOT COPY AND PASTE. When we copy and paste from other programs hidden text can be inserted that cannot be read by the Pi's operating system correctly.
   \end{itemize}
 \newpage  
 \begin{lstlisting}
@@ -192,20 +192,22 @@ network={
   \item Place the SD card in the Raspberry Pi Zero W's SD card slot.
   \item Attach the Pi to the bottom Vilros case making sure to line the dowels within the case with the mouting holes on the Pi.
   \item \textbf{Do not} attached the top part of the case yet. Being able to see the Pi's board will help you with pin determination.
+  
+NOTE: If do not have peripheral devices to be connected to the Pi, i.e. monitor, mouse and keyboard, you will be making a ``headless'' connection and should skip the next few steps. 
+\begin{itemize}
   \item Attach your peripheral devices, \textit{if you have them}. This includes a monitor, mouse, and keyboard. It is okay to not have them.
-  \begin{itemize}
     \item You will need to use the HDMI to micro-HDMI adapter to hook a monitor up to the Raspberry Pi Zero W.
     \item Also, you'll need to use the Anker multiport USB adapter to use a keyboard \textbf{and} a mouse. The Raspberry Pi Zero W only has one micro-usb port.
     \begin{itemize}
-      \item You can get away with using just a monitor and keyboard, but if you are not comfortable navigating with a keyboad only, it'll be difficult.
+     \item You can get away with using just a monitor and keyboard, but if you are not comfortable navigating with a keyboad only, it'll be difficult.
     \end{itemize}
   \end{itemize}
-  \item Lastly, making sure the the power adapter for the Pi is plugged in to a power source, and verifying the switch on the adapter is in the \textbf{``off''} position, connect the power cable into the Pi.
+\item Lastly, making sure the the power adapter for the Pi is plugged in to a power source, and verifying the switch on the adapter is in the \textbf{``off''} position, connect the power cable into the Pi.
   \item Now, turn the power switch on.
 
 \textbf{NOTE!} Make sure not to turn the device off, or on/off/on, otherwise the \textbf{``ssh''} and \textbf{``wpa\_supplicant.conf''} files will not be in your boot directory on the SD card anymore. If, for whatever reason, the Pi loses power after putting those file in the boot directory, you will have to go back and add them, as in step \textbf{\ref{networkssh}}. This is \textbf{especially} important for \textbf{\textit{headless}} users (users with no monitor).
 
-\textbf{NOTE!} This is where \textbf{\textit{headless}} users will have to remotely connect to the Pi, while people who have monitors, mice, and keyboards won't have to remotely connect. For those who aren't connecting remotely, skip ahead to step \textbf{\ref{updateupgrade}}
+%\textbf{NOTE!} This is where \textbf{\textit{headless}} users will have to remotely connect to the Pi, while people who have monitors, mice, and keyboards won't have to remotely connect. For those who aren't connecting remotely, skip ahead to step \textbf{\ref{updateupgrade}}
 
 \end{enumerate}
 
@@ -221,7 +223,7 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
 
 \begin{enumerate}
   \item The easiest way to find the IP address of your Pi, if you don't know networking or computers that well, is to use the \textbf{Raspberry Pi Finder} by Adafruit.
-  \item With your main computer, go to this websiteto download the application for your OS: \newline \url{https://github.com/adafruit/Adafruit-Pi-Finder/}
+  \item With your main computer, go to this website to download the application for your OS: \newline \url{https://github.com/adafruit/Adafruit-Pi-Finder/}
   \item Scroll down and click the link that says \textbf{``Download the latest release''}
   \item Scroll down to \textbf{``Assets''} and there you will see the .zip files of the program for the different OSs.
   \begin{itemize}
@@ -229,8 +231,8 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
     \item \textbf{``win32''} is for Windows user.
   \end{itemize}
   \item Download the .zip file for your system and then unzip it when finished downloading.
-  \item Run Raspberry Pi finder.
-  \item Click \textbf{``Find my Pi!''} for the program to locate your Pi. Wait a few minutes if it doesn't find it immediately. Sometimes it can take quite a while!
+  \item Run Raspberry Pi finder.\footnote{where do we the the exe file?-- doen't ren all by itself.}
+  \item Click \textbf{``Find my Pi!''} for the program to locate your Pi. Wait a few minutes if it doesn't find it immediately. Sometimes it can take quite a while!\footnote{need a workaround, this doesn't work...}
   \item The IP address should be listed when finished. It should look something like \textbf{``192.168.1.XXX''}. \label{ipaddress}
   \item Use the IP address to connect to the Pi.
 \end{enumerate}
@@ -245,9 +247,9 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
 \newline
 \newline
 \includegraphics[scale=0.70]{cmd}
-      \item In the Command Prompt, type the command below making sure to substitute ``192.168.1.XXX'' with the IP address found in step \ref{ipaddress}
+      \item In the Command Prompt, type the command below making sure to substitute ``192.168.0.XXX'' with the IP address found in step \ref{ipaddress}
       \begin{lstlisting}
-      ssh pi@192.168.1.XXX 
+      ssh pi@192.168.0.XXX 
       \end{lstlisting}
       \includegraphics[width=1.00\textwidth]{cmdssh}
     \end{enumerate}
@@ -263,6 +265,8 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
       \end{lstlisting}
   \includegraphics[width=1.00\textwidth]{termssh}
     \end{enumerate}
+    
+NOTE: Sometimes we get a warning that the host key needs to be changed. If you get a yes/no prompt, type yes. If you get a warning that the key needs to be changed or that someone is snooping then contact the instructor for help with this.  
 \end{itemize}
 \begin{enumerate}
   \item For both Mac and Windows users, you should now see a prompt in the command line asking for the Pi's password.
