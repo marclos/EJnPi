@@ -6,9 +6,10 @@
 \contentsline {subsubsection}{\numberline {2.1.1}``Vilros RP Zero W Basics Kit''}{3}{subsubsection.2.1.1}
 \contentsline {subsubsection}{\numberline {2.1.2}Other items}{3}{subsubsection.2.1.2}
 \contentsline {subsection}{\numberline {2.2}Install Raspberry Pi OS on SD card}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Add network configuration file to SD card for a secure shell (SSH) connection.}{4}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Assemble and Connecting the Pi}{5}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}Putting the Pi together}{5}{subsubsection.2.4.1}
+\contentsline {subsection}{\numberline {2.3}Add Connectivity Files}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Add network configuration file to SD card for a secure shell (SSH) connection.}{4}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Assemble and Connecting the Pi}{5}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}Putting the Pi together}{5}{subsubsection.2.5.1}
 \contentsline {section}{\numberline {3}Accessing and updating Raspberry Pi OS}{6}{section.3}
 \contentsline {subsection}{\numberline {3.1}Remote connection via SSH}{6}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}Installing Raspberry Pi Finder and finding Pi's IP address}{6}{subsubsection.3.1.1}

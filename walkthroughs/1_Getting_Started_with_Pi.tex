@@ -26,6 +26,8 @@
   tabsize=3
 }
 
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+
 % maxwidth is the original width if it is less than linewidth
 % otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -81,7 +83,7 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
 
-\author{Kyle McCarty, Anna Burns,and Marc Los Huertos}
+\author{Kyle McCarty and Marc Los Huertos\footnote{Acknowledgments: Summer research students, Anna Burns and Alision Joseph contributed to these documents.}}
 \title{Getting Started with Raspberry Pi}
 
 \begin{document}
@@ -110,7 +112,7 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
 
 \subsubsection{``Vilros RP Zero W Basics Kit''}
 
-\begin{enumerate}
+\begin{enumerate}[noitemsep]
   \item Raspberry Pi Zero W board
   \item Case, with 3 covers
   \item 2.5A power supply
@@ -123,7 +125,7 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
 
 \subsubsection{Other items}
 
-\begin{enumerate}
+\begin{enumerate}[noitemsep]
   \item SD card
   \item SD card to USB adapter
   \item USB multiport adapter
@@ -131,9 +133,8 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
   \item Wires
   \item Line level converter (LLC)
   \item MCP3008
-  \item MQ-135
-  \item MQ-XXX
-  \item MQ-XXX
+  \item various MQ-sensors
+
 \end{enumerate}
 
 \subsection{Install Raspberry Pi OS on SD card}
@@ -146,15 +147,17 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
   \item Alternatively, manually copy Raspberry Pi OS and NOOBS to SD card, using the link above.
 \end{enumerate}
 
+\subsection{Add Connectivity Files}
+
 \subsection{Add network configuration file to SD card for a secure shell (SSH) connection.} \label{networkssh}
 
 \begin{enumerate}
-  \item Add a ``ssh'' file to your boot partition on the SD card.
+  \item Add a ``ssh'' file to your boot partition on the SD card.\footnote{you'll need to define what this means}.
   \begin{itemize}
-  \item Do this by creating a text file named \textbf{``ssh''}.
-  \item Make sure the file you create has no file extension.
+  \item Do this by creating an empty text file named \textbf{``ssh''}.\footnote{few students know how to do this}
+  \item Make sure the file you create has no file extension.\footnote{Some computers don't show you the extension, but they are there! going to need to be more explicit.}
   \end{itemize}
-  \item Create and add a file called \textbf{``wpa\_supplicant.conf''} to the boot partition on the SD card. This can be created with any text editor.
+  \item Create and add a file called \textbf{``wpa\_supplicant.conf''} to the boot partition\footnote{where is this?} on the SD card. This can be created with any text editor.
   \begin{itemize}
   \item Make sure the file you created has the \textbf{``.conf''} file extension in the name.
   \item The \textbf{``wpa\_supplicant.conf''} needs to have the WiFi network information in it for the Raspberry Pi to connect on boot up.
