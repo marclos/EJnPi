@@ -147,15 +147,24 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
   \item Alternatively, manually copy Raspberry Pi OS and NOOBS to SD card, using the link above.
 \end{enumerate}
 
-\subsection{Add Connectivity Files}
-
-\subsection{Add network configuration file to SD card for a secure shell (SSH) connection.} \label{networkssh}
+\subsection{Add Connectivity Files} \label{networkssh}
 
 \begin{enumerate}
-  \item Add a ``ssh'' file to your boot partition on the SD card.\footnote{you'll need to define what this means}.
+  \item Add a ``ssh'' file to your SD card. When the Raspberry Pi boots up, it will look for a file named \textbf{``ssh''} and either turn the ability for ssh connection on, if the file is there, or it will keep the functionality for ssh off, if the file isn't there.\footnote{you'll need to define what this means}. 
   \begin{itemize}
-  \item Do this by creating an empty text file named \textbf{``ssh''}.\footnote{few students know how to do this}
-  \item Make sure the file you create has no file extension.\footnote{Some computers don't show you the extension, but they are there! going to need to be more explicit.}
+  \item Do this by creating an empty text file named \textbf{``ssh''}. Navigate to the SD card with the file explorer for your OS and create a new text file. \footnote{few students know how to do this}
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{sdbootnew}
+  \item Make sure the file you create has no file extension. You will have to ``Save As'' with your text editor to ensure the file is saved the correct way; meaning the file shouldn't end in ``.txt'', ``.doc'', etc. Sometimes there is the option from a dropdown to change the file extension. \footnote{Some computers don't show you the extension, but they are there! going to need to be more explicit.}
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{sdbootaf}
+  \item You may be promted and asked if you are sure you want to save the file without an extension, select ``Yes.''
+  \newline
+  \newline
+  \includegraphics[width=1.00\textwidth]{sdbootays}
+  \newline
   \end{itemize}
   \item Create and add a file called \textbf{``wpa\_supplicant.conf''} to the boot partition\footnote{where is this?} on the SD card. This can be created with any text editor.
   \begin{itemize}
