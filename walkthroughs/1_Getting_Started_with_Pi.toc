@@ -20,5 +20,5 @@
 \contentsline {subsection}{\numberline {4.3}Boot Options}{21}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Localization Options}{22}{subsection.4.4}
 \contentsline {subsection}{\numberline {4.5}Interfacing Options (enable SSH)}{24}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Virtual network Computing (VNC) Option}{25}{subsection.4.6}
+\contentsline {subsection}{\numberline {4.6}Virtual Network Computing (VNC) Option}{25}{subsection.4.6}
 \contentsline {section}{\numberline {5}Finishing Up}{28}{section.5}
