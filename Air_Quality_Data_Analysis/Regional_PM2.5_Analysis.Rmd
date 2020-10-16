@@ -41,7 +41,7 @@ As an assignment with relatively low stakes, 10 points, you will be assessed usi
 
 - Rotated y-axis
 - Appropriate axis labels
-- Point graph, EPA or state health limits.
+- Scatter plot with added EPA or state health limits.
 - Estimate the mean, S.D. and 95% confidence intervals for each month. 
 
 4. Using the peer reviewed literature, discuss the implications of the results. 
@@ -112,7 +112,7 @@ Okay, that seems to work.
 
 I have two stations together, might need to decide which one to focus on!
 
-B
+Remember the syntax plot(y~x, data=dataframe)! And you can use abline to put the EPA standard on there, abline(h=some value), where the line is a "horizontal line" that equals some value that you specify. 
 
 ```{r, echo=FALSE}
 par(las=1)
