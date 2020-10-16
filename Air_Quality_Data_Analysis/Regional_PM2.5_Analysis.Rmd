@@ -112,6 +112,8 @@ Okay, that seems to work.
 
 I have two stations together, might need to decide which one to focus on!
 
+B
+
 ```{r, echo=FALSE}
 par(las=1)
 plot(Daily.Mean.PM2.5.Concentration~Date, data=SCZ, 
@@ -125,7 +127,7 @@ text(2019, 200, "EAP 8-hour Standard")
 
 Next we will determine the central tendency, e.g. average, standard deviation. 
 
-So, we will use some packages or libraries to make our job easier. To add packages that are not installed be default, use the ``Packages'' tab and click on ``Install'' -- and then search for dpylr and lubridate to install.
+So, we will use some packages or libraries to make our job easier. To add packages that are not installed be default, use the ``Packages'' tab and click on ``Install'' -- and then search for dpylr and lubridate to install. NOTE: If you have some response that R needs to restart let me know, there is some bug for some installations not allowing the package to be installed correctly -- but I didn't have the problem, so we need to reach out to POM-ITS to sort it out (fun stuff). 
 
 the dplyr is described as ``a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.''
 
