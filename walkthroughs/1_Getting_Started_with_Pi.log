@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  14 OCT 2020 13:07
-=======
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  15 OCT 2020 12:09
->>>>>>> cd30f782a7448e3595fdfbd7b1373a6aab87cb54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  16 OCT 2020 08:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -465,7 +461,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--168
  []
 
 [5 <./images/sdbootaf.png> <./images/sdbootays.png>] [6] [7] [8]
-<./images/cmd.PNG, id=238, 307.1475pt x 484.81125pt>
+<./images/cmd.PNG, id=239, 307.1475pt x 484.81125pt>
 File: ./images/cmd.PNG Graphic file (type png)
  <use ./images/cmd.PNG>
 Package pdftex.def Info: ./images/cmd.PNG used on input line 258.
@@ -475,7 +471,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 255--259
 
  []
 
-[9] <./images/cmdssh.PNG, id=251, 520.19344pt x 365.11406pt>
+[9] <./images/cmdssh.PNG, id=252, 520.19344pt x 365.11406pt>
 File: ./images/cmdssh.PNG Graphic file (type png)
 
 <use ./images/cmdssh.PNG>
@@ -487,7 +483,7 @@ Overfull \hbox (47.00003pt too wide) in paragraph at lines 263--264
  []
 
 [10 <./images/cmd.PNG>]
-<./images/searchterm.png, id=260, 682.55pt x 430.60875pt>
+<./images/searchterm.png, id=261, 682.55pt x 430.60875pt>
 File: ./images/searchterm.png Graphic file (type png)
 
 <use ./images/searchterm.png>
@@ -504,7 +500,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 267--271
  []
 
 [11 <./images/cmdssh.PNG> <./images/searchterm.png>]
-<./images/termssh.png, id=270, 656.4525pt x 451.6875pt>
+<./images/termssh.png, id=271, 656.4525pt x 451.6875pt>
 File: ./images/termssh.png Graphic file (type png)
 
 <use ./images/termssh.png>
@@ -515,14 +511,14 @@ Overfull \hbox (47.00003pt too wide) in paragraph at lines 275--276
 [] 
  []
 
-<./images/cmdsshpw.PNG, id=271, 520.19344pt x 365.11406pt>
+<./images/cmdsshpw.PNG, id=272, 520.19344pt x 365.11406pt>
 File: ./images/cmdsshpw.PNG Graphic file (type png)
 
 <use ./images/cmdsshpw.PNG>
 Package pdftex.def Info: ./images/cmdsshpw.PNG used on input line 284.
 (pdftex.def)             Requested size: 345.0pt x 242.14597pt.
 
-<./images/termsshpw.png, id=272, 684.5575pt x 479.7925pt>
+<./images/termsshpw.png, id=273, 684.5575pt x 479.7925pt>
 File: ./images/termsshpw.png Graphic file (type png)
 
 <use ./images/termsshpw.png>
@@ -560,14 +556,14 @@ LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 294
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-<./images/cmdsshrp.PNG, id=289, 598.48593pt x 385.44pt>
+<./images/cmdsshrp.PNG, id=290, 598.48593pt x 385.44pt>
 File: ./images/cmdsshrp.PNG Graphic file (type png)
 
 <use ./images/cmdsshrp.PNG>
 Package pdftex.def Info: ./images/cmdsshrp.PNG used on input line 296.
 (pdftex.def)             Requested size: 345.0pt x 222.19089pt.
 
-<./images/termsshpwconf.png, id=290, 684.5575pt x 479.7925pt>
+<./images/termsshpwconf.png, id=291, 684.5575pt x 479.7925pt>
 File: ./images/termsshpwconf.png Graphic file (type png)
 
 <use ./images/termsshpwconf.png>
@@ -584,7 +580,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 296--298
  []
 
 [14 <./images/cmdsshrp.PNG> <./images/termsshpwconf.png>]
-<./images/aptupdate.PNG, id=301, 737.00343pt x 385.44pt>
+<./images/aptupdate.PNG, id=302, 737.00343pt x 385.44pt>
 File: ./images/aptupdate.PNG Graphic file (type png)
 
 <use ./images/aptupdate.PNG>
@@ -595,7 +591,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 311--312
 [] 
  []
 
-<./images/aptupgradecont.PNG, id=302, 737.00343pt x 385.44pt>
+<./images/aptupgradecont.PNG, id=303, 737.00343pt x 385.44pt>
 File: ./images/aptupgradecont.PNG Graphic file (type png)
 
 <use ./images/aptupgradecont.PNG>
@@ -612,7 +608,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 316--320
  []
 
 [15 <./images/aptupdate.PNG>]
-<./images/aptupgradedone.PNG, id=316, 688.82344pt x 398.23781pt>
+<./images/aptupgradedone.PNG, id=317, 688.82344pt x 398.23781pt>
 File: ./images/aptupgradedone.PNG Graphic file (type png)
 
 <use ./images/aptupgradedone.PNG>
@@ -624,7 +620,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 324--325
  []
 
 [16 <./images/aptupgradecont.PNG> <./images/aptupgradedone.PNG>]
-<./images/rcpw.PNG, id=329, 737.00343pt x 385.44pt>
+<./images/rcpw.PNG, id=330, 737.00343pt x 385.44pt>
 File: ./images/rcpw.PNG Graphic file (type png)
  <use ./images/rcpw.PNG>
 Package pdftex.def Info: ./images/rcpw.PNG used on input line 344.
@@ -634,7 +630,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 344--345
 [] 
  []
 
-<./images/rcpwconf.PNG, id=330, 737.00343pt x 385.44pt>
+<./images/rcpwconf.PNG, id=331, 737.00343pt x 385.44pt>
 File: ./images/rcpwconf.PNG Graphic file (type png)
 
 <use ./images/rcpwconf.PNG>
@@ -651,7 +647,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 346--350
  []
 
 [17 <./images/rcpw.PNG>]
-<./images/rcpwretype.PNG, id=341, 737.00343pt x 385.44pt>
+<./images/rcpwretype.PNG, id=342, 737.00343pt x 385.44pt>
 File: ./images/rcpwretype.PNG Graphic file (type png)
 
 <use ./images/rcpwretype.PNG>
@@ -667,7 +663,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 350--354
 [] 
  []
 
-<./images/rcnet.PNG, id=342, 737.00343pt x 385.44pt>
+<./images/rcnet.PNG, id=343, 737.00343pt x 385.44pt>
 File: ./images/rcnet.PNG Graphic file (type png)
  <use ./images/rcnet.PNG>
 Package pdftex.def Info: ./images/rcnet.PNG used on input line 365.
@@ -683,7 +679,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 362--366
  []
 
 [18 <./images/rcpwconf.PNG> <./images/rcpwretype.PNG>]
-<./images/rcnetwlan.PNG, id=352, 737.00343pt x 385.44pt>
+<./images/rcnetwlan.PNG, id=353, 737.00343pt x 385.44pt>
 File: ./images/rcnetwlan.PNG Graphic file (type png)
 
 <use ./images/rcnetwlan.PNG>
@@ -699,7 +695,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 366--370
 [] 
  []
 
-<./images/rcnetwlanssid.PNG, id=353, 737.00343pt x 385.44pt>
+<./images/rcnetwlanssid.PNG, id=354, 737.00343pt x 385.44pt>
 File: ./images/rcnetwlanssid.PNG Graphic file (type png)
 
 <use ./images/rcnetwlanssid.PNG>
@@ -716,7 +712,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 370--374
  []
 
 [19 <./images/rcnet.PNG> <./images/rcnetwlan.PNG>]
-<./images/rcnetwlanpw.PNG, id=363, 737.00343pt x 385.44pt>
+<./images/rcnetwlanpw.PNG, id=364, 737.00343pt x 385.44pt>
 File: ./images/rcnetwlanpw.PNG Graphic file (type png)
 
 <use ./images/rcnetwlanpw.PNG>
@@ -732,7 +728,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 374--378
 [] 
  []
 
-<./images/rcnetwlansuccess.PNG, id=364, 737.00343pt x 385.44pt>
+<./images/rcnetwlansuccess.PNG, id=365, 737.00343pt x 385.44pt>
 File: ./images/rcnetwlansuccess.PNG Graphic file (type png)
 
 <use ./images/rcnetwlansuccess.PNG>
@@ -749,7 +745,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 378--382
  []
 
 [20 <./images/rcnetwlanssid.PNG> <./images/rcnetwlanpw.PNG>]
-<./images/rcboot.PNG, id=373, 737.00343pt x 385.44pt>
+<./images/rcboot.PNG, id=374, 737.00343pt x 385.44pt>
 File: ./images/rcboot.PNG Graphic file (type png)
 
 <use ./images/rcboot.PNG>
@@ -765,7 +761,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 390--394
 [] 
  []
 
-<./images/rcboottext.PNG, id=374, 737.00343pt x 385.44pt>
+<./images/rcboottext.PNG, id=375, 737.00343pt x 385.44pt>
 File: ./images/rcboottext.PNG Graphic file (type png)
 
 <use ./images/rcboottext.PNG>
@@ -782,7 +778,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 394--398
  []
 
 [21 <./images/rcnetwlansuccess.PNG> <./images/rcboot.PNG>]
-<./images/rcboottextconf.PNG, id=384, 737.00343pt x 385.44pt>
+<./images/rcboottextconf.PNG, id=385, 737.00343pt x 385.44pt>
 File: ./images/rcboottextconf.PNG Graphic file (type png)
 
 <use ./images/rcboottextconf.PNG>
@@ -798,7 +794,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 398--402
 [] 
  []
 
-<./images/rclocale.PNG, id=385, 737.00343pt x 385.44pt>
+<./images/rclocale.PNG, id=386, 737.00343pt x 385.44pt>
 File: ./images/rclocale.PNG Graphic file (type png)
 
 <use ./images/rclocale.PNG>
@@ -815,7 +811,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 410--414
  []
 
 [22 <./images/rcboottext.PNG> <./images/rcboottextconf.PNG>]
-<./images/rctime.PNG, id=395, 737.00343pt x 385.44pt>
+<./images/rctime.PNG, id=396, 737.00343pt x 385.44pt>
 File: ./images/rctime.PNG Graphic file (type png)
 
 <use ./images/rctime.PNG>
@@ -831,7 +827,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 414--418
 [] 
  []
 
-<./images/rctimeus.PNG, id=396, 737.00343pt x 385.44pt>
+<./images/rctimeus.PNG, id=397, 737.00343pt x 385.44pt>
 File: ./images/rctimeus.PNG Graphic file (type png)
 
 <use ./images/rctimeus.PNG>
@@ -848,7 +844,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 418--422
  []
 
 [23 <./images/rclocale.PNG> <./images/rctime.PNG>]
-<./images/rctimepo.PNG, id=405, 737.00343pt x 385.44pt>
+<./images/rctimepo.PNG, id=406, 737.00343pt x 385.44pt>
 File: ./images/rctimepo.PNG Graphic file (type png)
 
 <use ./images/rctimepo.PNG>
@@ -864,7 +860,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 422--426
 [] 
  []
 
-<./images/rcifoptions.PNG, id=406, 737.00343pt x 385.44pt>
+<./images/rcifoptions.PNG, id=407, 737.00343pt x 385.44pt>
 File: ./images/rcifoptions.PNG Graphic file (type png)
 
 <use ./images/rcifoptions.PNG>
@@ -881,7 +877,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 434--438
  []
 
 [24 <./images/rctimeus.PNG> <./images/rctimepo.PNG>]
-<./images/rcssh.PNG, id=416, 737.00343pt x 385.44pt>
+<./images/rcssh.PNG, id=417, 737.00343pt x 385.44pt>
 File: ./images/rcssh.PNG Graphic file (type png)
  <use ./images/rcssh.PNG>
 Package pdftex.def Info: ./images/rcssh.PNG used on input line 441.
@@ -911,7 +907,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 451--455
  []
 
 [25 <./images/rcifoptions.PNG> <./images/rcssh.PNG>]
-<./images/rcvnc.PNG, id=427, 737.00343pt x 385.44pt>
+<./images/rcvnc.PNG, id=428, 737.00343pt x 385.44pt>
 File: ./images/rcvnc.PNG Graphic file (type png)
  <use ./images/rcvnc.PNG>
 Package pdftex.def Info: ./images/rcvnc.PNG used on input line 458.
@@ -926,7 +922,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 455--459
 [] 
  []
 
-<./images/rcvncenable.PNG, id=428, 737.00343pt x 385.44pt>
+<./images/rcvncenable.PNG, id=429, 737.00343pt x 385.44pt>
 File: ./images/rcvncenable.PNG Graphic file (type png)
 
 <use ./images/rcvncenable.PNG>
@@ -943,7 +939,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 459--463
  []
 
 [26 <./images/rcvnc.PNG>]
-<./images/rcvncconf.PNG, id=437, 737.00343pt x 385.44pt>
+<./images/rcvncconf.PNG, id=438, 737.00343pt x 385.44pt>
 File: ./images/rcvncconf.PNG Graphic file (type png)
 
 <use ./images/rcvncconf.PNG>
@@ -960,7 +956,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 463--467
  []
 
 [27 <./images/rcvncenable.PNG> <./images/rcvncconf.PNG>]
-<./images/realvnc.png, id=453, 1015.795pt x 776.9025pt>
+<./images/realvnc.png, id=454, 1015.795pt x 776.9025pt>
 File: ./images/realvnc.png Graphic file (type png)
 
 <use ./images/realvnc.png>
@@ -971,7 +967,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 472--474
 [] 
  []
 
-<./images/rcfinish.PNG, id=454, 737.00343pt x 385.44pt>
+<./images/rcfinish.PNG, id=455, 737.00343pt x 385.44pt>
 File: ./images/rcfinish.PNG Graphic file (type png)
 
 <use ./images/rcfinish.PNG>
@@ -988,7 +984,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 483--487
  []
 
 [28 <./images/realvnc.png>]
-<./images/sudoshutdown.PNG, id=465, 737.00343pt x 385.44pt>
+<./images/sudoshutdown.PNG, id=466, 737.00343pt x 385.44pt>
 File: ./images/sudoshutdown.PNG Graphic file (type png)
 
 <use ./images/sudoshutdown.PNG>
@@ -999,7 +995,7 @@ Overfull \hbox (25.00003pt too wide) in paragraph at lines 493--494
 [] 
  []
 
-<./images/sshshutdown.PNG, id=466, 737.00343pt x 385.44pt>
+<./images/sshshutdown.PNG, id=467, 737.00343pt x 385.44pt>
 File: ./images/sshshutdown.PNG Graphic file (type png)
 
 <use ./images/sshshutdown.PNG>
@@ -1051,14 +1047,10 @@ share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/cm-super/sftt0900.pfb>
-<<<<<<< HEAD
-Output written on 1_Getting_Started_with_Pi.pdf (30 pages, 1793275 bytes).
-=======
-Output written on 1_Getting_Started_with_Pi.pdf (30 pages, 1797765 bytes).
->>>>>>> cd30f782a7448e3595fdfbd7b1373a6aab87cb54
+Output written on 1_Getting_Started_with_Pi.pdf (30 pages, 1798241 bytes).
 PDF statistics:
- 576 PDF objects out of 1000 (max. 8388607)
- 447 compressed objects within 5 object streams
+ 577 PDF objects out of 1000 (max. 8388607)
+ 448 compressed objects within 5 object streams
  179 named destinations out of 1000 (max. 500000)
  383 words of extra memory for PDF output out of 10000 (max. 10000000)
 
