@@ -6,9 +6,9 @@
 \contentsline {subsection}{\numberline {2.4}LED}{4}
 \contentsline {subsection}{\numberline {2.5}Resistor}{4}
 \contentsline {section}{\numberline {3}Wiring}{4}
-\contentsline {subsection}{\numberline {3.1}Simple LED Circuit}{4}
+\contentsline {subsection}{\numberline {3.1}Simple LED Circuit -- LED Always On}{4}
 \contentsline {subsubsection}{\numberline {3.1.1}Simple LED Circuit Troubleshooting}{5}
 \contentsline {subsection}{\numberline {3.2}GPIO LED Circuit}{6}
 \contentsline {section}{\numberline {4}Python Code}{6}
-\contentsline {subsection}{\numberline {4.1}Hello World}{6}
+\contentsline {subsection}{\numberline {4.1}LED Flashing}{6}
 \contentsline {section}{\numberline {5}Testing}{6}

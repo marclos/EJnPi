@@ -117,12 +117,12 @@ The purpose of this document is to give a brief introduction and familiarization
 
 \section{Wiring}
 
-\subsection{Simple LED Circuit}
+\subsection{Simple LED Circuit -- LED Always On}
 
 We are going to create a simple circuit withe the LED using thing Raspberry Pi as a power source. This is really easy and will let you know if you understand how to wire a circuit. The LED should turn on as soon as you power on the Raspberry Pi!
 
 \begin{enumerate}
-\item First setup you power and ground jumper wires coming from your Raspberry Pi to your breadboard. Use your GPIO pinout diagram to figure out which pin is your 3V3 power and which pin(s) are ground. Connect your red wire's (color doesn't really matter but may help) female end to 3V3 power on the Raspberry Pi and the male end to the power/postive/+ bus on the breadboard. It doesn't really matter which spot on the bus you connect it to, the whole column is connected, remember? Do the same for the ground jumper wire.
+\item First setup you power and ground jumper wires coming from your Raspberry Pi to your breadboard. Use your GPIO pinout diagram to figure out which pin is your 3V3 power and which pin(s) are ground. Connect your red wire's (color doesn't really matter but may help) female end to 3V3\footnote{MLH: Is this 3.3volts??} power on the Raspberry Pi and the male end to the power/postive/+ bus on the breadboard. It doesn't really matter which spot on the bus you connect it to, the whole column is connected, remember? Do the same for the ground jumper wire.
 \item Next setup the resistor on the breadboard. The resistor should be setup connecting the ground bus on the breadboard to an inside row. Keep in consideration you'll need at least one hole for the LED leg to connect in the same row. Resistors are not directionally dependant, so it doesn't matter which end of it is connected to the ground bus and which end is connected to the inside row.
 \item Third, you need to connect the LED to the inside row the resistor is on and a \textbf{different} row. LEDs \textbf{are} directionally dependant. This is called polarity. If you notice, the LED has a short and long leg. Connect the shorter leg in the hole which is in the same row as the resistor. Connect the longer leg to a hole in another inside row.
 \item Lastly, connect a male/male wire from the longer leg of the LED to the power bus.
@@ -157,7 +157,9 @@ Next, we are going to change the wiring of the circuit to add a layer of complex
 \item In order to communicate instructions via Python, we need to write the code. We do this simply by using a text editor, or some kind of integrated development environment (IDE) like \textbf{Thonny}, for example. All the Python code you will be generating will have the file extension of \textbf{``.py''}.
 \end{enumerate}
 
-\subsection{Hello World}
+\subsection{LED Flashing}
+
+TBD\ldots
 
 \section{Testing}
 
