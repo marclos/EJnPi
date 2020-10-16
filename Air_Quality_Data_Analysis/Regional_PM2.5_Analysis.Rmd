@@ -125,11 +125,13 @@ text(2019, 200, "EAP 8-hour Standard")
 
 Next we will determine the central tendency, e.g. average, standard deviation. 
 
-So, we will use some packages or libraries to make our job easier. 
+So, we will use some packages or libraries to make our job easier. To add packages that are not installed be default, use the ``Packages'' tab and click on ``Install'' -- and then search for dpylr and lubridate to install.
 
 the dplyr is described as ``a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.''
 
-The lubridate makes it easier manipulate date-times.
+The lubridate makes it easier manipulate date-times. 
+
+We call these libraries in the rcode as below.
 
 ```{r, results='hide'}
 library(dplyr)
@@ -148,7 +150,9 @@ We can do the same thing using %>%. This function as has no builtin meaning but 
 Monthly <- SCZ %>%
   mutate(Date = ymd(Date),Year = year(Date), Month = month(Date)) %>%
   group_by(Month) %>%
-  summarise(mean = mean(Daily.Mean.PM2.5.Concentration), sd = sd(Daily.Mean.PM2.5.Concentration), N = length(Daily.Mean.PM2.5.Concentration) )
+  summarise(mean = mean(Daily.Mean.PM2.5.Concentration), 
+            sd = sd(Daily.Mean.PM2.5.Concentration), 
+            N = length(Daily.Mean.PM2.5.Concentration) )
 ```
 
 
@@ -168,7 +172,7 @@ Table of confidence intervals...
 
 NOTE: At some point, I'll convert the numbers to months -- but for now you can translate them for yourself. 
 
-```{r}
+```{r, results='asis'}
 library(xtable)
 Monthly$Months
 print(xtable(Monthly), include.rownames=FALSE)
@@ -177,7 +181,9 @@ print(xtable(Monthly), include.rownames=FALSE)
 
 # Hypothesis Testing
 
-What if you ahve a value and want to determine if the it the values in inside the confidence intervals -- you can use the table above and determine the value, if the parameter is within the expected mean. We'll use the t-test for the test.
+## Later Stages -- This section is for when we have our pi data (and not done yet :-)
+
+What if want to evalaute a single value and determine if the it the values in inside the confidence intervals -- you can use the table above and determine the value, if the parameter is within the expected mean. We'll use the t-test for the test.
 
 If we obtain a mean concentration of 14 using our sensors, we can easily test the value using t.test and all the Septmber values. So, we'll create a vector of all the September readings.
 
