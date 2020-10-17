@@ -17,7 +17,7 @@
 \newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
 \newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
 \newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}% 
 \newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
 \newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
 \newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
@@ -112,7 +112,15 @@ The purpose of this document is to give a brief introduction and familiarization
 \begin{itemize}
 
 \item The general-purpose input-output pins (GPIO) are one of the main features that makes the Raspberry Pis so versatile. The pin header on the newer Raspberry Pis have 40 pins in total. We use these pins and connect them to devices to control them. In software, the GPIO pins can be designated either as an input pin or output pin.
+\newline
+\newline
+\includegraphics[width=1.00\textwidth]{pinheader}
 \item There are, however, a few pins that are not configurable. These are two 5 volt (5V) pins, two 3.3 volt (3V3) pins, and eight ground (0V) pins.
+\newline
+\newline
+\begin{center}
+\includegraphics[scale=0.50]{GPIOlayout}\label{GPIO}
+\end{center}
 \item All of the other remaining pins are considered general purpose 3V3 pins. This means you can configure these pins as long as the input and outputs are 3V3.
 
 \end{itemize}
@@ -122,6 +130,9 @@ The purpose of this document is to give a brief introduction and familiarization
 \begin{itemize}
 \item A jumper wire is a wire that is used to connect various electronic components. For example, a jumper wire will connect our Raspberry Pi to the breadboard, various components on the breadboard, and various sensors. These are usually found in a variety of colors, which can be tough to keep track of. However, red is almost always for the positive voltage and black is used for ground. It's highly recommneded to follow this convention -- could save much heartache.
 \item It is also important to note, wires come in various shapes and sizes with different end connections. For example, you were supplied with wire that has two bare ends and wire that has one female connector and one male connector. You were supplied these two different wires to use the bare wires on the breadboard and the female/male connectors for the GPIO pins on the Raspberry Pi to the breadboard.
+\newline
+\newline
+\includegraphics[width=0.90\textwidth]{wires}
 \end{itemize}
 
 \subsection{Breadboard}
@@ -131,7 +142,10 @@ The purpose of this document is to give a brief introduction and familiarization
 \item There are usually two or four rails or bus strips on the long sides of the board that are for power, in our case 3.3 volts or 5 volts, which is usually indicated by a red line. These buses are just a column or row, depending on breadboard orientation, of holes that are electrically connected. 
 \item The ground, usually adjacent to the power bus, is usually blue or black colored. 
 \item The rows in the inside are electrically connected, with a break in the center line. The center line is often strattled by a DIP (dual in-line package), so you can connect to each of the pins from both sides of the breadboard independently. 
-
+\newline
+\begin{center}
+\includegraphics[width=0.90\textwidth]{bb2}
+\end{center}
 \end{itemize}
 
 \subsection{LED}
@@ -147,6 +161,10 @@ The purpose of this document is to give a brief introduction and familiarization
 \begin{itemize}
 \item You must \textbf{always} use a resistor when wiring an LED to the Raspberry Pi. If you don't use one, you could potentially damage your Raspberry Pi.
 \item A resistor limits the amount of electricity, or more specifically, current through a circuit. Resistance is measured in Ohms, and the larger the value, the more it limits current to flow.
+\newline
+\begin{center}
+\includegraphics[width=0.60\textwidth]{ledres}
+\end{center}
 \end{itemize}
 
 \section{Wiring}
@@ -157,11 +175,27 @@ We are going to create a simple circuit withe the LED using thing Raspberry Pi a
 
 \begin{enumerate}
 \item First setup you power and ground jumper wires coming from your Raspberry Pi to your breadboard. Use your GPIO pinout diagram to figure out which pin is your 3V3 power and which pin(s) are ground. Connect your red wire's (color doesn't really matter but may help) female end to 3V3\footnote{MLH: Is this 3.3volts??}\footnote{KRM: Yes. Reference section 2.1 -- I chose this nomenclature because in a lot of RasPi documents and datasheets use it. I think it's because of other languages separate digits differently. I'll change it to 3.3V if you think it's best} power on the Raspberry Pi and the male end to the power/postive/+ bus on the breadboard. It doesn't really matter which spot on the bus you connect it to, the whole column is connected, remember? Do the same for the ground jumper wire.
+\newline
+\newline
+\includegraphics[width=0.90\textwidth]{pwrgnd}
 \item Next setup the resistor on the breadboard. The resistor should be setup connecting the ground bus on the breadboard to an inside row. Keep in consideration you'll need at least one hole for the LED leg to connect in the same row. Resistors are not directionally dependant, so it doesn't matter which end of it is connected to the ground bus and which end is connected to the inside row.
+\newline
+\newline
+\includegraphics[width=0.90\textwidth]{res}
 \item Third, you need to connect the LED to the inside row the resistor is on and a \textbf{different} row. LEDs \textbf{are} directionally dependant. This is called polarity. If you notice, the LED has a short and long leg. Connect the shorter leg in the hole which is in the same row as the resistor. Connect the longer leg to a hole in another inside row.
+\newline
+\newline
+\includegraphics[width=0.90\textwidth]{bbledres}
 \item Lastly, connect a male/male wire from the longer leg of the LED to the power bus.
 \item Now, double check your wiring and make sure it's right! It should look something like this:
+\newline
+\newline
+\includegraphics[width=0.90\textwidth]{bbresledwire}
 \item Turn on your Raspberry Pi, and as soon as you do this, you should see your LED turn on!
+\newline
+\includegraphics[width=0.90\textwidth]{ledon_bright}
+\newline
+\includegraphics[width=0.90\textwidth]{ledon_dark}
 \item If your LED is not turning on, but you are sure you have your wiring correct, check the \textbf{troubleshooting} section below.
 \end{enumerate}
 
@@ -179,7 +213,7 @@ Next, we are going to change the wiring of the circuit to add a layer of complex
 \begin{itemize}
 \item The first step to this is the use a GPIO pin, that isn't direct power, to send a signal that will turn on the LED and then another signal that will turn it off.
 \item The Raspberry Pi communicates these signals in 2-logic levels, logical high signals or logical low signals. In this case, the Raspberry Pi will send a 3V3 signal, logic level high, or a 0V signal, logic level low. Obviously, 3V3 will turn on the LED and 0V will turn it off (no power supplied anymore).
-\item The wiring essentially stays the same for this setup except that instead of connecting power to the constant 3V3 GPIO pin, connect it to GPIO pin 24. 
+\item The wiring essentially stays the same for this setup except that instead of connecting power to the constant 3V3 GPIO pin, connect it to \textbf{GPIO pin 24.} Refer to your GPIO pin diagram in section \ref{GPIO}.
 \end{itemize}
 \textbf{BE CAREFUL} there are two different naming conventions for the GPIO pins. The numbers within the circle on your pinout diagram (1-40) are the \textbf{physical} pin locations. The labels on the outside are the \textbf{BCM}, or \textbf{manufacture}'s designated nomenclature, GPIO 24 etc. You'll run into this issue when trying to code in Python. \label{GPIO24}
 
@@ -194,7 +228,7 @@ Next, we are going to change the wiring of the circuit to add a layer of complex
 \subsection{Make your LED flash}
 
 \begin{enumerate}
-\item First, make sure you have connected your LED to the correct GPIO pin as decribed in \textbf{\ref{GPIO24}}
+\item First, make sure you have connected your LED to the correct GPIO pin as decribed in \textbf{\ref{GPIO24}}.
 \item Boot up you Raspberry Pi and open the IDE Thonny.
 \item Once you are in Thonny, write the following code: \newline
 \lstinputlisting{led.py}
