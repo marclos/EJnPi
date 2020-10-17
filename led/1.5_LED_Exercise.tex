@@ -50,6 +50,40 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
+\usepackage{listings}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ 
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
 
 \title{LED Exercise}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -122,7 +156,7 @@ The purpose of this document is to give a brief introduction and familiarization
 We are going to create a simple circuit withe the LED using thing Raspberry Pi as a power source. This is really easy and will let you know if you understand how to wire a circuit. The LED should turn on as soon as you power on the Raspberry Pi!
 
 \begin{enumerate}
-\item First setup you power and ground jumper wires coming from your Raspberry Pi to your breadboard. Use your GPIO pinout diagram to figure out which pin is your 3V3 power and which pin(s) are ground. Connect your red wire's (color doesn't really matter but may help) female end to 3V3\footnote{MLH: Is this 3.3volts??} power on the Raspberry Pi and the male end to the power/postive/+ bus on the breadboard. It doesn't really matter which spot on the bus you connect it to, the whole column is connected, remember? Do the same for the ground jumper wire.
+\item First setup you power and ground jumper wires coming from your Raspberry Pi to your breadboard. Use your GPIO pinout diagram to figure out which pin is your 3V3 power and which pin(s) are ground. Connect your red wire's (color doesn't really matter but may help) female end to 3V3\footnote{MLH: Is this 3.3volts??}\footnote{KRM: Yes. Reference section 2.1 -- I chose this nomenclature because in a lot of RasPi documents and datasheets use it. I think it's because of other languages separate digits differently. I'll change it to 3.3V if you think it's best} power on the Raspberry Pi and the male end to the power/postive/+ bus on the breadboard. It doesn't really matter which spot on the bus you connect it to, the whole column is connected, remember? Do the same for the ground jumper wire.
 \item Next setup the resistor on the breadboard. The resistor should be setup connecting the ground bus on the breadboard to an inside row. Keep in consideration you'll need at least one hole for the LED leg to connect in the same row. Resistors are not directionally dependant, so it doesn't matter which end of it is connected to the ground bus and which end is connected to the inside row.
 \item Third, you need to connect the LED to the inside row the resistor is on and a \textbf{different} row. LEDs \textbf{are} directionally dependant. This is called polarity. If you notice, the LED has a short and long leg. Connect the shorter leg in the hole which is in the same row as the resistor. Connect the longer leg to a hole in another inside row.
 \item Lastly, connect a male/male wire from the longer leg of the LED to the power bus.
@@ -144,10 +178,10 @@ Help! My LED won't turn on!
 Next, we are going to change the wiring of the circuit to add a layer of complexity to this exercise. We are going to execute some Python code so that that LED blinks on and off.
 \begin{itemize}
 \item The first step to this is the use a GPIO pin, that isn't direct power, to send a signal that will turn on the LED and then another signal that will turn it off.
-\item The Raspberry Pi communicates these signals in 2-logic levels, logical high signals or logical low signals. In this case, the Raspberry Pi will send a 3V3 signal, logic level high, or a 0V signal, logic level low. Obviously, 3V3 will turn on the LED and 0V will turn it off (no supply power anymore).
+\item The Raspberry Pi communicates these signals in 2-logic levels, logical high signals or logical low signals. In this case, the Raspberry Pi will send a 3V3 signal, logic level high, or a 0V signal, logic level low. Obviously, 3V3 will turn on the LED and 0V will turn it off (no power supplied anymore).
 \item The wiring essentially stays the same for this setup except that instead of connecting power to the constant 3V3 GPIO pin, connect it to GPIO pin 24. 
 \end{itemize}
-\textbf{BE CAREFUL} there are two different naming conventions for the GPIO pins. The numbers within the circle on your pinout diagram (1-40) are the \textbf{physical} pin locations. The labels on the outside are the \textbf{BCM}, or \textbf{manufacture}'s designated nomenclature, GPIO 24 etc. You'll run into this issue when trying to code in Python.
+\textbf{BE CAREFUL} there are two different naming conventions for the GPIO pins. The numbers within the circle on your pinout diagram (1-40) are the \textbf{physical} pin locations. The labels on the outside are the \textbf{BCM}, or \textbf{manufacture}'s designated nomenclature, GPIO 24 etc. You'll run into this issue when trying to code in Python. \label{GPIO24}
 
 
 \section{Python Code}
@@ -157,7 +191,23 @@ Next, we are going to change the wiring of the circuit to add a layer of complex
 \item In order to communicate instructions via Python, we need to write the code. We do this simply by using a text editor, or some kind of integrated development environment (IDE) like \textbf{Thonny}, for example. All the Python code you will be generating will have the file extension of \textbf{``.py''}.
 \end{enumerate}
 
-\subsection{LED Flashing}
+\subsection{Make your LED flash}
+
+\begin{enumerate}
+\item First, make sure you have connected your LED to the correct GPIO pin as decribed in \textbf{\ref{GPIO24}}
+\item Boot up you Raspberry Pi and open the IDE Thonny.
+\item Once you are in Thonny, write the following code: \newline
+\lstinputlisting{led.py}
+\begin{itemize}
+\item Keep in mind all of the syntax when you are writing the code. Python is sensitive to capitals, parenthesis, tabs, quotes, etc.
+\end{itemize}
+\item While writing the code, using Thonny, it will turn certain words into different colors or turn them bold etc. This will help you recognize keywords of Python as well as syntax errors. For example, when you don't close your parenthesis, you will see the text highlighted gray. This is an advantage of writing code in an IDE.
+\item Next, run the script! Press the big green \textbf{``Run''} button in the top toolbar of Thonny. Thonny may ask you to save the file. Go ahead and save it as something like \textbf{``ledflash.py''}.
+\item If you see your LED flashing on and off, congratulations! You may stop the script anytime by pressing the big red \textbf{``Stop''} button in the top toolbar of Thonny.
+\item If your light isn't flashing, you may have written the code incorrectly. Thonny is smart enough to read your code and point you in the direction of a suspected error. In the \textbf{``Shell''} tab you will see some red lettering that will describe where the error occured.
+\item Don't forget to \textbf{``Stop''} the script if you need to make changes. If you don't stop the script, it won't allow you to edit.
+\end{enumerate}
+
 
 TBD\ldots
 

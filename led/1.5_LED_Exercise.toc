@@ -10,5 +10,5 @@
 \contentsline {subsubsection}{\numberline {3.1.1}Simple LED Circuit Troubleshooting}{5}
 \contentsline {subsection}{\numberline {3.2}GPIO LED Circuit}{6}
 \contentsline {section}{\numberline {4}Python Code}{6}
-\contentsline {subsection}{\numberline {4.1}LED Flashing}{6}
-\contentsline {section}{\numberline {5}Testing}{6}
+\contentsline {subsection}{\numberline {4.1}Make your LED flash}{7}
+\contentsline {section}{\numberline {5}Testing}{8}
