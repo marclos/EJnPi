@@ -1,4 +1,8 @@
-\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass{article}
+\usepackage[]{graphicx}
+\usepackage[]{color}
+
+\graphicspath{ {./images/} }
 % maxwidth is the original width if it is less than linewidth
 % otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -16,7 +20,7 @@
 \newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
 \newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
 \newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
-\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}% 
 \newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
 \newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
 \newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
@@ -49,16 +53,54 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
+\usepackage{listings}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ 
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
 
 \title{Connecting Sensors to Pi}
+\author{Kyle McCarty and Marc Los Huertos\footnote{Acknowledgments: Much of the project is based on summer research conducted by Anna Burns.}}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
+\maketitle
+\tableofcontents
 
 \section{Introduction}
 
+
 \subsection{What is particulate matter?}
 
-PM stands for particulate matter (also called particle pollution): the term for a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or smoke, are large or dark enough to be seen with the naked eye. Others are so small they can only be detected using an electron microscope.
+PM stands for particulate matter (also called particle pollution). Particulate Matter is a mixture of solid particles and liquid droplets found in the air. Some particles, such as dust, dirt, soot, or smoke, are large or dark enough to be seen with the naked eye. Others are so small they can only be detected using an electron microscope.
 
 Particle pollution can be classified by size:
 
@@ -71,17 +113,176 @@ NOTE: The average human hair is about 70 micrometers in diameter --- making it 3
 
 \end{description}
 
-\section{PM2.5}
+\section{PMS5003 Particulate matter sensor}
 
+\subsection{Sensor Purchase}
+The Digital Particle Concentration Laser Sensor Plantower PMS5003 PM2.5 PM10 is produced in China. With 25 purchases, they cost about \$23 each.
+
+\subsection{Sensor Construction and Operation}
+
+
+\subsection{Sensor IO}
+
+This sensor comes with eight female-to-female connectors as well as an adapter for the Raspberry Pi, and a connector for the Raspberry Pi and the adapter itself.  
+
+\
 \subsection{Wiring}
 
+\begin{enumerate}
+  \item Begin by connecting the sensor to the adapter. Take the colorful wires with white blocks on either end and attach them to both the sensor and the small adapter board; they attach with the ``shiny'' side up, and you need to give them quite a push to get them to go in fully. They should be snug, and not at all loose.
+
+  \item Next, connect the adapter to the Raspberry Pi.  Separate four of the female-to-female connectors (the ones with the black rectangles on either end) and attach one of the ends to the TXD, RXD, GND and VCO terminals on the adapter (these correspond to the 4th, 5th, 7th, and 8th terminals from the top).  
+
+\begin{itemize}
+  \item Connect the wire attached to the VCC terminal to node 2 on the Raspberry Pi.
+
+  \item Connect the wire attached to the GND terminal to node 9 on the Raspberry Pi.
+
+  \item Connect the wire attached to the RXD terminal to node 8 on the Raspberry Pi. 
+
+  \item Connect the wire attached to the TXD terminal to node 10 on the Raspberry Pi.
+\end{itemize}
+
+\item Double check the wiring with the following images
+
+
+
+\end{enumerate}
 
 
 \subsection{Code and Testing}
 
+\begin{enumerate}
+  \item Connect your Pi to power and PMS5003 fan should start.
+  \item VNC to the Pi.
+  \item Check to make sure that it is working. If not shut the Pi down (via the command `sudo shutdown' and check the wiring. 
+
+\item Enter "sudo raspi-config".
+
+\item Select option 5 ("Interfacing Options").
+
+\item Enable ARM I2C by selecting it in this menu and then pressing Yes.
+
+\item Then to enable Serial, choose Serial on the menu. 
+
+\item A window will pop up asking, "would you like a login shell to be accessible over serial?", and the answer is NO.
+
+\item Next, a window will pop up asking, "Would you like the serial port hardware to be enabled?", this time say YES, and exit the window.
+
+\item Click Finish, you may be prompted to reboot, and select YES.
+
+\end{enumerate}
+
+\subsection{Python Code}
+
+We have made the code available on the EJnPi Respository, so you can download it directly from the web onto your Pi or follow the steps below:
+
+\begin{enumerate}
+
+\item TBD
+
+\item First, make sure you have connected your LED to the correct GPIO pin as decribed in %\textbf{\ref{GPIO24}}.
+\item Boot up you Raspberry Pi and open the IDE Thonny.
+\item Once you are in Thonny, write the following code: \newline
+\lstinputlisting{../code/pm25_simpletest.py}
+
+\end{enumerate}
+
+import serial  These are the pre-coded Github packages that this code uses; serial allows python to run on different back-end connections.
+from collections import OrderedDict  Imports the ordered dictionary function
+import csv  Package that allows you to compile to a csv file
+import time  Allows you to define time intervals
+
+class Sensor(): Defining what you are gathering data from
+%  def __init__(self, tty = '/dev/ttyS0'):  Signals that you are getting data from GPIO pins
+    self.tty = tty
+  
+  def open(self):  Opening the connection between the sensor and the Pi
+    self.serial = serial.Serial(self.tty, baudrate = 9600)  Baudrate is the signal rate between the sensor and Pi
+  
+  def close(self):  Closing the connection between the sensor and the Pi
+    self.serial.close()
+    
+  %def read_bytes(self, data, idx, size = 2):  Translates data from sensor to Pi
+    return int("".join(data[idx : idx + size]), 16)
+    
+  def read(self): %# Translates data from Pi to output
+    data = self.serial.read(32)
+    data = ["{:02X}".format(d) for d in data]
+    
+    if data[0] != '42' or data[1] != '4D':
+      return None
+      
+    res = OrderedDict()  This code returns an ordered dictionary of the following elements:
+    %res['pm1_cf'] = self.read_bytes(data, 4)
+    %res['pm25_cf'] = self.read_bytes(data, 6)
+    %res['pm10_cf'] = self.read_bytes(data, 8)
+    %res['pm1'] = self.read_bytes(data, 10)
+    %res['pm25'] = self.read_bytes(data, 12)
+   % res['pm10'] = self.read_bytes(data, 14)
+
+%    res['temperature'] = self.read_bytes(data, 24) / 10
+ %   res['humidity'] = self.read_bytes(data, 26) / 10
+    return res
+    
+%def  write_to_csv(): # Writes the output to a csv file
+%        if __name__ == "__main__":
+%                with open('/home/pi/pms5003_data.csv', mode='a') as csv_file: # First condition is the name and location of your csv file (this can be changed); second condition is the 'append' mode, which allows you to add new lines to the document without overwriting old ones
+                        %csv_writer = csv.writer(csv_file)
+                        %csv_writer.writerow([data]) # Data is what your output is titled
+                %with open('/home/pi/pms5003_data.csv', mode='r') as csv_file: # Now that your csv file is appended, this allows you to read it and actually prints the output
+                        %csv_reader = csv.reader(csv_file)
+                        %for row in csv_reader:
+                                print(row)
+               
+%if __name__ == '__main__': # This denotes the path that your code follows.  These all use the conditions that you defined in the code above.
+  while True:  Creates a loop so that the code will read in intervals as defined below.
+    '''
+    Test code
+    '''
+    sensor = Sensor()  Defining the sensor as above
+    sensor.open()  Opening the sensor
+    data = sensor.read()  Reading data from the sensor
+    sensor.close()  Closing the sensor
+    print(data)  Printing the data to the terminal
+    %write_to_csv()  Compiling the data to a CSV file
+    time.sleep(10)  Establishing that the data will be read in ten second intervals (can be changed).
 
 
-\section{Sensor 2}
+A few notes on this Python code:
 
+- Pay very close attention to spacing and indentations! This is very, very important in Python.  The code will not run if the indentations are at all off.
+%- This code will automatically create a csv file under the title "pms5003_data.csv".  You can access this document in your Pi's File Explorer under "Pi".  
+- When you go to open the csv file that the data stores to, select the following viewing settings for the most user-friendly experience:  tab, comma, trim spaces, and other (within the text box for other, type ")").  This will separate the actual values from the titles; you can do the rest of the "beautifying" of the data in R.
+
+3.  Re-enter the nano file you created above, and right click anywhere within the file to bring up a menu; select the "paste" option.  This should place the code above into the file without altering the spacing or indentations.
+
+4.  Save the text document with ctrl o (it will ask it what you want to name it, you can leave it as pms5003.py), and then exit it with ctrl x.
+
+5.  Now within the main shell, type "python3 pms5003.py". When I submitted the text, I got one of two responses -- some error, usually about some indentation problem that took way too long to sort out OR it seem to quietly be in standby mode. I think it was sending the program to my Pi, perhaps compiling and sending the commands to the sensor.  
+
+It should release a reading of the different measurements specified at intervals of ten seconds, and compile the data into a CSV file.
+
+\section{MQ Sensors}
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{2_Breadboard_side.JPG}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{2_Breadboard_all.JPG}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{2_Overview.JPG}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{2_Pi_Side.JPG}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{2_Pi_overhead.JPG}
+\end{figure}
 
 \end{document}
