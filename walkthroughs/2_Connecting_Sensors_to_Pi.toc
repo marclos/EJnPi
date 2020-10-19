@@ -1,10 +1,10 @@
-\contentsline {section}{\numberline {1}Introduction}{1}
-\contentsline {subsection}{\numberline {1.1}What is particulate matter?}{1}
-\contentsline {section}{\numberline {2}PMS5003 Particulate matter sensor}{2}
-\contentsline {subsection}{\numberline {2.1}Sensor Purchase}{2}
-\contentsline {subsection}{\numberline {2.2}Sensor Construction and Operation}{2}
-\contentsline {subsection}{\numberline {2.3}Sensor IO}{2}
-\contentsline {subsection}{\numberline {2.4}Wiring}{2}
-\contentsline {subsection}{\numberline {2.5}Code and Testing}{3}
-\contentsline {subsection}{\numberline {2.6}Python Code}{3}
-\contentsline {section}{\numberline {3}MQ Sensors}{6}
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}What is particulate matter?}{1}{subsection.1.1}
+\contentsline {section}{\numberline {2}PMS5003 Particulate matter sensor}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Sensor Purchase}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Sensor Construction and Operation}{2}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Sensor IO}{2}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Wiring}{2}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Code and Testing}{3}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Python Code}{3}{subsection.2.6}
+\contentsline {section}{\numberline {3}MQ Sensors}{6}{section.3}

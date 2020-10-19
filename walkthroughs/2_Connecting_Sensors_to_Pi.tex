@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage[]{graphicx}
 \usepackage[]{color}
+\usepackage{hyperref}
 
 \graphicspath{ {./images/} }
 % maxwidth is the original width if it is less than linewidth
@@ -145,8 +146,6 @@ This sensor comes with eight female-to-female connectors as well as an adapter f
 
 \item Double check the wiring with the following images
 
-
-
 \end{enumerate}
 
 
@@ -179,14 +178,15 @@ We have made the code available on the EJnPi Respository, so you can download it
 
 \begin{enumerate}
 
-\item TBD
+\item Using the Pi's webbrowser, navigate to \href{https://github.com/marclos/EJnPi/tree/master/code}{the EJnPI Respository}.
 
-\item First, make sure you have connected your LED to the correct GPIO pin as decribed in %\textbf{\ref{GPIO24}}.
-\item Boot up you Raspberry Pi and open the IDE Thonny.
-\item Once you are in Thonny, write the following code: \newline
+\item download the pm25\_simpletest.py
+
 \lstinputlisting{../code/pm25_simpletest.py}
 
 \end{enumerate}
+
+Open the code in XYZ and add the following comment lines: 
 
 import serial  These are the pre-coded Github packages that this code uses; serial allows python to run on different back-end connections.
 from collections import OrderedDict  Imports the ordered dictionary function

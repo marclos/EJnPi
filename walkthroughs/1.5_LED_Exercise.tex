@@ -95,8 +95,6 @@
 
 \maketitle
 
-\newpage
-
 \tableofcontents
 
 \newpage
@@ -174,28 +172,41 @@ The purpose of this document is to give a brief introduction and familiarization
 We are going to create a simple circuit withe the LED using thing Raspberry Pi as a power source. This is really easy and will let you know if you understand how to wire a circuit. The LED should turn on as soon as you power on the Raspberry Pi!
 
 \begin{enumerate}
-\item First setup you power and ground jumper wires coming from your Raspberry Pi to your breadboard. Use your GPIO pinout diagram to figure out which pin is your 3V3 power and which pin(s) are ground. Connect your red wire's (color doesn't really matter but may help) female end to 3V3\footnote{MLH: Is this 3.3volts??}\footnote{KRM: Yes. Reference section 2.1 -- I chose this nomenclature because in a lot of RasPi documents and datasheets use it. I think it's because of other languages separate digits differently. I'll change it to 3.3V if you think it's best} power on the Raspberry Pi and the male end to the power/postive/+ bus on the breadboard. It doesn't really matter which spot on the bus you connect it to, the whole column is connected, remember? Do the same for the ground jumper wire.
-\newline
-\newline
-\includegraphics[width=0.90\textwidth]{pwrgnd}
-\item Next setup the resistor on the breadboard. The resistor should be setup connecting the ground bus on the breadboard to an inside row. Keep in consideration you'll need at least one hole for the LED leg to connect in the same row. Resistors are not directionally dependant, so it doesn't matter which end of it is connected to the ground bus and which end is connected to the inside row.
-\newline
-\newline
+\item First setup you power and ground jumper wires coming from your Raspberry Pi to your breadboard. Use your GPIO pinout diagram to figure out which pin is your 3.3 volt power and which pin(s) are ground. Connect your red wire's (color doesn't really matter but may help) female end to 3.3 volts power on the Raspberry Pi and the male end to the power/postive/+ bus on the breadboard (Figure~\ref{fig:pwrgrd}). It doesn't really matter which spot on the bus you connect it to, the whole column is connected, remember? Do the same for the ground jumper wire.
+
+\begin{figure}
+\includegraphics[width=0.80\textwidth]{pwrgnd}
+\caption{Power and ground connection to breadboard and Pi}
+\label{fig:pwrgrd}
+\end{figure}
+
+\item Next setup the resistor on the breadboard. The resistor should be setup connecting the ground bus on the breadboard to an inside row. Keep in consideration you'll need at least one hole for the LED leg to connect in the same row (Figure~\ref{fig:res}. Resistors are not directionally dependant, so it doesn't matter which end of it is connected to the ground bus and which end is connected to the inside row.
+\begin{figure}
 \includegraphics[width=0.90\textwidth]{res}
-\item Third, you need to connect the LED to the inside row the resistor is on and a \textbf{different} row. LEDs \textbf{are} directionally dependant. This is called polarity. If you notice, the LED has a short and long leg. Connect the shorter leg in the hole which is in the same row as the resistor. Connect the longer leg to a hole in another inside row.
-\newline
-\newline
+\caption{Resistor attached to breadboard. The colors on the resister are used to identify the amount of resistance measured in ohms. }
+\label{fig:res}
+\end{figure}
+\item Third, you need to connect the LED to the inside row the resistor is on and a \textbf{different} row. LEDs \textbf{are} directionally dependant. This is called polarity. If you notice, the LED has a short and long leg. Connect the shorter leg in the hole which is in the same row as the resistor. Connect the longer leg to a hole in another inside row (Figure~\ref{fig:ledres}).
+\begin{figure}
 \includegraphics[width=0.90\textwidth]{bbledres}
+\caption{LED and resistor attached to breadboard}
+\label{fig:ledres}
+\end{figure}
 \item Lastly, connect a male/male wire from the longer leg of the LED to the power bus.
-\item Now, double check your wiring and make sure it's right! It should look something like this:
-\newline
-\newline
+\item Now, double check your wiring and make sure it's right! It should look something like Figure~\ref{}.
+\begin{figure}
 \includegraphics[width=0.90\textwidth]{bbresledwire}
 \item Turn on your Raspberry Pi, and as soon as you do this, you should see your LED turn on!
-\newline
+\end{figure}
+
+\begin{figure}
 \includegraphics[width=0.90\textwidth]{ledon_bright}
-\newline
+\end{figure}
+
+\begin{figure}
 \includegraphics[width=0.90\textwidth]{ledon_dark}
+\end{figure}
+
 \item If your LED is not turning on, but you are sure you have your wiring correct, check the \textbf{troubleshooting} section below.
 \end{enumerate}
 
@@ -212,23 +223,35 @@ Help! My LED won't turn on!
 Next, we are going to change the wiring of the circuit to add a layer of complexity to this exercise. We are going to execute some Python code so that that LED blinks on and off.
 \begin{itemize}
 \item The first step to this is the use a GPIO pin, that isn't direct power, to send a signal that will turn on the LED and then another signal that will turn it off.
-\item The Raspberry Pi communicates these signals in 2-logic levels, logical high signals or logical low signals. In this case, the Raspberry Pi will send a 3V3 signal, logic level high, or a 0V signal, logic level low. Obviously, 3V3 will turn on the LED and 0V will turn it off (no power supplied anymore).
-\item The wiring essentially stays the same for this setup except that instead of connecting power to the constant 3V3 GPIO pin, connect it to \textbf{GPIO pin 24.} Refer to your GPIO pin diagram in section \ref{GPIO}.
+\item The Raspberry Pi communicates these signals in 2-logic levels, logical high signals or logical low signals. In this case, the Raspberry Pi will send a 3.3 signal, logic level high, or a 0V signal, logic level low. Obviously, 3.3 volts will turn on the LED and 0V will turn it off (no power supplied anymore).
+\item The wiring essentially stays the same for this setup except that instead of connecting power to the constant 3.3 volt GPIO pin, connect it to \textbf{GPIO pin 24.} Refer to your GPIO pin diagram in section \ref{GPIO}.
 \end{itemize}
 \textbf{BE CAREFUL} there are two different naming conventions for the GPIO pins. The numbers within the circle on your pinout diagram (1-40) are the \textbf{physical} pin locations. The labels on the outside are the \textbf{BCM}, or \textbf{manufacture}'s designated nomenclature, GPIO 24 etc. You'll run into this issue when trying to code in Python. \label{GPIO24}
 
+\section{Flashing LED}
 
-\section{Python Code}
+\subsection{Using code to control the LED}
 
-\begin{enumerate}
-\item In order to instruct the Raspberry Pi to tell the LED to do more complicated things like turning off and on, we have to communicate with it in the form of a programming language. \textbf{Python} is a relatively readable programming language and user-friendly, so we are going to be using it.
-\item In order to communicate instructions via Python, we need to write the code. We do this simply by using a text editor, or some kind of integrated development environment (IDE) like \textbf{Thonny}, for example. All the Python code you will be generating will have the file extension of \textbf{``.py''}.
-\end{enumerate}
+In order to instruct the Raspberry Pi to tell the LED to do more complicated things like turning off and on, we have to communicate with it in the form of a programming language and we'll use Python.
+
+\subsection{What is Python?}
+
+\textbf{Python} is a relatively readable programming language and user-friendly. 
+
+In order to communicate instructions via Python, we need to write the code. We do this simply by using a text editor, or some kind of integrated development environment (IDE) like \textbf{Thonny}, for example. All the Python code you will be generating will have the file extension of \textbf{``.py''}.
+
+A few notes on this Python code:
+
+\begin{itemize}
+\item Pay very close attention to spacing and indentations! This is very, very important in Python.  The code will not run if the indentations are at all off.
+%- This code will automatically create a csv file under the title "pms5003_data.csv".  You can access this document in your Pi's File Explorer under "Pi".  
+%When you go to open the csv file that the data stores to, select the following viewing settings for the most user-friendly experience:  tab, comma, trim spaces, and other (within the text box for other, type ")").  This will separate the actual values from the titles; you can do the rest of the "beautifying" of the data in R.
+\end{itemize}
 
 \subsection{Make your LED flash}
 
 \begin{enumerate}
-\item First, make sure you have connected your LED to the correct GPIO pin as decribed in \textbf{\ref{GPIO24}}.
+\item First, make sure you have connected your LED to the correct GPIO pin as decribed in \textbf{\ref{GPIO24}}. NOTE: This is not the 24th PIN -- look carefully that you are using PIN 14.
 \item Boot up you Raspberry Pi and open the IDE Thonny.
 \item Once you are in Thonny, write the following code: \newline
 \lstinputlisting{../code/led.py}
