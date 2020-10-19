@@ -126,7 +126,6 @@ The Digital Particle Concentration Laser Sensor Plantower PMS5003 PM2.5 PM10 is 
 
 This sensor comes with eight female-to-female connectors as well as an adapter for the Raspberry Pi, and a connector for the Raspberry Pi and the adapter itself.  
 
-\
 \subsection{Wiring}
 
 \begin{enumerate}
@@ -135,13 +134,13 @@ This sensor comes with eight female-to-female connectors as well as an adapter f
   \item Next, connect the adapter to the Raspberry Pi.  Separate four of the female-to-female connectors (the ones with the black rectangles on either end) and attach one of the ends to the TXD, RXD, GND and VCO terminals on the adapter (these correspond to the 4th, 5th, 7th, and 8th terminals from the top).  
 
 \begin{itemize}
-  \item Connect the wire attached to the VCC terminal to node 2 on the Raspberry Pi.
+  \item Connect the wire attached to the VCC terminal to PIN 2 on the Raspberry Pi -- or connect to the 5V rail on the breadboad.
 
-  \item Connect the wire attached to the GND terminal to node 9 on the Raspberry Pi.
+  \item Connect the wire attached to the GND terminal to PIN 9 on the Raspberry Pi -- or connect to the ground rail on the breadboard. 
 
-  \item Connect the wire attached to the RXD terminal to node 8 on the Raspberry Pi. 
+  \item Connect the wire attached to the RXD terminal to PIN 8 on the Raspberry Pi. 
 
-  \item Connect the wire attached to the TXD terminal to node 10 on the Raspberry Pi.
+  \item Connect the wire attached to the TXD terminal to PIN 10 on the Raspberry Pi.
 \end{itemize}
 
 \item Double check the wiring with the following images
@@ -156,19 +155,21 @@ This sensor comes with eight female-to-female connectors as well as an adapter f
   \item VNC to the Pi.
   \item Check to make sure that it is working. If not shut the Pi down (via the command `sudo shutdown' and check the wiring. 
 
-\item Enter "sudo raspi-config".
+\item Enter ``sudo raspi-config".
 
-\item Select option 5 ("Interfacing Options").
+\item Select Option 5 (``Interfacing Options").
 
 \item Enable ARM I2C by selecting it in this menu and then pressing Yes.
 
-\item Then to enable Serial, choose Serial on the menu. 
+\item Then to enable Serial, select Option 5 (``Interfacing Options") again and choose Serial on the menu. 
 
-\item A window will pop up asking, "would you like a login shell to be accessible over serial?", and the answer is NO.
+\item A window will pop up asking, ``would you like a login shell to be accessible over serial?", and the answer is NO.
 
-\item Next, a window will pop up asking, "Would you like the serial port hardware to be enabled?", this time say YES, and exit the window.
+\item Next, a window will pop up asking, ``Would you like the serial port hardware to be enabled?", this time say YES, and exit the window.
 
 \item Click Finish, you may be prompted to reboot, and select YES.
+
+\item We will also need to download a pre-made communication tool.  Using the command window, type ``
 
 \end{enumerate}
 
@@ -178,9 +179,11 @@ We have made the code available on the EJnPi Respository, so you can download it
 
 \begin{enumerate}
 
-\item Using the Pi's webbrowser, navigate to \href{https://github.com/marclos/EJnPi/tree/master/code}{the EJnPI Respository}.
+\item Using the Pi's webbrowser, navigate to \href{https://github.com/marclos/EJnPi/tree/master/code}{the EJnPI Respository}. 
 
-\item download the pm25\_simpletest.py
+\item When you can get the the files and ``Blame'' in Github to view the pm25\_simpletest.py, then click to save on the home directory.
+
+Then open Thorny and load the file.
 
 \lstinputlisting{../code/pm25_simpletest.py}
 
@@ -248,12 +251,6 @@ class Sensor(): Defining what you are gathering data from
     %write_to_csv()  Compiling the data to a CSV file
     time.sleep(10)  Establishing that the data will be read in ten second intervals (can be changed).
 
-
-A few notes on this Python code:
-
-- Pay very close attention to spacing and indentations! This is very, very important in Python.  The code will not run if the indentations are at all off.
-%- This code will automatically create a csv file under the title "pms5003_data.csv".  You can access this document in your Pi's File Explorer under "Pi".  
-- When you go to open the csv file that the data stores to, select the following viewing settings for the most user-friendly experience:  tab, comma, trim spaces, and other (within the text box for other, type ")").  This will separate the actual values from the titles; you can do the rest of the "beautifying" of the data in R.
 
 3.  Re-enter the nano file you created above, and right click anywhere within the file to bring up a menu; select the "paste" option.  This should place the code above into the file without altering the spacing or indentations.
 
