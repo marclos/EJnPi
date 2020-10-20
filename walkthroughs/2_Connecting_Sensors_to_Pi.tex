@@ -131,16 +131,23 @@ This sensor comes with eight female-to-female connectors as well as an adapter f
 \begin{enumerate}
   \item Begin by connecting the sensor to the adapter. Take the colorful wires with white blocks on either end and attach them to both the sensor and the small adapter board; they attach with the ``shiny'' side up, and you need to give them quite a push to get them to go in fully. They should be snug, and not at all loose.
 
-  \item Next, connect the adapter to the Raspberry Pi.  Separate four of the female-to-female connectors (the ones with the black rectangles on either end) and attach one of the ends to the TXD, RXD, GND and VCO terminals on the adapter (these correspond to the 4th, 5th, 7th, and 8th terminals from the top).  
+  \item Next, we'll connect some breadboard jumpers (small wired without black rectacles). Connect the positive rail to A30 and the ground rail to A29. 
+  
+  \item Attach the PMS5003 adapter to the Breadboard -- B23-B30, where the B30 aligns with the 5 volt power.
+  
+  \item Connect 2 male-to-female connectors (the ones with the black rectangles on either end):
+ 
 
 \begin{itemize}
   \item Connect the wire attached to the VCC terminal to PIN 2 on the Raspberry Pi -- or connect to the 5V rail on the breadboad.
 
   \item Connect the wire attached to the GND terminal to PIN 9 on the Raspberry Pi -- or connect to the ground rail on the breadboard. 
 
-  \item Connect the wire attached to the RXD terminal to PIN 8 on the Raspberry Pi. 
-
-  \item Connect the wire attached to the TXD terminal to PIN 10 on the Raspberry Pi.
+  \item Connect the wire attached to the row corresponding to the RXD (recieve) terminal (d27) to TXD (transmit) PIN 8 on the Raspberry Pi. 
+  \item Connect the wire attached to the TXD (transmit) terminal to RXD (recieve) PIN 10 on the Raspberry Pi.
+  \item connect the resistor from the ground rail to the i21 on the breadboard. 
+  \item connect the LED from the j21 to j22 (short wire in j21).
+  \item connect the LED (i22) to GPIO 24 (PIN 18).
 \end{itemize}
 
 \item Double check the wiring with the following images (Figure~\ref{fig:wiring}).

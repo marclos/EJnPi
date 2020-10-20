@@ -1,0 +1,130 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[]{graphicx}
+\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\section{Introduction}
+
+\subsection{Data...}
+
+
+\section{Collecting the data}
+
+Once the data have been collected, you can extract the data from the SD card and copy to r for processing. 
+
+\subsection{Processing the data}
+
+Marc will be creating a script to process the data and allow you to create a nice dataframe to analyze the data.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{filepath.csv} \hlkwb{=} \hlstr{"/home/CAMPUS/mwl04747/github/EJnPi/data/Data.csv"}
+\hlstd{rawdata} \hlkwb{=} \hlkwd{read.csv}\hlstd{(filepath.csv)}
+
+\hlkwd{names}\hlstd{(rawdata)}\hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"X1"}\hlstd{,} \hlstr{"X2"}\hlstd{,} \hlstr{"Month"}\hlstd{,} \hlstr{"Day"}\hlstd{,} \hlstr{"Hour"}\hlstd{,}                   \hlstr{"Minute"}\hlstd{,} \hlstr{"Second"}\hlstd{,} \hlstr{"X3"}\hlstd{,} \hlstr{"X4"}\hlstd{,} \hlstr{"pm1_cf"}\hlstd{,} \hlstr{"X5"}\hlstd{,} \hlstr{"pm25_cf"}\hlstd{,} \hlstr{"X6"}\hlstd{,} \hlstr{"pm10_cf"}\hlstd{,} \hlstr{"X7"}\hlstd{,} \hlstr{"pm1"}\hlstd{,} \hlstr{"X8"}\hlstd{,} \hlstr{"pm25"}\hlstd{,} \hlstr{"pm10."}\hlstd{,} \hlstr{"X9"}\hlstd{)}
+
+\hlstd{rawdata}\hlopt{$}\hlstd{pm1_cf} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{gsub}\hlstd{(}\hlstr{'[)]'}\hlstd{,} \hlstr{''}\hlstd{, rawdata}\hlopt{$}\hlstd{pm1_cf))}
+\hlstd{rawdata}\hlopt{$}\hlstd{pm25_cf} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{gsub}\hlstd{(}\hlstr{'[)]'}\hlstd{,} \hlstr{''}\hlstd{, rawdata}\hlopt{$}\hlstd{pm25_cf))}
+\hlstd{rawdata}\hlopt{$}\hlstd{pm10_cf} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{gsub}\hlstd{(}\hlstr{'[)]'}\hlstd{,} \hlstr{''}\hlstd{, rawdata}\hlopt{$}\hlstd{pm10_cf))}
+\hlkwd{as.Date}\hlstd{(}\hlkwd{with}\hlstd{(rawdata,} \hlkwd{paste}\hlstd{(}\hlstr{"2020"}\hlstd{, Month, Day,}\hlkwc{sep}\hlstd{=}\hlstr{"-"}\hlstd{)),} \hlstr{"%Y-%m-%d"}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+## [1] "2020-10-18" "2020-10-18"
+\end{verbatim}
+\begin{alltt}
+\hlkwd{library}\hlstd{(lubridate)}
+\end{alltt}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'lubridate'}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following object is masked from 'package:base':\\\#\# \\\#\#\ \ \ \  date}}\begin{alltt}
+\hlstd{rawdata}\hlopt{$}\hlstd{DateTime} \hlkwb{=} \hlkwd{with}\hlstd{(rawdata,} \hlkwd{ymd_hms}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlstr{"2020"}\hlstd{, Month, Day, Hour, Minute, Second,} \hlkwc{sep}\hlstd{=} \hlstr{'-'}\hlstd{)))}
+
+\hlkwd{head}\hlstd{(rawdata)}
+\end{alltt}
+\begin{verbatim}
+##                         X1                      X2 Month Day Hour Minute Second
+## 1 OrderedDict([('DateTime'  datetime.datetime(2020    10  18   20     27     31
+## 2 OrderedDict([('DateTime'  datetime.datetime(2020    10  18   20     27     41
+##          X3         X4 pm1_cf          X5 pm25_cf          X6 pm10_cf      X7
+## 1  546422))  ('pm1_cf'      9  ('pm25_cf'      15  ('pm10_cf'      17  ('pm1'
+## 2  910120))  ('pm1_cf'      9  ('pm25_cf'      14  ('pm10_cf'      16  ('pm1'
+##   pm1       X8 pm25    pm10.     X9            DateTime
+## 1  9)  ('pm25'  15)  ('pm10'  17)]) 2020-10-18 20:27:31
+## 2  9)  ('pm25'  14)  ('pm10'  16)]) 2020-10-18 20:27:41
+\end{verbatim}
+\begin{alltt}
+\hlcom{# Remove Variables}
+\hlstd{cleandata} \hlkwb{=} \hlkwd{subset}\hlstd{(rawdata,} \hlkwc{select}\hlstd{=}\hlkwd{c}\hlstd{(DateTime, pm1_cf, pm25_cf, pm10_cf))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\subsection{Plot Data}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{hist}(cleandata$pm1_cf)
+
+\textbackslash{}end\{document\}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: <text>:3:1: unexpected input\\\#\# 2: \\\#\# 3: \textbackslash{}\\\#\#\ \ \ \ \textasciicircum{}}}\end{kframe}
+\end{knitrout}

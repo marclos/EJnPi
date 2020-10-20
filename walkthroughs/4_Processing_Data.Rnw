@@ -9,35 +9,7 @@
 
 \section{Introduction}
 
-\subsection{Developing a Reasonable Question}
-
-As defined in your prospectus, we need to ensure our research question aligns with our methods -- and our analysis prodedures, which is often a statistical test. 
-
-\subsection{Testing Methods}
-
-One effective way do to this is to collect preliminary data to ensure we will get reasonable results. 
-
-\subsection{Creating Reliable Data Sources}
-
-\section{Deploying the Pis}
-
-We did not have the capacity to create a robust case for our Pis that might allow them to be deployed without exposure to the elements. 
-
-Thus, here are some suggestions:
-
-\begin{itemize}
-  \item Put the Pi and breadboard in a plastic sandwich bad and/or tupperware container. Make holes for the power input and the can PM sensor cable. 
-  \item Put the sensor at where there is good air flow outside a wondow that you can provide power to the Pi. Or better yet, find a location outide where a power socket is available.  Note: the cable switch is not water proof, so be to protect the on/off switch; maybe put in a plastic bag too?
-  \item Hopefully, the Pi still connects to your WiFi. If not, we'll have to come up with a method to launch the program on boot up. Work with Kyle if you have this issue, breifly we will 
-  
-\begin{itemize}
-  \item Edit the rc.local file to include the path of your script that you want to run. In our case, it's whatever python file. The rc.local file is located at /etc/rc.local in nearly every Linux distribution. YES, the Pi's OS is Linux.
-  \item Modify the Pi Configuration Utility and change the Boot option to: ``Boot To CLI''. That way, the next boot, it boots to the command line interface and runs the python script and if the program is a loop it'll keep running the script until you exit it.
-  
-\end{itemize}
-
-
-\end{itemize}
+\subsection{Data...}
 
 
 \section{Collecting the data}
@@ -49,10 +21,29 @@ Once the data have been collected, you can extract the data from the SD card and
 Marc will be creating a script to process the data and allow you to create a nice dataframe to analyze the data.
 
 <<>>=
-filepath.csv = "/home/CAMPUS/mwl04747/github/EJnPi/data/TestData.R"
+filepath.csv = "/home/CAMPUS/mwl04747/github/EJnPi/data/Data.csv"
 rawdata = read.csv(filepath.csv)
 
+names(rawdata)= c("X1", "X2", "Month", "Day", "Hour",                   "Minute", "Second", "X3", "X4", "pm1_cf", "X5", "pm25_cf", "X6", "pm10_cf", "X7", "pm1", "X8", "pm25", "pm10.", "X9")
+
+rawdata$pm1_cf = as.numeric(gsub('[)]', '', rawdata$pm1_cf))
+rawdata$pm25_cf = as.numeric(gsub('[)]', '', rawdata$pm25_cf))
+rawdata$pm10_cf = as.numeric(gsub('[)]', '', rawdata$pm10_cf))
+as.Date(with(rawdata, paste("2020", Month, Day,sep="-")), "%Y-%m-%d")
+
+library(lubridate)
+rawdata$DateTime = with(rawdata, ymd_hms(paste("2020", Month, Day, Hour, Minute, Second, sep= '-')))
+
+head(rawdata)
+
+# Remove Variables
+cleandata = subset(rawdata, select=c(DateTime, pm1_cf, pm25_cf, pm10_cf))
 
 @
+
+\subsection{Plot Data}
+
+<<>>=
+hist(cleandata$pm1_cf)
 
 \end{document}
