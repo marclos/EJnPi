@@ -1,4 +1,4 @@
-# New Version -- PMS and Air Quality Tempate 
+# New Version -- PMS and Air Quality Template 
 # Import packages (which sensor uses which package is noted)
 
 # Datetime

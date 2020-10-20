@@ -2,7 +2,10 @@
 \usepackage[]{graphicx}
 \graphicspath{ {./images/} }
 \usepackage[]{color}
-\usepackage{hyperref}
+%\usepackage{hyperref}
+
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+
 \usepackage{listings}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -114,13 +117,13 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
 
 \begin{enumerate}[noitemsep]
   \item Raspberry Pi Zero W board
-  \item Case, with 3 covers
+  \item Vilros Case, with 3 covers
   \item 2.5A power supply
   \item Heatsink
   \item HDMI to mini-HDMI adapter
   \item USB to micro-USB adapter
   \item Header pin diagram
-  \item Camera module adapter (not used)
+  \item Camera module cable (not used)
 \end{enumerate}
 
 \subsubsection{Other items}
@@ -143,36 +146,105 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
   \item Download Raspberry Pi Imager for your main computer's operating system (OS) at \url{https://www.raspberrypi.org/downloads/}
   \item Install Raspberry Pi Imager
   \item Connect the Pi's SD card to your main computer.
-  \item Use Raspberry Pi Imager to install/write Raspberry Pi OS to SD card.
+  
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{1_Pi_Imager}
+%\includegraphics[width=1.00\textwidth]{sdbootnew}
+\caption{Raspberry Pi Image Software. Use the program to select Raspberry Pi OS (Operating System) 32-bit. Then select the SD card location. Finally, click on ``Write''.}
+\label{fig:pi_imager}
+\end{figure}
+
+  \item Use Raspberry Pi Imager to install/write Raspberry Pi OS to SD card (Figure~\label{fig:pi_imager}).
   \item Alternatively, manually copy Raspberry Pi OS and NOOBS to SD card, using the link above.
 \end{enumerate}
 
-\subsection{Add Connectivity Files} \label{networkssh}
+\subsection{Create Secure Shell Connectivity Files} \label{networkssh}
 
 \begin{enumerate}
-  \item Add a ``ssh'' file to your SD card. When the Raspberry Pi boots up, it will look for a file named \textbf{``ssh''} and either turn the ability for ssh connection on, if the file is there, or it will keep the functionality for ssh off, if the file isn't there.\footnote{you'll need to define what this means}. 
+  \item Add a ``ssh'' file to your SD card.\footnote{What is SSH protocol? SSH, also referred to as Secure Shell, is a method for secure remote login from one computer to another. It provides several alternative options for strong authentication, and it protects the communications security and integrity with strong encryption.} When the Raspberry Pi boots up, it will look for a file named \textbf{``ssh''} to determine if one can remotely login to the Pi. If the file is there, then remote login is enabled. If the file is not present, then remote login is disabled. 
   \begin{itemize}
-  \item Do this by creating an empty text file named \textbf{``ssh''}. Navigate to the SD card with the file explorer for your OS and create a new text file. \footnote{few students know how to do this}
-  \newline
-  \newline
+  \item Do this by creating an empty text file named \textbf{``ssh''}. Doing this on PCs is really easy -- but as on Apple computers it frustratingly complex. 
+  
+\noindent\textbf{For Mac Users:} 
+
+\begin{itemize}
+  \item Find and start the textedit application (Figure~\ref{fig:Mac1}).
+  
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{1_MACtext_1}
+\caption{Finding the TextEdit application}
+\label{fig:Mac1}
+\end{figure}
+
+  \item Save file (Figure~\ref{fig:Mac2}).
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{1_MACtext_2}
+\caption{Save file with out richtext formatting.}
+\label{fig:Mac2}
+\end{figure}
+
+  \item Open a new document (Figure~\ref{fig:Mac3}).
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{1_MACtext_3}
+\caption{Save empty file}
+\label{fig:Mac3}
+\end{figure}
+  \item Save file without richtext (Figure~\ref{fig:Mac4}).
+
+\begin{figure}
+\includegraphics[width=.500\textwidth]{1_MACtext_4}
+\caption{Get information on the file}
+\label{fig:Mac4}
+\end{figure}
+
+  \item Remove extension. (Figure~\ref{fig:Mac5}).
+
+\begin{figure}
+\includegraphics[width=0.50\textwidth]{1_MACtext_5}
+\caption{Remove file name extension.}
+\label{fig:Mac5}
+\end{figure}
+
+\end{itemize}
+
+\noindent \textbf{For PC Users:} 
+
+  \item Start a text editor and create an empty file named ``ssh''. Make sure the file you create has no file extension. You will have to ``Save As'' with your text editor to ensure the file is saved the correct way; meaning the file shouldn't end in ``.txt'', ``.doc'', etc. Sometimes there is the option from a dropdown to change the file extension.
+  
+\item Copy ``ssh'' file to the SD card. 
+\begin{figure}
   \includegraphics[width=1.00\textwidth]{sdbootnew}
-  \item Make sure the file you create has no file extension. You will have to ``Save As'' with your text editor to ensure the file is saved the correct way; meaning the file shouldn't end in ``.txt'', ``.doc'', etc. Sometimes there is the option from a dropdown to change the file extension. \footnote{Some computers don't show you the extension, but they are there! going to need to be more explicit.}
-  \newline
-  \newline
+\end{figure}
+
+
+\begin{figure}
   \includegraphics[width=1.00\textwidth]{sdbootaf}
+  \caption{.}
+  \label{fig:sdbootf}
+\end{figure}
+
   \item You may be promted and asked if you are sure you want to save the file without an extension, select ``Yes.''
-  \newline
-  \newline
+
+\begin{figure}
   \includegraphics[width=1.00\textwidth]{sdbootays}
-  \newline
+  \caption{Saving shh file on a PC.}
+  \label{fig:sdbootays}
+\end{figure}
   \end{itemize}
-  \item Create and add a file called \textbf{``wpa\_supplicant.conf''} to the boot partition\footnote{where is this?} on the SD card. This can be created with any text editor. Or you can download a ``template'' from the github \href{https://github.com/marclos/EJnPi/blob/8647e09b3eef07a759606b80e28495be10049813/code/wpa_supplicant.conf}{EJnPi Repository}.
+  
+\clearpage
+  
+\noindent \textbf{Create wpa\_spplicant.conf file (everone!):}
+
+  \item Using simpler methods as the ''ssh'' file, create and add a file called \textbf{``wpa\_supplicant.conf''} to the boot partition\footnote{where is this?} on the SD card. This can be created with any text editor. %Or you can download a ``template'' from the github \href{https://github.com/marclos/EJnPi/blob/8647e09b3eef07a759606b80e28495be10049813/code/wpa_supplicant.conf}{EJnPi Repository}.
   \begin{itemize}
   \item Make sure the file you created has the \textbf{``.conf''} file extension in the name.
   \item The \textbf{``wpa\_supplicant.conf''} needs to have the WiFi network information in it for the Raspberry Pi to connect on boot up.
   \item Modify this file with a text editor and type the lines below. NOTE: DO NOT COPY AND PASTE. When we copy and paste from other programs hidden text can be inserted that cannot be read by the Pi's operating system correctly.
   \end{itemize}
-\newpage  
+
 \begin{lstlisting}
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
@@ -186,7 +258,7 @@ network={
 
   \begin{itemize}
   \item If you are not in the United States, input your country's ISO code instead of \textbf{``US''} on the \textbf{\textit{``country=US''}} line.
-  \item Make sure to change \textbf{``WIFI NETWORK NAME''} to your WiFi network name.
+  \item Make sure to change \textbf{``WIFI NETWORK NAME''} to your WiFi network name, remember this name and password are case senstive.
   \item Make sure to change \textbf{``WIFI\_PASSWORD''} to your WiFi network's password.
   \end{itemize}
   
@@ -211,6 +283,8 @@ NOTE: If do not have peripheral devices to be connected to the Pi, i.e. monitor,
      \item You can get away with using just a monitor and keyboard, but if you are not comfortable navigating with a keyboad only, it'll be difficult.
     \end{itemize}
   \end{itemize}
+  
+  
 \item Lastly, making sure the the power adapter for the Pi is plugged in to a power source, and verifying the switch on the adapter is in the \textbf{``off''} position, connect the power cable into the Pi.
   \item Now, turn the power switch on.
 
@@ -231,8 +305,9 @@ Now, there are different ways to remotely connect with the Raspberry Pi if you a
 The goal with this step is to find the \textbf{local IP address} of the Pi. There are a lot of different ways to do this. If you are computer savvy, go ahead and find the IP address of your Pi and ingnore this step.
 
 \begin{enumerate}
-  \item The easiest way to find the IP address of your Pi, if you don't know networking or computers that well, is to use the \textbf{Raspberry Pi Finder} by Adafruit.
-  \item With your main computer, go to this website to download the application for your OS: \newline \url{https://github.com/adafruit/Adafruit-Pi-Finder/}
+  \item The easiest way to find the IP address of your Pi, if you don't know networking or computers that well, is to use the \textbf{Raspberry Pi Finder} by Adafruit. 
+  \item With your main computer, go to this website to download the application for your OS: \newline \url{https://github.com/adafruit/Adafruit-Pi-Finder/}. However, this doesn't work for everyone. For Mac users I suggest try this \newline \newline \url{http://ivanx.com/ivanx/raspberrypi/}. If this program works, follow the instructions and skip to Section \ref{updateupgrade}. 
+  
   \item Scroll down and click the link that says \textbf{``Download the latest release''}
   \item Scroll down to \textbf{``Assets''} and there you will see the .zip files of the program for the different OSs.
   \begin{itemize}
