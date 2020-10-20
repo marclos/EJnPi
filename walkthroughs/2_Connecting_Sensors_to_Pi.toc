@@ -8,3 +8,4 @@
 \contentsline {subsection}{\numberline {2.5}Code and Testing}{3}{subsection.2.5}
 \contentsline {subsection}{\numberline {2.6}Python Code}{3}{subsection.2.6}
 \contentsline {section}{\numberline {3}MQ Sensors}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Additional Sensors}{6}{subsection.3.1}

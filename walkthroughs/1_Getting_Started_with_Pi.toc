@@ -22,3 +22,4 @@
 \contentsline {subsection}{\numberline {4.5}Interfacing Options (enable SSH)}{27}{subsection.4.5}
 \contentsline {subsection}{\numberline {4.6}Virtual Network Computing (VNC) Option}{28}{subsection.4.6}
 \contentsline {section}{\numberline {5}Finishing Up}{31}{section.5}
+\contentsline {section}{\numberline {6}Putting the Pi in the case}{33}{section.6}

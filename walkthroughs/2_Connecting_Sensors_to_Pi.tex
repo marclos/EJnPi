@@ -181,20 +181,25 @@ We have made the code available on the EJnPi Respository, so you can download it
 
 \item Using the Pi's webbrowser, navigate to \href{https://github.com/marclos/EJnPi/tree/master/code}{the EJnPI Respository}. 
 
-\item When you can get the the files and ``Blame'' in Github to view the pm25\_simpletest.py, then click to save on the home directory.
+\item When you can get the the files and ``Blame'' in Github to view the Air\_quality\_code\_v2.py, then click to save on the home directory.
 
 Then open Thorny and load the file.
 
-\lstinputlisting{../code/pm25_simpletest.py}
+\lstinputlisting{../code/Air_quality_code_v2.py}
+
+\item Open the file using Thorny and hit run. You should see the results being displayed in the lower window.
+
+
+%5.  Now within the main shell, type "python3 pms5003.py". When I submitted the text, I got one of two responses -- some error, usually about some indentation problem that took way too long to sort out OR it seem to quietly be in standby mode. I think it was sending the program to my Pi, perhaps compiling and sending the commands to the sensor.  
+
+\item It should release a reading of the different measurements specified at intervals of 60 seconds, and compile the data into a CSV file.
 
 \end{enumerate}
-
-
-5.  Now within the main shell, type "python3 pms5003.py". When I submitted the text, I got one of two responses -- some error, usually about some indentation problem that took way too long to sort out OR it seem to quietly be in standby mode. I think it was sending the program to my Pi, perhaps compiling and sending the commands to the sensor.  
-
-It should release a reading of the different measurements specified at intervals of ten seconds, and compile the data into a CSV file.
-
 \section{MQ Sensors}
+
+\subsection{Additional Sensors}
+
+We have provided the electronics to evaluate other air quality parameters using MQ Sensors. You can read about how these sensors work and a list of types of sensors in this \href{http://github...}{sensor guide}.
 
 \begin{figure}
 \includegraphics[width=1.00\textwidth]{2_Breadboard_side.JPG}

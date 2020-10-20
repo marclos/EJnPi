@@ -258,7 +258,7 @@ network={
 
   \begin{itemize}
   \item If you are not in the United States, input your country's ISO code instead of \textbf{``US''} on the \textbf{\textit{``country=US''}} line.
-  \item Make sure to change \textbf{``WIFI NETWORK NAME''} to your WiFi network name, remember this name and password are case senstive.
+  \item Make sure to change \textbf{``WIFI NETWORK NAME''} to your WiFi network name, remember this name and password are case sensitive.
   \item Make sure to change \textbf{``WIFI\_PASSWORD''} to your WiFi network's password.
   \end{itemize}
   
@@ -271,8 +271,6 @@ network={
 \begin{enumerate}
   \item Safely eject the SD card from your main computer.
   \item Place the SD card in the Raspberry Pi Zero W's SD card slot.
-  \item Attach the Pi to the bottom Vilros case making sure to line the dowels within the case with the mouting holes on the Pi.
-  \item \textbf{Do not} attached the top part of the case yet. Being able to see the Pi's board will help you with pin determination.
   
 NOTE: If do not have peripheral devices to be connected to the Pi, i.e. monitor, mouse and keyboard, you will be making a ``headless'' connection and should skip the next few steps. 
 \begin{itemize}
@@ -288,7 +286,7 @@ NOTE: If do not have peripheral devices to be connected to the Pi, i.e. monitor,
 \item Lastly, making sure the the power adapter for the Pi is plugged in to a power source, and verifying the switch on the adapter is in the \textbf{``off''} position, connect the power cable into the Pi.
   \item Now, turn the power switch on.
 
-\textbf{NOTE!} Make sure not to turn the device off, or on/off/on, otherwise the \textbf{``ssh''} and \textbf{``wpa\_supplicant.conf''} files will not be in your boot directory on the SD card anymore. If, for whatever reason, the Pi loses power after putting those file in the boot directory, you will have to go back and add them, as in step \textbf{\ref{networkssh}}. This is \textbf{especially} important for \textbf{\textit{headless}} users (users with no monitor).
+\textbf{NOTE!} Make sure not to turn the device off, or on/off/on, otherwise the \textbf{``ssh''} and \textbf{``wpa\_supplicant.conf''} files will not be in your boot directory on the SD card anymore. If, for whatever reason, the Pi loses power after putting those file in the boot directory, you will have to go back and add them, as in step \textbf{\ref{networkssh}}. This is \textbf{especially} important for \textbf{\textit{headless}} users (users with no monitor). Once we complete the set up, via the section \ref{} we won't need to worry about this issue. 
 
 %\textbf{NOTE!} This is where \textbf{\textit{headless}} users will have to remotely connect to the Pi, while people who have monitors, mice, and keyboards won't have to remotely connect. For those who aren't connecting remotely, skip ahead to step \textbf{\ref{updateupgrade}}
 
@@ -433,6 +431,8 @@ As a security measure, since your Pi is in your WiFi network, you'll want to cha
 
 We want to make sure the Pi's network options are configured properly so we don't have to add a \textbf{wpa\_supplicant.conf} file to the boot directory when booting anymore.
 
+Note: This section as caused problems. If you experience issues at this point where the Pi stops communicating, skip this step. 
+
 \begin{enumerate}
   \item While still in the raspi-config utility, navigate to \textbf{``Network Options''}.
   \newline
@@ -574,5 +574,11 @@ You Pi should be configured now! When the Pi does get turned off and turned back
 \end{enumerate}
 
 \textbf{CONGRATULATIONS}! You done configuring the Pi. \textit{Whew}...
+
+\section{Putting the Pi in the case}
+\begin{itemize}
+  \item Attach the Pi to the bottom Vilros case making sure to line the dowels within the case with the mouting holes on the Pi.
+  \item \textbf{Do not} attached the top part of the case yet. Being able to see the Pi's board will help you with pin determination.
+\end{itemize}
 
 \end{document}
