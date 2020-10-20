@@ -148,6 +148,7 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
   \item Connect the Pi's SD card to your main computer.
   
 \begin{figure}
+\centering
 \includegraphics[width=1.00\textwidth]{1_Pi_Imager}
 %\includegraphics[width=1.00\textwidth]{sdbootnew}
 \caption{Raspberry Pi Image Software. Use the program to select Raspberry Pi OS (Operating System) 32-bit. Then select the SD card location. Finally, click on ``Write''.}
@@ -168,40 +169,45 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
 \noindent\textbf{For Mac Users:} 
 
 \begin{itemize}
-  \item Find and start the textedit application (Figure~\ref{fig:Mac1}).
+  \item Find and start the TextEdit application (Figure~\ref{fig:Mac1}).
   
-\begin{figure}
-\includegraphics[width=1.00\textwidth]{1_MACtext_1}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.9\textwidth]{1_MACtext_1}
 \caption{Finding the TextEdit application}
 \label{fig:Mac1}
 \end{figure}
 
   \item Save file (Figure~\ref{fig:Mac2}).
 
-\begin{figure}
-\includegraphics[width=1.00\textwidth]{1_MACtext_2}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{1_MACtext_2}
 \caption{Save file with out richtext formatting.}
 \label{fig:Mac2}
 \end{figure}
 
   \item Open a new document (Figure~\ref{fig:Mac3}).
 
-\begin{figure}
-\includegraphics[width=1.00\textwidth]{1_MACtext_3}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{1_MACtext_3}
 \caption{Save empty file}
 \label{fig:Mac3}
 \end{figure}
   \item Save file without richtext (Figure~\ref{fig:Mac4}).
 
-\begin{figure}
-\includegraphics[width=.500\textwidth]{1_MACtext_4}
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{1_MACtext_4}
 \caption{Get information on the file}
 \label{fig:Mac4}
 \end{figure}
 
   \item Remove extension. (Figure~\ref{fig:Mac5}).
 
-\begin{figure}
+\begin{figure}[h]
+\centering
 \includegraphics[width=0.50\textwidth]{1_MACtext_5}
 \caption{Remove file name extension.}
 \label{fig:Mac5}
@@ -304,7 +310,9 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
 
 \begin{enumerate}
   \item The easiest way to find the IP address of your Pi, if you don't know networking or computers that well, is to use the \textbf{Raspberry Pi Finder} by Adafruit. 
-  \item With your main computer, go to this website to download the application for your OS: \newline \url{https://github.com/adafruit/Adafruit-Pi-Finder/}. However, this doesn't work for everyone. For Mac users I suggest try this \newline \newline \url{http://ivanx.com/ivanx/raspberrypi/}. If this program works, follow the instructions and skip to Section \ref{updateupgrade}. 
+  \item With your main computer, go to this website to download the application for your OS: \newline \newline \url{https://github.com/adafruit/Adafruit-Pi-Finder/}.\newline \newline
+\textbf{Note for Mac users}: If you are prevented from launching the app because of your security settings, you can right click on the app and click Open to bypass the warnings.
+  \item However, if this doesn't work, try this: \newline \newline \url{http://ivanx.com/ivanx/raspberrypi/}. \newline \newline If this program works, follow the instructions and skip to Section \ref{updateupgrade}. 
   
   \item Scroll down and click the link that says \textbf{``Download the latest release''}
   \item Scroll down to \textbf{``Assets''} and there you will see the .zip files of the program for the different OSs.
@@ -313,7 +321,7 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
     \item \textbf{``win32''} is for Windows user.
   \end{itemize}
   \item Download the .zip file for your system and then unzip it when finished downloading.
-  \item Run Raspberry Pi finder.\footnote{where do we the the exe file?-- doen't ren all by itself.}
+  \item Run Raspberry Pi finder by double-clicking \textbf{``PiFinder.exe''}, which is in the folder you just unzipped.
   \item Click \textbf{``Find my Pi!''} for the program to locate your Pi. Wait a few minutes if it doesn't find it immediately. Sometimes it can take quite a while!\footnote{need a workaround, this doesn't work...}
   \item The IP address should be listed when finished. It should look something like \textbf{``192.168.1.XXX''}. \label{ipaddress}
   \item Use the IP address to connect to the Pi.
@@ -341,7 +349,7 @@ The goal with this step is to find the \textbf{local IP address} of the Pi. Ther
   \newline
   \includegraphics[width=1.00\textwidth]{searchterm}
   \newline
-      \item In Terminal, type the command below making sure to substitute ``192.168.1.XXX'' with the IP address found in step \ref{ipaddress}
+      \item In Terminal, type the command below making sure to substitute ``192.168.1.XXX'' with the IP address found in step \ref{ipaddress}.
       \begin{lstlisting}
       ssh pi@192.168.1.XXX 
       \end{lstlisting}
