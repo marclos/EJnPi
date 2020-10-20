@@ -78,8 +78,9 @@ Thus, here are some suggestions:
   \item Hopefully, the Pi still connects to your WiFi. If not, we'll have to come up with a method to launch the program on boot up. Work with Kyle if you have this issue, breifly we will 
   
 \begin{itemize}
-  \item Edit the rc.local file to include the path of your script that you want to run. In our case, it's whatever python file.
-  \item Modify the Pi Configuration Utility and change the Boot option to: ``Boot To CLI''.
+  \item Edit the rc.local file to include the path of your script that you want to run. In our case, it's whatever python file. The rc.local file is located at /etc/rc.local in nearly every Linux distribution. YES, the Pi's OS is Linux.
+  \item Modify the Pi Configuration Utility and change the Boot option to: ``Boot To CLI''. That way, the next boot, it boots to the command line interface and runs the python script and if the program is a loop it'll keep running the script until you exit it.
+  
 \end{itemize}
 
 
