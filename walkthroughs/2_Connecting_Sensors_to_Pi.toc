@@ -5,7 +5,7 @@
 \contentsline {subsection}{\numberline {2.2}Sensor Construction and Operation}{2}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Sensor IO}{2}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Wiring}{2}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Code and Testing}{3}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Python Code}{3}{subsection.2.6}
-\contentsline {section}{\numberline {3}MQ Sensors}{6}{section.3}
-\contentsline {subsection}{\numberline {3.1}Additional Sensors}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {2.5}Code and Testing}{4}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Python Code}{4}{subsection.2.6}
+\contentsline {section}{\numberline {3}MQ Sensors}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Additional Sensors}{8}{subsection.3.1}

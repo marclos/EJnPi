@@ -143,7 +143,13 @@ This sensor comes with eight female-to-female connectors as well as an adapter f
   \item Connect the wire attached to the TXD terminal to PIN 10 on the Raspberry Pi.
 \end{itemize}
 
-\item Double check the wiring with the following images
+\item Double check the wiring with the following images (Figure~\ref{fig:wiring}).
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{PiPMSSetUp}
+\caption{Wiring for PMS5003, LED, and Pi for deployment. I put the case top in the Pi to create a realively clean set up. The LED is programmed to flash every reading (1/minute).}
+\label{fig:wiring}
+\end{figure}
 
 \end{enumerate}
 
@@ -195,6 +201,8 @@ Then open Thorny and load the file.
 \item It should release a reading of the different measurements specified at intervals of 60 seconds, and compile the data into a CSV file.
 
 \end{enumerate}
+\clearpage
+
 \section{MQ Sensors}
 
 \subsection{Additional Sensors}
