@@ -45,5 +45,6 @@ cleandata = subset(rawdata, select=c(DateTime, pm1_cf, pm25_cf, pm10_cf))
 
 <<>>=
 hist(cleandata$pm1_cf)
+@
 
 \end{document}
