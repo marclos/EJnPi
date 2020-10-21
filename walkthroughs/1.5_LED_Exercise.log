@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  20 OCT 2020 14:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  21 OCT 2020 12:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -352,74 +352,92 @@ Package pdftex.def Info: ./images/ledres.png used on input line 170.
 (pdftex.def)             Requested size: 224.2479pt x 299.11174pt.
  [6 <./images/ledres.png>]
 
-LaTeX Warning: Reference `fig:pwrgrd' on page 7 undefined on input line 191.
+LaTeX Warning: Reference `fig:pwrgrd' on page 7 undefined on input line 192.
 
 <./images/pwrgnd.png, id=37, 810.02625pt x 607.26875pt>
 File: ./images/pwrgnd.png Graphic file (type png)
 
 <use ./images/pwrgnd.png>
-Package pdftex.def Info: ./images/pwrgnd.png used on input line 195.
+Package pdftex.def Info: ./images/pwrgnd.png used on input line 196.
 (pdftex.def)             Requested size: 258.75pt x 193.98712pt.
- <./images/res.png, id=38, 607.26875pt x 810.02625pt>
-File: ./images/res.png Graphic file (type png)
 
-<use ./images/res.png>
-Package pdftex.def Info: ./images/res.png used on input line 203.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./images/res.png, id=38, 607.26875pt x 810.02625pt>
+File: ./images/res.png Graphic file (type png)
+ <use ./images/res.png>
+Package pdftex.def Info: ./images/res.png used on input line 204.
 (pdftex.def)             Requested size: 224.2479pt x 299.11174pt.
- [7 <./images/pwrgnd.png>]
-<./images/bbledres.png, id=43, 607.26875pt x 810.02625pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./images/bbledres.png, id=39, 607.26875pt x 810.02625pt>
 File: ./images/bbledres.png Graphic file (type png)
 
 <use ./images/bbledres.png>
-Package pdftex.def Info: ./images/bbledres.png used on input line 219.
+Package pdftex.def Info: ./images/bbledres.png used on input line 220.
 (pdftex.def)             Requested size: 172.5pt x 230.09355pt.
 
-<./images/bbresledwire.png, id=44, 607.26875pt x 810.02625pt>
+<./images/bbresledwire.png, id=40, 607.26875pt x 810.02625pt>
 File: ./images/bbresledwire.png Graphic file (type png)
 
 <use ./images/bbresledwire.png>
-Package pdftex.def Info: ./images/bbresledwire.png used on input line 225.
+Package pdftex.def Info: ./images/bbresledwire.png used on input line 226.
 (pdftex.def)             Requested size: 172.5pt x 230.09355pt.
- [8 <./images/res.png>]
-<./images/ledon_bright.png, id=48, 810.02625pt x 607.26875pt>
+
+<./images/ledon_bright.png, id=41, 810.02625pt x 607.26875pt>
 File: ./images/ledon_bright.png Graphic file (type png)
 
 <use ./images/ledon_bright.png>
-Package pdftex.def Info: ./images/ledon_bright.png used on input line 237.
+Package pdftex.def Info: ./images/ledon_bright.png used on input line 238.
 (pdftex.def)             Requested size: 172.5pt x 129.31857pt.
 
-<./images/ledon_dark.png, id=49, 810.02625pt x 607.26875pt>
+<./images/ledon_dark.png, id=42, 810.02625pt x 607.26875pt>
 File: ./images/ledon_dark.png Graphic file (type png)
 
 <use ./images/ledon_dark.png>
-Package pdftex.def Info: ./images/ledon_dark.png used on input line 242.
+Package pdftex.def Info: ./images/ledon_dark.png used on input line 243.
 (pdftex.def)             Requested size: 172.5pt x 129.31857pt.
- [9 <./images/bbledres.png> <./images/bbresledwire.png> <./images/ledon_bright.
-png> <./images/ledon_dark.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 278--285
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7] [8 <./images/pwrgnd.png>] [9 <./images/res.png>] [10 <./images/bbledres.png
+> <./images/bbresledwire.png> <./images/ledon_bright.png> <./images/ledon_dark.
+png>]
+Underfull \hbox (badness 10000) in paragraph at lines 279--286
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--285
+Underfull \hbox (badness 10000) in paragraph at lines 279--286
 
  []
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 298--299
+<images/15_Pi_Thonny.jpg, id=56, 2981.1375pt x 2637.855pt>
+File: images/15_Pi_Thonny.jpg Graphic file (type jpg)
+
+<use images/15_Pi_Thonny.jpg>
+Package pdftex.def Info: images/15_Pi_Thonny.jpg used on input line 301.
+(pdftex.def)             Requested size: 172.5pt x 152.62941pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
 
  []
 
-(../code/led.py) [11] [12] (./1.5_LED_Exercise.aux)
+(../code/led.py) [11] [12 <./images/15_Pi_Thonny.jpg>] [13]
+(./1.5_LED_Exercise.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4525 strings out of 494820
- 69992 string characters out of 3178050
- 158110 words of memory out of 3000000
- 7655 multiletter control sequences out of 15000+200000
+ 4534 strings out of 494820
+ 70158 string characters out of 3178050
+ 158127 words of memory out of 3000000
+ 7660 multiletter control sequences out of 15000+200000
  8230 words of font info for 29 fonts, out of 3000000 for 9000
  198 hyphenation exceptions out of 8191
  38i,11n,38p,598b,1082s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -434,10 +452,10 @@ blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000
 .pfb>
-Output written on 1.5_LED_Exercise.pdf (12 pages, 2741571 bytes).
+Output written on 1.5_LED_Exercise.pdf (13 pages, 6106999 bytes).
 PDF statistics:
- 97 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 102 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

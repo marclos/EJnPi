@@ -188,6 +188,7 @@ The purpose of this document is to give a brief introduction and familiarization
 We are going to create a simple circuit withe the LED using thing Raspberry Pi as a power source. This is really easy and will let you know if you understand how to wire a circuit. The LED should turn on as soon as you power on the Raspberry Pi!
 
 \begin{enumerate}
+\item Make sure you have shutdown the Pi and no power is getting to the Pi.
 \item First setup you power and ground jumper wires coming from your Raspberry Pi to your breadboard. Use your GPIO pinout diagram to figure out which pin is your 3.3 volt power and which pin(s) are ground. Connect your red wire's (color doesn't really matter but may help) female end to 3.3 volts power on the Raspberry Pi and the male end to the power/postive/+ bus on the breadboard (Figure~\ref{fig:pwrgrd}). It doesn't really matter which spot on the bus you connect it to, the whole column is connected, remember? Do the same for the ground jumper wire.
 
 \begin{figure}[h]
@@ -294,7 +295,14 @@ A few notes on Python code:
 
 \begin{enumerate}
 \item First, make sure you have connected your LED to the correct GPIO pin as decribed in \textbf{\ref{GPIO24}}. NOTE: This is not the 24th PIN -- look carefully that you are using PIN 18.
-\item Boot up you Raspberry Pi and open the IDE Thonny.
+\item Boot up you Raspberry Pi and open the IDE Thonny (Figure~\ref{fig:thonny}).
+
+\begin{figure}
+\includegraphics[width=.50\textwidth]{images/15_Pi_Thonny}
+\caption{Click on the Raspberry at the top of the screen and then Programs to find Thonny}
+\label{fig:thonny}
+\end{figure}
+
 \item Once you are in Thonny, write the following code: \newline
 \lstinputlisting{../code/led.py}
 \begin{itemize}
