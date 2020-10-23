@@ -12,7 +12,7 @@
 
 The PM sensor has several components to measure the particles in the air -- remember, we don't know what the make up of these particles might be -- but we can get an estimate of their size distribution. We have written the code to collect particles smaller than 1$\mu$m, 2.5$\mu$m and 10$\mu$m. 
 
-Figure~\ref{fig:hpsensor} is a schematic of the particle sensor made by Honeywell (HPM Series --- Particulate Matter Sensors 32322550HP). The one we are using is made by Plantower. As a Chinese company, most of their literature is in Chineese, so I didn't find something that I could interpret for us. 
+Figure~\ref{fig:hpsensor} is a schematic of the particle sensor made by Honeywell (HPM Series --- Particulate Matter Sensors 32322550HP). The one we are using is made by Plantower. As a Chinese company, most of their literature is in Chinese, so I didn't find something that I could interpret for us. 
 
 \begin{figure}
 \includegraphics[width=1.00\textwidth]{images/4_SensorSchemiatic}
@@ -20,7 +20,7 @@ Figure~\ref{fig:hpsensor} is a schematic of the particle sensor made by Honeywel
 \label{fig:hpsensor}
 \end{figure}
 
-Our sensors can generate several categories of PM data. Using a laser and light defraction, the number and size of the particules can be estimated (Figure~\ref{fig:defraction}).
+Our sensors can generate several categories of PM data. Using a laser and light defraction, the number and size of the particles can be estimated (Figure~\ref{fig:defraction}).
 
 \begin{figure}
 \includegraphics[width=0.70\textwidth]{images/4_Measurement-principle}
@@ -54,7 +54,7 @@ The PMS5003 generates the following data:
 
 The first set are labeled ``standard'', while the second set are labeled ``atmospheric environment''. What do these measure and how do the ``standard'' ones differ from the ``atmospheric environment'' ones?
 
-It has to do with the density of the air used for calculations. "Standard" refers to the concentration ``corrected'' to the ``standard atmosphere'' which in the US is DEFINED as ``having a temperature of 288.15 K at the sea level 0 km geo-potential height and 1013.25 hPa''.
+It has to do with the density of the air used for calculations. "Standard" refers to the concentration ``corrected'' to the ``standard atmosphere'' which in the US is DEFINED as ``having a temperature of 288.15 K at the sea level 0 km geo-potential height and 1013.25 hPa''. NOTE: 288.15 K equals 25 C and Pa are ``pascals'' which is a meausure of pressure. 
 
 On the other hand, the ``ambient conditions'' are just as the air is ``now'' (whatever temperature and pressure there is). Now what does that mean\ldots
 
@@ -67,7 +67,7 @@ In conclusion, I use the ``standard'' readings for reporting but keep the ``ambi
 
 \subsection{Read SD Card}
 
-Once the data have been collected, you can extract the data from the SD card and uplad to Rstudio for processing. Shut down the Pi and read the SD card to collect all of the Air\_Quality.csv files created. It might be useful to put them together using excel, but we can do that easily enough using R. 
+Once the data have been collected, you can extract the data from the SD card and upland to Rstudio for processing. Shut down the Pi and read the SD card to collect all of the Air\_Quality.csv files created. It might be useful to put them together using excel, but we can do that easily enough using R. 
 
 \subsection{Processing the data}
 
@@ -110,11 +110,16 @@ hist(cleandata$pm25_cf)
 <<>>=
 @
 
-\subsection{Comparing $\mu$ to collected data}
+\subsection{Comparing $\mu$ to EPA Data}
 
-The population mean (monthly average from the EPA data) is a parameter estimate. We can determine if the values you collected fall within the parameter estimate. 
+The population mean (monthly average from the EPA data) is a parameter estimate. We can determine if the values you collected fall within the parameter estimate and it's 95\% confidence intervals. 
+
 
 \subsection{More Intricate Analysis}
+
+You could look to see if the there is a different during the time of the day or day of the week. You could move you sensor around in and outside your house and see if air quality is better / worse or the same\ldots.
+
+We can help you with r code if you'd like to follow up with these additional questions. 
 
 
 \end{document}
