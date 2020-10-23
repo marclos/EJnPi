@@ -83,18 +83,22 @@ Thus, here are some suggestions:
   
 \end{itemize}
 
-\item We suggest you collect several days of data -- ideally 7 seven days, but much will depend on how easily we can buid the kits and get them to cooperate. 
-
+\item We suggest you collect several days of data -- ideally 7 days, but much will depend on how easily we can buid the kits and get them to cooperate. 
+\item We suggest you stop the program everyday, rename the Air\_Quality.csv file with a new name (e.g. with the date in front, e.g. 201022\_Air\_Quality.csv), then restart it. This way we won't create a large csv file that might be hard for the Pi to deal with. 
 
 \end{itemize}
 
 
 \section{Collecting the data}
 
-Once the data have been collected, you can extract the data from the SD card and copy to r for processing. 
+Once the data have been collected, you can extract the data from the SD card and copy to r for processing, the name of the file is Air\_Quality.csv.
 
-\subsection{Processing the data}
+\subsection{LED Stays On Continuously}
 
-Marc will be creating a script to process the data and allow you to create a nice dataframe to analyze the data.
+I had this in my first deployment I had trouble after 12 hours, where the Pi would take forever to finish the sampling (LED on for 3-5 min) and then the program seemed to crash. 
+
+I rebooted the Pi and then saved the Air\_Quality.csv file into a new file, e.g. Air\_Quality1.csv and then started the program again. However, I think it might be worth changing the frequency to see if that solves the problem. Yesterday, I changed the sleep time from 58 (line 121) to 298. These are in seconds, so then we get a reading every 5 min instead of every min. Ever minute is probably overkill anyway!
+
+
 
 \end{document}
