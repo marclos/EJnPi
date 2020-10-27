@@ -101,7 +101,7 @@ The PM sensor has several components to measure the particles in the air -- reme
 Figure~\ref{fig:hpsensor} is a schematic of the particle sensor made by Honeywell (HPM Series --- Particulate Matter Sensors 32322550HP). The one we are using is made by Plantower. As a Chinese company, most of their literature is in Chinese, so I didn't find something that I could interpret for us. 
 
 \begin{figure}
-\includegraphics[width=1.00\textwidth]{images/4_SensorSchemiatic}
+\includegraphics[width=1.00\textwidth]{images/4_SensorSchematic}
 \caption{Schematic of Honeywell Particulate Matter Sensor. A laser light source illuminates a particle as it is pulled through the detection chamber. As particles pass through the laser beam, the light reflects off the particles and is recorded on the photo or light detector. The light is then analyzed and converted to an electrical signal to calculate particle concentration.}
 \label{fig:hpsensor}
 \end{figure}
@@ -152,18 +152,59 @@ In conclusion, I use the ``standard'' readings for reporting but keep the ``ambi
 
 \subsection{Extract Data From Pi}
 
-    Once the data have been collected, you can extract from the Pi -- Unfortunately, there are several ways to do this and NONE of them are easy. 
+    Once the data have been collected, you can extract from the Pi -- Unfortunately, there are several ways to do this and one of them are easier using the VNC interface.
+    
+\subsubsection{Using RealVNC to transfer data files}
 
-\subsubsection{For PCs} 
-For PCs: Here is \href{https://www.makeuseof.com/tag/copy-data-raspberry-pi-pc/}{webpage that describes the issues and 5 not great options} to get data. 
+\begin{enumerate}
+
+\item Use RealVNC and VNC into the Raspberry Pi using the Pi's IP adress in the RealVNC search toolbar.
+
+\item Controlling the Raspberry Pi, right click on the VNCServer icon in the toolbar in the upper left near the clock.
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{images/4_vncserver_ft}
+\caption{}
+\label{fig:vncserverfiletransfer}
+\end{figure}
+
+\item Select \textbf{``File Transfer...''}
+
+\item In the ``File Transfer'' popup window, select \textbf{``Send Files''} in the lower left.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.80\textwidth]{images/4_vncserver_ft2}
+\caption{}
+\label{fig:vncserverfiletransfer2}
+\end{figure}
+
+\item Then navigate to the file you want to send in the ``Send Files'' popup and click \textbf{``OK''}.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.80\textwidth]{images/4_vncserver_sf}
+\caption{}
+\label{fig:vncserversendfiles}
+\end{figure}
+
+\item There should be another popup, on your main computer, that will show download manager with your file in it. By default, RealVNC transfers files to your desktop.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.80\textwidth]{images/4_vncserver_sfdm}
+
+\label{fig:vncserverdownloadmanager}
+\end{figure}
+
+\end{enumerate}
+
+\subsubsection{Alternative Methods For PCs} 
+
+Alternatively, there serveral other alternatives. For example, this \href{https://www.makeuseof.com/tag/copy-data-raspberry-pi-pc/}{webpage describes the issues and 5 not great options} to get data. 
 
 After several attempts to create a cloud folder that you could upload, I found it was far to slow and unreliable. Thus, I recommend using Putty and the following line commands:
 
 \begin{lstlisting}
 psftp> open Pi@XXX.XXX.XXX.XXX
 \end{lstlisting}
-
-
 
 and you will be prompted to enter the password. Once you are in, you can see your files by entering
 
