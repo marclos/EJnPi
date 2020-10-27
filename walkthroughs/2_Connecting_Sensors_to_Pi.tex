@@ -166,8 +166,6 @@ This sensor comes with eight female-to-female connectors as well as an adapter f
 \label{fig:Breadborad-VCC-GND}
 \end{figure}
 
-
-
   \item Connect 2 male-to-female jumpers (the ones with the black rectangles on either end):
  
 \begin{itemize}
@@ -177,7 +175,15 @@ This sensor comes with eight female-to-female connectors as well as an adapter f
 
   \item Connect the jumper wire from the row corresponding to the RXD (recieve) terminal (Breadboard d27) to TXD (transmit) PIN 8 on the Raspberry Pi. 
   \item Connect the jumper wire from the row corresponding to the TXD (transmit) terminal (Breadboard d16)to RXD (recieve) PIN 10 on the Raspberry Pi.
-  \item connect the resistor from the ground rail to the i21 on the breadboard. 
+  \item connect the resistor from the ground rail to the i21 on the breadboard (Figure~\ref{}).
+  
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{images/2_Resistor_LED_Breadboard.JPG}
+\caption{LED (green --- you may have a different color) and Resistor (colors signify the resistance, measured in Ohms}
+\label{fig:Breadborad-VCC-GND}
+\end{figure}
+
+
   \item connect the LED from the j21 to j22 (short wire in j21).
   \item connect a jumper from (i22--electrically connected to the LED via row 22) to GPIO 24 (PIN 18).
 \end{itemize}
