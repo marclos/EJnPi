@@ -200,9 +200,52 @@ In conclusion, I use the ``standard'' readings for reporting but keep the ``ambi
 
 \section{Collecting the data}
 
+
 \subsection{Extract Data From Pi}
 
     Once the data have been collected, you can extract from the Pi -- Unfortunately, there are several ways to do this and NONE of them are easy. 
+    
+\subsubsection{Using RealVNC to transfer data files}
+
+\begin{enumerate}
+
+\item Use RealVNC and VNC into the Raspberry Pi using the Pi's IP adress in the RealVNC search toolbar.
+
+\item Controlling the Raspberry Pi, right click on the VNCServer icon in the toolbar in the upper left near the clock.
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{images/vncserver_ft}
+\caption{}
+\label{fig:vncserverfiletransfer}
+\end{figure}
+
+\item Select \textbf{``File Transfer...''}
+
+\item In the ``File Transfer'' popup window, select \textbf{``Send Files''} in the lower left.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.80\textwidth]{images/vncserver_ft2}
+\caption{}
+\label{fig:vncserverfiletransfer2}
+\end{figure}
+
+\item Then navigate to the file you want to send in the ``Send Files'' popup and click \textbf{``OK''}.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.80\textwidth]{images/vncserver_sf}
+\caption{}
+\label{fig:vncserversendfiles}
+\end{figure}
+
+\item There should be another popup, on your main computer, that will show download manager with your file in it. By default, RealVNC transfers files to your desktop.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.80\textwidth]{images/vncserver_sfdm}
+
+\label{fig:vncserverdownloadmanager}
+\end{figure}
+
+\end{enumerate}
 
 \subsubsection{For PCs} 
 For PCs: Here is \href{https://www.makeuseof.com/tag/copy-data-raspberry-pi-pc/}{webpage that describes the issues and 5 not great options} to get data. 
