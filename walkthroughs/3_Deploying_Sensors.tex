@@ -75,11 +75,14 @@ Thus, here are some suggestions:
 \begin{itemize}
   \item Put the Pi and breadboard in a plastic sandwich bad and/or tupperware container. Make holes for the power input and the can PM sensor cable. 
   \item Put the sensor at where there is good air flow outside a wondow that you can provide power to the Pi. Or better yet, find a location outide where a power socket is available.  Note: the cable switch is not water proof, so be to protect the on/off switch; maybe put in a plastic bag too?
-  \item Hopefully, the Pi still connects to your WiFi. If not, we'll have to come up with a method to launch the program on boot up. Work with Kyle if you have this issue, breifly we will 
+  \item Hopefully, the Pi still connects to your WiFi. Then you can use the VNC to connect the the Pi and start the python code. You can then quite out of VNC (but not the Thonny application) and the python will continue to collect data. You should see the light come on regularly --- thus, giving you a good reason to sleep!  
+  
+  If you cannot connect to the WiFi VNC, then we'll need to get the Pi to start your program when it boots up. Work with Kyle if you have this issue, breifly we will
+  \begin{itemize}
   
 \item Edit the rc.local file to include the path of your script that you want to run. Make sure to include an ampersand ``\&'' at the end of the path command, \textbf{this is REALLY important}. Otherwise, if the python script doesn't inherently end, and runs in a loop, the RasPi will never finish booting up ``technically.'' When this happens, you won't be able to input any commands into the CLI. You \textbf{WILL} have to reformat the SD card and start all over. The rc.local file is located at /etc/rc.local in nearly every Linux distribution. YES, the Pi's OS is Linux.
   \item Modify the Pi Configuration Utility and change the Boot option to: ``Boot To CLI''. That way, the next boot, it boots to the command line interface and runs the python script and if the program is a loop it'll keep running the script until you exit it.
-  
+  \end{itemize}
 
 \item We suggest you collect several days of data -- ideally 7 days, but much will depend on how easily we can buid the kits and get them to cooperate. 
 \item We suggest you stop the program everyday, rename the Air\_Quality.csv file with a new name (e.g. with the date in front, e.g. 201022\_Air\_Quality.csv), then restart it. This way we won't create a large csv file that might be hard for the Pi to deal with. 
@@ -89,14 +92,20 @@ Thus, here are some suggestions:
 
 \section{Collecting the data}
 
-Once the data have been collected, you can extract the data from the SD card and copy to r for processing, the name of the file is Air\_Quality.csv.
+Once the data have been collected, you can extract the data, Air\_Quality.csv, using a couple of tricks as described in the next walkthrough. 
+
+\section{Trouble Shooting}
+
+\subsection{Errors when you Run Python Code}
+
+\subsection{Python code doesn't seem to do anything}
+
 
 \subsection{LED Stays On Continuously}
 
 I had this in my first deployment I had trouble after 12 hours, where the Pi would take forever to finish the sampling (LED on for 3-5 min) and then the program seemed to crash. 
 
 I rebooted the Pi and then saved the Air\_Quality.csv file into a new file, e.g. Air\_Quality1.csv and then started the program again. However, I think it might be worth changing the frequency to see if that solves the problem. Yesterday, I changed the sleep time from 58 (line 121) to 298. These are in seconds, so then we get a reading every 5 min instead of every min. Ever minute is probably overkill anyway!
-
 
 
 \end{document}
