@@ -80,7 +80,7 @@ Thus, here are some suggestions:
   \item Hopefully, the Pi still connects to your WiFi. If not, we'll have to come up with a method to launch the program on boot up. Work with Kyle if you have this issue, breifly we will 
   
 \begin{itemize}
-  \item Edit the rc.local file to include the path of your script that you want to run. In our case, it's whatever python file. The rc.local file is located at /etc/rc.local in nearly every Linux distribution. YES, the Pi's OS is Linux.
+  \item Edit the rc.local file to include the path of your script that you want to run. Make sure to include an ampersand ``\&'' at the end of the path command, \textbf{this is REALLY important}. Otherwise, if the python script doesn't inherently end, and runs in a loop, the RasPi will never finish booting up ``technically.'' When this happens, you won't be able to input any commands into the CLI. You \textbf{WILL} have to reformat the SD card and start all over. In our case, it's whatever python file. The rc.local file is located at /etc/rc.local in nearly every Linux distribution. YES, the Pi's OS is Linux.
   \item Modify the Pi Configuration Utility and change the Boot option to: ``Boot To CLI''. That way, the next boot, it boots to the command line interface and runs the python script and if the program is a loop it'll keep running the script until you exit it.
   
 \end{itemize}
