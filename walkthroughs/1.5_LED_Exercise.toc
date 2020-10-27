@@ -4,14 +4,14 @@
 \contentsline {subsection}{\numberline {2.2}Jumper Wires}{4}
 \contentsline {subsection}{\numberline {2.3}Breadboard}{5}
 \contentsline {subsection}{\numberline {2.4}LED}{6}
-\contentsline {subsection}{\numberline {2.5}Resistor}{7}
+\contentsline {subsection}{\numberline {2.5}Resistor}{6}
 \contentsline {section}{\numberline {3}Wiring}{7}
 \contentsline {subsection}{\numberline {3.1}Simple LED Circuit -- LED Always On}{7}
 \contentsline {subsubsection}{\numberline {3.1.1}Simple LED Circuit Troubleshooting}{8}
-\contentsline {subsection}{\numberline {3.2}GPIO LED Circuit}{8}
+\contentsline {subsection}{\numberline {3.2}GPIO LED Circuit}{9}
 \contentsline {section}{\numberline {4}Flashing LED}{11}
 \contentsline {subsection}{\numberline {4.1}Using code to control the LED}{11}
 \contentsline {subsection}{\numberline {4.2}What is Python?}{11}
 \contentsline {subsection}{\numberline {4.3}Make your LED flash}{11}
 \contentsline {section}{\numberline {5}Testing Your Code}{12}
-\contentsline {subsection}{\numberline {5.1}Debugging}{12}
+\contentsline {subsection}{\numberline {5.1}Debugging}{13}

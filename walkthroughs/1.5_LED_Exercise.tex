@@ -166,10 +166,9 @@ The purpose of this document is to give a brief introduction and familiarization
 \item LEDs actually have some requirements to work. We need to consider its polarity, forward voltage, and maximum current rating. Luckily, we have selected the right components for your already to use with the Raspberry Pi so you don't have to worry about that!
 \item We will be using the Raspberry Pi to supply power to the LED so it will turn on. You will also be wiring in a resistor to make sure you don't burn your Raspberry Pi up.
 \begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.65\textwidth]{ledres}
+\centering
+\includegraphics[width=0.85\textwidth]{15_LED_Resistor}
 \caption{LED and resistor. The LED has two differently sized legs; forward voltage is applied to the LED's long leg. The colored bands on the resister are used to identify the amount of resistance, which is measured in ohms.\label{fig:ledres}}
-\end{center}
 \end{figure}
 \end{itemize}
 
@@ -178,6 +177,12 @@ The purpose of this document is to give a brief introduction and familiarization
 \begin{itemize}
 \item You must \textbf{always} use a resistor when wiring an LED to the Raspberry Pi. If you don't use one, you could potentially damage your Raspberry Pi.
 \item A resistor limits the amount of electricity, or more specifically, current through a circuit. Resistance is measured in Ohms, and the larger the value, the more it limits current to flow.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{15_Resistor_Code.png}
+\caption{The colored bands on the resister are used to identify the amount of resistance, which is measured in ohms.\label{fig:ledres}}
+\end{figure}
 
 \end{itemize}
 
