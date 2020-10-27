@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  26 OCT 2020 11:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  27 OCT 2020 11:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -222,7 +222,14 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
-(./2_Connecting_Sensors_to_Pi.aux)
+(./2_Connecting_Sensors_to_Pi.aux
+
+LaTeX Warning: Label `fig:Breadborad-VCC-GND' multiply defined.
+
+
+LaTeX Warning: Label `fig:Breadborad-VCC-GND' multiply defined.
+
+)
 \openout1 = `2_Connecting_Sensors_to_Pi.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 95.
@@ -239,8 +246,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 95.
 LaTeX Font Info:    ... okay on input line 95.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 95.
 LaTeX Font Info:    ... okay on input line 95.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count106
 \scratchdimen=\dimen117
@@ -394,14 +400,58 @@ LaTeX Font Info:    Try loading font information for TS1+cmr on input line 120.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-[2] <./images/PiPMSSetUp.png, id=83, 5770.55875pt x 4641.34pt>
+<images/2_PMS5003_box.JPG, id=74, 1089.06876pt x 939.51pt>
+File: images/2_PMS5003_box.JPG Graphic file (type jpg)
+
+<use images/2_PMS5003_box.JPG>
+Package pdftex.def Info: images/2_PMS5003_box.JPG used on input line 129.
+(pdftex.def)             Requested size: 345.0pt x 297.61015pt.
+ [2 <./images/2_PMS5003_box.JPG>]
+<images/2_PMS5003_Adapter.JPG, id=82, 1106.1325pt x 828.09375pt>
+File: images/2_PMS5003_Adapter.JPG Graphic file (type jpg)
+
+<use images/2_PMS5003_Adapter.JPG>
+Package pdftex.def Info: images/2_PMS5003_Adapter.JPG used on input line 142.
+(pdftex.def)             Requested size: 345.0pt x 258.27324pt.
+
+<images/2_Breadborad-VCC-GND.JPG, id=84, 508.90125pt x 524.96124pt>
+File: images/2_Breadborad-VCC-GND.JPG Graphic file (type jpg)
+
+<use images/2_Breadborad-VCC-GND.JPG>
+Package pdftex.def Info: images/2_Breadborad-VCC-GND.JPG used on input line 150
+.
+(pdftex.def)             Requested size: 345.0pt x 355.90356pt.
+
+
+LaTeX Warning: Reference `fig:AdapterBreadboard' on page 3 undefined on input l
+ine 155.
+
+[3 <./images/2_PMS5003_Adapter.JPG>] [4 <./images/2_Breadborad-VCC-GND.JPG>]
+<images/2_AdapterBreadboard.JPG, id=99, 554.07pt x 582.175pt>
+File: images/2_AdapterBreadboard.JPG Graphic file (type jpg)
+
+<use images/2_AdapterBreadboard.JPG>
+Package pdftex.def Info: images/2_AdapterBreadboard.JPG used on input line 158.
+
+(pdftex.def)             Requested size: 345.0pt x 362.49934pt.
+
+<images/2_PMS5003_Adaper_Cable.JPG, id=100, 812.03375pt x 647.41875pt>
+File: images/2_PMS5003_Adaper_Cable.JPG Graphic file (type jpg)
+
+<use images/2_PMS5003_Adaper_Cable.JPG>
+Package pdftex.def Info: images/2_PMS5003_Adaper_Cable.JPG used on input line 1
+64.
+(pdftex.def)             Requested size: 345.0pt x 275.05547pt.
+
+<./images/PiPMSSetUp.png, id=102, 5770.55875pt x 4641.34pt>
 File: ./images/PiPMSSetUp.png Graphic file (type png)
 
 <use ./images/PiPMSSetUp.png>
-Package pdftex.def Info: ./images/PiPMSSetUp.png used on input line 156.
+Package pdftex.def Info: ./images/PiPMSSetUp.png used on input line 188.
 (pdftex.def)             Requested size: 345.0pt x 277.47688pt.
- [3 <./images/PiPMSSetUp.png>]
-(../code/Air_quality_code_v2.py [4]
+ [5] [6 <./images/2_AdapterBreadboard.JPG>]
+[7 <./images/2_PMS5003_Adaper_Cable.JPG>] [8 <./images/PiPMSSetUp.png>]
+(../code/Air_quality_code_v2.py
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
@@ -409,6 +459,7 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 28.
+ [9]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -416,64 +467,71 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
- [5]) [6]
-<./images/2_Breadboard_side.JPG, id=248, 4047.12pt x 3035.34pt>
+ [10]) [11]
+<./images/2_Breadboard_side.JPG, id=282, 4047.12pt x 3035.34pt>
 File: ./images/2_Breadboard_side.JPG Graphic file (type jpg)
 
 <use ./images/2_Breadboard_side.JPG>
-Package pdftex.def Info: ./images/2_Breadboard_side.JPG used on input line 220.
+Package pdftex.def Info: ./images/2_Breadboard_side.JPG used on input line 252.
 
 (pdftex.def)             Requested size: 345.0pt x 258.71838pt.
 
-<./images/2_Breadboard_all.JPG, id=249, 4047.12pt x 3035.34pt>
+<./images/2_Breadboard_all.JPG, id=283, 4047.12pt x 3035.34pt>
 File: ./images/2_Breadboard_all.JPG Graphic file (type jpg)
 
 <use ./images/2_Breadboard_all.JPG>
-Package pdftex.def Info: ./images/2_Breadboard_all.JPG used on input line 224.
+Package pdftex.def Info: ./images/2_Breadboard_all.JPG used on input line 256.
 (pdftex.def)             Requested size: 345.0pt x 258.71838pt.
 
-<./images/2_Overview.JPG, id=250, 4047.12pt x 3035.34pt>
+<./images/2_Overview.JPG, id=284, 4047.12pt x 3035.34pt>
 File: ./images/2_Overview.JPG Graphic file (type jpg)
 
 <use ./images/2_Overview.JPG>
-Package pdftex.def Info: ./images/2_Overview.JPG used on input line 228.
+Package pdftex.def Info: ./images/2_Overview.JPG used on input line 260.
 (pdftex.def)             Requested size: 345.0pt x 258.71838pt.
 
-<./images/2_Pi_Side.JPG, id=251, 4047.12pt x 3035.34pt>
+<./images/2_Pi_Side.JPG, id=285, 4047.12pt x 3035.34pt>
 File: ./images/2_Pi_Side.JPG Graphic file (type jpg)
 
 <use ./images/2_Pi_Side.JPG>
-Package pdftex.def Info: ./images/2_Pi_Side.JPG used on input line 232.
+Package pdftex.def Info: ./images/2_Pi_Side.JPG used on input line 264.
 (pdftex.def)             Requested size: 345.0pt x 258.71838pt.
 
-<./images/2_Pi_overhead.JPG, id=252, 4047.12pt x 3035.34pt>
+<./images/2_Pi_overhead.JPG, id=286, 4047.12pt x 3035.34pt>
 File: ./images/2_Pi_overhead.JPG Graphic file (type jpg)
 
 <use ./images/2_Pi_overhead.JPG>
-Package pdftex.def Info: ./images/2_Pi_overhead.JPG used on input line 236.
+Package pdftex.def Info: ./images/2_Pi_overhead.JPG used on input line 268.
 (pdftex.def)             Requested size: 345.0pt x 258.71838pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 239.
- [7
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 271.
+ [12
 
- <./images/2_Breadboard_side.JPG>] [8 <./images/2_Breadboard_all.JPG> <./images
-/2_Overview.JPG>] [9 <./images/2_Pi_Side.JPG> <./images/2_Pi_overhead.JPG>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
+ <./images/2_Breadboard_side.JPG>] [13 <./images/2_Breadboard_all.JPG> <./image
+s/2_Overview.JPG>] [14 <./images/2_Pi_Side.JPG> <./images/2_Pi_overhead.JPG>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 271.
  (./2_Connecting_Sensors_to_Pi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 239.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 239.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 271.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 271.
 Package rerunfilecheck Info: File `2_Connecting_Sensors_to_Pi.out' has not chan
 ged.
-(rerunfilecheck)             Checksum: A5684EA356637143367A2FDA697026FD;689.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 239.
+(rerunfilecheck)             Checksum: 1024B331AB886D2E664BA1B7CF796F91;701.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 271.
  ) 
 Here is how much of TeX's memory you used:
- 7196 strings out of 494820
- 107263 string characters out of 3178050
- 449890 words of memory out of 3000000
- 10141 multiletter control sequences out of 15000+200000
+ 7236 strings out of 494820
+ 108219 string characters out of 3178050
+ 468890 words of memory out of 3000000
+ 10165 multiletter control sequences out of 15000+200000
  8567 words of font info for 30 fonts, out of 3000000 for 9000
  198 hyphenation exceptions out of 8191
- 31i,11n,35p,471b,1800s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 31i,11n,35p,514b,1800s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texl
@@ -486,10 +544,10 @@ sfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on 2_Connecting_Sensors_to_Pi.pdf (9 pages, 38704372 bytes).
+Output written on 2_Connecting_Sensors_to_Pi.pdf (14 pages, 39417350 bytes).
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
- 166 named destinations out of 1000 (max. 500000)
- 119 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 379 PDF objects out of 1000 (max. 8388607)
+ 335 compressed objects within 4 object streams
+ 176 named destinations out of 1000 (max. 500000)
+ 144 words of extra memory for PDF output out of 10000 (max. 10000000)
 

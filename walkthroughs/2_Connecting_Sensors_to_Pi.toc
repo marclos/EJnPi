@@ -3,9 +3,9 @@
 \contentsline {section}{\numberline {2}PMS5003 Particulate matter sensor}{2}{section.2}
 \contentsline {subsection}{\numberline {2.1}Sensor Purchase}{2}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Sensor Construction and Operation}{2}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Sensor IO}{2}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Wiring}{2}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Code and Testing}{3}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Python Code}{4}{subsection.2.6}
-\contentsline {section}{\numberline {3}MQ Sensors}{7}{section.3}
-\contentsline {subsection}{\numberline {3.1}Additional Sensors}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {2.3}PMS5003 Sensor and IO}{2}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Wiring}{3}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Code and Testing}{5}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Python Code}{9}{subsection.2.6}
+\contentsline {section}{\numberline {3}MQ Sensors}{12}{section.3}
+\contentsline {subsection}{\numberline {3.1}Additional Sensors}{12}{subsection.3.1}

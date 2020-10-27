@@ -121,23 +121,55 @@ The Digital Particle Concentration Laser Sensor Plantower PMS5003 PM2.5 PM10 is 
 
 \subsection{Sensor Construction and Operation}
 
+\subsection{PMS5003 Sensor and IO}
 
-\subsection{Sensor IO}
+The PMS5003 is a blue case with a small fan (Figure~\ref{fig:PMS5003box}).
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{images/2_PMS5003_box.JPG}
+\caption{PMS5003 Box, with sensor and static protective bag.}
+\label{fig:PMS5003box}
+\end{figure}
 
 This sensor comes with eight female-to-female connectors as well as an adapter for the Raspberry Pi, and a connector for the Raspberry Pi and the adapter itself.  
 
 \subsection{Wiring}
 
 \begin{enumerate}
-  \item Begin by connecting the sensor to the adapter. Take the colorful wires with white blocks on either end and attach them to both the sensor and the small adapter board; they attach with the ``shiny'' side up, and you need to give them quite a push to get them to go in fully. They should be snug, and not at all loose.
+  \item Begin by connecting the sensor to the adapter. Take the black/red ribbion wires with white blocks on either end and attach them to both the sensor and the small adapter board (Figure~\ref{fig:PMS5003_adapter}); they attach with the ``shiny'' side up, and you need to give them quite a push to get them to go in fully. They should be snug, and not at all loose.
+  
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{images/2_PMS5003_Adapter.JPG}
+\caption{PMS5003 adapter board. Notice the labels for each pin, e.g. VCC (5V), GND (Ground).}
+\label{fig:PMS5003_adapter}
+\end{figure}
 
-  \item Next, we'll connect some breadboard jumpers (small wired without black rectacles). Connect the positive rail to A30 and the ground rail to A29. 
+  \item Next, we'll connect two bare wires (small wires without black rectacles). Connect the positive rail (+ red strip on breadboard) to A30 and the ground rail (- blue strip on breadboard) to A29 (Figure~\ref{fig:Breadborad-VCC-GND}). 
   
-  \item Attach the PMS5003 adapter to the Breadboard address (row/column) 23b-30b, where the 30b aligns with the 5 volt power. When you press the adapter on, it will feel nice and snug. Note the little labels on the adaptor, e.g. VCC (5 volt), GRD (ground), TXD (transmit), and RXD (recieve), plus some others. This are the basic for UART communications, the basic communication protocol for USB cables. (Interesting...)
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{images/2_Breadborad-VCC-GND.JPG}
+\caption{Postive and Ground wires connected from rails to specific breadboard rows.}
+\label{fig:Breadborad-VCC-GND}
+\end{figure}
+
+  \item Attach the PMS5003 adapter to the Breadboard address (row/column) 23b-30b, where the 30b aligns with the 5 volt power (Figure~\ref{fig:AdapterBreadboard}). When you press the adapter on, it will feel nice and snug. Note the little labels on the adaptor, e.g. VCC (5 volt), GRD (ground), TXD (transmit), and RXD (recieve), plus some others. This are the basic for UART communications, the basic communication protocol for USB cables. (Interesting...)
   
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{images/2_AdapterBreadboard.JPG}
+\caption{PMS5003 Adapter -- without black and white ribon.}
+\label{fig:Breadborad-VCC-GND}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1.00\textwidth]{images/2_PMS5003_Adaper_Cable.JPG}
+\caption{PMS5003 Adapter and PMS5003 connected with black and white ribon.}
+\label{fig:Breadborad-VCC-GND}
+\end{figure}
+
+
+
   \item Connect 2 male-to-female jumpers (the ones with the black rectangles on either end):
  
-
 \begin{itemize}
   \item Connect a jumper from 5V PIN 2 on the Raspberry Pi to the 5V rail on the breadboad.
 
@@ -165,7 +197,7 @@ This sensor comes with eight female-to-female connectors as well as an adapter f
 
 \begin{enumerate}
   \item Connect your Pi to power and PMS5003 fan should start.
-  \item VNC to the Pi.
+  \item Connect you computer to the Pi using the VNC connection.
   \item Check to make sure that it is working. If not shut the Pi down (via the command `sudo shutdown' and check the wiring. 
 
 \item Enter ``sudo raspi-config".
