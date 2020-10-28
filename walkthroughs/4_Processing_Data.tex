@@ -303,7 +303,7 @@ I opened the document up in rstdudio and did a search for " and replaced with no
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{filepath.csv} \hlkwb{=} \hlstr{"/home/CAMPUS/mwl04747/github/EJnPi/data/Air_Quality.csv"}
-\hlstd{filepath.csv} \hlkwb{=} \hlstr{"/home/CAMPUS/mwl04747/github/EJnPi/data/Complete_airquality_data.csv"}
+\hlstd{filepath.csv} \hlkwb{=} \hlstr{"/home/CAMPUS/mwl04747/github/EJnPi/data/Complete_airquality_data2.csv"}
 \hlstd{rawdata} \hlkwb{=} \hlkwd{read.csv}\hlstd{(filepath.csv)}
 
 \hlkwd{names}\hlstd{(rawdata)}\hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"X1"}\hlstd{,} \hlstr{"X2"}\hlstd{,} \hlstr{"Month"}\hlstd{,} \hlstr{"Day"}\hlstd{,} \hlstr{"Hour"}\hlstd{,}
@@ -337,16 +337,27 @@ As always, I check my data!
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{head}\hlstd{(rawdata)[}\hlnum{1}\hlstd{]}
+\hlstd{rawdata[}\hlkwd{sample}\hlstd{(}\hlnum{1}\hlopt{:}\hlkwd{nrow}\hlstd{(rawdata),} \hlnum{5}\hlstd{),]} \hlcom{# random 10 rows, all columns}
 \end{alltt}
 \begin{verbatim}
-##                         X1
-## 1 OrderedDict([('DateTime'
-## 2 OrderedDict([('DateTime'
-## 3 OrderedDict([('DateTime'
-## 4 OrderedDict([('DateTime'
-## 5 OrderedDict([('DateTime'
-## 6 OrderedDict([('DateTime'
+##                            X1                      X2 Month Day Hour Minute
+## 912  OrderedDict([('DateTime'  datetime.datetime(2020    10  22   23     37
+## 497  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   23     42
+## 452  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   22     47
+## 1610 OrderedDict([('DateTime'  datetime.datetime(2020    10  25   16      5
+## 993  OrderedDict([('DateTime'  datetime.datetime(2020    10  23    6     45
+##      Second        X3         X4 pm1_cf          X5 pm25_cf          X6 pm10_cf
+## 912      35  547808))  ('pm1_cf'     11  ('pm25_cf'      21  ('pm10_cf'      26
+## 497      20  110389))  ('pm1_cf'     36  ('pm25_cf'      75  ('pm10_cf'      95
+## 452       7  318497))  ('pm1_cf'     38  ('pm25_cf'      72  ('pm10_cf'      86
+## 1610     19  461461))  ('pm1_cf'      1  ('pm25_cf'       2  ('pm10_cf'       3
+## 993      15  728351))  ('pm1_cf'     23  ('pm25_cf'      44  ('pm10_cf'      50
+##           X7  pm1       X8 pm25    pm10.     X9            DateTime
+## 912   ('pm1'  11)  ('pm25'  21)  ('pm10'  26)]) 2020-10-22 23:37:35
+## 497   ('pm1'  28)  ('pm25'  51)  ('pm10'  71)]) 2020-10-21 23:42:20
+## 452   ('pm1'  29)  ('pm25'  50)  ('pm10'  66)]) 2020-10-21 22:47:07
+## 1610  ('pm1'   1)  ('pm25'   2)  ('pm10'   3)]) 2020-10-25 16:05:19
+## 993   ('pm1'  22)  ('pm25'  38)  ('pm10'  48)]) 2020-10-23 06:45:15
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Remove Variables}
@@ -362,14 +373,14 @@ As usual, it's a good idea to get a sense of the variability of the data.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{hist}\hlstd{(cleandata}\hlopt{$}\hlstd{pm25_cf,} \hlkwc{xlab}\hlstd{=}\hlstr{"PM2.5 concentration"}\hlstd{,}
-    \hlkwc{main}\hlstd{=}\hlstr{"Histogram of PM2.5 in Claremont"}\hlstd{,} \hlkwc{las}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{xlim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{100}\hlstd{))}
+    \hlkwc{main}\hlstd{=}\hlstr{"Histogram of PM2.5 in Claremont"}\hlstd{,} \hlkwc{las}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{xlim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{400}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} 
 
 \end{knitrout}
 
-In my case, I have a very odd bimodal distribution. So, I am going plot on a time series to see if I can figure out what in the world is going on.
+In my case, I have a very odd bimodal distribution and an long tail to boot. So, I am going plot on a time series to see if I can figure out what in the world is going on.
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -390,7 +401,7 @@ Let's see if we can add times to the plot!
 \begin{alltt}
 \hlkwd{plot}\hlstd{(pm25_cf}\hlopt{~}\hlstd{DateTime,} \hlkwc{data}\hlstd{=cleandata,} \hlkwc{pch}\hlstd{=}\hlnum{20}\hlstd{,}
     \hlkwc{cex}\hlstd{=}\hlnum{.5}\hlstd{,} \hlkwc{las}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"PM2.5"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Time"}\hlstd{,}
-    \hlkwc{ylim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{90}\hlstd{),} \hlkwc{xaxt}\hlstd{=}\hlstr{'n'}\hlstd{)}
+    \hlkwc{ylim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{300}\hlstd{))}\hlcom{#, xaxt='y')}
 \hlkwd{library}\hlstd{(Hmisc)}
 \end{alltt}
 
@@ -406,16 +417,43 @@ Let's see if we can add times to the plot!
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'Hmisc'}}
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following objects are masked from 'package:base':\\\#\# \\\#\#\ \ \ \  format.pval, units}}\begin{alltt}
-\hlcom{#minor.tick(nx=4, tick.ratio=1)}
-\hlcom{#axis.lab=c(as.Date(c("2020-10-20", "2020-10-21", "2020-10-24")))}
-\hlkwd{axis}\hlstd{(}\hlnum{1}\hlstd{, cleandata}\hlopt{$}\hlstd{DateTime,} \hlkwd{format}\hlstd{(cleandata}\hlopt{$}\hlstd{DateTime,} \hlstr{"%H"}\hlstd{),} \hlkwc{cex.axis} \hlstd{=} \hlnum{.7}\hlstd{,}  \hlkwc{tck}\hlstd{=}\hlopt{-}\hlnum{.05}\hlstd{)}
+\hlkwd{abline}\hlstd{(}\hlkwc{h}\hlstd{=}\hlnum{35}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"red"}\hlstd{)}
 
-\hlkwd{axis}\hlstd{(}\hlnum{3}\hlstd{, cleandata}\hlopt{$}\hlstd{DateTime,} \hlkwd{format}\hlstd{(cleandata}\hlopt{$}\hlstd{DateTime,} \hlstr{"%a"}\hlstd{),} \hlkwc{cex.axis} \hlstd{=} \hlnum{.7}\hlstd{,}  \hlkwc{tck}\hlstd{=}\hlnum{0}\hlstd{)}\hlcom{#, at=axis.lab, labels=axis.lab)}
+\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-21 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-21 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
+
+\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-22 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-22 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
+
+\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-23 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-23 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
+
+\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-24 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-24 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
+
+\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-25 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-25 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
+
+\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
+
+\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-27 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-27 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
+
+\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-28 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-28 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-5-1} 
 \begin{kframe}\begin{alltt}
-\hlcom{#axis.Date(1,at=cleandata$DateTime,labels=format(cleandata$DateTime,"%H"),las=1)}
+\hlcom{#minor.tick(nx=4, tick.ratio=1)}
+\hlcom{#axis.lab=c(as.Date(c("2020-10-20", "2020-10-21", "2020-10-24")))}
+\hlcom{#axis(1, cleandata$DateTime, format(cleandata$DateTime, "%H"), cex.axis = .7,  tck=-.05)}
+
+
+\hlcom{#seq(min(cleandata$DateTime), max(cleandata$DateTime), by="days")}
+
+\hlcom{#rect(as.POSIXct("2020-10-21 8:00:00 UTC"), 0, as.POSIXct("2020-10-22 18:00:00 UTC", 300)}
+
+\hlcom{#axis.Date(3, at=seq(min(cleandata$DateTime), max(cleandata$DateTime), by="days"), format="%d")    }
+\hlcom{#axis(3, cleandata$DateTime, format(cleandata$DateTime, "%a"), cex.axis = .7,  tck=0)#, at=axis.lab, labels=axis.lab)}
+\hlcom{#axis.Date(1, at = seq(as.Date("2020-10-21 14:32:25 UTC"), as.Date("2020-10-2714:32:25 UTC "), "days"))}
+\hlcom{#axis.Date(1, at = seq(as.Date("2001/1/1"), max(random.dates)+6, "days"), labels = FALSE, tcl = -0.2)}
+
+\hlcom{#r <- as.POSIXct(round(range(time), "hours"))}
+\hlcom{#axis.POSIXct(1, at = seq(r[1], r[2], by = "hour"), format = "%H")}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -438,6 +476,18 @@ Not perfect, but good enough -- sows a that Claremont's Air Quality was terrible
 
 The population mean (monthly average from the EPA data) is a parameter estimate. We can determine if the values you collected fall within the parameter estimate and it's 95\% confidence intervals. 
 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{mean}\hlstd{(cleandata}\hlopt{$}\hlstd{pm1_cf)}
+\end{alltt}
+\begin{verbatim}
+## [1] 28.02078
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+Okay, now let's talk about signficant figures. The Pi only reports to the nearest whole value. Read about the rules in Wikipedia -- \url{https://en.wikipedia.org/wiki/Significant_figures}. In general, we should report to the whole number as well. However, some statiticians suggest that the mean and standard deviation can include one extra significant figure, allowing the reader to see the ``directionality'' of the mean toward the precision. However, for our purposes, I suggest we follow the standard rule and round to the nearest whole number and avoid implying additional precision.  
 
 \subsection{More Intricate Analysis}
 

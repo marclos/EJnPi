@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  27 OCT 2020 15:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2020.5.9)  28 OCT 2020 08:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -494,9 +494,9 @@ Overfull \hbox (32.9967pt too wide) in paragraph at lines 305--305
  []
 
 
-Overfull \hbox (101.24611pt too wide) in paragraph at lines 306--306
+Overfull \hbox (106.49606pt too wide) in paragraph at lines 306--306
 [][]\OT1/cmtt/m/n/10 filepath.csv[] []=[] []"/home/CAMPUS/mwl04747/github/EJnPi
-/data/Complete_airquality_data.csv"[][] 
+/data/Complete_airquality_data2.csv"[][] 
  []
 
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
@@ -516,101 +516,306 @@ Overfull \hbox (32.9967pt too wide) in paragraph at lines 316--316
 
 Package color Info: Redefining color shadecolor on input line 338.
 
-Overfull \hbox (38.24666pt too wide) in paragraph at lines 353--353
+Overfull \hbox (3.2331pt too wide) in paragraph at lines 340--340
+[][]\OT1/cmtt/m/n/10 rawdata[[][]sample[][]([][]1[][]:[][]nrow[][](rawdata),[] 
+[]5[][]),][] []\OT1/cmtt/m/it/10 # random 10 rows, all columns[][] 
+ []
+
+
+Overfull \hbox (64.49643pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ##                            X1                      X2 Mon
+th Day Hour Minute[] 
+ []
+
+
+Overfull \hbox (64.49643pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 912  OrderedDict([(^^MDateTime^^M  datetime.datetime(2020
+    10  22   23     37[] 
+ []
+
+
+Overfull \hbox (64.49643pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 497  OrderedDict([(^^MDateTime^^M  datetime.datetime(2020
+    10  21   23     42[] 
+ []
+
+
+Overfull \hbox (64.49643pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 452  OrderedDict([(^^MDateTime^^M  datetime.datetime(2020
+    10  21   22     47[] 
+ []
+
+
+Overfull \hbox (64.49643pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 1610 OrderedDict([(^^MDateTime^^M  datetime.datetime(2020
+    10  25   16      5[] 
+ []
+
+
+Overfull \hbox (64.49643pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 993  OrderedDict([(^^MDateTime^^M  datetime.datetime(2020
+    10  23    6     45[] 
+ []
+
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ##      Second        X3         X4 pm1_cf          X5 pm25_
+cf          X6 pm10_cf[] 
+ []
+
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 912      35  547808))  (^^Mpm1_cf^^M     11  (^^Mpm25_cf^
+^M      21  (^^Mpm10_cf^^M      26[] 
+ []
+
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 497      20  110389))  (^^Mpm1_cf^^M     36  (^^Mpm25_cf^
+^M      75  (^^Mpm10_cf^^M      95[] 
+ []
+
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 452       7  318497))  (^^Mpm1_cf^^M     38  (^^Mpm25_cf^
+^M      72  (^^Mpm10_cf^^M      86[] 
+ []
+
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 1610     19  461461))  (^^Mpm1_cf^^M      1  (^^Mpm25_cf^
+^M       2  (^^Mpm10_cf^^M       3[] 
+ []
+
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 993      15  728351))  (^^Mpm1_cf^^M     23  (^^Mpm25_cf^
+^M      44  (^^Mpm10_cf^^M      50[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ##           X7  pm1       X8 pm25    pm10.     X9          
+  DateTime[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 912   (^^Mpm1^^M  11)  (^^Mpm25^^M  21)  (^^Mpm10^^M  26)
+]) 2020-10-22 23:37:35[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 497   (^^Mpm1^^M  28)  (^^Mpm25^^M  51)  (^^Mpm10^^M  71)
+]) 2020-10-21 23:42:20[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 452   (^^Mpm1^^M  29)  (^^Mpm25^^M  50)  (^^Mpm10^^M  66)
+]) 2020-10-21 22:47:07[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 1610  (^^Mpm1^^M   1)  (^^Mpm25^^M   2)  (^^Mpm10^^M   3)
+]) 2020-10-25 16:05:19[] 
+ []
+
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 361--361
+[]\OT1/cmtt/m/n/10 ## 993   (^^Mpm1^^M  22)  (^^Mpm25^^M  38)  (^^Mpm10^^M  48)
+]) 2020-10-23 06:45:15[] 
+ []
+
+
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 364--364
 [][]\OT1/cmtt/m/n/10 cleandata[] []=[] []subset[][](rawdata,[] []select[][]=[][
 ]c[][](DateTime, pm1_cf, pm25_cf, pm10_cf))[][] 
  []
 
 [7]
-Package color Info: Redefining color shadecolor on input line 362.
+Package color Info: Redefining color shadecolor on input line 373.
  <figure/unnamed-chunk-3-1.pdf, id=143, 505.89pt x 505.89pt>
 File: figure/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-3-1.pdf used on input line 368.
+Package pdftex.def Info: figure/unnamed-chunk-3-1.pdf used on input line 379.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 368--369
+Overfull \hbox (15.0pt too wide) in paragraph at lines 379--380
 [][] 
  []
 
-Package color Info: Redefining color shadecolor on input line 375.
-<figure/unnamed-chunk-4-1.pdf, id=144, 505.89pt x 505.89pt>
+[8]
+Package color Info: Redefining color shadecolor on input line 386.
+ <figure/unnamed-chunk-4-1.pdf, id=148, 505.89pt x 505.89pt>
 File: figure/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-4-1.pdf used on input line 380.
+Package pdftex.def Info: figure/unnamed-chunk-4-1.pdf used on input line 391.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 380--381
+Overfull \hbox (15.0pt too wide) in paragraph at lines 391--392
 [][] 
  []
 
-[8 <./figure/unnamed-chunk-3-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 389.
+[9 <./figure/unnamed-chunk-3-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 400.
 
-Overfull \hbox (111.74602pt too wide) in paragraph at lines 411--411
-[][]\OT1/cmtt/m/n/10 axis[][]([][]1[][], cleandata[][]$[][]DateTime,[] []format
-[][](cleandata[][]$[][]DateTime,[] []"%H"[][]),[] []cex.axis[] []=[] [].7[][],[
-]  []tck[][]=[][]-[][].05[][])[][] 
+Overfull \hbox (353.24391pt too wide) in paragraph at lines 422--422
+[][]\OT1/cmtt/m/n/10 rect[][]([][]as.POSIXct[][]([][]"2020-10-21 7:00:00 UTC"[]
+[]),[] []-[][]20[][],[] []as.POSIXct[][]([][]"2020-10-21 18:00:00 UTC"[][]),[] 
+[]330[][],[] []border[] []=[] []NA[][],[] []col[][]=[] []rgb[][]([][]0[][],[][]
+0[][],[][]1.0[][],[][]alpha[][]=[][]0.1[][]))[][] 
  []
 
 
-Overfull \hbox (265.7308pt too wide) in paragraph at lines 413--413
-[][]\OT1/cmtt/m/n/10 axis[][]([][]3[][], cleandata[][]$[][]DateTime,[] []format
-[][](cleandata[][]$[][]DateTime,[] []"%a"[][]),[] []cex.axis[] []=[] [].7[][],[
-]  []tck[][]=[][]0[][])[][]\OT1/cmtt/m/it/10 #, at=axis.lab, labels=axis.lab)[]
-[] 
+Overfull \hbox (353.24391pt too wide) in paragraph at lines 424--424
+[][]\OT1/cmtt/m/n/10 rect[][]([][]as.POSIXct[][]([][]"2020-10-22 7:00:00 UTC"[]
+[]),[] []-[][]20[][],[] []as.POSIXct[][]([][]"2020-10-22 18:00:00 UTC"[][]),[] 
+[]330[][],[] []border[] []=[] []NA[][],[] []col[][]=[] []rgb[][]([][]0[][],[][]
+0[][],[][]1.0[][],[][]alpha[][]=[][]0.1[][]))[][] 
  []
 
-[9 <./figure/unnamed-chunk-4-1.pdf>]
-<figure/unnamed-chunk-5-1.pdf, id=165, 505.89pt x 505.89pt>
+
+Overfull \hbox (353.24391pt too wide) in paragraph at lines 426--426
+[][]\OT1/cmtt/m/n/10 rect[][]([][]as.POSIXct[][]([][]"2020-10-23 7:00:00 UTC"[]
+[]),[] []-[][]20[][],[] []as.POSIXct[][]([][]"2020-10-23 18:00:00 UTC"[][]),[] 
+[]330[][],[] []border[] []=[] []NA[][],[] []col[][]=[] []rgb[][]([][]0[][],[][]
+0[][],[][]1.0[][],[][]alpha[][]=[][]0.1[][]))[][] 
+ []
+
+
+Overfull \hbox (353.24391pt too wide) in paragraph at lines 428--428
+[][]\OT1/cmtt/m/n/10 rect[][]([][]as.POSIXct[][]([][]"2020-10-24 7:00:00 UTC"[]
+[]),[] []-[][]20[][],[] []as.POSIXct[][]([][]"2020-10-24 18:00:00 UTC"[][]),[] 
+[]330[][],[] []border[] []=[] []NA[][],[] []col[][]=[] []rgb[][]([][]0[][],[][]
+0[][],[][]1.0[][],[][]alpha[][]=[][]0.1[][]))[][] 
+ []
+
+
+Overfull \hbox (353.24391pt too wide) in paragraph at lines 430--430
+[][]\OT1/cmtt/m/n/10 rect[][]([][]as.POSIXct[][]([][]"2020-10-25 7:00:00 UTC"[]
+[]),[] []-[][]20[][],[] []as.POSIXct[][]([][]"2020-10-25 18:00:00 UTC"[][]),[] 
+[]330[][],[] []border[] []=[] []NA[][],[] []col[][]=[] []rgb[][]([][]0[][],[][]
+0[][],[][]1.0[][],[][]alpha[][]=[][]0.1[][]))[][] 
+ []
+
+
+Overfull \hbox (353.24391pt too wide) in paragraph at lines 432--432
+[][]\OT1/cmtt/m/n/10 rect[][]([][]as.POSIXct[][]([][]"2020-10-26 7:00:00 UTC"[]
+[]),[] []-[][]20[][],[] []as.POSIXct[][]([][]"2020-10-26 18:00:00 UTC"[][]),[] 
+[]330[][],[] []border[] []=[] []NA[][],[] []col[][]=[] []rgb[][]([][]0[][],[][]
+0[][],[][]1.0[][],[][]alpha[][]=[][]0.1[][]))[][] 
+ []
+
+
+Overfull \hbox (353.24391pt too wide) in paragraph at lines 434--434
+[][]\OT1/cmtt/m/n/10 rect[][]([][]as.POSIXct[][]([][]"2020-10-27 7:00:00 UTC"[]
+[]),[] []-[][]20[][],[] []as.POSIXct[][]([][]"2020-10-27 18:00:00 UTC"[][]),[] 
+[]330[][],[] []border[] []=[] []NA[][],[] []col[][]=[] []rgb[][]([][]0[][],[][]
+0[][],[][]1.0[][],[][]alpha[][]=[][]0.1[][]))[][] 
+ []
+
+
+Overfull \hbox (353.24391pt too wide) in paragraph at lines 436--436
+[][]\OT1/cmtt/m/n/10 rect[][]([][]as.POSIXct[][]([][]"2020-10-28 7:00:00 UTC"[]
+[]),[] []-[][]20[][],[] []as.POSIXct[][]([][]"2020-10-28 18:00:00 UTC"[][]),[] 
+[]330[][],[] []border[] []=[] []NA[][],[] []col[][]=[] []rgb[][]([][]0[][],[][]
+0[][],[][]1.0[][],[][]alpha[][]=[][]0.1[][]))[][] 
+ []
+
+[10 <./figure/unnamed-chunk-4-1.pdf>]
+<figure/unnamed-chunk-5-1.pdf, id=169, 505.89pt x 505.89pt>
 File: figure/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-5-1.pdf used on input line 416.
+Package pdftex.def Info: figure/unnamed-chunk-5-1.pdf used on input line 439.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 416--417
+Overfull \hbox (15.0pt too wide) in paragraph at lines 439--440
 [][] 
  []
 
-
-Overfull \hbox (76.73245pt too wide) in paragraph at lines 418--418
-[][]\OT1/cmtt/m/it/10 #axis.Date(1,at=cleandata$DateTime,labels=format(cleandat
-a$DateTime,"%H"),las=1)[][] 
+[11]
+Overfull \hbox (118.73209pt too wide) in paragraph at lines 443--443
+[][]\OT1/cmtt/m/it/10 #axis(1, cleandata$DateTime, format(cleandata$DateTime, "
+%H"), cex.axis = .7,  tck=-.05)[][] 
  []
 
-Package color Info: Redefining color shadecolor on input line 430.
-[10 <./figure/unnamed-chunk-5-1.pdf>]
+
+Overfull \hbox (123.98204pt too wide) in paragraph at lines 448--448
+[][]\OT1/cmtt/m/it/10 #rect(as.POSIXct("2020-10-21 8:00:00 UTC"), 0, as.POSIXct
+("2020-10-22 18:00:00 UTC", 300)[][] 
+ []
+
+
+Overfull \hbox (174.74547pt too wide) in paragraph at lines 450--450
+[][]\OT1/cmtt/m/it/10 #axis.Date(3, at=seq(min(cleandata$DateTime), max(cleanda
+ta$DateTime), by="days"), format="%d")    [][] 
+ []
+
+
+Overfull \hbox (270.98076pt too wide) in paragraph at lines 451--451
+[][]\OT1/cmtt/m/it/10 #axis(3, cleandata$DateTime, format(cleandata$DateTime, "
+%a"), cex.axis = .7,  tck=0)#, at=axis.lab, labels=axis.lab)[][] 
+ []
+
+
+Overfull \hbox (197.4814pt too wide) in paragraph at lines 452--452
+[][]\OT1/cmtt/m/it/10 #axis.Date(1, at = seq(as.Date("2020-10-21 14:32:25 UTC")
+, as.Date("2020-10-2714:32:25 UTC "), "days"))[][] 
+ []
+
+
+Overfull \hbox (186.98149pt too wide) in paragraph at lines 453--453
+[][]\OT1/cmtt/m/it/10 #axis.Date(1, at = seq(as.Date("2001/1/1"), max(random.da
+tes)+6, "days"), labels = FALSE, tcl = -0.2)[][] 
+ []
+
+
+Overfull \hbox (3.2331pt too wide) in paragraph at lines 456--456
+[][]\OT1/cmtt/m/it/10 #axis.POSIXct(1, at = seq(r[1], r[2], by = "hour"), forma
+t = "%H")[][] 
+ []
+
+
+Overfull \vbox (0.9708pt too high) detected at line 458
+ []
+
+[12 <./figure/unnamed-chunk-5-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 468.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 437.
+(Font)              <12> on input line 475.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 437.
+(hyperref)                removing `math shift' on input line 475.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mu' on input line 437.
+(hyperref)                removing `\mu' on input line 475.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 437.
+(hyperref)                removing `math shift' on input line 475.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 449.
-[11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 449.
+Package color Info: Redefining color shadecolor on input line 480.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 499.
+[13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 499.
  (./4_Processing_Data.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 449.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 449.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 499.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 499.
 Package rerunfilecheck Info: File `4_Processing_Data.out' has not changed.
 (rerunfilecheck)             Checksum: 4F409D626D4C76ABE5EE204B919C83F5;1060.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 449.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 499.
  ) 
 Here is how much of TeX's memory you used:
- 7043 strings out of 494820
- 105300 string characters out of 3178050
+ 7045 strings out of 494820
+ 105314 string characters out of 3178050
  216906 words of memory out of 3000000
  10107 multiletter control sequences out of 15000+200000
  8269 words of font info for 30 fonts, out of 3000000 for 9000
@@ -629,10 +834,10 @@ nts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb>
-Output written on 4_Processing_Data.pdf (11 pages, 1715429 bytes).
+Output written on 4_Processing_Data.pdf (13 pages, 1808388 bytes).
 PDF statistics:
- 237 PDF objects out of 1000 (max. 8388607)
- 194 compressed objects within 2 object streams
- 49 named destinations out of 1000 (max. 500000)
+ 250 PDF objects out of 1000 (max. 8388607)
+ 204 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
  166 words of extra memory for PDF output out of 10000 (max. 10000000)
 

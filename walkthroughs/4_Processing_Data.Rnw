@@ -251,7 +251,7 @@ I opened the document up in rstdudio and did a search for " and replaced with no
 
 <<>>=
 filepath.csv = "/home/CAMPUS/mwl04747/github/EJnPi/data/Air_Quality.csv"
-filepath.csv = "/home/CAMPUS/mwl04747/github/EJnPi/data/Complete_airquality_data.csv"
+filepath.csv = "/home/CAMPUS/mwl04747/github/EJnPi/data/Complete_airquality_data2.csv"
 rawdata = read.csv(filepath.csv)
 
 names(rawdata)= c("X1", "X2", "Month", "Day", "Hour",                 
@@ -271,7 +271,7 @@ rawdata$DateTime = with(rawdata, ymd_hms(paste("2020", Month,
 As always, I check my data!
 
 <<>>=
-head(rawdata)[1]
+rawdata[sample(1:nrow(rawdata), 5),] # random 10 rows, all columns
 
 # Remove Variables
 cleandata = subset(rawdata, select=c(DateTime, pm1_cf, pm25_cf, pm10_cf))
@@ -283,10 +283,10 @@ cleandata = subset(rawdata, select=c(DateTime, pm1_cf, pm25_cf, pm10_cf))
 As usual, it's a good idea to get a sense of the variability of the data. 
 <<>>=
 hist(cleandata$pm25_cf, xlab="PM2.5 concentration", 
-    main="Histogram of PM2.5 in Claremont", las=1, xlim=c(0,100))
+    main="Histogram of PM2.5 in Claremont", las=1, xlim=c(0,400))
 @
 
-In my case, I have a very odd bimodal distribution. So, I am going plot on a time series to see if I can figure out what in the world is going on.
+In my case, I have a very odd bimodal distribution and an long tail to boot. So, I am going plot on a time series to see if I can figure out what in the world is going on.
 
 <<>>=
 plot(pm25_cf~DateTime, data=cleandata, pch=20, cex=.5)
@@ -299,15 +299,42 @@ Let's see if we can add times to the plot!
 <<>>==
 plot(pm25_cf~DateTime, data=cleandata, pch=20, 
     cex=.5, las=1, ylab="PM2.5", xlab="Time", 
-    ylim=c(0,90), xaxt='n')
+    ylim=c(0,300))#, xaxt='y')
 library(Hmisc)
+abline(h=35, col="red")
+
+rect(as.POSIXct("2020-10-21 7:00:00 UTC"), -20, as.POSIXct("2020-10-21 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+
+rect(as.POSIXct("2020-10-22 7:00:00 UTC"), -20, as.POSIXct("2020-10-22 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+
+rect(as.POSIXct("2020-10-23 7:00:00 UTC"), -20, as.POSIXct("2020-10-23 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+
+rect(as.POSIXct("2020-10-24 7:00:00 UTC"), -20, as.POSIXct("2020-10-24 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+
+rect(as.POSIXct("2020-10-25 7:00:00 UTC"), -20, as.POSIXct("2020-10-25 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+
+rect(as.POSIXct("2020-10-26 7:00:00 UTC"), -20, as.POSIXct("2020-10-26 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+
+rect(as.POSIXct("2020-10-27 7:00:00 UTC"), -20, as.POSIXct("2020-10-27 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+
+rect(as.POSIXct("2020-10-28 7:00:00 UTC"), -20, as.POSIXct("2020-10-28 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+
 #minor.tick(nx=4, tick.ratio=1)
 #axis.lab=c(as.Date(c("2020-10-20", "2020-10-21", "2020-10-24")))
-axis(1, cleandata$DateTime, format(cleandata$DateTime, "%H"), cex.axis = .7,  tck=-.05)
+#axis(1, cleandata$DateTime, format(cleandata$DateTime, "%H"), cex.axis = .7,  tck=-.05)
 
-axis(3, cleandata$DateTime, format(cleandata$DateTime, "%a"), cex.axis = .7,  tck=0)#, at=axis.lab, labels=axis.lab)
 
-#axis.Date(1,at=cleandata$DateTime,labels=format(cleandata$DateTime,"%H"),las=1)
+#seq(min(cleandata$DateTime), max(cleandata$DateTime), by="days")
+
+#rect(as.POSIXct("2020-10-21 8:00:00 UTC"), 0, as.POSIXct("2020-10-22 18:00:00 UTC", 300)
+ 
+#axis.Date(3, at=seq(min(cleandata$DateTime), max(cleandata$DateTime), by="days"), format="%d")    
+#axis(3, cleandata$DateTime, format(cleandata$DateTime, "%a"), cex.axis = .7,  tck=0)#, at=axis.lab, labels=axis.lab)
+#axis.Date(1, at = seq(as.Date("2020-10-21 14:32:25 UTC"), as.Date("2020-10-2714:32:25 UTC "), "days"))
+#axis.Date(1, at = seq(as.Date("2001/1/1"), max(random.dates)+6, "days"), labels = FALSE, tcl = -0.2)
+
+#r <- as.POSIXct(round(range(time), "hours"))
+#axis.POSIXct(1, at = seq(r[1], r[2], by = "hour"), format = "%H")
 @
 
 Not perfect, but good enough -- sows a that Claremont's Air Quality was terrible on Wednesday night and Thursday morning. 
@@ -324,6 +351,11 @@ Not perfect, but good enough -- sows a that Claremont's Air Quality was terrible
 
 The population mean (monthly average from the EPA data) is a parameter estimate. We can determine if the values you collected fall within the parameter estimate and it's 95\% confidence intervals. 
 
+<<>>=
+mean(cleandata$pm1_cf)
+@
+
+Okay, now let's talk about signficant figures. The Pi only reports to the nearest whole value. Read about the rules in Wikipedia -- \url{https://en.wikipedia.org/wiki/Significant_figures}. In general, we should report to the whole number as well. However, some statiticians suggest that the mean and standard deviation can include one extra significant figure, allowing the reader to see the ``directionality'' of the mean toward the precision. However, for our purposes, I suggest we follow the standard rule and round to the nearest whole number and avoid implying additional precision.  
 
 \subsection{More Intricate Analysis}
 
