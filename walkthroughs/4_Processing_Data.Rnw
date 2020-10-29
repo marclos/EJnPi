@@ -294,50 +294,51 @@ plot(pm25_cf~DateTime, data=cleandata, pch=20, cex=.5)
 
 Except for some breaks in the data, we can certainly see a diurnal pattern, where the concentrations seem highest after midnight. 
 
-Let's see if we can add times to the plot!
+Let's see if we can add times to the plot with some rectancles for ``night time''!  Furthermore, let's see how different size particles behave (Figure~\ref{fig:data}). 
 
-<<>>==
-plot(pm25_cf~DateTime, data=cleandata, pch=20, 
-    cex=.5, las=1, ylab="PM2.5", xlab="Time", 
-    ylim=c(0,300))#, xaxt='y')
-library(Hmisc)
+\begin{figure}[h]
+<<echo=F>>=
+Ylab = expression(paste("PM (", mu,"g/m","^3",")"))
+par(mfrow=c(3,1), mar=c(5,5,2,0)+.1, cex.lab=1.5)
+plot(pm1_cf~DateTime, data=cleandata, pch=20, 
+    cex=.5, las=1, ylab=Ylab, xlab="Day", 
+    ylim=c(0,320), main="PM1")
 abline(h=35, col="red")
 
-rect(as.POSIXct("2020-10-21 7:00:00 UTC"), -20, as.POSIXct("2020-10-21 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+night.fun <- function(offset){
+  offset=offset*24*60*60
+rect(as.POSIXct("2020-10-21 18:00:00 UTC")+offset, 
+     -20, as.POSIXct("2020-10-21 6:00:00 UTC")+offset, 
+     330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+}
 
-rect(as.POSIXct("2020-10-22 7:00:00 UTC"), -20, as.POSIXct("2020-10-22 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+night.fun(c(0, 1,2,3,4,5,6,7,8)) 
 
-rect(as.POSIXct("2020-10-23 7:00:00 UTC"), -20, as.POSIXct("2020-10-23 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
+plot(pm25_cf~DateTime, data=cleandata, pch=20, 
+    cex=.5, las=1, ylab=Ylab, xlab="Day", ylim=c(0,320), main="PM 2.5")
+abline(h=35, col="red")
+night.fun(c(0, 1,2,3,4,5,6,7,8)) 
 
-rect(as.POSIXct("2020-10-24 7:00:00 UTC"), -20, as.POSIXct("2020-10-24 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
-
-rect(as.POSIXct("2020-10-25 7:00:00 UTC"), -20, as.POSIXct("2020-10-25 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
-
-rect(as.POSIXct("2020-10-26 7:00:00 UTC"), -20, as.POSIXct("2020-10-26 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
-
-rect(as.POSIXct("2020-10-27 7:00:00 UTC"), -20, as.POSIXct("2020-10-27 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
-
-rect(as.POSIXct("2020-10-28 7:00:00 UTC"), -20, as.POSIXct("2020-10-28 18:00:00 UTC"), 330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
-
-#minor.tick(nx=4, tick.ratio=1)
-#axis.lab=c(as.Date(c("2020-10-20", "2020-10-21", "2020-10-24")))
-#axis(1, cleandata$DateTime, format(cleandata$DateTime, "%H"), cex.axis = .7,  tck=-.05)
-
-
-#seq(min(cleandata$DateTime), max(cleandata$DateTime), by="days")
-
-#rect(as.POSIXct("2020-10-21 8:00:00 UTC"), 0, as.POSIXct("2020-10-22 18:00:00 UTC", 300)
- 
-#axis.Date(3, at=seq(min(cleandata$DateTime), max(cleandata$DateTime), by="days"), format="%d")    
-#axis(3, cleandata$DateTime, format(cleandata$DateTime, "%a"), cex.axis = .7,  tck=0)#, at=axis.lab, labels=axis.lab)
-#axis.Date(1, at = seq(as.Date("2020-10-21 14:32:25 UTC"), as.Date("2020-10-2714:32:25 UTC "), "days"))
-#axis.Date(1, at = seq(as.Date("2001/1/1"), max(random.dates)+6, "days"), labels = FALSE, tcl = -0.2)
-
-#r <- as.POSIXct(round(range(time), "hours"))
-#axis.POSIXct(1, at = seq(r[1], r[2], by = "hour"), format = "%H")
+plot(pm10_cf~DateTime, data=cleandata, pch=20, 
+    cex=.5, las=1, ylab="PM2.5", xlab="Time", 
+    ylim=c(0,320), main="PM 10")
+abline(h=50, col="red")
+night.fun(c(0, 1,2,3,4,5,6,7,8)) 
 @
+\caption{PM$_{1.0}$, PM$_{2.5}$ and PM$_{2.5}$ in Claremont California between Oct 21--Oct. 28, PM2.5 24 hour standard = 35, and PM10 24 hour standard = 50.}
+%\label{fig:data}
+\end{figure}
 
-Not perfect, but good enough -- sows a that Claremont's Air Quality was terrible on Wednesday night and Thursday morning. 
+Figure~\ref{} is not perfect. Here's a few issues:
+
+\begin{itemize}
+\item Dates and Days would be ideal
+\item y-axis isn't quite correct
+\item moving average might be nice. 
+\item remove "dates" from top two figures because it's redundant.
+\end{itemize}
+
+For now, this is good enough -- and I'll keep working on this. Overall, Claremont's Air Quality was terrible on Wednesday night and Thursday morning. 
 
 \section{Comparing Data to EPA Stations}
 

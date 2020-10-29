@@ -341,23 +341,23 @@ As always, I check my data!
 \end{alltt}
 \begin{verbatim}
 ##                            X1                      X2 Month Day Hour Minute
-## 1760 OrderedDict([('DateTime'  datetime.datetime(2020    10  26    6     19
-## 186  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   17     46
-## 1318 OrderedDict([('DateTime'  datetime.datetime(2020    10  24   14     35
-## 306  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   19     53
-## 311  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   19     58
+## 1603 OrderedDict([('DateTime'  datetime.datetime(2020    10  25   15     23
+## 674  OrderedDict([('DateTime'  datetime.datetime(2020    10  22    4      3
+## 1343 OrderedDict([('DateTime'  datetime.datetime(2020    10  24   16     51
+## 351  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   20     44
+## 589  OrderedDict([('DateTime'  datetime.datetime(2020    10  22    1     48
 ##      Second        X3         X4 pm1_cf          X5 pm25_cf          X6 pm10_cf
-## 1760     10   22440))  ('pm1_cf'      4  ('pm25_cf'       9  ('pm10_cf'      15
-## 186      16  353950))  ('pm1_cf'     37  ('pm25_cf'      68  ('pm10_cf'      84
-## 1318     24  658429))  ('pm1_cf'     10  ('pm25_cf'      15  ('pm10_cf'      15
-## 306      36  535979))  ('pm1_cf'     19  ('pm25_cf'      33  ('pm10_cf'      38
-## 311      57  842901))  ('pm1_cf'     18  ('pm25_cf'      35  ('pm10_cf'      35
+## 1603     34  333076))  ('pm1_cf'      2  ('pm25_cf'       4  ('pm10_cf'       4
+## 674      16  572775))  ('pm1_cf'     34  ('pm25_cf'      70  ('pm10_cf'      85
+## 1343      8  516094))  ('pm1_cf'     12  ('pm25_cf'      19  ('pm10_cf'      20
+## 351      31  945709))  ('pm1_cf'     22  ('pm25_cf'      44  ('pm10_cf'      52
+## 589      39  190381))  ('pm1_cf'     36  ('pm25_cf'      75  ('pm10_cf'      89
 ##           X7  pm1       X8 pm25    pm10.     X9            DateTime
-## 1760  ('pm1'   4)  ('pm25'   9)  ('pm10'  15)]) 2020-10-26 06:19:10
-## 186   ('pm1'  29)  ('pm25'  49)  ('pm10'  66)]) 2020-10-21 17:46:16
-## 1318  ('pm1'  10)  ('pm25'  15)  ('pm10'  15)]) 2020-10-24 14:35:24
-## 306   ('pm1'  19)  ('pm25'  32)  ('pm10'  38)]) 2020-10-21 19:53:36
-## 311   ('pm1'  18)  ('pm25'  33)  ('pm10'  35)]) 2020-10-21 19:58:57
+## 1603  ('pm1'   2)  ('pm25'   4)  ('pm10'   4)]) 2020-10-25 15:23:34
+## 674   ('pm1'  27)  ('pm25'  49)  ('pm10'  66)]) 2020-10-22 04:03:16
+## 1343  ('pm1'  12)  ('pm25'  19)  ('pm10'  20)]) 2020-10-24 16:51:08
+## 351   ('pm1'  21)  ('pm25'  38)  ('pm10'  49)]) 2020-10-21 20:44:31
+## 589   ('pm1'  28)  ('pm25'  51)  ('pm10'  68)]) 2020-10-22 01:48:39
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Remove Variables}
@@ -394,71 +394,28 @@ In my case, I have a very odd bimodal distribution and an long tail to boot. So,
 
 Except for some breaks in the data, we can certainly see a diurnal pattern, where the concentrations seem highest after midnight. 
 
-Let's see if we can add times to the plot!
+Let's see if we can add times to the plot with some rectancles for ``night time''!  Furthermore, let's see how different size particles behave (Figure~\ref{fig:data}). 
 
+\begin{figure}[h]
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{plot}\hlstd{(pm25_cf}\hlopt{~}\hlstd{DateTime,} \hlkwc{data}\hlstd{=cleandata,} \hlkwc{pch}\hlstd{=}\hlnum{20}\hlstd{,}
-    \hlkwc{cex}\hlstd{=}\hlnum{.5}\hlstd{,} \hlkwc{las}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"PM2.5"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Time"}\hlstd{,}
-    \hlkwc{ylim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{300}\hlstd{))}\hlcom{#, xaxt='y')}
-\hlkwd{library}\hlstd{(Hmisc)}
-\end{alltt}
-
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: lattice}}
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: survival}}
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: Formula}}
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: ggplot2}}
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'Hmisc'}}
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following objects are masked from 'package:base':\\\#\# \\\#\#\ \ \ \  format.pval, units}}\begin{alltt}
-\hlkwd{abline}\hlstd{(}\hlkwc{h}\hlstd{=}\hlnum{35}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"red"}\hlstd{)}
-
-\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-21 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-21 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
-
-\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-22 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-22 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
-
-\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-23 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-23 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
-
-\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-24 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-24 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
-
-\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-25 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-25 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
-
-\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
-
-\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-27 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-27 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
-
-\hlkwd{rect}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-28 7:00:00 UTC"}\hlstd{),} \hlopt{-}\hlnum{20}\hlstd{,} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-28 18:00:00 UTC"}\hlstd{),} \hlnum{330}\hlstd{,} \hlkwc{border} \hlstd{=} \hlnum{NA}\hlstd{,} \hlkwc{col}\hlstd{=} \hlkwd{rgb}\hlstd{(}\hlnum{0}\hlstd{,}\hlnum{0}\hlstd{,}\hlnum{1.0}\hlstd{,}\hlkwc{alpha}\hlstd{=}\hlnum{0.1}\hlstd{))}
-\end{alltt}
-\end{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-5-1} 
-\begin{kframe}\begin{alltt}
-\hlcom{#minor.tick(nx=4, tick.ratio=1)}
-\hlcom{#axis.lab=c(as.Date(c("2020-10-20", "2020-10-21", "2020-10-24")))}
-\hlcom{#axis(1, cleandata$DateTime, format(cleandata$DateTime, "%H"), cex.axis = .7,  tck=-.05)}
 
-
-\hlcom{#seq(min(cleandata$DateTime), max(cleandata$DateTime), by="days")}
-
-\hlcom{#rect(as.POSIXct("2020-10-21 8:00:00 UTC"), 0, as.POSIXct("2020-10-22 18:00:00 UTC", 300)}
-
-\hlcom{#axis.Date(3, at=seq(min(cleandata$DateTime), max(cleandata$DateTime), by="days"), format="%d")    }
-\hlcom{#axis(3, cleandata$DateTime, format(cleandata$DateTime, "%a"), cex.axis = .7,  tck=0)#, at=axis.lab, labels=axis.lab)}
-\hlcom{#axis.Date(1, at = seq(as.Date("2020-10-21 14:32:25 UTC"), as.Date("2020-10-2714:32:25 UTC "), "days"))}
-\hlcom{#axis.Date(1, at = seq(as.Date("2001/1/1"), max(random.dates)+6, "days"), labels = FALSE, tcl = -0.2)}
-
-\hlcom{#r <- as.POSIXct(round(range(time), "hours"))}
-\hlcom{#axis.POSIXct(1, at = seq(r[1], r[2], by = "hour"), format = "%H")}
-\end{alltt}
-\end{kframe}
 \end{knitrout}
+\caption{PM$_{1.0}$, PM$_{2.5}$ and PM$_{2.5}$ in Claremont California between Oct 21--Oct. 28, PM2.5 24 hour standard = 35, and PM10 24 hour standard = 50.}
+%\label{fig:data}
+\end{figure}
 
-Not perfect, but good enough -- sows a that Claremont's Air Quality was terrible on Wednesday night and Thursday morning. 
+Figure~\ref{} is not perfect. Here's a few issues:
+
+\begin{itemize}
+\item Dates and Days would be ideal
+\item y-axis isn't quite correct
+\item moving average might be nice. 
+\item remove "dates" from top two figures because it's redundant.
+\end{itemize}
+
+For now, this is good enough -- and I'll keep working on this. Overall, Claremont's Air Quality was terrible on Wednesday night and Thursday morning. 
 
 \section{Comparing Data to EPA Stations}
 
