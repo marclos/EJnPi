@@ -370,5 +370,43 @@ You could look to see if the there is a different during the time of the day or 
 
 We can help you with r code if you'd like to follow up with these additional questions. 
 
+\subsection{Calculate 5 min averages}
 
+<<>>=
+library(dplyr)
+cleandata$group <- cut(cleandata$DateTime, breaks="30 min")
+
+cleandata %>% group_by(cleandata$group) %>% summarize(mins_output = mean(cleandata$pm25_cf))
+
+str(cleandata)
+
+require(dplyr)
+cleandata %>%
+  group_by(DateTime = cut(DateTime, breaks="5 min")) %>%
+  summarize(Concentration = mean(pm25_cf))
+
+@
+
+\subsection{Subset for Dates}
+
+<<>>=
+str(cleandata)
+dataset1 = subset(cleandata, 
+  subset=
+    DateTime<as.Date("2020-10-22 15:32:25") & 
+    DateTime>as.Date("2020-10-21 14:35:28"))
+dataset2 = subset(cleandata, 
+  subset=
+    DateTime<as.Date("2020-10-22 15:32:25") & 
+    DateTime>as.Date("2020-10-21 14:35:28"))
+@
+
+
+\subsection{Test test}
+
+<<>>=
+t.test(dataset1$PM25, dataset2$PM25, paired=TRUE)
+
+
+@
 \end{document}

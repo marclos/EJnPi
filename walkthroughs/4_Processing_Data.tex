@@ -358,23 +358,23 @@ As always, I check my data!
 \end{alltt}
 \begin{verbatim}
 ##                            X1                      X2 Month Day Hour Minute
-## 3783                                                     NA  NA   NA     NA
-## 1353 OrderedDict([('DateTime'  datetime.datetime(2020    10  24    6     43
-## 4640 OrderedDict([('DateTime'  datetime.datetime(2020    11   1    6     33
-## 1972 OrderedDict([('DateTime'  datetime.datetime(2020    10  25    9     11
-## 3066 OrderedDict([('DateTime'  datetime.datetime(2020    10  27   13     18
+## 258  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   18     55
+## 529  OrderedDict([('DateTime'  datetime.datetime(2020    10  22    0      3
+## 330  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   20     11
+## 4637                                                     NA  NA   NA     NA
+## 5775                                                     NA  NA   NA     NA
 ##      Second        X3         X4 pm1_cf          X5 pm25_cf          X6 pm10_cf
-## 3783     NA                          NA                  NA                  NA
-## 1353     43  758034))  ('pm1_cf'     19  ('pm25_cf'      35  ('pm10_cf'      37
-## 4640     18  221271))  ('pm1_cf'      4  ('pm25_cf'       7  ('pm10_cf'       7
-## 1972      5  449808))  ('pm1_cf'      6  ('pm25_cf'      11  ('pm10_cf'      12
-## 3066     38  683099))  ('pm1_cf'     55  ('pm25_cf'      81  ('pm10_cf'      88
+## 258      30  553897))  ('pm1_cf'     19  ('pm25_cf'      34  ('pm10_cf'      36
+## 529      56  257322))  ('pm1_cf'     35  ('pm25_cf'      72  ('pm10_cf'      83
+## 330      52  960911))  ('pm1_cf'     19  ('pm25_cf'      33  ('pm10_cf'      37
+## 4637     NA                          NA                  NA                  NA
+## 5775     NA                          NA                  NA                  NA
 ##           X7  pm1       X8 pm25    pm10.     X9            DateTime
-## 3783                                                           <NA>
-## 1353  ('pm1'  19)  ('pm25'  33)  ('pm10'  37)]) 2020-10-24 06:43:43
-## 4640  ('pm1'   4)  ('pm25'   7)  ('pm10'   7)]) 2020-11-01 06:33:18
-## 1972  ('pm1'   6)  ('pm25'  11)  ('pm10'  12)]) 2020-10-25 09:11:05
-## 3066  ('pm1'  36)  ('pm25'  53)  ('pm10'  68)]) 2020-10-27 13:18:38
+## 258   ('pm1'  19)  ('pm25'  32)  ('pm10'  36)]) 2020-10-21 18:55:30
+## 529   ('pm1'  28)  ('pm25'  50)  ('pm10'  66)]) 2020-10-22 00:03:56
+## 330   ('pm1'  19)  ('pm25'  32)  ('pm10'  37)]) 2020-10-21 20:11:52
+## 4637                                                           <NA>
+## 5775                                                           <NA>
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Remove Variables}
@@ -472,5 +472,120 @@ You could look to see if the there is a different during the time of the day or 
 
 We can help you with r code if you'd like to follow up with these additional questions. 
 
+\subsection{Calculate 5 min averages}
 
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(dplyr)}
+\end{alltt}
+
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'dplyr'}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following objects are masked from 'package:lubridate':\\\#\# \\\#\#\ \ \ \  intersect, setdiff, union}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following objects are masked from 'package:stats':\\\#\# \\\#\#\ \ \ \  filter, lag}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following objects are masked from 'package:base':\\\#\# \\\#\#\ \ \ \  intersect, setdiff, setequal, union}}\begin{alltt}
+\hlstd{cleandata}\hlopt{$}\hlstd{group} \hlkwb{<-} \hlkwd{cut}\hlstd{(cleandata}\hlopt{$}\hlstd{DateTime,} \hlkwc{breaks}\hlstd{=}\hlstr{"30 min"}\hlstd{)}
+
+\hlstd{cleandata} \hlopt{%>%} \hlkwd{group_by}\hlstd{(cleandata}\hlopt{$}\hlstd{group)} \hlopt{%>%} \hlkwd{summarize}\hlstd{(}\hlkwc{mins_output} \hlstd{=} \hlkwd{mean}\hlstd{(cleandata}\hlopt{$}\hlstd{pm25_cf))}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: Factor `cleandata\$group` contains implicit NA, consider using `forcats::fct\_explicit\_na`}}\begin{verbatim}
+## # A tibble: 547 x 2
+##    `cleandata$group`   mins_output
+##    <fct>                     <dbl>
+##  1 2020-10-21 14:32:00          NA
+##  2 2020-10-21 15:02:00          NA
+##  3 2020-10-21 15:32:00          NA
+##  4 2020-10-21 16:02:00          NA
+##  5 2020-10-21 16:32:00          NA
+##  6 2020-10-21 17:02:00          NA
+##  7 2020-10-21 17:32:00          NA
+##  8 2020-10-21 18:02:00          NA
+##  9 2020-10-21 18:32:00          NA
+## 10 2020-10-21 19:02:00          NA
+## # ... with 537 more rows
+\end{verbatim}
+\begin{alltt}
+\hlkwd{str}\hlstd{(cleandata)}
+\end{alltt}
+\begin{verbatim}
+## 'data.frame':	6153 obs. of  5 variables:
+##  $ DateTime: POSIXct, format: "2020-10-21 14:32:25" "2020-10-21 14:33:26" ...
+##  $ pm1_cf  : num  32 36 33 35 31 34 35 34 33 35 ...
+##  $ pm25_cf : num  64 73 65 68 62 68 70 67 61 63 ...
+##  $ pm10_cf : num  75 77 73 80 73 82 78 79 75 68 ...
+##  $ group   : Factor w/ 676 levels "2020-10-21 14:32:00",..: 1 1 1 1 1 1 1 1 1 1 ...
+\end{verbatim}
+\begin{alltt}
+\hlkwd{require}\hlstd{(dplyr)}
+\hlstd{cleandata} \hlopt{%>%}
+  \hlkwd{group_by}\hlstd{(}\hlkwc{DateTime} \hlstd{=} \hlkwd{cut}\hlstd{(DateTime,} \hlkwc{breaks}\hlstd{=}\hlstr{"5 min"}\hlstd{))} \hlopt{%>%}
+  \hlkwd{summarize}\hlstd{(}\hlkwc{Concentration} \hlstd{=} \hlkwd{mean}\hlstd{(pm25_cf))}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: Factor `DateTime` contains implicit NA, consider using `forcats::fct\_explicit\_na`}}\begin{verbatim}
+## # A tibble: 3,020 x 2
+##    DateTime            Concentration
+##    <fct>                       <dbl>
+##  1 2020-10-21 14:32:00          66.4
+##  2 2020-10-21 14:37:00          65.8
+##  3 2020-10-21 14:42:00          65.2
+##  4 2020-10-21 14:47:00          63.8
+##  5 2020-10-21 14:52:00          62.6
+##  6 2020-10-21 14:57:00          66  
+##  7 2020-10-21 15:02:00          62.8
+##  8 2020-10-21 15:07:00          64.6
+##  9 2020-10-21 15:12:00          65.6
+## 10 2020-10-21 15:17:00          61.6
+## # ... with 3,010 more rows
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\subsection{Subset for Dates}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{str}\hlstd{(cleandata)}
+\end{alltt}
+\begin{verbatim}
+## 'data.frame':	6153 obs. of  5 variables:
+##  $ DateTime: POSIXct, format: "2020-10-21 14:32:25" "2020-10-21 14:33:26" ...
+##  $ pm1_cf  : num  32 36 33 35 31 34 35 34 33 35 ...
+##  $ pm25_cf : num  64 73 65 68 62 68 70 67 61 63 ...
+##  $ pm10_cf : num  75 77 73 80 73 82 78 79 75 68 ...
+##  $ group   : Factor w/ 676 levels "2020-10-21 14:32:00",..: 1 1 1 1 1 1 1 1 1 1 ...
+\end{verbatim}
+\begin{alltt}
+\hlstd{dataset1} \hlkwb{=} \hlkwd{subset}\hlstd{(cleandata,}
+  \hlkwc{subset}\hlstd{=}
+    \hlstd{DateTime}\hlopt{<}\hlkwd{as.Date}\hlstd{(}\hlstr{"2020-10-22 15:32:25"}\hlstd{)} \hlopt{&}
+    \hlstd{DateTime}\hlopt{>}\hlkwd{as.Date}\hlstd{(}\hlstr{"2020-10-21 14:35:28"}\hlstd{))}
+\hlstd{dataset2} \hlkwb{=} \hlkwd{subset}\hlstd{(cleandata,}
+  \hlkwc{subset}\hlstd{=}
+    \hlstd{DateTime}\hlopt{<}\hlkwd{as.Date}\hlstd{(}\hlstr{"2020-10-22 15:32:25"}\hlstd{)} \hlopt{&}
+    \hlstd{DateTime}\hlopt{>}\hlkwd{as.Date}\hlstd{(}\hlstr{"2020-10-21 14:35:28"}\hlstd{))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+
+\subsection{Test test}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{t.test}\hlstd{(dataset1}\hlopt{$}\hlstd{PM25, dataset2}\hlopt{$}\hlstd{PM25,} \hlkwc{paired}\hlstd{=}\hlnum{TRUE}\hlstd{)}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in t.test.default(dataset1\$PM25, dataset2\$PM25, paired = TRUE): 'y' is missing for paired test}}\end{kframe}
+\end{knitrout}
 \end{document}
