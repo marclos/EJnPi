@@ -289,21 +289,24 @@ and it will be transfered to your local computer... !  Yay!  It only took me 5 h
 
 \subsubsection{FOR Macs}
 
-
+I can't find an easy solution for MACs, use the file transfer function in RealVNC.
 
 \subsection{Processing the data}
 
 We create a script to process the data and allow you to create a reasonably user-friendly dataframe to analyze the data.
 
-However, before running the code below, we need to remove all the double quotes, which get in the way of how ``csv'' files are read. 
+\subsection{Remove Double Quotes in CSV}
 
-I opened the document up in rstdudio and did a search for " and replaced with nothing, i.e. don't enter anythning. Then replace all. 
+However, before running the code below, we need to remove all the double quotes, which get in the way of how ``csv'' files are read.
+
+Opened the document up in Rstdudio. Use the edit menu and select "search and replace". Search for double quotes (") and leave the place for ``Replace'' blank, i.e. don't enter anythning. Then replace all. Then you can read the csv into R. 
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{filepath.csv} \hlkwb{=} \hlstr{"/home/CAMPUS/mwl04747/github/EJnPi/data/Air_Quality.csv"}
 \hlstd{filepath.csv} \hlkwb{=} \hlstr{"/home/CAMPUS/mwl04747/github/EJnPi/data/Complete_airquality_data2.csv"}
+\hlstd{filepath.csv} \hlkwb{=} \hlstr{"/home/CAMPUS/mwl04747/github/EJnPi/data/201104_Complete_airquality.csv"}
 \hlstd{rawdata} \hlkwb{=} \hlkwd{read.csv}\hlstd{(filepath.csv)}
 
 \hlkwd{names}\hlstd{(rawdata)}\hlkwb{=} \hlkwd{c}\hlstd{(}\hlstr{"X1"}\hlstd{,} \hlstr{"X2"}\hlstd{,} \hlstr{"Month"}\hlstd{,} \hlstr{"Day"}\hlstd{,} \hlstr{"Hour"}\hlstd{,}
@@ -311,8 +314,20 @@ I opened the document up in rstdudio and did a search for " and replaced with no
     \hlstr{"pm10_cf"}\hlstd{,} \hlstr{"X7"}\hlstd{,} \hlstr{"pm1"}\hlstd{,} \hlstr{"X8"}\hlstd{,} \hlstr{"pm25"}\hlstd{,} \hlstr{"pm10."}\hlstd{,} \hlstr{"X9"}\hlstd{)}
 
 \hlstd{rawdata}\hlopt{$}\hlstd{pm1_cf} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{gsub}\hlstd{(}\hlstr{'[)]'}\hlstd{,} \hlstr{''}\hlstd{, rawdata}\hlopt{$}\hlstd{pm1_cf))}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: NAs introduced by coercion}}\begin{alltt}
 \hlstd{rawdata}\hlopt{$}\hlstd{pm25_cf} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{gsub}\hlstd{(}\hlstr{'[)]'}\hlstd{,} \hlstr{''}\hlstd{, rawdata}\hlopt{$}\hlstd{pm25_cf))}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: NAs introduced by coercion}}\begin{alltt}
 \hlstd{rawdata}\hlopt{$}\hlstd{pm10_cf} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{gsub}\hlstd{(}\hlstr{'[)]'}\hlstd{,} \hlstr{''}\hlstd{, rawdata}\hlopt{$}\hlstd{pm10_cf))}
+\end{alltt}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: NAs introduced by coercion}}\begin{alltt}
 \hlkwd{as.Date}\hlstd{(}\hlkwd{with}\hlstd{(rawdata,} \hlkwd{paste}\hlstd{(}\hlstr{"2020"}\hlstd{, Month, Day,}\hlkwc{sep}\hlstd{=}\hlstr{"-"}\hlstd{)),} \hlstr{"%Y-%m-%d"}\hlstd{)[}\hlnum{1}\hlstd{]}
 \end{alltt}
 \begin{verbatim}
@@ -329,7 +344,9 @@ I opened the document up in rstdudio and did a search for " and replaced with no
 \hlstd{rawdata}\hlopt{$}\hlstd{DateTime} \hlkwb{=} \hlkwd{with}\hlstd{(rawdata,} \hlkwd{ymd_hms}\hlstd{(}\hlkwd{paste}\hlstd{(}\hlstr{"2020"}\hlstd{, Month,}
   \hlstd{Day, Hour, Minute, Second,} \hlkwc{sep}\hlstd{=} \hlstr{'-'}\hlstd{)))}
 \end{alltt}
-\end{kframe}
+
+
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning:\ \ 2564 failed to parse.}}\end{kframe}
 \end{knitrout}
 
 As always, I check my data!
@@ -341,23 +358,23 @@ As always, I check my data!
 \end{alltt}
 \begin{verbatim}
 ##                            X1                      X2 Month Day Hour Minute
-## 1603 OrderedDict([('DateTime'  datetime.datetime(2020    10  25   15     23
-## 674  OrderedDict([('DateTime'  datetime.datetime(2020    10  22    4      3
-## 1343 OrderedDict([('DateTime'  datetime.datetime(2020    10  24   16     51
-## 351  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   20     44
-## 589  OrderedDict([('DateTime'  datetime.datetime(2020    10  22    1     48
+## 3783                                                     NA  NA   NA     NA
+## 1353 OrderedDict([('DateTime'  datetime.datetime(2020    10  24    6     43
+## 4640 OrderedDict([('DateTime'  datetime.datetime(2020    11   1    6     33
+## 1972 OrderedDict([('DateTime'  datetime.datetime(2020    10  25    9     11
+## 3066 OrderedDict([('DateTime'  datetime.datetime(2020    10  27   13     18
 ##      Second        X3         X4 pm1_cf          X5 pm25_cf          X6 pm10_cf
-## 1603     34  333076))  ('pm1_cf'      2  ('pm25_cf'       4  ('pm10_cf'       4
-## 674      16  572775))  ('pm1_cf'     34  ('pm25_cf'      70  ('pm10_cf'      85
-## 1343      8  516094))  ('pm1_cf'     12  ('pm25_cf'      19  ('pm10_cf'      20
-## 351      31  945709))  ('pm1_cf'     22  ('pm25_cf'      44  ('pm10_cf'      52
-## 589      39  190381))  ('pm1_cf'     36  ('pm25_cf'      75  ('pm10_cf'      89
+## 3783     NA                          NA                  NA                  NA
+## 1353     43  758034))  ('pm1_cf'     19  ('pm25_cf'      35  ('pm10_cf'      37
+## 4640     18  221271))  ('pm1_cf'      4  ('pm25_cf'       7  ('pm10_cf'       7
+## 1972      5  449808))  ('pm1_cf'      6  ('pm25_cf'      11  ('pm10_cf'      12
+## 3066     38  683099))  ('pm1_cf'     55  ('pm25_cf'      81  ('pm10_cf'      88
 ##           X7  pm1       X8 pm25    pm10.     X9            DateTime
-## 1603  ('pm1'   2)  ('pm25'   4)  ('pm10'   4)]) 2020-10-25 15:23:34
-## 674   ('pm1'  27)  ('pm25'  49)  ('pm10'  66)]) 2020-10-22 04:03:16
-## 1343  ('pm1'  12)  ('pm25'  19)  ('pm10'  20)]) 2020-10-24 16:51:08
-## 351   ('pm1'  21)  ('pm25'  38)  ('pm10'  49)]) 2020-10-21 20:44:31
-## 589   ('pm1'  28)  ('pm25'  51)  ('pm10'  68)]) 2020-10-22 01:48:39
+## 3783                                                           <NA>
+## 1353  ('pm1'  19)  ('pm25'  33)  ('pm10'  37)]) 2020-10-24 06:43:43
+## 4640  ('pm1'   4)  ('pm25'   7)  ('pm10'   7)]) 2020-11-01 06:33:18
+## 1972  ('pm1'   6)  ('pm25'  11)  ('pm10'  12)]) 2020-10-25 09:11:05
+## 3066  ('pm1'  36)  ('pm25'  53)  ('pm10'  68)]) 2020-10-27 13:18:38
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Remove Variables}
@@ -380,8 +397,9 @@ As usual, it's a good idea to get a sense of the variability of the data.
 
 \end{knitrout}
 
-In my case, I have a very odd bimodal distribution and an long tail to boot. So, I am going plot on a time series to see if I can figure out what in the world is going on.
+In my case, I have a very odd bimodal distribution and an long tail to boot. So, I am going plot on a time series to see if I can figure out what in the world is going on  (Figure~\ref{fig:draft}).
 
+\begin{figure}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -391,7 +409,9 @@ In my case, I have a very odd bimodal distribution and an long tail to boot. So,
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-4-1} 
 
 \end{knitrout}
-
+\caption{Draft Image -- needs work, but intersting patterns!}
+\label{fig:draft}
+\end{figure}
 Except for some breaks in the data, we can certainly see a diurnal pattern, where the concentrations seem highest after midnight. 
 
 Let's see if we can add times to the plot with some rectancles for ``night time''!  Furthermore, let's see how different size particles behave (Figure~\ref{fig:data}). 
@@ -403,7 +423,7 @@ Let's see if we can add times to the plot with some rectancles for ``night time'
 
 \end{knitrout}
 \caption{PM$_{1.0}$, PM$_{2.5}$ and PM$_{2.5}$ in Claremont California between Oct 21--Oct. 28, PM2.5 24 hour standard = 35, and PM10 24 hour standard = 50.}
-%\label{fig:data}
+\label{fig:data}
 \end{figure}
 
 Figure~\ref{} is not perfect. Here's a few issues:
@@ -439,7 +459,7 @@ The population mean (monthly average from the EPA data) is a parameter estimate.
 \hlkwd{mean}\hlstd{(cleandata}\hlopt{$}\hlstd{pm1_cf)}
 \end{alltt}
 \begin{verbatim}
-## [1] 28.02078
+## [1] NA
 \end{verbatim}
 \end{kframe}
 \end{knitrout}

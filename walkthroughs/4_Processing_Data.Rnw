@@ -239,19 +239,22 @@ and it will be transfered to your local computer... !  Yay!  It only took me 5 h
 
 \subsubsection{FOR Macs}
 
-
+I can't find an easy solution for MACs, use the file transfer function in RealVNC.
 
 \subsection{Processing the data}
 
 We create a script to process the data and allow you to create a reasonably user-friendly dataframe to analyze the data.
 
-However, before running the code below, we need to remove all the double quotes, which get in the way of how ``csv'' files are read. 
+\subsection{Remove Double Quotes in CSV}
 
-I opened the document up in rstdudio and did a search for " and replaced with nothing, i.e. don't enter anythning. Then replace all. 
+However, before running the code below, we need to remove all the double quotes, which get in the way of how ``csv'' files are read.
+
+Opened the document up in Rstdudio. Use the edit menu and select "search and replace". Search for double quotes (") and leave the place for ``Replace'' blank, i.e. don't enter anythning. Then replace all. Then you can read the csv into R. 
 
 <<>>=
 filepath.csv = "/home/CAMPUS/mwl04747/github/EJnPi/data/Air_Quality.csv"
 filepath.csv = "/home/CAMPUS/mwl04747/github/EJnPi/data/Complete_airquality_data2.csv"
+filepath.csv = "/home/CAMPUS/mwl04747/github/EJnPi/data/201104_Complete_airquality.csv"
 rawdata = read.csv(filepath.csv)
 
 names(rawdata)= c("X1", "X2", "Month", "Day", "Hour",                 
@@ -286,12 +289,15 @@ hist(cleandata$pm25_cf, xlab="PM2.5 concentration",
     main="Histogram of PM2.5 in Claremont", las=1, xlim=c(0,400))
 @
 
-In my case, I have a very odd bimodal distribution and an long tail to boot. So, I am going plot on a time series to see if I can figure out what in the world is going on.
+In my case, I have a very odd bimodal distribution and an long tail to boot. So, I am going plot on a time series to see if I can figure out what in the world is going on  (Figure~\ref{fig:draft}).
 
+\begin{figure}
 <<>>=
 plot(pm25_cf~DateTime, data=cleandata, pch=20, cex=.5)
 @
-
+\caption{Draft Image -- needs work, but intersting patterns!}
+\label{fig:draft}
+\end{figure}
 Except for some breaks in the data, we can certainly see a diurnal pattern, where the concentrations seem highest after midnight. 
 
 Let's see if we can add times to the plot with some rectancles for ``night time''!  Furthermore, let's see how different size particles behave (Figure~\ref{fig:data}). 
@@ -302,8 +308,8 @@ Ylab = expression(paste("PM (", mu,"g/m","^3",")"))
 par(mfrow=c(3,1), mar=c(5,5,2,0)+.1, cex.lab=1.5)
 plot(pm1_cf~DateTime, data=cleandata, pch=20, 
     cex=.5, las=1, ylab=Ylab, xlab="Day", 
-    ylim=c(0,320), main="PM1")
-abline(h=35, col="red")
+    ylim=c(0,320), main="PM1.0")
+#abline(h=35, col="red")
 
 night.fun <- function(offset){
   offset=offset*24*60*60
@@ -312,21 +318,21 @@ rect(as.POSIXct("2020-10-21 18:00:00 UTC")+offset,
      330, border = NA, col= rgb(0,0,1.0,alpha=0.1))
 }
 
-night.fun(c(0, 1,2,3,4,5,6,7,8)) 
+night.fun(c(0, 1,2,3,4,5,6,7,8,9,10,11,12,13, 14)) 
 
 plot(pm25_cf~DateTime, data=cleandata, pch=20, 
     cex=.5, las=1, ylab=Ylab, xlab="Day", ylim=c(0,320), main="PM 2.5")
 abline(h=35, col="red")
-night.fun(c(0, 1,2,3,4,5,6,7,8)) 
+night.fun(c(0, 1,2,3,4,5,6,7,8,9,10,11,12,13, 14))  
 
 plot(pm10_cf~DateTime, data=cleandata, pch=20, 
     cex=.5, las=1, ylab="PM2.5", xlab="Time", 
     ylim=c(0,320), main="PM 10")
 abline(h=50, col="red")
-night.fun(c(0, 1,2,3,4,5,6,7,8)) 
+night.fun(c(0, 1,2,3,4,5,6,7,8,9,10,11,12,13, 14)) 
 @
 \caption{PM$_{1.0}$, PM$_{2.5}$ and PM$_{2.5}$ in Claremont California between Oct 21--Oct. 28, PM2.5 24 hour standard = 35, and PM10 24 hour standard = 50.}
-%\label{fig:data}
+\label{fig:data}
 \end{figure}
 
 Figure~\ref{} is not perfect. Here's a few issues:
