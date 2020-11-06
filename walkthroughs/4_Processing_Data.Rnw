@@ -364,49 +364,131 @@ mean(cleandata$pm1_cf)
 
 Okay, now let's talk about signficant figures. The Pi only reports to the nearest whole value. Read about the rules in Wikipedia -- \url{https://en.wikipedia.org/wiki/Significant_figures}. In general, we should report to the whole number as well. However, some statiticians suggest that the mean and standard deviation can include one extra significant figure, allowing the reader to see the ``directionality'' of the mean toward the precision. However, for our purposes, I suggest we follow the standard rule and round to the nearest whole number and avoid implying additional precision.  
 
-\subsection{More Intricate Analysis}
+Finally, what happens if you get a missing value when using the function mean()?  Likely, this is due to missing values in the vector!  the mean function will not give you you an NA if NA is in the dataset. You can do a mean(DF, na.rm=T) to override the default\ldots
+
+fyi: same as sd()
+
+R wants users to be sure to understand the implications of missing data!  For example, what if we had missing data in cold temperatures -- then our mean would be biased!  When you decide to override the default, you want to be sure you are not introducing unknown biases\ldots
+
+\section{More Intricate Analysis-- Based on Slack and Zooom Conversations :-)}
 
 You could look to see if the there is a different during the time of the day or day of the week. You could move you sensor around in and outside your house and see if air quality is better / worse or the same\ldots.
 
 We can help you with r code if you'd like to follow up with these additional questions. 
 
-\subsection{Calculate 5 min averages}
+\subsection{Removing Missing Values}
+
+Our Pi code seems to create missing data when the sensor doesn't respond in a timely fashion. 
+<<>>=
+summary(cleandata)
+@
+In my case, I have 2564 missing values! So, here's code to remove these missing values. Be sure you have not created a biased dataset by removing values that are systematically changing the accuracy!
 
 <<>>=
-library(dplyr)
-cleandata$group <- cut(cleandata$DateTime, breaks="30 min")
+cleandata = na.omit(cleandata)
+summary(cleandata)
+@
 
-cleandata %>% group_by(cleandata$group) %>% summarize(mins_output = mean(cleandata$pm25_cf))
+\subsection{Subset for Dates or Times}
 
+Let's say I want to compare day and night times. Let's say we compare 6:01 AM to 6 PM and 6:01 PM to 6:00 AM. 
+
+I use a simple criteria to select data based on the hour -- using the libridate library.
+<<>>=
+library(lubridate)
+str(cleandata)
+
+day = with(cleandata, 
+     cleandata[hour(DateTime)> 6 & 
+               hour(DateTime)<= 18,])
+
+night = with(cleandata, 
+     cleandata[hour(DateTime)<= 6 & 
+               hour(DateTime)< 18,])
+@
+
+Figure~\ref{fig:nightday} suggests that night time PM2.5 is higher, but let's check with a statistical test in section \ref{subsec:ttest}. 
+
+\begin{figure}
+<<>>=
+boxplot(day$pm25_cf, night$pm25_cf, names=c("Day", "Night"), las=1)
+@
+\caption{PM2.5 at day and night.}
+\label{fig:nightday}
+\end{figure}
+Alternatively, let's select a period where a fire near Diamond Bar caused major air quality issue in Claremont.
+
+<<>>=
+str(cleandata)
+fire = subset(cleandata, 
+  subset=
+    DateTime >= as.Date("2020-10-26 00:00:00") & 
+    DateTime <= as.Date("2020-10-28 00:00:00"))
+str(fire)
+@
+
+<<echo=F>>=
+par(mfrow=c(1,1))
+plot(pm25_cf ~ DateTime, data=fire)
+@
+
+We might think of this as an event that might need to be analzyed in a different way!  
+
+\subsection{Calculate 5/30 min averages}
+
+How would you make a dataset of five minute intervals? We can use the dplyr library. 
+
+Then we can use the function cut(), to create groups (based on time windows -- interestingly enough reponds to various word phrased for time, where ``5 min'' for five minute windows and ``30 min'' for 30 minute windows. 
+
+<<>>=
 str(cleandata)
 
 require(dplyr)
-cleandata %>%
+mean5min = cleandata %>%
   group_by(DateTime = cut(DateTime, breaks="5 min")) %>%
-  summarize(Concentration = mean(pm25_cf))
-
-@
-
-\subsection{Subset for Dates}
-
-<<>>=
-str(cleandata)
-dataset1 = subset(cleandata, 
-  subset=
-    DateTime<as.Date("2020-10-22 15:32:25") & 
-    DateTime>as.Date("2020-10-21 14:35:28"))
-dataset2 = subset(cleandata, 
-  subset=
-    DateTime<as.Date("2020-10-22 15:32:25") & 
-    DateTime>as.Date("2020-10-21 14:35:28"))
+  summarize(pm25_cf = mean(pm25_cf))
 @
 
 
-\subsection{Test test}
+Or for 30 min means...
+<<>>=
+require(dplyr)
+mean30min = cleandata %>%
+  group_by(DateTime = cut(DateTime, breaks="30 min")) %>%
+  summarize(pm25_cf = mean(pm25_cf))
+
+@
+
+So, what did we create?  Let's look at the structure and head...
 
 <<>>=
-t.test(dataset1$PM25, dataset2$PM25, paired=TRUE)
+head(mean30min)
+str(mean30min)
+@
 
+This is a rather unique type of data set -- we are no looking at a "tibble", which is a particular type of data.frame that is structured as a table too. We also have lost our DateTime date formats, so this will not graph easily!  Ugh!!
 
+<<>>=
+plot(pm25_cf ~ DateTime, data=mean30min)
+@
+\noindent As a factor, we can't control the axis display very well -- and it looks like crap! The type of object doesn't seem to be bothering us much. So, let's march forward.
+
+<<>>=
+mean30min$DateTime = as.POSIXct(mean30min$DateTime, format="%Y-%m-%d %H:%M:%S")
+@
+
+<<>>=
+par(mfrow=c(2,1), las=1)
+plot(pm25_cf ~ DateTime, data=mean30min, ty="p", pch=20, cex=.4)
+plot(pm25_cf ~ DateTime, data=mean30min, ty="l")
+@
+
+Note: when I make this a line graph (ty="l"), the missing data are a problem!  I will see how to fix that is someone asks, but I do like the display better than the point graphic.
+
+\subsection{Test test -- Comparing Two Populations}\label{subsec:ttest}
+
+Now, let's formally test the null hypothesis that there is no difference between two populations of data -- night PM2.5 and day PM2.5
+<<>>=
+t.test(day$pm25_cf, night$pm25_cf, pair=FALSE)
 @
 \end{document}
