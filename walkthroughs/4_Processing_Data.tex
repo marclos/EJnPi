@@ -358,23 +358,23 @@ As always, I check my data!
 \end{alltt}
 \begin{verbatim}
 ##                            X1                      X2 Month Day Hour Minute
-## 4837                                                     NA  NA   NA     NA
-## 5776 OrderedDict([('DateTime'  datetime.datetime(2020    11   3   23      5
-## 5631                                                     NA  NA   NA     NA
-## 4134                                                     NA  NA   NA     NA
-## 373  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   20     58
+## 1790 OrderedDict([('DateTime'  datetime.datetime(2020    10  25    1     21
+## 563  OrderedDict([('DateTime'  datetime.datetime(2020    10  22    0     48
+## 298  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   19     37
+## 3478 OrderedDict([('DateTime'  datetime.datetime(2020    10  30    4     40
+## 3357                                                     NA  NA   NA     NA
 ##      Second        X3         X4 pm1_cf          X5 pm25_cf          X6 pm10_cf
-## 4837     NA                          NA                  NA                  NA
-## 5776     51  948394))  ('pm1_cf'     14  ('pm25_cf'      27  ('pm10_cf'      32
-## 5631     NA                          NA                  NA                  NA
-## 4134     NA                          NA                  NA                  NA
-## 373      55   87880))  ('pm1_cf'     22  ('pm25_cf'      39  ('pm10_cf'      41
+## 1790     15  498568))  ('pm1_cf'      9  ('pm25_cf'      17  ('pm10_cf'      19
+## 563      19  480288))  ('pm1_cf'     38  ('pm25_cf'      75  ('pm10_cf'      91
+## 298      36  519280))  ('pm1_cf'     19  ('pm25_cf'      32  ('pm10_cf'      35
+## 3478     46  856406))  ('pm1_cf'      5  ('pm25_cf'      10  ('pm10_cf'      12
+## 3357     NA                          NA                  NA                  NA
 ##           X7  pm1       X8 pm25    pm10.     X9            DateTime
-## 4837                                                           <NA>
-## 5776  ('pm1'  14)  ('pm25'  27)  ('pm10'  32)]) 2020-11-03 23:05:51
-## 5631                                                           <NA>
-## 4134                                                           <NA>
-## 373   ('pm1'  21)  ('pm25'  35)  ('pm10'  41)]) 2020-10-21 20:58:55
+## 1790  ('pm1'   9)  ('pm25'  17)  ('pm10'  19)]) 2020-10-25 01:21:15
+## 563   ('pm1'  29)  ('pm25'  51)  ('pm10'  69)]) 2020-10-22 00:48:19
+## 298   ('pm1'  19)  ('pm25'  31)  ('pm10'  35)]) 2020-10-21 19:37:36
+## 3478  ('pm1'   5)  ('pm25'  10)  ('pm10'  12)]) 2020-10-30 04:40:46
+## 3357                                                           <NA>
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Remove Variables}
@@ -739,17 +739,18 @@ This is a rather unique type of data set -- we are no looking at a "tibble", whi
 
 Note: when I make this a line graph (ty="l"), the missing data are a problem!  I will see how to fix that is someone asks, but I do like the display better than the point graphic.
 
-let's see if we can limit the dates\ldots (Figure~\ref{fig:dualplot})
+let's see if we can limit the dates\ldots (Figure~\ref{fig:dualplot}), where I have used a second window to look at the fire in Diamond Bar and then put lines for the date changes. 
 
 \begin{figure}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{par}\hlstd{(}\hlkwc{mfrow}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{),} \hlkwc{las}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{pty}\hlstd{=}\hlstr{"s"}\hlstd{)}
-\hlkwd{plot}\hlstd{(pm25_cf} \hlopt{~} \hlstd{DateTime,} \hlkwc{data}\hlstd{=mean30min,} \hlkwc{ty}\hlstd{=}\hlstr{"l"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Date"}\hlstd{)}
+\hlkwd{par}\hlstd{(}\hlkwc{mfrow}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{),} \hlkwc{las}\hlstd{=}\hlnum{1}\hlstd{)}
+\hlkwd{plot}\hlstd{(pm25_cf} \hlopt{~} \hlstd{DateTime,} \hlkwc{data}\hlstd{=mean30min,} \hlkwc{ty}\hlstd{=}\hlstr{"l"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Conc"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Date"}\hlstd{)}
 \hlkwd{plot}\hlstd{(pm25_cf} \hlopt{~} \hlstd{DateTime,} \hlkwc{data}\hlstd{=mean30min,} \hlkwc{ty}\hlstd{=}\hlstr{"p"}\hlstd{,}
-  \hlkwc{pch}\hlstd{=}\hlnum{20}\hlstd{,} \hlkwc{cex}\hlstd{=}\hlnum{.4}\hlstd{,} \hlkwc{xlim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 20:00:00"}\hlstd{),}
-  \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-27 23:59:59"}\hlstd{)),} \hlkwc{ylab}\hlstd{=}\hlstr{"Conc"}\hlstd{,} \hlkwc{xaxt} \hlstd{=} \hlstr{"n"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Time"}\hlstd{)}
+  \hlkwc{pch}\hlstd{=}\hlnum{20}\hlstd{,} \hlkwc{cex}\hlstd{=}\hlnum{.6}\hlstd{,} \hlkwc{xlim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 20:00:00"}\hlstd{),}
+  \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-27 23:59:59"}\hlstd{)),} \hlkwc{ylab}\hlstd{=}\hlstr{"Conc"}\hlstd{,}
+  \hlkwc{xaxt} \hlstd{=} \hlstr{"n"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Time"}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"blue"}\hlstd{)}
 
 \hlstd{r} \hlkwb{<-} \hlkwd{as.POSIXct}\hlstd{(}\hlkwd{round}\hlstd{(}\hlkwd{range}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 00:00:00"}\hlstd{),}
   \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-28 00:00:00"}\hlstd{)),} \hlstr{"hours"}\hlstd{))}
@@ -758,12 +759,12 @@ let's see if we can limit the dates\ldots (Figure~\ref{fig:dualplot})
   \hlkwc{by} \hlstd{=} \hlstr{"day"}\hlstd{),} \hlkwc{format} \hlstd{=} \hlstr{"%D"}\hlstd{)}
 
 \hlkwd{abline}\hlstd{(}\hlkwc{v}\hlstd{=}\hlkwd{as.POSIXct}\hlstd{(}\hlkwd{c}\hlstd{(}\hlstr{"2020-10-26 00:00:00"}\hlstd{,}
-  \hlstr{"2020-10-27 00:00:00"}\hlstd{,} \hlstr{"2020-10-28 00:00:00"}\hlstd{)))}
+  \hlstr{"2020-10-27 00:00:00"}\hlstd{,} \hlstr{"2020-10-28 00:00:00"}\hlstd{)),} \hlkwc{lwd}\hlstd{=}\hlnum{2}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"brown"}\hlstd{)}
 \hlkwd{axis.POSIXct}\hlstd{(}\hlnum{1}\hlstd{,} \hlkwc{at} \hlstd{=} \hlkwd{seq}\hlstd{(r[}\hlnum{1}\hlstd{], r[}\hlnum{2}\hlstd{],}
   \hlkwc{by} \hlstd{=} \hlstr{"hour"}\hlstd{),} \hlkwc{format} \hlstd{=} \hlstr{"%H"}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-20-1} 
+\includegraphics[width=\maxwidth]{figure/dual-1} 
 
 \end{knitrout}
 \caption{Focused Figure on PM change during a fire.}

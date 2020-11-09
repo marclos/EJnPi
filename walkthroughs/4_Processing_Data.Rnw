@@ -485,15 +485,16 @@ plot(pm25_cf ~ DateTime, data=mean30min, ty="l")
 
 Note: when I make this a line graph (ty="l"), the missing data are a problem!  I will see how to fix that is someone asks, but I do like the display better than the point graphic.
 
-let's see if we can limit the dates\ldots (Figure~\ref{fig:dualplot})
+let's see if we can limit the dates\ldots (Figure~\ref{fig:dualplot}), where I have used a second window to look at the fire in Diamond Bar and then put lines for the date changes. 
 
 \begin{figure}
-<<>>=
-par(mfrow=c(1,2), las=1, pty="s")
-plot(pm25_cf ~ DateTime, data=mean30min, ty="l", ylab="Date")
+<<dual, fig=TRUE, width=6, height=4 >>=
+par(mfrow=c(1,2), las=1)
+plot(pm25_cf ~ DateTime, data=mean30min, ty="l", ylab="Conc", xlab="Date")
 plot(pm25_cf ~ DateTime, data=mean30min, ty="p",
-  pch=20, cex=.4, xlim=c(as.POSIXct("2020-10-26 20:00:00"), 
-  as.POSIXct("2020-10-27 23:59:59")), ylab="Conc", xaxt = "n", xlab="Time")
+  pch=20, cex=.6, xlim=c(as.POSIXct("2020-10-26 20:00:00"), 
+  as.POSIXct("2020-10-27 23:59:59")), ylab="Conc",
+  xaxt = "n", xlab="Time", col="blue")
 
 r <- as.POSIXct(round(range(as.POSIXct("2020-10-26 00:00:00"), 
   as.POSIXct("2020-10-28 00:00:00")), "hours"))
@@ -502,7 +503,7 @@ axis.POSIXct(3, at = seq(r[1], r[2],
   by = "day"), format = "%D")
 
 abline(v=as.POSIXct(c("2020-10-26 00:00:00", 
-  "2020-10-27 00:00:00", "2020-10-28 00:00:00")))
+  "2020-10-27 00:00:00", "2020-10-28 00:00:00")), lwd=2, col="brown")
 axis.POSIXct(1, at = seq(r[1], r[2], 
   by = "hour"), format = "%H")
 @
