@@ -422,8 +422,8 @@ Alternatively, let's select a period where a fire near Diamond Bar caused major 
 str(cleandata)
 fire = subset(cleandata, 
   subset=
-    DateTime >= as.Date("2020-10-26 00:00:00") & 
-    DateTime <= as.Date("2020-10-28 00:00:00"))
+    DateTime >= as.POSIXct("2020-10-26 04:10:00", tz="PST") & 
+    DateTime <= as.POSIXct("2020-10-28 00:00:00", tz="PST"))
 str(fire)
 @
 

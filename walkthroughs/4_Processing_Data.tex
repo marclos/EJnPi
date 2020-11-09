@@ -358,23 +358,23 @@ As always, I check my data!
 \end{alltt}
 \begin{verbatim}
 ##                            X1                      X2 Month Day Hour Minute
-## 1790 OrderedDict([('DateTime'  datetime.datetime(2020    10  25    1     21
-## 563  OrderedDict([('DateTime'  datetime.datetime(2020    10  22    0     48
-## 298  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   19     37
-## 3478 OrderedDict([('DateTime'  datetime.datetime(2020    10  30    4     40
-## 3357                                                     NA  NA   NA     NA
+## 1991                                                     NA  NA   NA     NA
+## 745  OrderedDict([('DateTime'  datetime.datetime(2020    10  22    5     26
+## 1263 OrderedDict([('DateTime'  datetime.datetime(2020    10  24    2     48
+## 3681 OrderedDict([('DateTime'  datetime.datetime(2020    10  30   13     12
+## 1036 OrderedDict([('DateTime'  datetime.datetime(2020    10  23    7     50
 ##      Second        X3         X4 pm1_cf          X5 pm25_cf          X6 pm10_cf
-## 1790     15  498568))  ('pm1_cf'      9  ('pm25_cf'      17  ('pm10_cf'      19
-## 563      19  480288))  ('pm1_cf'     38  ('pm25_cf'      75  ('pm10_cf'      91
-## 298      36  519280))  ('pm1_cf'     19  ('pm25_cf'      32  ('pm10_cf'      35
-## 3478     46  856406))  ('pm1_cf'      5  ('pm25_cf'      10  ('pm10_cf'      12
-## 3357     NA                          NA                  NA                  NA
+## 1991     NA                          NA                  NA                  NA
+## 745       3  910686))  ('pm1_cf'     32  ('pm25_cf'      69  ('pm10_cf'      80
+## 1263      2  364166))  ('pm1_cf'     19  ('pm25_cf'      39  ('pm10_cf'      41
+## 3681     26  749344))  ('pm1_cf'      3  ('pm25_cf'       5  ('pm10_cf'       5
+## 1036     53  373274))  ('pm1_cf'     20  ('pm25_cf'      39  ('pm10_cf'      48
 ##           X7  pm1       X8 pm25    pm10.     X9            DateTime
-## 1790  ('pm1'   9)  ('pm25'  17)  ('pm10'  19)]) 2020-10-25 01:21:15
-## 563   ('pm1'  29)  ('pm25'  51)  ('pm10'  69)]) 2020-10-22 00:48:19
-## 298   ('pm1'  19)  ('pm25'  31)  ('pm10'  35)]) 2020-10-21 19:37:36
-## 3478  ('pm1'   5)  ('pm25'  10)  ('pm10'  12)]) 2020-10-30 04:40:46
-## 3357                                                           <NA>
+## 1991                                                           <NA>
+## 745   ('pm1'  27)  ('pm25'  49)  ('pm10'  64)]) 2020-10-22 05:26:03
+## 1263  ('pm1'  19)  ('pm25'  35)  ('pm10'  41)]) 2020-10-24 02:48:02
+## 3681  ('pm1'   3)  ('pm25'   5)  ('pm10'   5)]) 2020-10-30 13:12:26
+## 1036  ('pm1'  20)  ('pm25'  35)  ('pm10'  47)]) 2020-10-23 07:50:53
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Remove Variables}
@@ -599,16 +599,16 @@ Alternatively, let's select a period where a fire near Diamond Bar caused major 
 \begin{alltt}
 \hlstd{fire} \hlkwb{=} \hlkwd{subset}\hlstd{(cleandata,}
   \hlkwc{subset}\hlstd{=}
-    \hlstd{DateTime} \hlopt{>=} \hlkwd{as.Date}\hlstd{(}\hlstr{"2020-10-26 00:00:00"}\hlstd{)} \hlopt{&}
-    \hlstd{DateTime} \hlopt{<=} \hlkwd{as.Date}\hlstd{(}\hlstr{"2020-10-28 00:00:00"}\hlstd{))}
+    \hlstd{DateTime} \hlopt{>=} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 04:10:00"}\hlstd{,} \hlkwc{tz}\hlstd{=}\hlstr{"PST"}\hlstd{)} \hlopt{&}
+    \hlstd{DateTime} \hlopt{<=} \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-28 00:00:00"}\hlstd{,} \hlkwc{tz}\hlstd{=}\hlstr{"PST"}\hlstd{))}
 \hlkwd{str}\hlstd{(fire)}
 \end{alltt}
 \begin{verbatim}
-## 'data.frame':	498 obs. of  4 variables:
-##  $ DateTime: POSIXct, format: "2020-10-26 00:00:28" "2020-10-26 00:05:50" ...
-##  $ pm1_cf  : num  4 5 5 4 5 5 5 3 3 4 ...
-##  $ pm25_cf : num  8 10 10 9 11 8 9 5 6 6 ...
-##  $ pm10_cf : num  8 11 12 12 13 9 11 10 9 8 ...
+## 'data.frame':	453 obs. of  4 variables:
+##  $ DateTime: POSIXct, format: "2020-10-26 04:13:42" "2020-10-26 04:19:09" ...
+##  $ pm1_cf  : num  3 4 4 4 5 5 5 5 4 6 ...
+##  $ pm25_cf : num  6 6 5 10 9 8 9 7 10 13 ...
+##  $ pm10_cf : num  6 10 5 10 12 11 10 7 16 18 ...
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
