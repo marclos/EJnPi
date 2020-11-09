@@ -358,23 +358,23 @@ As always, I check my data!
 \end{alltt}
 \begin{verbatim}
 ##                            X1                      X2 Month Day Hour Minute
-## 1194 OrderedDict([('DateTime'  datetime.datetime(2020    10  23   23     52
-## 3437 OrderedDict([('DateTime'  datetime.datetime(2020    10  30    2     55
-## 4167 OrderedDict([('DateTime'  datetime.datetime(2020    10  31   10     27
-## 5724 OrderedDict([('DateTime'  datetime.datetime(2020    11   3   20     50
-## 4502                                                     NA  NA   NA     NA
+## 4837                                                     NA  NA   NA     NA
+## 5776 OrderedDict([('DateTime'  datetime.datetime(2020    11   3   23      5
+## 5631                                                     NA  NA   NA     NA
+## 4134                                                     NA  NA   NA     NA
+## 373  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   20     58
 ##      Second        X3         X4 pm1_cf          X5 pm25_cf          X6 pm10_cf
-## 1194     39  345497))  ('pm1_cf'     16  ('pm25_cf'      29  ('pm10_cf'      30
-## 3437     31  784143))  ('pm1_cf'      5  ('pm25_cf'       7  ('pm10_cf'       8
-## 4167     34  766140))  ('pm1_cf'      5  ('pm25_cf'       7  ('pm10_cf'       7
-## 5724     55  975425))  ('pm1_cf'     25  ('pm25_cf'      45  ('pm10_cf'      53
-## 4502     NA                          NA                  NA                  NA
+## 4837     NA                          NA                  NA                  NA
+## 5776     51  948394))  ('pm1_cf'     14  ('pm25_cf'      27  ('pm10_cf'      32
+## 5631     NA                          NA                  NA                  NA
+## 4134     NA                          NA                  NA                  NA
+## 373      55   87880))  ('pm1_cf'     22  ('pm25_cf'      39  ('pm10_cf'      41
 ##           X7  pm1       X8 pm25    pm10.     X9            DateTime
-## 1194  ('pm1'  16)  ('pm25'  29)  ('pm10'  30)]) 2020-10-23 23:52:39
-## 3437  ('pm1'   5)  ('pm25'   7)  ('pm10'   8)]) 2020-10-30 02:55:31
-## 4167  ('pm1'   5)  ('pm25'   7)  ('pm10'   7)]) 2020-10-31 10:27:34
-## 5724  ('pm1'  23)  ('pm25'  39)  ('pm10'  50)]) 2020-11-03 20:50:55
-## 4502                                                           <NA>
+## 4837                                                           <NA>
+## 5776  ('pm1'  14)  ('pm25'  27)  ('pm10'  32)]) 2020-11-03 23:05:51
+## 5631                                                           <NA>
+## 4134                                                           <NA>
+## 373   ('pm1'  21)  ('pm25'  35)  ('pm10'  41)]) 2020-10-21 20:58:55
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Remove Variables}
@@ -739,6 +739,38 @@ This is a rather unique type of data set -- we are no looking at a "tibble", whi
 
 Note: when I make this a line graph (ty="l"), the missing data are a problem!  I will see how to fix that is someone asks, but I do like the display better than the point graphic.
 
+let's see if we can limit the dates\ldots (Figure~\ref{fig:dualplot})
+
+\begin{figure}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{par}\hlstd{(}\hlkwc{mfrow}\hlstd{=}\hlkwd{c}\hlstd{(}\hlnum{1}\hlstd{,}\hlnum{2}\hlstd{),} \hlkwc{las}\hlstd{=}\hlnum{1}\hlstd{,} \hlkwc{pty}\hlstd{=}\hlstr{"s"}\hlstd{)}
+\hlkwd{plot}\hlstd{(pm25_cf} \hlopt{~} \hlstd{DateTime,} \hlkwc{data}\hlstd{=mean30min,} \hlkwc{ty}\hlstd{=}\hlstr{"l"}\hlstd{,} \hlkwc{ylab}\hlstd{=}\hlstr{"Date"}\hlstd{)}
+\hlkwd{plot}\hlstd{(pm25_cf} \hlopt{~} \hlstd{DateTime,} \hlkwc{data}\hlstd{=mean30min,} \hlkwc{ty}\hlstd{=}\hlstr{"p"}\hlstd{,}
+  \hlkwc{pch}\hlstd{=}\hlnum{20}\hlstd{,} \hlkwc{cex}\hlstd{=}\hlnum{.4}\hlstd{,} \hlkwc{xlim}\hlstd{=}\hlkwd{c}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 20:00:00"}\hlstd{),}
+  \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-27 23:59:59"}\hlstd{)),} \hlkwc{ylab}\hlstd{=}\hlstr{"Conc"}\hlstd{,} \hlkwc{xaxt} \hlstd{=} \hlstr{"n"}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{"Time"}\hlstd{)}
+
+\hlstd{r} \hlkwb{<-} \hlkwd{as.POSIXct}\hlstd{(}\hlkwd{round}\hlstd{(}\hlkwd{range}\hlstd{(}\hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-26 00:00:00"}\hlstd{),}
+  \hlkwd{as.POSIXct}\hlstd{(}\hlstr{"2020-10-28 00:00:00"}\hlstd{)),} \hlstr{"hours"}\hlstd{))}
+
+\hlkwd{axis.POSIXct}\hlstd{(}\hlnum{3}\hlstd{,} \hlkwc{at} \hlstd{=} \hlkwd{seq}\hlstd{(r[}\hlnum{1}\hlstd{], r[}\hlnum{2}\hlstd{],}
+  \hlkwc{by} \hlstd{=} \hlstr{"day"}\hlstd{),} \hlkwc{format} \hlstd{=} \hlstr{"%D"}\hlstd{)}
+
+\hlkwd{abline}\hlstd{(}\hlkwc{v}\hlstd{=}\hlkwd{as.POSIXct}\hlstd{(}\hlkwd{c}\hlstd{(}\hlstr{"2020-10-26 00:00:00"}\hlstd{,}
+  \hlstr{"2020-10-27 00:00:00"}\hlstd{,} \hlstr{"2020-10-28 00:00:00"}\hlstd{)))}
+\hlkwd{axis.POSIXct}\hlstd{(}\hlnum{1}\hlstd{,} \hlkwc{at} \hlstd{=} \hlkwd{seq}\hlstd{(r[}\hlnum{1}\hlstd{], r[}\hlnum{2}\hlstd{],}
+  \hlkwc{by} \hlstd{=} \hlstr{"hour"}\hlstd{),} \hlkwc{format} \hlstd{=} \hlstr{"%H"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-20-1} 
+
+\end{knitrout}
+\caption{Focused Figure on PM change during a fire.}
+\label{fig:dualplot}
+\end{figure}
+
+\clearpage
 \subsection{Test test -- Comparing Two Populations}\label{subsec:ttest}
 
 Now, let's formally test the null hypothesis that there is no difference between two populations of data -- night PM2.5 and day PM2.5
