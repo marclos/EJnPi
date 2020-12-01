@@ -44,7 +44,7 @@ As an assignment with relatively low stakes, 10 points, you will be assessed usi
 - Scatter plot with added EPA or state health limits.
 - Estimate the mean, S.D. and 95% confidence intervals for each month. 
 
-4. Using the peer reviewed literature, discuss the implications of the results. 
+4. Using the peer reviewed literature, discuss the implications of the results. I suggest several (more than 2 and less than 9) peer reviewed articles and a few paragraphs (more than 1 and less than 4) discussion the regional causes and implications of the results.
 
 5. Submit via Sakai as a pdf.
 
