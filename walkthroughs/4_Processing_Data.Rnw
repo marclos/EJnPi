@@ -434,7 +434,7 @@ plot(pm25_cf ~ DateTime, data=fire)
 
 We might think of this as an event that might need to be analzyed in a different way!  
 
-\subsection{Calculate 5/30 min averages}
+\subsection{Calculate 5/30 min or daily averages}
 
 How would you make a dataset of five minute intervals? We can use the dplyr library. 
 
@@ -450,11 +450,21 @@ mean5min = cleandata %>%
 @
 
 
-Or for 30 min means...
+\noindent Or for 30 min means...
 <<>>=
 require(dplyr)
 mean30min = cleandata %>%
   group_by(DateTime = cut(DateTime, breaks="30 min")) %>%
+  summarize(pm25_cf = mean(pm25_cf))
+
+@
+
+\noindent Or daily means...
+
+<<>>=
+require(dplyr)
+meandaily = cleandata %>%
+  group_by(DateTime = cut(DateTime, breaks="1 day")) %>%
   summarize(pm25_cf = mean(pm25_cf))
 
 @
