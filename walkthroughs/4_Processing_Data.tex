@@ -293,7 +293,7 @@ I can't find an easy solution for MACs, use the file transfer function in RealVN
 
 \subsection{Processing the data}
 
-We create a script to process the data and allow you to create a reasonably user-friendly dataframe to analyze the data.
+We create a script to process the data and allow you to create a reasonably user-friendly dataframe to analyze the data. If you are like me and had multiple files, you'll need to combine them. You can do that in excel using a cut and paste command or do it R using the \texttt{rbind()} function. It's up to you...
 
 \subsection{Remove Double Quotes in CSV}
 
@@ -349,7 +349,7 @@ Opened the document up in Rstdudio. Use the edit menu and select "search and rep
 {\ttfamily\noindent\color{warningcolor}{\#\# Warning:\ \ 2564 failed to parse.}}\end{kframe}
 \end{knitrout}
 
-As always, I check my data!
+As always, I check my data! NOTE: I imported the data in a combined csv. If you have seperate csv files, you'll need to create unique filepaths for each and then read them into unique dataframes and then use rbind() to put them together. This requires that all the dataframes have the same number of columns -- check this!!!
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -358,23 +358,23 @@ As always, I check my data!
 \end{alltt}
 \begin{verbatim}
 ##                            X1                      X2 Month Day Hour Minute
-## 1111 OrderedDict([('DateTime'  datetime.datetime(2020    10  23   14     11
-## 4657 OrderedDict([('DateTime'  datetime.datetime(2020    11   1    7     22
-## 6025                                                     NA  NA   NA     NA
-## 2931                                                     NA  NA   NA     NA
-## 1462                                                     NA  NA   NA     NA
+## 985  OrderedDict([('DateTime'  datetime.datetime(2020    10  23    3     33
+## 1832                                                     NA  NA   NA     NA
+## 365  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   20     50
+## 280  OrderedDict([('DateTime'  datetime.datetime(2020    10  21   19     18
+## 3146                                                     NA  NA   NA     NA
 ##      Second        X3         X4 pm1_cf          X5 pm25_cf          X6 pm10_cf
-## 1111      9   36283))  ('pm1_cf'     14  ('pm25_cf'      28  ('pm10_cf'      31
-## 4657     40  335649))  ('pm1_cf'      5  ('pm25_cf'       6  ('pm10_cf'       7
-## 6025     NA                          NA                  NA                  NA
-## 2931     NA                          NA                  NA                  NA
-## 1462     NA                          NA                  NA                  NA
+## 985      45  697152))  ('pm1_cf'     20  ('pm25_cf'      42  ('pm10_cf'      49
+## 1832     NA                          NA                  NA                  NA
+## 365       2  563116))  ('pm1_cf'     22  ('pm25_cf'      42  ('pm10_cf'      48
+## 280      33  361052))  ('pm1_cf'     18  ('pm25_cf'      33  ('pm10_cf'      34
+## 3146     NA                          NA                  NA                  NA
 ##           X7  pm1       X8 pm25    pm10.     X9            DateTime
-## 1111  ('pm1'  14)  ('pm25'  28)  ('pm10'  31)]) 2020-10-23 14:11:09
-## 4657  ('pm1'   5)  ('pm25'   6)  ('pm10'   7)]) 2020-11-01 07:22:40
-## 6025                                                           <NA>
-## 2931                                                           <NA>
-## 1462                                                           <NA>
+## 985   ('pm1'  20)  ('pm25'  37)  ('pm10'  47)]) 2020-10-23 03:33:45
+## 1832                                                           <NA>
+## 365   ('pm1'  21)  ('pm25'  37)  ('pm10'  47)]) 2020-10-21 20:50:02
+## 280   ('pm1'  18)  ('pm25'  32)  ('pm10'  34)]) 2020-10-21 19:18:33
+## 3146                                                           <NA>
 \end{verbatim}
 \begin{alltt}
 \hlcom{# Remove Variables}
@@ -472,7 +472,7 @@ fyi: same as sd()
 
 R wants users to be sure to understand the implications of missing data!  For example, what if we had missing data in cold temperatures -- then our mean would be biased!  When you decide to override the default, you want to be sure you are not introducing unknown biases\ldots
 
-\section{More Intricate Analysis-- Based on Slack and Zooom Conversations :-)}
+\section{More Intricate Analysis-- Based on Slack and Zoom Conversations :-)}
 
 You could look to see if the there is a different during the time of the day or day of the week. You could move you sensor around in and outside your house and see if air quality is better / worse or the same\ldots.
 

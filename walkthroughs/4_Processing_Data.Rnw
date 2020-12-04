@@ -243,7 +243,7 @@ I can't find an easy solution for MACs, use the file transfer function in RealVN
 
 \subsection{Processing the data}
 
-We create a script to process the data and allow you to create a reasonably user-friendly dataframe to analyze the data.
+We create a script to process the data and allow you to create a reasonably user-friendly dataframe to analyze the data. If you are like me and had multiple files, you'll need to combine them. You can do that in excel using a cut and paste command or do it R using the \texttt{rbind()} function. It's up to you...
 
 \subsection{Remove Double Quotes in CSV}
 
@@ -271,7 +271,7 @@ rawdata$DateTime = with(rawdata, ymd_hms(paste("2020", Month,
   Day, Hour, Minute, Second, sep= '-')))
 @
 
-As always, I check my data!
+As always, I check my data! NOTE: I imported the data in a combined csv. If you have seperate csv files, you'll need to create unique filepaths for each and then read them into unique dataframes and then use rbind() to put them together. This requires that all the dataframes have the same number of columns -- check this!!!
 
 <<>>=
 rawdata[sample(1:nrow(rawdata), 5),] # random 10 rows, all columns
@@ -370,7 +370,7 @@ fyi: same as sd()
 
 R wants users to be sure to understand the implications of missing data!  For example, what if we had missing data in cold temperatures -- then our mean would be biased!  When you decide to override the default, you want to be sure you are not introducing unknown biases\ldots
 
-\section{More Intricate Analysis-- Based on Slack and Zooom Conversations :-)}
+\section{More Intricate Analysis-- Based on Slack and Zoom Conversations :-)}
 
 You could look to see if the there is a different during the time of the day or day of the week. You could move you sensor around in and outside your house and see if air quality is better / worse or the same\ldots.
 
