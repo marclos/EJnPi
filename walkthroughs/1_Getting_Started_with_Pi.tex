@@ -178,7 +178,18 @@ Generally, Raspberry Pis draw considerably less power than regular computers, ar
 \label{fig:Mac1}
 \end{figure}
 
-  \item Save file (Figure~\ref{fig:Mac2}).
+\item Remove rich text
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/1_TextEdit_PlainText}
+\caption{Create a file that is text only.}
+\label{fig:Mac2}
+\end{figure}
+
+
+
+\item Save file (Figure~\ref{fig:Mac2}).
 
 \begin{figure}[h]
 \centering
@@ -440,7 +451,7 @@ As a security measure, since your Pi is in your WiFi network, you'll want to cha
 
 We want to make sure the Pi's network options are configured properly so we don't have to add a \textbf{wpa\_supplicant.conf} file to the boot directory when booting anymore.
 
-Note: This section as caused problems. If you experience issues at this point where the Pi stops communicating, skip this step. 
+Note: This section can cause many problems. If you experience issues at this point where the Pi stops communicating, skip this step. 
 
 \begin{enumerate}
   \item While still in the raspi-config utility, navigate to \textbf{``Network Options''}.
