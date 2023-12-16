@@ -11,6 +11,8 @@
   3. You will then use the Raspberry Pi to connect and control a variety of sensors to monitor environmental conditions. The **Connecting Sensors to Pi.pdf** walkthrough guides you through this.
   
   4. Finally, the last walkthough, **Deploying Sensors.pdf**, helps show you how to deploy your AQS for monitoring.
+  
+  5. Processing the data is the last step. The **Processing Data.pdf** walkthrough will help you with this.
 
 
 
