@@ -345,6 +345,8 @@ Opened the document up in Rstdudio. Use the edit menu and select "search and rep
 \end{alltt}
 
 
+{\ttfamily\noindent\color{warningcolor}{\#\# Warning: package 'lubridate' was built under R version 4.2.2}}
+
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'lubridate'}}
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following objects are masked from 'package:base':\\\#\# \\\#\# \ \ \ \ date, intersect, setdiff, union}}\begin{alltt}
@@ -611,14 +613,18 @@ Then we can use the function cut(), to create groups (based on time windows -- i
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: dplyr}}
 
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE, : there is no package called 'dplyr'}}\begin{alltt}
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# \\\#\# Attaching package: 'dplyr'}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following objects are masked from 'package:stats':\\\#\# \\\#\# \ \ \ \ filter, lag}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# The following objects are masked from 'package:base':\\\#\# \\\#\# \ \ \ \ intersect, setdiff, setequal, union}}\begin{alltt}
 \hlstd{mean5min} \hlkwb{=} \hlstd{cleandata} \hlopt{%>%}
   \hlkwd{group_by}\hlstd{(}\hlkwc{DateTime} \hlstd{=} \hlkwd{cut}\hlstd{(DateTime,} \hlkwc{breaks}\hlstd{=}\hlstr{"5 min"}\hlstd{))} \hlopt{%>%}
   \hlkwd{summarize}\hlstd{(}\hlkwc{pm25_cf} \hlstd{=} \hlkwd{mean}\hlstd{(pm25_cf))}
 \end{alltt}
 
 
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in cleandata \%>\% group\_by(DateTime = cut(DateTime, breaks = "{}5 min"{})) \%>\% : could not find function "{}\%>\%"{}}}\end{kframe}
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in group\_by(., DateTime = cut(DateTime, breaks = "{}5 min"{})): object 'cleandata' not found}}\end{kframe}
 \end{knitrout}
 
 
@@ -627,19 +633,13 @@ Then we can use the function cut(), to create groups (based on time windows -- i
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{require}\hlstd{(dplyr)}
-\end{alltt}
-
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: dplyr}}
-
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE, : there is no package called 'dplyr'}}\begin{alltt}
 \hlstd{mean30min} \hlkwb{=} \hlstd{cleandata} \hlopt{%>%}
   \hlkwd{group_by}\hlstd{(}\hlkwc{DateTime} \hlstd{=} \hlkwd{cut}\hlstd{(DateTime,} \hlkwc{breaks}\hlstd{=}\hlstr{"30 min"}\hlstd{))} \hlopt{%>%}
   \hlkwd{summarize}\hlstd{(}\hlkwc{pm25_cf} \hlstd{=} \hlkwd{mean}\hlstd{(pm25_cf))}
 \end{alltt}
 
 
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in cleandata \%>\% group\_by(DateTime = cut(DateTime, breaks = "{}30 min"{})) \%>\% : could not find function "{}\%>\%"{}}}\end{kframe}
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in group\_by(., DateTime = cut(DateTime, breaks = "{}30 min"{})): object 'cleandata' not found}}\end{kframe}
 \end{knitrout}
 
 \noindent Or daily means...
@@ -648,19 +648,13 @@ Then we can use the function cut(), to create groups (based on time windows -- i
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{require}\hlstd{(dplyr)}
-\end{alltt}
-
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: dplyr}}
-
-{\ttfamily\noindent\color{warningcolor}{\#\# Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE, : there is no package called 'dplyr'}}\begin{alltt}
 \hlstd{meandaily} \hlkwb{=} \hlstd{cleandata} \hlopt{%>%}
   \hlkwd{group_by}\hlstd{(}\hlkwc{DateTime} \hlstd{=} \hlkwd{cut}\hlstd{(DateTime,} \hlkwc{breaks}\hlstd{=}\hlstr{"1 day"}\hlstd{))} \hlopt{%>%}
   \hlkwd{summarize}\hlstd{(}\hlkwc{pm25_cf} \hlstd{=} \hlkwd{mean}\hlstd{(pm25_cf))}
 \end{alltt}
 
 
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in cleandata \%>\% group\_by(DateTime = cut(DateTime, breaks = "{}1 day"{})) \%>\% : could not find function "{}\%>\%"{}}}\end{kframe}
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in group\_by(., DateTime = cut(DateTime, breaks = "{}1 day"{})): object 'cleandata' not found}}\end{kframe}
 \end{knitrout}
 
 So, what did we create?  Let's look at the structure and head...
