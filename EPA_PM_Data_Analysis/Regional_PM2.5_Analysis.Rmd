@@ -1,9 +1,17 @@
 ---
 title: "Regional Analysis"
 author: "Marc Los Huertos"
-date: "10/1/2020"
+date: "1/1/2023"
 output:
+  html_document:
+    df_print: paged
   pdf_document: default
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../docs"
+    )
+  })
 ---
 
 ```{r setup, include=FALSE}
@@ -68,9 +76,11 @@ First, we read data into R, using read.csv() and create an dataframe for each ye
 1. Create file path that points to the csv file. 
 
 ```{r echo=TRUE, results='hide'}
-SCZ2020.csv <- "/home/CAMPUS/mwl04747/github/EJnPi/Air_Quality_Data_Analysis/ad_viz_plotval_data2020.csv"
-SCZ2019.csv <- "/home/CAMPUS/mwl04747/github/EJnPi/Air_Quality_Data_Analysis/ad_viz_plotval_data2019.csv"
-SCZ2018.csv <- "/home/CAMPUS/mwl04747/github/EJnPi/Air_Quality_Data_Analysis/ad_viz_plotval_data2018.csv"
+SCZ2022.csv <- "/home/mwl04747/EJnPi/EPA_PM_Data_Analysis/ad_viz_plotval_data2022.csv"
+SCZ2021.csv <- "/home/mwl04747/EJnPi/EPA_PM_Data_Analysis/ad_viz_plotval_data2021.csv"
+SCZ2020.csv <- "/home/mwl04747/EJnPi/EPA_PM_Data_Analysis/ad_viz_plotval_data2020.csv"
+SCZ2019.csv <- "/home/mwl04747/EJnPi/EPA_PM_Data_Analysis/ad_viz_plotval_data2019.csv"
+SCZ2018.csv <- "/home/mwl04747/EJnPi/EPA_PM_Data_Analysis/ad_viz_plotval_data2018.csv"
 ```
 
 2. Read the csv files into dataframes
