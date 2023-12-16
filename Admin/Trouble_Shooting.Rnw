@@ -1,9 +1,12 @@
 \documentclass{article}
 
-\title{Problems with Booting Up a Raspberry Pi}
+\title{Trouble Shooting Raspberry Pi}
+\author{Marc Los Huertos \& Kyle McCarty}
 \begin{document}
 
 \maketitle
+
+\section{Problems with booting the Raspberry Pi}
 
 1. If you want to use NOOBS you must use NOOBS 1.5 (or later) for the PiZero, and 2.4 or later for the PIZero W with WiFi.
 
