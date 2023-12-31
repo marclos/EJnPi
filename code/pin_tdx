@@ -1,0 +1,22 @@
+
+from RPi import GPIO
+from subprocess import call
+
+PIN_TXD     = 14
+
+def disableTXDPin():
+    """Set the TXD pin tristate"""
+    GPIO.setup(PIN_TXD, GPIO.INPUT)
+    
+def restoreTXDPin(self):
+    """Restore TXD pin as UART"""
+    call(["gpio", "-g", "mode", "{:d}".format(PIN_TXD), "alt5"])
+    
+GPIO.setmode(GPIO.BCM)
+# Send some serial stuff...
+disableTXDPin()
+# The TXD pin is now floating (this could produce garbage on the RXD pin of the slave unit, so take care!)
+# The slave unit can be powered off here.
+restoreTXDPin()
+# TXD owned by the serial port. Send more serial stuff...
+GPIO.cleanup()
