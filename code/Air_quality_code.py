@@ -9,7 +9,7 @@ import adafruit_bme280 # BME280
 import csv # All
 import time # All
 
-# MiCS-2714 Code (I think this for the ADC not the 2714
+# MiCS-2714 Code (I think this for the ADC not the 2714)
 spi = spidev.SpiDev()
 spi.open(0,0)
 spi.max_speed_hz=1000000
