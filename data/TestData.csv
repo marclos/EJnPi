@@ -1,6 +1,0 @@
-"OrderedDict([('pm1_cf', 8), ('pm25_cf', 15), ('pm10_cf', 15), ('pm1', 8), ('pm25', 15), ('pm10', 15)])"
-"OrderedDict([('pm1_cf', 8), ('pm25_cf', 14), ('pm10_cf', 14), ('pm1', 8), ('pm25', 14), ('pm10', 14)])"
-"OrderedDict([('pm1_cf', 9), ('pm25_cf', 15), ('pm10_cf', 15), ('pm1', 9), ('pm25', 15), ('pm10', 15)])"
-"OrderedDict([('DateTime', datetime.datetime(2020, 10, 18, 20, 27, 21, 185161)), ('pm1_cf', 9), ('pm25_cf', 14), ('pm10_cf', 16), ('pm1', 9), ('pm25', 14), ('pm10', 16)])"
-"OrderedDict([('DateTime', datetime.datetime(2020, 10, 18, 20, 27, 31, 546422)), ('pm1_cf', 9), ('pm25_cf', 15), ('pm10_cf', 17), ('pm1', 9), ('pm25', 15), ('pm10', 17)])"
-"OrderedDict([('DateTime', datetime.datetime(2020, 10, 18, 20, 27, 41, 910120)), ('pm1_cf', 9), ('pm25_cf', 14), ('pm10_cf', 16), ('pm1', 9), ('pm25', 14), ('pm10', 16)])"
