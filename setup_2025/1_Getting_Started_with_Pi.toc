@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}What is a Raspberry Pi?}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Why use the Raspberry Pi?}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Packaging List}{3}{subsection.1.3}
+\contentsline {subsubsection}{\numberline {1.3.1}Other items}{3}{subsubsection.1.3.1}
+\contentsline {subsection}{\numberline {1.4}Preloaded Micro-SD Card}{4}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Update and Upgrading Raspberry Pi OS}{4}{subsection.1.5}
+\contentsline {section}{\numberline {2}Configuring the Pi}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Changing the Pi User Password??}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Network Options}{8}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Virtual Network Computing (VNC) Option}{8}{subsection.2.3}
+\contentsline {section}{\numberline {3}Finishing Up}{11}{section.3}

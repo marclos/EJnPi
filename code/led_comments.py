@@ -1,3 +1,5 @@
+# This program creates a flashing LED
+
 import RPi.GPIO as GPIO                     # Imports the Raspberry Pi GPIO library
 from time import sleep                      # Imports the sleep function from the time module
 
