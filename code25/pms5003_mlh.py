@@ -2,6 +2,7 @@ import csv
 import os
 import time
 from datetime import datetime
+from pms5003 import PMS5003, ReadTimeoutError
 
 import serial
 from collections import OrderedDict
