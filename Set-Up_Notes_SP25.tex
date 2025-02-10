@@ -1,0 +1,231 @@
+\documentclass{article}
+\usepackage{hyperref}
+
+\author{marc and kyle}
+\title{Set Up for Enviro+ Sensor with RPi Zero}
+
+
+\begin{document}
+\maketitle
+
+\section{Hardware and Assessories}
+
+1. Package list
+\begin{description}
+  \item[Raspberry Pi Zero W]
+    2. Housing
+    3. 2.5A power supply
+    4. Heatsink
+    5. Pimonori Enviro+ sensor board
+    6. PMS5003 particulate matter sensor
+    7. SD Card
+\end{description}
+
+    
+    
+    
+
+\section{Pi OS and Software}
+
+\subsection{Tutorials and Resources}
+
+%\url{https://www.rigacci.org/wiki/doku.php/doc/appunti/hardware/raspberrypi_air}
+
+%\url{https://learn.pimoroni.com/article/getting-started-with-enviro-plus}
+
+
+%OLD site: \url{https://learn.pimoroni.com/article/enviro-plus-and-luftdaten-air-quality-station#testing-the-luftdaten-script}
+
+\subsection{Image SD Card and Upgrade OS}
+
+Install Raspberry Pi OS (previously Raspbian) on SD Card
+
+
+* Use either a SD card slot or USB/SD card adapter on ***another*** computer to connect SD card for OS installation.
+    1. Download Raspberry Pi Imager for your operating system (OS) at \href{https://www.raspberrypi.org/downloads/}{(https://www.raspberrypi.org/downloads/}
+    2. Install Raspberry Pi Imager
+    3. Use Raspberry Pi Imager to install/write Raspberry Pi OS to SD card.
+        1. Customize with the following parameters: 
+            * Choose OS: **Raspberry Pi OS (other)**
+            * Choose SD Card: **Select the SD card you want to write the OS to**
+            * Choose Storage: **Choose the size of the SD card**
+            * Write: **Click "Write" to write the OS to the SD card**
+            * Host: Pi\#, where \# is the number of the Pi you are using.
+
+            
+  11. Update Raspberry Pi Zero W.
+  + To make sure the Raspberry Pi Zero W is up to date, run the following commands, one after the other, making sure the process completes each time:
+  
+
+\begin{verbatim}
+sudo apt update
+sudo apt full-upgrade
+\end{verbatim}
+
+This can take 45 minutes with a newly imaged SD card. N
+
+
+
+\section{Python Code Source}
+
+\subsection{Clone Pimoroni Enviro+ Respository}
+
+Install Pimoroni Enviro+ software
+
+
+To install the Pimoroni Enviro+ software, run the following command in the terminal:
+
+\begin{verbatim}
+git clone https://github.come/pimoroni/enviroplus-python
+cd enviroplus-python
+./install.sh
+\end{verbatim}
+
+
+Not sure what is going on here...but it takes a while!
+
+say no to documentation. 
+
+creates auto\_venv.sh
+
+getting lots of python libraries/packagesj
+
+library from pypi
+
+warning boot/config.txt is not a link to boot/firmware/config.txt
+
+FIX how?
+
+reboot
+
+% creatw table with four colulmns and ten rows with Rpi number from 1 to 10 and colmumns about their stauses
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Pi Zero ID} & \textbf{OS} & \textbf{Repositories Cloned } & \textbf{Boot Run} \\
+\hline
+1 & ?? & No & No \\
+2 & ?? & No & No \\
+3 & Not Installed & No & No \\
+4 & Not Installed & No & No \\
+5 & Not Installed & No & No \\
+6 & Not Installed & No & No \\
+7 & Not Installed & No & No \\
+8 & Not Installed & No & No \\
+9 & Not Installed & No & No \\
+
+10 & Not Installed & No & No \\
+11 & Not Installed & No & No \\
+12 & Not Installed & No & No \\
+13 & Not Installed & No & No \\
+14 & Not Installed & No & No \\
+15 & Not Installed & No & No \\
+
+\hline
+\end{tabular}
+\end{center}
+\caption{Raspberry Pi Status}
+\label{table:1}
+\end{table}
+
+
+
+
+\subsection{Testing Pimoroni Examples}
+
+Test the Pimoroni Enviro+ software
+
+NO IDEA why this is run this way...
+
+tried thonny: doesn't work.
+
+with 
+* To test the Pimoroni Enviro+ software, run the following command in the terminal:
+
+\begin{verbatim}
+source ~/.virtualenvs/pimoroni/bin/activate
+\end{verbatim}
+
+
+There are several examples in the examples folder within the enviroplus-python folder. In the terminal, type the following to look at the available examples:
+
+\begin{verbatim}
+cd enviroplus-python
+cd examples
+ls
+\end{verbatim}
+
+
+\subsection{Clone EJnP}
+
+Clone Marc/Kyle's GitHub repository
+
+* To clone the GitHub repository, run the following command in the terminal:
+\begin{verbatim}
+git clone https://github.com/marclos/EJnPi
+\end{verbatim}
+
+
+
+\subsection{EJnPi: Pushing and Pulling EJnPi}
+
+
+*If you have a problem in RStudio with checking commits, it may be a bug. Use RStudio's Terminal and run this command:
+
+\begin{verbatim}
+git commit -v -a
+\end{verbatim}
+
+Then uncomment one line and enter. This should fix the rest of the unselectable commits.
+
+
+Air Quality Project
+
+
+    
+
+
+
+
+
+updates: Pi15; 
+
+
+\subsection{Test software}
+
+.. still working on this!!!
+
+
+\subsection{Set up Script to Run automatically}
+
+
+An easy way of running a script automatically on boot is to use crontab, a job scheduler, which has an @reboot command that will run a script or command when the Pi first boots up.
+
+In the terminal, type crontab -e and then select nano as the editor.
+
+Scroll down to the very bottom of the file with the arrow keys and type the following line:
+\begin{verbatim}
+@reboot sudo python /home/pi/enviroplus-python/examples/luftdaten.py &
+\end{verbatim}
+
+Double- and triple-check this command to make sure that it's exactly correct, as any error will cause it not to run on boot.
+
+Press control-x, then y, then enter to exit and save the new crontab.
+
+You should now shutdown your Raspberry Pi Zero W, either through the Raspberry Pi menu, or by typing sudo shutdown -h now in the terminal.
+
+
+When running the examples that follow, you can type control-c at any time to stop the example running.
+
+ what works:
+
+python particulatae.py fail
+
+the libraries can be found in the virtual environment -- lots of stuff on this, but it doing to be heard to call the virtual library and get everyting working on startup!
+
+ugh!!
+
+
+
+\end{document}
