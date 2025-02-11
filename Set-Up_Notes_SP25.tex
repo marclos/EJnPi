@@ -13,12 +13,12 @@
 1. Package list
 \begin{description}
   \item[Raspberry Pi Zero W]
-    2. Housing
-    3. 2.5A power supply
-    4. Heatsink
-    5. Pimonori Enviro+ sensor board
-    6. PMS5003 particulate matter sensor
-    7. SD Card
+  \item[Housing]
+  \item[2.5A power supply]
+  \item[Heatsink]
+  \item[Pimonori Enviro+ sensor board]
+  \item[PMS5003 particulate matter sensor]
+  \item[SD Card]
 \end{description}
 
     
@@ -29,9 +29,9 @@
 
 \subsection{Tutorials and Resources}
 
-%\url{https://www.rigacci.org/wiki/doku.php/doc/appunti/hardware/raspberrypi_air}
+\url{https://www.rigacci.org/wiki/doku.php/doc/appunti/hardware/raspberrypi_air}
 
-%\url{https://learn.pimoroni.com/article/getting-started-with-enviro-plus}
+\url{https://learn.pimoroni.com/article/getting-started-with-enviro-plus}
 
 
 %OLD site: \url{https://learn.pimoroni.com/article/enviro-plus-and-luftdaten-air-quality-station#testing-the-luftdaten-script}
@@ -101,26 +101,28 @@ reboot
 % creatw table with four colulmns and ten rows with Rpi number from 1 to 10 and colmumns about their stauses
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|}
 \hline
-\textbf{Pi Zero ID} & \textbf{OS} & \textbf{Repositories Cloned } & \textbf{Boot Run} \\
+\textbf{Pi Zero ID} & \textbf{OS} & \textbf{full-upgrade} & \textbf{Repositories Cloned } & \textbf{Boot Run} \\
 \hline
-1 & ?? & No & No \\
-2 & ?? & No & No \\
-3 & Not Installed & No & No \\
-4 & Not Installed & No & No \\
-5 & Not Installed & No & No \\
-6 & Not Installed & No & No \\
-7 & Not Installed & No & No \\
-8 & Not Installed & No & No \\
-9 & Not Installed & No & No \\
+1  & bookworm    & 1/20/25 & No & No \\
+2  & bookworm    & 1/19/25 & No & No \\
+3  & Not Installed & No & No & No \\
+4  & Not Installed & No & No & No \\
 
-10 & Not Installed & No & No \\
-11 & Not Installed & No & No \\
-12 & Not Installed & No & No \\
-13 & Not Installed & No & No \\
-14 & Not Installed & No & No \\
-15 & Not Installed & No & No \\
+5  & Not Installed & No & No & No \\
+6  & Not Installed & No & No & No \\
+7  & bookworm    & 2/11/25 & No & No \\
+8  & bookworm    & 2/11/25 & No & No \\
+
+9  & bookworm    & 2/10/25 & No & No \\
+10 & bookworm    & No & No & No \\
+11 & bookworm    & 2/10/25 & No & No \\
+12 & Not Installed & No & No & No \\
+
+13 & Not Installed & No & No & No \\
+14 & bookworm    & 2/10/25 & No & No \\
+15 & bookworm    & 2/9/25  & EnviroPlus & No \\
 
 \hline
 \end{tabular}
@@ -198,6 +200,27 @@ updates: Pi15;
 
 
 \subsection{Set up Script to Run automatically}
+
+\url{https://learn.adafruit.com/python-virtual-environment-usage-on-raspberry-pi/basic-venv-usage}
+
+\url{https://learn.adafruit.com/python-virtual-environment-usage-on-raspberry-pi/automatically-running-at-boot}
+
+\subsubsection{Options for Running Script Automatically}
+
+There are several ways to run a script automatically on boot. The easiest way is to use crontab, a job scheduler, which has an @reboot command that will run a script or command when the Pi first boots up.
+
+\begin{description}
+\item[crontab]
+\item[systemd]
+\item[rc.local]
+\end{description}
+
+
+
+
+
+
+
 
 
 An easy way of running a script automatically on boot is to use crontab, a job scheduler, which has an @reboot command that will run a script or command when the Pi first boots up.
