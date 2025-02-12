@@ -101,28 +101,28 @@ reboot
 % creatw table with four colulmns and ten rows with Rpi number from 1 to 10 and colmumns about their stauses
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|p{2.3cm}|c|}
 \hline
-\textbf{Pi Zero ID} & \textbf{OS} & \textbf{full-upgrade} & \textbf{Repositories Cloned } & \textbf{Boot Run} \\
+\textbf{PiZ ID} & \textbf{OS} & \textbf{Update} & \textbf{Repositories Installed} & \textbf{Boot Run} \\
 \hline
-1  & bookworm    & 1/20/25 & No & No \\
-2  & bookworm    & 1/19/25 & No & No \\
-3  & Not Installed & No & No & No \\
-4  & Not Installed & No & No & No \\
+1  & bookworm (12)    & 1/20/25 & No & No \\
+2  & bookworm (12)    & 2/11/25 & No & No \\
+3  & Not Installed    & No & No & No \\
+4  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
 
-5  & Not Installed & No & No & No \\
-6  & Not Installed & No & No & No \\
-7  & bookworm    & 2/11/25 & No & No \\
-8  & bookworm    & 2/11/25 & No & No \\
+5  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
+6  & bookworm (12)    & 2/10/25 & EnviroPlus & No \\
+7  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
+8  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
 
-9  & bookworm    & 2/10/25 & No & No \\
-10 & bookworm    & No & No & No \\
-11 & bookworm    & 2/10/25 & No & No \\
+9  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
+10 & bookworm (12)    & Error & No & No \\
+11 & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
 12 & Not Installed & No & No & No \\
 
 13 & Not Installed & No & No & No \\
-14 & bookworm    & 2/10/25 & No & No \\
-15 & bookworm    & 2/9/25  & EnviroPlus & No \\
+14 & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
+15 & bookworm (12)    & 2/9/25  & EnviroPlus & No \\
 
 \hline
 \end{tabular}
@@ -206,6 +206,8 @@ updates: Pi15;
 \url{https://learn.adafruit.com/python-virtual-environment-usage-on-raspberry-pi/automatically-running-at-boot}
 
 \subsubsection{Options for Running Script Automatically}
+
+If your using the login of pi for example, then the line source ~/.virtualenvs/pimoroni/bin/activate should be added into the .bashrc file in the /home/pi users folder.
 
 There are several ways to run a script automatically on boot. The easiest way is to use crontab, a job scheduler, which has an @reboot command that will run a script or command when the Pi first boots up.
 
