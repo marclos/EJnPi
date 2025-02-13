@@ -105,8 +105,8 @@ reboot
 \hline
 \textbf{PiZ ID} & \textbf{OS} & \textbf{Update} & \textbf{Repositories Installed} & \textbf{Boot Run} \\
 \hline
-1  & bookworm (12)    & 1/20/25 & No & No \\
-2  & bookworm (12)    & 2/11/25 & No & No \\
+1  & bookworm (12)    & 2/12/25 & EnviroPlus & No \\
+2  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
 3  & Not Installed    & No & No & No \\
 4  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
 
@@ -118,7 +118,7 @@ reboot
 9  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
 10 & bookworm (12)    & Error & No & No \\
 11 & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
-12 & Not Installed & No & No & No \\
+12 & bookworm (12)    & 2/12/25 & EnviroPlus & No \\
 
 13 & Not Installed & No & No & No \\
 14 & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
@@ -132,6 +132,26 @@ reboot
 \end{table}
 
 
+
+\section{Downloading Software}
+
+\subsection{Clone Pimoroni Enviro+ Respository}
+
+
+To install the Pimoroni Enviro+ software, run the following command in the terminal:
+
+\begin{verbatim}
+git clone https://github.come/pimoroni/enviroplus-python
+cd enviroplus-python
+./install.sh
+\end{verbatim}
+
+install.sh is a shell script that installs the necessary software for the Enviro+ board. It will take a few minutes to install all the software. when prompted to create a virtual environment, type "y" and press Enter. After this has been completed, the software will be installed. 
+
+After the software has been installed, you will be prompted to install examples. Type "y" and press Enter.
+When prompted to install the documentation, type "n" and press Enter. 
+
+Finally, you should see usk reboot to complete the installation. Type "y" and press Enter to reboot the Raspberry Pi Zero W.
 
 
 \subsection{Testing Pimoroni Examples}
@@ -196,7 +216,16 @@ updates: Pi15;
 
 \subsection{Test software}
 
-.. still working on this!!!
+\begin{description}
+  \item[BME280.py] The program works with the vircula ennvonts.
+  
+  
+  
+\end{description}
+
+
+
+
 
 
 \subsection{Set up Script to Run automatically}
