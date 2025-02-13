@@ -221,6 +221,7 @@ To clone the EJnPi repository, run the following command in the terminal:
 git clone https://github.com/marclos/EJnPi
 \end{verbatim}
 
+The EJnPi repository contains several examples that demonstrate the capabilities of the Enviro+ board, but it's painfully slow!!! Not even that much in there. I don't know why. I read something about the way the repository is set up that the entire history might be included (hidden?). I'll do some research on this at some point. 
 
 \subsection{EJnPi: Pushing and Pulling EJnPi}
 
@@ -266,19 +267,28 @@ python EA30-particulates.py
 
 \subsection{TESTING SECTION}
 
+FYI: Do not use pms5003.py as a filename -- that will get in the way of the module loading.
+
+
 \begin{description}
 
 \item[pms5003\_2.py] 
 
 FAIL errors out for lines 42, 43, 44. 
 
-\item[pms5003\_v3.py] WORKS
+\item[pms5003\_3.py] WORKS
 
 More robust set of variables, saves to csv every 30 seconds. Commented out lines 42, 43, 44.
 
-\item[pms5003\_v4.py] Added bme280 sensor to the script. NOT TESTED YET.
+\item[pms5003\_4.py] Added bme280 sensor to the script. WORKS.
+
+I'd like to add gas sensor, but first, need to get the LCD working, so students know
+it's working when plugged in without needing a HDMI connection. 
+
+also the logging info is restricted, not sure what do about that.
 
 
+\item[pms5003\_5.py] ?? LCD?
 
 
 
@@ -296,12 +306,6 @@ Doesn't import the PMS5003 library -- somehow the path is a problem, might be jo
 
 
 
-
-python particulatae.py fail
-
-the libraries can be found in the virtual environment -- lots of stuff on this, but it doing to be heard to call the virtual library and get everyting working on startup!
-
-ugh!!
 
 
 Type "Ctrl + C" to stop the program.
