@@ -246,40 +246,49 @@ ls
 The EJnPi folder contains several examples that demonstrate the capabilities of the Enviro+ board.
 
 \begin{description}
-  \item[EA30-bme.py] This program uses the BME280 sensor to read temperature, pressure, and humidity, but writes the data to a CSV file (EA30-bme280/_data.csv) every 60 seconds. 
+  \item[EA30-bme.py] This program uses the BME280 sensor to read temperature, pressure, and humidity, but writes the data to a CSV file (EA30-bme280\_data.csv) every 60 seconds. 
   
 NOTE: I would like to get the data out of this folder... to be continued. Also, each student might have a code for their dataset...
   
   \begin{verbatim}
-python bme280_v2.py
+python EA30-bme.py
   \end{verbatim} 
 
 Type "Ctrl + C" to stop the program.
   
   
-\item[EA30\_particulates.py] This program uses the PMS5003 sensor to read particulate matter levels, but writes the data to a CSV file (particulates\_data.csv) every XX seconds.
-
+\item[EA30-particulates.py] This program uses the PMS5003 sensor to read particulate matter levels, but writes the data to a CSV file (particulates\_data.csv) every second.
 
 \begin{verbatim}
-python EA30_particulates.py
+python EA30-particulates.py
 \end{verbatim}
 
 
-Results...
+\subsection{TESTING SECTION}
+
 \begin{description}
-  \item[Enviroplus\_v0.py] This unmodified from Pironomi, and it works. 
+
+\item[pms5003\_2.py] 
+
+FAIL errors out for lines 42, 43, 44. 
+
+\item[pms5003\_v3.py] WORKS
+
+More robust set of variables, saves to csv every 30 seconds. Commented out lines 42, 43, 44.
+
+\item[pms5003\_v4.py] Added bme280 sensor to the script. NOT TESTED YET.
+
+
+
+
+
+  \item[Enviroplus\_v0.py] This unmodified from Pironomi, and it works. Every second.
   \item[Enviroplus\_v1.py] This is a modified version get data from all sensors at once. Not started yet.   \item[Enviroplus\_v2.py] This is a modified version get data form all sensors and write to a CSV file. Not started yet.
   
     
 Doesn't import the PMS5003 library -- somehow the path is a problem, might be jobs running in bg!
 
-\item[pms5003_v3.py] WORKS
 
-Simple program that reads the PMS5003 sensor and prints the data to the terminal every few seconds.
-
-\item[pms5003_v4a.py] WORKS
-
-More robust set of variables, saves to csv every 30 seconds.
 
 
 \end{description}

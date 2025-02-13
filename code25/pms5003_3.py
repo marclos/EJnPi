@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Commented out lines 42-44 and added CSV
+# 30 second sleep time
+
 
 import logging
 import time
@@ -10,7 +13,7 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt="%Y-%m-%d %H:%M:%S")
 
-logging.info("""particulates.py - Print readings from the PMS5003 particulate sensor.
+logging.info("""Print readings from the PMS5003 particulate sensor.
 
 Press Ctrl+C to exit!
 
@@ -25,7 +28,7 @@ with open('pms5003_data.csv', 'a', newline='') as csvfile:
     
     # Write the header row if the file is empty
     if csvfile.tell() == 0:
-        csvwriter.writerow(['timestamp', 'pm1_0', 'pm2_5', 'pm10'])
+        csvwriter.writerow(['timestamp', 'pm1_0', 'pm2_5', 'pm10', 'pm1_0_atm', 'pm2_5_atm', 'pm10_atm', 'gt0_3um', 'gt0_5um', 'gt1_0um', 'gt2_5um', 'gt5_0um', 'gt10um'])
 
     try:
         while True:
@@ -38,9 +41,18 @@ with open('pms5003_data.csv', 'a', newline='') as csvfile:
                     time.strftime('%Y-%m-%d %H:%M:%S'),
                     readings.pm_ug_per_m3(1.0),
                     readings.pm_ug_per_m3(2.5),
-                    readings.pm_ug_per_m3(10)
+                    readings.pm_ug_per_m3(10),
+                    #readings.pm_ug_per_m3(1.0, atmospheric_environment=True),
+                    #readings.pm_ug_per_m3(2.5, atmospheric_environment=True),
+                    #readings.pm_ug_per_m3(10, atmospheric_environment=True),
+                    readings.pm_per_1l_air(0.3),
+                    readings.pm_per_1l_air(0.5),
+                    readings.pm_per_1l_air(1.0),
+                    readings.pm_per_1l_air(2.5),
+                    readings.pm_per_1l_air(5.0),
+                    readings.pm_per_1l_air(10)
                 ])
-                
+                time.sleep(30)  # wait for 0.5 minutes (30 seconds)
             except ReadTimeoutError:
                 pms5003 = PMS5003()
     except KeyboardInterrupt:
