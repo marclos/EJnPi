@@ -135,8 +135,11 @@ reboot
 
 \section{Downloading Software}
 
-\subsection{Clone Pimoroni Enviro+ Respository}
+\subsection{Following the Pimoroni Tutorial}
 
+\url{https://learn.pimoroni.com/article/getting-started-with-enviro-plus}
+
+\subsection{Cloning the Pimoroni Enviro+ Repository}
 
 To install the Pimoroni Enviro+ software, run the following command in the terminal:
 
@@ -153,24 +156,15 @@ When prompted to install the documentation, type "n" and press Enter.
 
 Finally, you should see usk reboot to complete the installation. Type "y" and press Enter to reboot the Raspberry Pi Zero W.
 
-
 \subsection{Testing Pimoroni Examples}
 
-Test the Pimoroni Enviro+ software
-
-NO IDEA why this is run this way...
-
-tried thonny: doesn't work.
-
-with 
-* To test the Pimoroni Enviro+ software, run the following command in the terminal:
+The Pimoroni board relies on a virtual environment to run the software. To test the Pimoroni Enviro+ software, run the following command in the terminal:
 
 \begin{verbatim}
 source ~/.virtualenvs/pimoroni/bin/activate
 \end{verbatim}
 
-
-There are several examples in the examples folder within the enviroplus-python folder. In the terminal, type the following to look at the available examples:
+Navigate to the examples folder within the enviroplus-python folder:
 
 \begin{verbatim}
 cd enviroplus-python
@@ -178,16 +172,54 @@ cd examples
 ls
 \end{verbatim}
 
+There are several examples in the examples folder within the enviroplus-python folder. In the terminal, type the following to look at the available examples:
 
-\subsection{Clone EJnP}
+The examples folder contains several examples that demonstrate the capabilities of the Enviro+ board.
 
-Clone Marc/Kyle's GitHub repository
+\begin{description}
+  \item[Weather Sensors] This example uses the BME280 sensor to read temperature, pressure, and humidity.
+  
+  \begin{verbatim}
+      python weather.py
+  \end{verbatim} 
+  
+  Type "Ctrl + C" to stop the program.
+  
+  \item[MICS6814 gas sensor example] The MICS6814 outputs resistance values in Ohms that correspond to the levels of three different types of gas: reducing, oxidising, and NH3 (more info above). Let's look at the numbers that come out of this sensor by running the gas example now. Type the following in the terminal:
+  
+  \begin{verbatim}
+      python gas.py
+  \end{verbatim}
+  
+Let it run for a while, and you'll see that the values creep up steadily. The sensor values take quite a while to stabilise, as the sensor warms up gradually. The sensor is sensitive to temperature, so it's important to let it warm up for a few minutes before taking readings.
 
-* To clone the GitHub repository, run the following command in the terminal:
+Type "Ctrl + C" to stop the program.
+
+\item[Light Sensors] - This example uses the LTR559 light sensor to read ambient light levels.
+
+\begin{verbatim}
+      python light.py
+\end{verbatim}
+
+Type "Ctrl + C" to stop the program.
+
+\item[Particulates] - This example uses the PMS5003 sensor to read particulate matter levels.
+
+\begin{verbatim}
+      python particulates.py
+\end{verbatim}
+
+Type "Ctrl + C" to stop the program.\footnote{Sometimes this "stops" the program, but it continues to run in the background, which blocks the sensor from being used in other programs. If this happens, exit the terminal and restart a new one. I think that will work! But some say you need to reboot the Pi.}
+  
+\end{description}
+
+\subsection{Cloning the EJnPi Repository}
+
+To clone the EJnPi repository, run the following command in the terminal:
+
 \begin{verbatim}
 git clone https://github.com/marclos/EJnPi
 \end{verbatim}
-
 
 
 \subsection{EJnPi: Pushing and Pulling EJnPi}
@@ -202,33 +234,69 @@ git commit -v -a
 Then uncomment one line and enter. This should fix the rest of the unselectable commits.
 
 
-Air Quality Project
+\subsection{Testing the EJnPi Repository}
 
+To test the EJnPi repository, navigate to the EJnPi folder and run the following command in the terminal:
 
-    
+\begin{verbatim}
+cd EJnPi
+ls
+\end{verbatim}
 
-
-
-
-
-updates: Pi15; 
-
-
-\subsection{Test software}
+The EJnPi folder contains several examples that demonstrate the capabilities of the Enviro+ board.
 
 \begin{description}
-  \item[BME280.py] The program works with the vircula ennvonts.
+  \item[bme280\_v2.py] This program uses the BME280 sensor to read temperature, pressure, and humidity, but writes the data to a CSV file (bme280\_data.csv) every XX seconds. 
+  
+NOTE: I will rename this as EA30\_bme280.py to reflect the fact that it is the EA30 version of the BME280 sensor. I would like to get the data out of this folder... to be continued.
+  
+  \begin{verbatim}
+python bme280_v2.py
+  \end{verbatim} 
+
+Type "Ctrl + C" to stop the program.
   
   
+\item[EA30\_particulates.py] This program uses the PMS5003 sensor to read particulate matter levels, but writes the data to a CSV file (particulates\_data.csv) every XX seconds.
+
+
+\begin{verbatim}
+python EA30_particulates.py
+\end{verbatim}
+
+
+Results...
+\begin{description}
+  \item[Enviroplus\_v0.py] This program ...crashes: 
   
+  File "/home/pi/EJnPi/code25/enviroplus\_v0.py", line 22, in <module>
+    from pms5003 import PMS5003
+    
+Doesn't import the PMS5003 library -- somehow the path is a problem. 
+
+
 \end{description}
 
 
 
+ImportError: cannot import name 'PMS5003' from 'pms5003' (/home/pi/EJnPi/code25/pms5003.py)
 
 
+python particulatae.py fail
 
-\subsection{Set up Script to Run automatically}
+the libraries can be found in the virtual environment -- lots of stuff on this, but it doing to be heard to call the virtual library and get everyting working on startup!
+
+ugh!!
+
+
+Type "Ctrl + C" to stop the program.
+
+\end{description}
+
+
+\section{Set up Script to Run automatically}
+
+\subsection{Setting up a Virtual Environment}
 
 \url{https://learn.adafruit.com/python-virtual-environment-usage-on-raspberry-pi/basic-venv-usage}
 
@@ -272,13 +340,6 @@ You should now shutdown your Raspberry Pi Zero W, either through the Raspberry P
 
 When running the examples that follow, you can type control-c at any time to stop the example running.
 
- what works:
-
-python particulatae.py fail
-
-the libraries can be found in the virtual environment -- lots of stuff on this, but it doing to be heard to call the virtual library and get everyting working on startup!
-
-ugh!!
 
 
 
