@@ -246,9 +246,9 @@ ls
 The EJnPi folder contains several examples that demonstrate the capabilities of the Enviro+ board.
 
 \begin{description}
-  \item[bme280\_v2.py] This program uses the BME280 sensor to read temperature, pressure, and humidity, but writes the data to a CSV file (bme280\_data.csv) every XX seconds. 
+  \item[EA30-bme.py] This program uses the BME280 sensor to read temperature, pressure, and humidity, but writes the data to a CSV file (EA30-bme280/_data.csv) every 60 seconds. 
   
-NOTE: I will rename this as EA30\_bme280.py to reflect the fact that it is the EA30 version of the BME280 sensor. I would like to get the data out of this folder... to be continued.
+NOTE: I would like to get the data out of this folder... to be continued. Also, each student might have a code for their dataset...
   
   \begin{verbatim}
 python bme280_v2.py
@@ -267,19 +267,25 @@ python EA30_particulates.py
 
 Results...
 \begin{description}
-  \item[Enviroplus\_v0.py] This program ...crashes: 
+  \item[Enviroplus\_v0.py] This unmodified from Pironomi, and it works. 
+  \item[Enviroplus\_v1.py] This is a modified version get data from all sensors at once. Not started yet.   \item[Enviroplus\_v2.py] This is a modified version get data form all sensors and write to a CSV file. Not started yet.
   
-  File "/home/pi/EJnPi/code25/enviroplus\_v0.py", line 22, in <module>
-    from pms5003 import PMS5003
     
-Doesn't import the PMS5003 library -- somehow the path is a problem. 
+Doesn't import the PMS5003 library -- somehow the path is a problem, might be jobs running in bg!
+
+\item[pms5003_v3.py] WORKS
+
+Simple program that reads the PMS5003 sensor and prints the data to the terminal every few seconds.
+
+\item[pms5003_v4a.py] WORKS
+
+More robust set of variables, saves to csv every 30 seconds.
 
 
 \end{description}
 
 
 
-ImportError: cannot import name 'PMS5003' from 'pms5003' (/home/pi/EJnPi/code25/pms5003.py)
 
 
 python particulatae.py fail

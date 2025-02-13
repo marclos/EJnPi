@@ -8,7 +8,7 @@ from bme280 import BME280
 bme280 = BME280()
 
 # Define the CSV file name
-csv_file = "bme280_data.csv"
+csv_file = "EA30-bme280_data.csv"
 
 # Check if the file exists, if not, create it with headers
 if not os.path.exists(csv_file):
@@ -33,7 +33,7 @@ try:
         save_to_csv(timestamp, temperature, pressure, humidity)
         print(f"Data saved: {timestamp}, Temp: {temperature}°C, Pressure: {pressure}hPa, Humidity: {humidity}%")
         
-        time.sleep(10)  # Adjust the interval as needed
+        time.sleep(60)  # Adjust the interval as needed
 
 except KeyboardInterrupt:
     print("Data collection stopped.")
