@@ -120,7 +120,7 @@ reboot
 11 & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
 12 & bookworm (12)    & 2/12/25 & EnviroPlus & No \\
 
-13 & Not Installed & No & No & No \\
+13 & bookworm (12)    & 2/13/25 & EnviroPlus & No \\
 14 & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
 15 & bookworm (12)    & 2/9/25  & EnviroPlus & No \\
 
@@ -247,16 +247,16 @@ ls
 The EJnPi folder contains several examples that demonstrate the capabilities of the Enviro+ board.
 
 \begin{description}
+
   \item[EA30-bme.py] This program uses the BME280 sensor to read temperature, pressure, and humidity, but writes the data to a CSV file (EA30-bme280\_data.csv) every 60 seconds. 
   
 NOTE: I would like to get the data out of this folder... to be continued. Also, each student might have a code for their dataset...
   
-  \begin{verbatim}
+\begin{verbatim}
 python EA30-bme.py
-  \end{verbatim} 
+\end{verbatim} 
 
 Type "Ctrl + C" to stop the program.
-  
   
 \item[EA30-particulates.py] This program uses the PMS5003 sensor to read particulate matter levels, but writes the data to a CSV file (particulates\_data.csv) every second.
 
@@ -265,16 +265,17 @@ python EA30-particulates.py
 \end{verbatim}
 
 
+
+Type "Ctrl + C" to stop the program.
+
+\end{description}
+
+
 \subsection{TESTING SECTION}
 
-FYI: Do not use pms5003.py as a filename -- that will get in the way of the module loading.
-
+FYI: Do not use pms5003.py as it interferes with package loading, filename -- that will get in the way of the module loading..
 
 \begin{description}
-
-\item[pms5003\_2.py] 
-
-FAIL errors out for lines 42, 43, 44. 
 
 \item[pms5003\_3.py] WORKS
 
@@ -290,25 +291,13 @@ also the logging info is restricted, not sure what do about that.
 
 \item[pms5003\_5.py] ?? LCD?
 
-
-
-  \item[Enviroplus\_v0.py] This unmodified from Pironomi, and it works. Every second.
-  \item[Enviroplus\_v1.py] This is a modified version get data from all sensors at once. Not started yet.   \item[Enviroplus\_v2.py] This is a modified version get data form all sensors and write to a CSV file. Not started yet.
+\item[Enviroplus\_v0.py] This unmodified from Pironomi, and it works. Every second.
   
-    
-Doesn't import the PMS5003 library -- somehow the path is a problem, might be jobs running in bg!
+  
+\item[Enviroplus\_v1.py] This is a modified version get data from all sensors at once. Not started yet.
 
-
-
-
-\end{description}
-
-
-
-
-
-
-Type "Ctrl + C" to stop the program.
+\item[Enviroplus\_v2.py] This is a modified version get data form all sensors and write to a CSV file. Not started yet.
+  
 
 \end{description}
 
@@ -346,6 +335,8 @@ An easy way of running a script automatically on boot is to use crontab, a job s
 In the terminal, type crontab -e and then select nano as the editor.
 
 Scroll down to the very bottom of the file with the arrow keys and type the following line:
+
+
 \begin{verbatim}
 @reboot sudo python /home/pi/enviroplus-python/examples/luftdaten.py &
 \end{verbatim}
@@ -358,6 +349,14 @@ You should now shutdown your Raspberry Pi Zero W, either through the Raspberry P
 
 
 When running the examples that follow, you can type control-c at any time to stop the example running.
+
+\section{deployment notes}
+
+\subsection{Shutting doen with GPIO pins}
+
+\url{https://learn.adafruit.com/adafruits-raspberry-pi-lesson-13-power-control/shutting-down-the-pi}
+
+add a button??
 
 
 
