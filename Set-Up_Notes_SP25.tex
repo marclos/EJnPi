@@ -259,6 +259,18 @@ python EA30-bme.py
 \end{verbatim} 
 
 Type "Ctrl + C" to stop the program.
+
+\item[particulates\_v0b.py] NOT TESTED This program uses the PMS5003 sensor to read particulate matter levels as used by the pimoroni examples, but will be used with a systemd service to run in the background and pipe to a log file...
+
+
+\begin{verbatim}
+python particulates_v0b.py
+\end{verbatim}
+
+
+
+Type "Ctrl + C" to stop the program.
+
   
 \item[EA30-particulates.py] This program uses the PMS5003 sensor to read particulate matter levels, but writes the data to a CSV file (particulates\_data.csv) every second.
 
