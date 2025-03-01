@@ -316,10 +316,11 @@ also the logging info is restricted, not sure what do about that.
 \item[Enviroplus\_v0.py] This unmodified from Pironomi, and it works. Every second.
   
   
-\item[Enviroplus\_v1.py] This is a modified version get data from all sensors at once. Not started yet.
+\item[Enviroplus\_v1.py] This is a modified version get data from all sensors at once. Working via systemd
 
-\item[Enviroplus\_v2.py] This is a modified version get data form all sensors and write to a CSV file. Not started yet.
-  
+\item[Enviroplus\_v2.py] This is a modified version get data form all sensors and write log file. Not ideal, but works. 1 minute invervals
+
+\item[ea30_sp25\_v1.py] This is a modified version of Enviroplus\_v2.py and write log file. Not ideal, but works  
 
 \end{description}
 
@@ -343,7 +344,7 @@ There are several ways to run a script automatically on boot. The easiest way is
 \item[systemd] got the system to start, but not writing data to csv. Unsure if the python version is correct.
 
 
-sudo nano /etc/systemd/system/enviroplus.service
+sudo nano /lib/systemd/system/enviroplus.service
 
 \begin{verbatim}
 [Unit]
@@ -352,14 +353,13 @@ After=multi-user.target
 
 [Service]
 Type=idle
-ExecStart=/home/pi/.virtualenvs/pimoroni/bin/python /home/pi/EJnPi/code25/pms5003_3.py
-\# enviroplus-python/examples/luftdaten.py > /home/pi/enviroplus-python/examples/luftdaten.log 2>&1
+ExecStart=/home/pi/.virtualenvs/pimoroni/bin/python /home/pi/EJnPi/ea30_sp25_v1.py
 
 [Install]
 WantedBy=multi-user.target
 \end{verbatim}
 
-sudo chmod 644 /etc/systemd/system/enviroplus.service
+sudo chmod 644 /lib/systemd/system/ea30\_sp25.service
 
 sudo systemctl enable enviroplus.service
 
@@ -374,6 +374,8 @@ sudo systemctl deamon-reload enviroplus.service
 
 
 \item[rc.local] haven't tried this yet.
+
+ source ~/.virtualenvs/pimoroni/bin/activate should be added into the .bashrc file in the /home/pi users folder.
 
 sudo nano /etc/rc.local
 

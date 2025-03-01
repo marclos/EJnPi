@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Pimoroni Servies
+After=multi-user.target
+
+[Service]
+User=pi
+Type=idle
+ExecStart=/home/pi/.virtualenvs/pimoroni/bin/python /home/pi/EJnPi/ea30_sp25_v1.py
+
+[Install]
+WantedBy=multi-user.target
