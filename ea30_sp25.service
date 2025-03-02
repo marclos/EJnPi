@@ -1,5 +1,5 @@
 [Unit]
-Description=Run Pimoroni Servies
+Description=Run PiZ  ea30_sp25 Service
 After=multi-user.target
 
 [Service]
