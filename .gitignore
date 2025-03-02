@@ -7,8 +7,12 @@ hardware/
 personal/
 code/
 testing25
-data/
-docs/
+data/OLD
+docs/maunaloa
+docs/figure/
+index_cache
+docs/*.Rmd
+docs/*bib
 walkthroughs/
 EPA_PM_Data_Analysis/
 setup_2025/
