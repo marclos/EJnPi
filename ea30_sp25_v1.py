@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Depoloyed 3/1/2025
+# Customize log file: PiZ[1:15]_ea30_sp25_v1.log (line no 31)
 
 import colorsys
 import sys
@@ -26,13 +28,12 @@ from enviroplus import gas
 logging.basicConfig(
     format="%(asctime)s.%(msecs)03d %(levelname)-8s %(message)s",
     level=logging.INFO,
-    datefmt="%Y-%m-%d %H:%M:%S",
-    filename="/home/pi/EJnPi/Enviroplus_v1.log",
+    datefmt="%Y-%m-%d %H:%M",
+    filename="/home/pi/EJnPi/PiZ15_ea30_sp25_v1.log",
     filemode="a")
 
-logging.info("""Displays readings from all of Enviro plus' sensors
-
-Press Ctrl+C to exit!
+logging.info("""
+RPi ZeroW Powered On (systemd service start)!
 
 """)
 
@@ -139,7 +140,7 @@ for v in variables:
 try:
     while True:
         proximity = ltr559.get_proximity()
-        time.sleep(20)
+        time.sleep(590) # 10 minutes
         # If the proximity crosses the threshold, toggle the mode
         #if proximity > 1500 and time.time() - last_page > delay:
         #    mode += 1
@@ -148,7 +149,7 @@ try:
         mode = 8
 
         # One mode for each variable
-        if mode == 0:
+        if mode == 8:
             # variable = "temperature"
             unit = "Â°C"
             cpu_temp = get_cpu_temperature()
@@ -157,51 +158,52 @@ try:
             avg_cpu_temp = sum(cpu_temps) / float(len(cpu_temps))
             raw_temp = bme280.get_temperature()
             data = raw_temp - ((avg_cpu_temp - raw_temp) / factor)
-            display_text(variables[mode], data, unit)
+            logging_text(variables[0], data, unit)
+            # display_text(variables[mode], data, unit)
 
-        if mode == 1:
+        if mode == 8:
             # variable = "pressure"
             unit = "hPa"
             data = bme280.get_pressure()
-            display_text(variables[mode], data, unit)
+            logging_text(variables[1], data, unit)
 
-        if mode == 2:
+        if mode == 8:
             # variable = "humidity"
             unit = "%"
             data = bme280.get_humidity()
-            display_text(variables[mode], data, unit)
+            logging_text(variables[2], data, unit)
 
-        if mode == 3:
+        if mode == 8:
             # variable = "light"
             unit = "Lux"
             if proximity < 10:
                 data = ltr559.get_lux()
             else:
                 data = 1
-            display_text(variables[mode], data, unit)
+            logging_text(variables[3], data, unit)
 
-        if mode == 4:
+        if mode == 8:
             # variable = "oxidised"
             unit = "kO"
             data = gas.read_all()
             data = data.oxidising / 1000
-            display_text(variables[mode], data, unit)
+            logging_text(variables[4], data, unit)
 
-        if mode == 5:
+        if mode == 8:
             # variable = "reduced"
             unit = "kO"
             data = gas.read_all()
             data = data.reducing / 1000
-            display_text(variables[mode], data, unit)
+            logging_text(variables[5], data, unit)
 
-        if mode == 6:
+        if mode == 8:
             # variable = "nh3"
             unit = "kO"
             data = gas.read_all()
             data = data.nh3 / 1000
-            display_text(variables[mode], data, unit)
+            logging_text(variables[6], data, unit)
 
-        if mode == 7:
+        if mode == 8:
             # variable = "pm1"
             unit = "ug/m3"
             try:
@@ -210,7 +212,7 @@ try:
                 logging.warning("Failed to read PMS5003")
             else:
                 data = float(data.pm_ug_per_m3(1.0))
-                display_text(variables[mode], data, unit)
+                logging_text(variables[7], data, unit)
 
         if mode == 8:
             # variable = "pm25"
@@ -224,7 +226,7 @@ try:
                 display_text(variables[mode], data, unit)
                 logging_text(variables[mode], data, unit)
 
-        if mode == 9:
+        if mode == 8:
             # variable = "pm10"
             unit = "ug/m3"
             try:
@@ -233,7 +235,7 @@ try:
                 logging.warning("Failed to read PMS5003")
             else:
                 data = float(data.pm_ug_per_m3(10))
-                display_text(variables[mode], data, unit)
+                logging_text(variables[9], data, unit)
 
 # Exit cleanly
 except KeyboardInterrupt:
