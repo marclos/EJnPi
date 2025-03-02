@@ -101,29 +101,29 @@ reboot
 % creatw table with four colulmns and ten rows with Rpi number from 1 to 10 and colmumns about their stauses
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{|c|c|c|p{2.3cm}|c|}
+\begin{tabular}{|c|c|c|p{2.3cm}|c| l|}
 \hline
-\textbf{PiZ ID} & \textbf{OS} & \textbf{Update} & \textbf{Repositories Installed} & \textbf{Boot Run} \\
+\textbf{PiZ ID} & \textbf{OS} & \textbf{Update} & \textbf{Repositories Installed} & \textbf{Boot Run} & \textbf{Log File} \\
 \hline
-1  & bookworm (12)    & 3/1/25 & EnviroPlus, EJnPI & No \\
-2  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
-3  & Not Installed    & No & No & No \\
-4  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
+1  & bookworm (12)    & 3/1/25 & EnviroPlus, EJnPi & Yes, untested  & No\\
+2  & bookworm (12)    & 3/1/25 &  & No & No\\
+3  & Not Installed    & No & No & No & No\\
+4  & bookworm (12)    & 3/1/25 & EnviroPlus, EJnPi & Yes, tested & PiZ4\ldots.log \\
 
-5  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
-6  & bookworm (12)    & 2/10/25 & EnviroPlus & No \\
-7  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
-8  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
+5  & bookworm (12)    & 2/11/25 & EnviroPlus & No & No \\
+6  & bookworm (12)    & 2/10/25 & EnviroPlus & No & No \\
+7  & bookworm (12)    & 2/11/25 & EnviroPlus & No & No \\
+8  & bookworm (12)    & 2/11/25 & EnviroPlus & No & No \\
 
-9  & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
-10 & bookworm (12)    & Error & No & No \\
-11 & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
-12 & bookworm (12)    & 2/12/25 & EnviroPlus & No \\
+9  & bookworm (12)    & 2/11/25 & EnviroPlus & No & No \\
+10 & bookworm (12)    & Error & No & No & No \\
+11 & bookworm (12)    & 2/11/25 & EnviroPlus & No & No \\
+12 & bookworm (12)    & 2/12/25 & EnviroPlus & No & No \\
 
-13 & bookworm (12)    & 2/13/25 & EnviroPlus & No \\
-14 & bookworm (12)    & 2/11/25 & EnviroPlus & No \\
-15 & bookworm (12)    & 2/26/25  & EnviroPlus & No \\
-PiZ2W1 & bookworm (12) & 2/11/25 & EnviroPlus & No \\
+13 & bookworm (12)    & 2/13/25 & EnviroPlus & No & No \\
+14 & bookworm (12)    & 2/11/25 & EnviroPlus & No & No  \\
+15 & bookworm (12)    & 2/26/25 & EnviroPlus & No & No \\
+PiZ2W1 & failed       & 3/1/25  & No & No & No \\
 
 
 \hline
