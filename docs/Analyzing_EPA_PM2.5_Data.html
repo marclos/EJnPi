@@ -96,7 +96,7 @@ if (window.hljs) {
 
 
 
-<p>Updated: 2025-03-05 16:27:07</p>
+<p>Updated: 2025-03-05 16:30:00</p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Air qualily data varies seasonally, regionally, and with particular events. These create a distribution of values, some of which pose potential health effects.</p>
@@ -329,25 +329,31 @@ Monthly &lt;- summarise(tmp2, result = mean(PM2.5.AQI.Value) )</code></pre>
             N = length(PM2.5.AQI.Value) )</code></pre>
 <pre><code>## `summarise()` has grouped output by &#39;Month&#39;. You can override using the
 ## `.groups` argument.</code></pre>
-<pre class="r"><code>Monthly</code></pre>
-<pre><code>## # A tibble: 82 × 6
-## # Groups:   Month [12]
-##    Month Site.ID     median  mean    sd     N
-##    &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
-##  1     1 06-071-0005     54  50.3 16.0      7
-##  2     1 06-071-0027     65  68.7 20.3    250
-##  3     1 06-071-0306     47  44.3 12.0     14
-##  4     1 06-071-1004     60  63   26.5     25
-##  5     1 06-071-2002     72  71.9 25.9      7
-##  6     1 06-071-8001     61  57.9 15.2     32
-##  7     1 06-071-9004     82  75.6 27.6      5
-##  8     2 06-071-0005     53  51.6  6.45     7
-##  9     2 06-071-0027     60  63.8 19.8    225
-## 10     2 06-071-0306     51  50.7 11.9     11
-## # ℹ 72 more rows</code></pre>
+<pre class="r"><code>head(Monthly)</code></pre>
+<pre><code>## # A tibble: 6 × 6
+## # Groups:   Month [1]
+##   Month Site.ID     median  mean    sd     N
+##   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+## 1     1 06-071-0005     54  50.3  16.0     7
+## 2     1 06-071-0027     65  68.7  20.3   250
+## 3     1 06-071-0306     47  44.3  12.0    14
+## 4     1 06-071-1004     60  63    26.5    25
+## 5     1 06-071-2002     72  71.9  25.9     7
+## 6     1 06-071-8001     61  57.9  15.2    32</code></pre>
 <div id="estimating-confidence-intervals" class="section level2">
 <h2>Estimating Confidence Intervals</h2>
-<p>Although the standard deviation describe variability, the statistic is not explicilty associated with a probability. We can convert these to probabilities by multiplying by a theoretical probability distribution.</p>
+<p>Although the standard deviation describe variability, the statistic is not explicitly associated with a probability. We can convert these to probabilities by multiplying by a theoretical probability distribution.</p>
+<p>The formula is as follows:</p>
+<p><span class="math display">\[
+CI = \bar{x} \pm z \times \frac{s}{\sqrt{n}}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\bar{x}\)</span> is the sample mean</li>
+<li><span class="math inline">\(z\)</span> is the z-score (1.96 for 95% confidence)</li>
+<li><span class="math inline">\(s\)</span> is the sample standard deviation</li>
+<li><span class="math inline">\(n\)</span> is the sample size</li>
+</ul>
 <pre class="r"><code>qnorm(.975)</code></pre>
 <pre><code>## [1] 1.959964</code></pre>
 <pre class="r"><code>## [1] 1.959964
@@ -364,7 +370,7 @@ NULL</code></pre>
 <pre><code>## NULL</code></pre>
 <pre class="r"><code>print(xtable(Monthly), include.rownames=FALSE)</code></pre>
 <pre><code>## % latex table generated in R 4.2.1 by xtable 1.8-4 package
-## % Wed Mar  5 16:27:09 2025
+## % Wed Mar  5 16:30:02 2025
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rlrrrrrr}
