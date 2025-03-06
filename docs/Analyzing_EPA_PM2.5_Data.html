@@ -96,7 +96,7 @@ if (window.hljs) {
 
 
 
-<p>Updated: 2025-03-05 16:30:00</p>
+<p>Updated: 2025-03-05 16:31:14</p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Air qualily data varies seasonally, regionally, and with particular events. These create a distribution of values, some of which pose potential health effects.</p>
@@ -345,14 +345,14 @@ Monthly &lt;- summarise(tmp2, result = mean(PM2.5.AQI.Value) )</code></pre>
 <p>Although the standard deviation describe variability, the statistic is not explicitly associated with a probability. We can convert these to probabilities by multiplying by a theoretical probability distribution.</p>
 <p>The formula is as follows:</p>
 <p><span class="math display">\[
-CI = \bar{x} \pm z \times \frac{s}{\sqrt{n}}
+CI = \bar{x} \pm z \times \frac{sd}{\sqrt{N}}
 \]</span></p>
 <p>Where:</p>
 <ul>
 <li><span class="math inline">\(\bar{x}\)</span> is the sample mean</li>
 <li><span class="math inline">\(z\)</span> is the z-score (1.96 for 95% confidence)</li>
-<li><span class="math inline">\(s\)</span> is the sample standard deviation</li>
-<li><span class="math inline">\(n\)</span> is the sample size</li>
+<li><span class="math inline">\(sd\)</span> is the sample standard deviation</li>
+<li><span class="math inline">\(N\)</span> is the sample size</li>
 </ul>
 <pre class="r"><code>qnorm(.975)</code></pre>
 <pre><code>## [1] 1.959964</code></pre>
@@ -370,7 +370,7 @@ NULL</code></pre>
 <pre><code>## NULL</code></pre>
 <pre class="r"><code>print(xtable(Monthly), include.rownames=FALSE)</code></pre>
 <pre><code>## % latex table generated in R 4.2.1 by xtable 1.8-4 package
-## % Wed Mar  5 16:30:02 2025
+## % Wed Mar  5 16:31:16 2025
 ## \begin{table}[ht]
 ## \centering
 ## \begin{tabular}{rlrrrrrr}
