@@ -12,7 +12,7 @@
 
 <meta name="author" content="Marc Los Huertos" />
 
-<meta name="date" content="2025-03-05" />
+<meta name="date" content="2025-03-10" />
 
 <title>Analyzing EPA PM2.5 Data</title>
 
@@ -92,11 +92,11 @@ if (window.hljs) {
 <h1 class="title toc-ignore">Analyzing EPA PM2.5 Data</h1>
 <h3 class="subtitle">Example: San Bernardino County</h3>
 <h4 class="author">Marc Los Huertos</h4>
-<h4 class="date">March 05, 2025</h4>
+<h4 class="date">March 10, 2025</h4>
 
 
 
-<p>Updated: 2025-03-05 16:31:14</p>
+<p>Updated: 2025-03-10 21:53:15</p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Air qualily data varies seasonally, regionally, and with particular events. These create a distribution of values, some of which pose potential health effects.</p>
@@ -290,7 +290,7 @@ for (i in 1:length(unique(SB$Site.ID))) {
 <div id="monthly-central-tendancy" class="section level1">
 <h1>Monthly Central Tendancy</h1>
 <p>Next we will determine the central tendency, e.g. median, mean, standard deviation.</p>
-<p>So, we will use some packages or libraries to make our job easier. To add packages that are not installed be default, use the Packages’’ tab and click onInstall’’ – and then search for dpylr and lubridate to install. NOTE: If you have some response that R needs to restart let me know, there is some bug for some installations not allowing the package to be installed correctly – but I didn’t have the problem, so we need to reach out to POM-ITS to sort it out (fun stuff).</p>
+<p>So, we will use some packages or libraries to make our job easier. To add packages that are not installed be default, use the Packages tab and click on Install – and then search for dpylr and lubridate to install. NOTE: If you have some response that R needs to restart let me know, there is some bug for some installations not allowing the package to be installed correctly – but I didn’t have the problem, so we need to reach out to POM-ITS to sort it out (fun stuff).</p>
 <p>the dplyr is described as ``a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.’’</p>
 <p>The lubridate makes it easier manipulate date-times.</p>
 <p>We call these libraries in the rcode as below.</p>
@@ -319,7 +319,8 @@ Monthly &lt;- summarise(tmp2, result = mean(PM2.5.AQI.Value) )</code></pre>
 ## `.groups` argument.</code></pre>
 <pre class="r"><code>## `summarise()` has grouped output by &#39;Month&#39;. You can override using the
 ## `.groups` argument.</code></pre>
-<p>We can do the same thing using %&gt;%. This function as has no builtin meaning but the user (or a package) can define operators of the form %whatever% in any way they like. For example, this function will return a string consisting of its left argument followed by a comma and space and then it’s right argument.</p>
+<p>NOTE: R generates a warning. Seems like ignoring is just fine. Someday, I’ll figure out how to fix or suppress the warning.</p>
+<p>We can do the same thing using %&gt;%. This function as has no built-in meaning but the user (or a package) can define operators of the form %whatever% in any way they like. For example, this function will return a string consisting of its left argument followed by a comma and space and then it’s right argument.</p>
 <pre class="r"><code>  Monthly &lt;- SB %&gt;%
   mutate(Date = ymd(Date),Year = year(Date), Month = month(Date)) %&gt;%
   group_by(Month, Site.ID) %&gt;%
@@ -340,6 +341,7 @@ Monthly &lt;- summarise(tmp2, result = mean(PM2.5.AQI.Value) )</code></pre>
 ## 4     1 06-071-1004     60  63    26.5    25
 ## 5     1 06-071-2002     72  71.9  25.9     7
 ## 6     1 06-071-8001     61  57.9  15.2    32</code></pre>
+<p>It’s takes a bit to get used to this grammar – frankly, I am still practicing!</p>
 <div id="estimating-confidence-intervals" class="section level2">
 <h2>Estimating Confidence Intervals</h2>
 <p>Although the standard deviation describe variability, the statistic is not explicitly associated with a probability. We can convert these to probabilities by multiplying by a theoretical probability distribution.</p>
@@ -359,117 +361,2537 @@ CI = \bar{x} \pm z \times \frac{sd}{\sqrt{N}}
 <pre class="r"><code>## [1] 1.959964
 Monthly$UCL95 = Monthly$mean + qnorm(.975)*Monthly$sd/sqrt(Monthly$N)
 Monthly$LCL95 = Monthly$mean - qnorm(.975)*Monthly$sd/sqrt(Monthly$N)</code></pre>
-<p>Table of confidence intervals…</p>
+<p>Note– I am calculating the Upper Confidence Interval (UCL) and Lower Confidence Interval (LCL) for a 95% confidence interval. The z-score for a 95% confidence interval is 1.96.</p>
 <p>NOTE: At some point, I’ll convert the numbers to months – but for now you can translate them for yourself.</p>
+<p>Now, we can print the table using the xtable package, but it take a bit of fudging with the code. For example, my table gets printed as part of an HTML file – the code may vary for pdf! Let me know.</p>
 <pre class="r"><code>library(xtable)
-Monthly$Months</code></pre>
-<pre><code>## Warning: Unknown or uninitialised column: `Months`.</code></pre>
-<pre><code>## NULL</code></pre>
-<pre class="r"><code>## Warning: Unknown or uninitialised column: `Months`.
+# Monthly$Months
+## Warning: Unknown or uninitialised column: `Months`.
 NULL</code></pre>
-<pre><code>## NULL</code></pre>
-<pre class="r"><code>print(xtable(Monthly), include.rownames=FALSE)</code></pre>
-<pre><code>## % latex table generated in R 4.2.1 by xtable 1.8-4 package
-## % Wed Mar  5 16:31:16 2025
-## \begin{table}[ht]
-## \centering
-## \begin{tabular}{rlrrrrrr}
-##   \hline
-## Month &amp; Site.ID &amp; median &amp; mean &amp; sd &amp; N &amp; UCL95 &amp; LCL95 \\ 
-##   \hline
-## 1.00 &amp; 06-071-0005 &amp; 54.00 &amp; 50.29 &amp; 16.02 &amp;   7 &amp; 62.15 &amp; 38.42 \\ 
-##   1.00 &amp; 06-071-0027 &amp; 65.00 &amp; 68.74 &amp; 20.32 &amp; 250 &amp; 71.26 &amp; 66.22 \\ 
-##   1.00 &amp; 06-071-0306 &amp; 47.00 &amp; 44.29 &amp; 11.98 &amp;  14 &amp; 50.56 &amp; 38.01 \\ 
-##   1.00 &amp; 06-071-1004 &amp; 60.00 &amp; 63.00 &amp; 26.49 &amp;  25 &amp; 73.38 &amp; 52.62 \\ 
-##   1.00 &amp; 06-071-2002 &amp; 72.00 &amp; 71.86 &amp; 25.87 &amp;   7 &amp; 91.02 &amp; 52.69 \\ 
-##   1.00 &amp; 06-071-8001 &amp; 61.00 &amp; 57.91 &amp; 15.17 &amp;  32 &amp; 63.16 &amp; 52.65 \\ 
-##   1.00 &amp; 06-071-9004 &amp; 82.00 &amp; 75.60 &amp; 27.59 &amp;   5 &amp; 99.78 &amp; 51.42 \\ 
-##   2.00 &amp; 06-071-0005 &amp; 53.00 &amp; 51.57 &amp; 6.45 &amp;   7 &amp; 56.35 &amp; 46.79 \\ 
-##   2.00 &amp; 06-071-0027 &amp; 60.00 &amp; 63.81 &amp; 19.80 &amp; 225 &amp; 66.40 &amp; 61.22 \\ 
-##   2.00 &amp; 06-071-0306 &amp; 51.00 &amp; 50.73 &amp; 11.93 &amp;  11 &amp; 57.78 &amp; 43.67 \\ 
-##   2.00 &amp; 06-071-1004 &amp; 56.00 &amp; 57.66 &amp; 17.67 &amp;  29 &amp; 64.08 &amp; 51.23 \\ 
-##   2.00 &amp; 06-071-2002 &amp; 65.00 &amp; 65.64 &amp; 12.65 &amp;  11 &amp; 73.11 &amp; 58.16 \\ 
-##   2.00 &amp; 06-071-8001 &amp; 60.00 &amp; 60.24 &amp; 7.92 &amp;  25 &amp; 63.35 &amp; 57.13 \\ 
-##   2.00 &amp; 06-071-9004 &amp; 94.00 &amp; 109.67 &amp; 30.66 &amp;   3 &amp; 144.37 &amp; 74.97 \\ 
-##   3.00 &amp; 06-071-0005 &amp; 56.00 &amp; 52.33 &amp; 10.10 &amp;   9 &amp; 58.93 &amp; 45.74 \\ 
-##   3.00 &amp; 06-071-0027 &amp; 55.00 &amp; 56.08 &amp; 13.18 &amp; 211 &amp; 57.86 &amp; 54.30 \\ 
-##   3.00 &amp; 06-071-0306 &amp; 36.50 &amp; 37.67 &amp; 14.60 &amp;  12 &amp; 45.93 &amp; 29.41 \\ 
-##   3.00 &amp; 06-071-1004 &amp; 61.00 &amp; 62.26 &amp; 17.25 &amp;  54 &amp; 66.86 &amp; 57.66 \\ 
-##   3.00 &amp; 06-071-2002 &amp; 53.00 &amp; 47.55 &amp; 15.76 &amp;  11 &amp; 56.86 &amp; 38.23 \\ 
-##   3.00 &amp; 06-071-8001 &amp; 55.00 &amp; 62.56 &amp; 19.40 &amp;   9 &amp; 75.23 &amp; 49.88 \\ 
-##   3.00 &amp; 06-071-9004 &amp; 58.00 &amp; 68.00 &amp; 19.08 &amp;   3 &amp; 89.59 &amp; 46.41 \\ 
-##   4.00 &amp; 06-071-0005 &amp; 53.00 &amp; 53.20 &amp; 1.92 &amp;   5 &amp; 54.89 &amp; 51.51 \\ 
-##   4.00 &amp; 06-071-0027 &amp; 61.00 &amp; 59.69 &amp; 11.99 &amp; 202 &amp; 61.34 &amp; 58.03 \\ 
-##   4.00 &amp; 06-071-0306 &amp; 51.50 &amp; 50.38 &amp; 5.55 &amp;   8 &amp; 54.22 &amp; 46.53 \\ 
-##   4.00 &amp; 06-071-1004 &amp; 63.00 &amp; 64.92 &amp; 11.50 &amp;  63 &amp; 67.76 &amp; 62.08 \\ 
-##   4.00 &amp; 06-071-2002 &amp; 66.00 &amp; 65.44 &amp; 13.25 &amp;  18 &amp; 71.57 &amp; 59.32 \\ 
-##   4.00 &amp; 06-071-8001 &amp; 44.00 &amp; 44.00 &amp;  &amp;   1 &amp;  &amp;  \\ 
-##   4.00 &amp; 06-071-9004 &amp; 58.00 &amp; 55.33 &amp; 24.11 &amp;   3 &amp; 82.62 &amp; 28.05 \\ 
-##   5.00 &amp; 06-071-0005 &amp; 55.00 &amp; 53.20 &amp; 6.05 &amp;  15 &amp; 56.26 &amp; 50.14 \\ 
-##   5.00 &amp; 06-071-0027 &amp; 60.50 &amp; 60.35 &amp; 10.30 &amp; 136 &amp; 62.08 &amp; 58.61 \\ 
-##   5.00 &amp; 06-071-0306 &amp; 52.50 &amp; 51.41 &amp; 12.80 &amp;  22 &amp; 56.76 &amp; 46.06 \\ 
-##   5.00 &amp; 06-071-1004 &amp; 65.00 &amp; 66.33 &amp; 10.10 &amp; 105 &amp; 68.26 &amp; 64.40 \\ 
-##   5.00 &amp; 06-071-2002 &amp; 64.50 &amp; 62.61 &amp; 8.23 &amp;  28 &amp; 65.66 &amp; 59.56 \\ 
-##   5.00 &amp; 06-071-8001 &amp; 56.50 &amp; 56.50 &amp; 4.95 &amp;   2 &amp; 63.36 &amp; 49.64 \\ 
-##   5.00 &amp; 06-071-9004 &amp; 59.50 &amp; 59.50 &amp; 2.12 &amp;   2 &amp; 62.44 &amp; 56.56 \\ 
-##   6.00 &amp; 06-071-0005 &amp; 55.00 &amp; 56.77 &amp; 9.78 &amp;  13 &amp; 62.09 &amp; 51.45 \\ 
-##   6.00 &amp; 06-071-0027 &amp; 62.00 &amp; 62.57 &amp; 9.04 &amp; 112 &amp; 64.25 &amp; 60.90 \\ 
-##   6.00 &amp; 06-071-0306 &amp; 57.00 &amp; 58.29 &amp; 8.91 &amp;  24 &amp; 61.86 &amp; 54.73 \\ 
-##   6.00 &amp; 06-071-1004 &amp; 72.00 &amp; 72.72 &amp; 10.47 &amp; 129 &amp; 74.53 &amp; 70.91 \\ 
-##   6.00 &amp; 06-071-2002 &amp; 63.50 &amp; 63.28 &amp; 5.05 &amp;  18 &amp; 65.61 &amp; 60.94 \\ 
-##   6.00 &amp; 06-071-9004 &amp; 67.00 &amp; 57.33 &amp; 20.31 &amp;   3 &amp; 80.31 &amp; 34.36 \\ 
-##   7.00 &amp; 06-071-0005 &amp; 62.00 &amp; 60.67 &amp; 3.44 &amp;   6 &amp; 63.42 &amp; 57.91 \\ 
-##   7.00 &amp; 06-071-0027 &amp; 66.50 &amp; 72.88 &amp; 25.75 &amp; 124 &amp; 77.41 &amp; 68.35 \\ 
-##   7.00 &amp; 06-071-0306 &amp; 63.50 &amp; 66.39 &amp; 15.61 &amp;  18 &amp; 73.60 &amp; 59.18 \\ 
-##   7.00 &amp; 06-071-1004 &amp; 70.00 &amp; 72.56 &amp; 18.63 &amp; 136 &amp; 75.69 &amp; 69.43 \\ 
-##   7.00 &amp; 06-071-2002 &amp; 64.50 &amp; 66.32 &amp; 7.54 &amp;  22 &amp; 69.47 &amp; 63.17 \\ 
-##   7.00 &amp; 06-071-8001 &amp; 52.00 &amp; 52.00 &amp;  &amp;   1 &amp;  &amp;  \\ 
-##   7.00 &amp; 06-071-9004 &amp; 68.00 &amp; 68.00 &amp; 8.49 &amp;   2 &amp; 79.76 &amp; 56.24 \\ 
-##   8.00 &amp; 06-071-0005 &amp; 68.00 &amp; 70.67 &amp; 14.00 &amp;   6 &amp; 81.86 &amp; 59.47 \\ 
-##   8.00 &amp; 06-071-0027 &amp; 64.00 &amp; 66.22 &amp; 10.69 &amp; 165 &amp; 67.85 &amp; 64.59 \\ 
-##   8.00 &amp; 06-071-0306 &amp; 77.00 &amp; 79.67 &amp; 21.34 &amp;   9 &amp; 93.61 &amp; 65.72 \\ 
-##   8.00 &amp; 06-071-1004 &amp; 75.00 &amp; 75.81 &amp; 11.57 &amp; 102 &amp; 78.06 &amp; 73.57 \\ 
-##   8.00 &amp; 06-071-2002 &amp; 64.00 &amp; 63.70 &amp; 5.30 &amp;  23 &amp; 65.86 &amp; 61.53 \\ 
-##   8.00 &amp; 06-071-8001 &amp; 50.00 &amp; 50.00 &amp; 2.83 &amp;   2 &amp; 53.92 &amp; 46.08 \\ 
-##   9.00 &amp; 06-071-0005 &amp; 62.50 &amp; 65.67 &amp; 14.35 &amp;  12 &amp; 73.78 &amp; 57.55 \\ 
-##   9.00 &amp; 06-071-0027 &amp; 68.00 &amp; 67.60 &amp; 13.35 &amp; 167 &amp; 69.63 &amp; 65.58 \\ 
-##   9.00 &amp; 06-071-0306 &amp; 75.00 &amp; 91.86 &amp; 28.75 &amp;   7 &amp; 113.16 &amp; 70.56 \\ 
-##   9.00 &amp; 06-071-1004 &amp; 70.00 &amp; 73.68 &amp; 18.89 &amp;  77 &amp; 77.90 &amp; 69.46 \\ 
-##   9.00 &amp; 06-071-2002 &amp; 69.00 &amp; 71.73 &amp; 21.45 &amp;  22 &amp; 80.69 &amp; 62.77 \\ 
-##   9.00 &amp; 06-071-8001 &amp; 102.00 &amp; 146.50 &amp; 135.55 &amp;  14 &amp; 217.50 &amp; 75.50 \\ 
-##   9.00 &amp; 06-071-9004 &amp; 99.00 &amp; 99.00 &amp;  &amp;   1 &amp;  &amp;  \\ 
-##   10.00 &amp; 06-071-0005 &amp; 63.50 &amp; 64.50 &amp; 4.36 &amp;   4 &amp; 68.77 &amp; 60.23 \\ 
-##   10.00 &amp; 06-071-0027 &amp; 65.00 &amp; 67.18 &amp; 14.82 &amp; 212 &amp; 69.17 &amp; 65.18 \\ 
-##   10.00 &amp; 06-071-0306 &amp; 55.00 &amp; 68.33 &amp; 36.44 &amp;  12 &amp; 88.95 &amp; 47.72 \\ 
-##   10.00 &amp; 06-071-1004 &amp; 65.50 &amp; 67.50 &amp; 11.41 &amp;  54 &amp; 70.54 &amp; 64.46 \\ 
-##   10.00 &amp; 06-071-2002 &amp; 66.50 &amp; 74.04 &amp; 20.30 &amp;  24 &amp; 82.16 &amp; 65.92 \\ 
-##   10.00 &amp; 06-071-8001 &amp; 56.50 &amp; 56.50 &amp; 4.95 &amp;   2 &amp; 63.36 &amp; 49.64 \\ 
-##   10.00 &amp; 06-071-9004 &amp; 71.00 &amp; 71.00 &amp; 15.56 &amp;   2 &amp; 92.56 &amp; 49.44 \\ 
-##   11.00 &amp; 06-071-0005 &amp; 56.50 &amp; 58.17 &amp; 4.88 &amp;   6 &amp; 62.07 &amp; 54.27 \\ 
-##   11.00 &amp; 06-071-0027 &amp; 64.00 &amp; 69.81 &amp; 19.18 &amp; 215 &amp; 72.37 &amp; 67.25 \\ 
-##   11.00 &amp; 06-071-0306 &amp; 54.00 &amp; 55.00 &amp; 6.73 &amp;  17 &amp; 58.20 &amp; 51.80 \\ 
-##   11.00 &amp; 06-071-1004 &amp; 66.00 &amp; 70.85 &amp; 15.31 &amp;  13 &amp; 79.17 &amp; 62.53 \\ 
-##   11.00 &amp; 06-071-2002 &amp; 67.00 &amp; 74.73 &amp; 28.58 &amp;  15 &amp; 89.20 &amp; 60.27 \\ 
-##   11.00 &amp; 06-071-8001 &amp; 61.00 &amp; 59.91 &amp; 8.93 &amp;  33 &amp; 62.96 &amp; 56.86 \\ 
-##   11.00 &amp; 06-071-9004 &amp; 80.00 &amp; 80.00 &amp;  &amp;   1 &amp;  &amp;  \\ 
-##   12.00 &amp; 06-071-0005 &amp; 67.00 &amp; 61.67 &amp; 14.60 &amp;   6 &amp; 73.35 &amp; 49.99 \\ 
-##   12.00 &amp; 06-071-0027 &amp; 67.00 &amp; 71.73 &amp; 22.79 &amp; 222 &amp; 74.73 &amp; 68.73 \\ 
-##   12.00 &amp; 06-071-0306 &amp; 61.00 &amp; 58.54 &amp; 9.57 &amp;  26 &amp; 62.22 &amp; 54.86 \\ 
-##   12.00 &amp; 06-071-1004 &amp; 80.00 &amp; 81.20 &amp; 22.04 &amp;  15 &amp; 92.35 &amp; 70.05 \\ 
-##   12.00 &amp; 06-071-2002 &amp; 74.00 &amp; 74.88 &amp; 24.58 &amp;   8 &amp; 91.91 &amp; 57.84 \\ 
-##   12.00 &amp; 06-071-8001 &amp; 65.00 &amp; 67.20 &amp; 13.06 &amp;  25 &amp; 72.32 &amp; 62.08 \\ 
-##   12.00 &amp; 06-071-9004 &amp; 64.50 &amp; 65.38 &amp; 16.34 &amp;   8 &amp; 76.70 &amp; 54.05 \\ 
-##    \hline
-## \end{tabular}
-## \end{table}</code></pre>
+<p>NULL</p>
+<pre class="r"><code>print(xtable(Monthly), include.rownames=FALSE, type = &quot;html&quot;)</code></pre>
+<!-- html table generated in R 4.2.1 by xtable 1.8-4 package -->
+<!-- Mon Mar 10 21:53:17 2025 -->
+<table border="1">
+<tr>
+<th>
+Month
+</th>
+<th>
+Site.ID
+</th>
+<th>
+median
+</th>
+<th>
+mean
+</th>
+<th>
+sd
+</th>
+<th>
+N
+</th>
+<th>
+UCL95
+</th>
+<th>
+LCL95
+</th>
+</tr>
+<tr>
+<td align="right">
+1.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+54.00
+</td>
+<td align="right">
+50.29
+</td>
+<td align="right">
+16.02
+</td>
+<td align="right">
+7
+</td>
+<td align="right">
+62.15
+</td>
+<td align="right">
+38.42
+</td>
+</tr>
+<tr>
+<td align="right">
+1.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+65.00
+</td>
+<td align="right">
+68.74
+</td>
+<td align="right">
+20.32
+</td>
+<td align="right">
+250
+</td>
+<td align="right">
+71.26
+</td>
+<td align="right">
+66.22
+</td>
+</tr>
+<tr>
+<td align="right">
+1.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+47.00
+</td>
+<td align="right">
+44.29
+</td>
+<td align="right">
+11.98
+</td>
+<td align="right">
+14
+</td>
+<td align="right">
+50.56
+</td>
+<td align="right">
+38.01
+</td>
+</tr>
+<tr>
+<td align="right">
+1.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+60.00
+</td>
+<td align="right">
+63.00
+</td>
+<td align="right">
+26.49
+</td>
+<td align="right">
+25
+</td>
+<td align="right">
+73.38
+</td>
+<td align="right">
+52.62
+</td>
+</tr>
+<tr>
+<td align="right">
+1.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+72.00
+</td>
+<td align="right">
+71.86
+</td>
+<td align="right">
+25.87
+</td>
+<td align="right">
+7
+</td>
+<td align="right">
+91.02
+</td>
+<td align="right">
+52.69
+</td>
+</tr>
+<tr>
+<td align="right">
+1.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+61.00
+</td>
+<td align="right">
+57.91
+</td>
+<td align="right">
+15.17
+</td>
+<td align="right">
+32
+</td>
+<td align="right">
+63.16
+</td>
+<td align="right">
+52.65
+</td>
+</tr>
+<tr>
+<td align="right">
+1.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+82.00
+</td>
+<td align="right">
+75.60
+</td>
+<td align="right">
+27.59
+</td>
+<td align="right">
+5
+</td>
+<td align="right">
+99.78
+</td>
+<td align="right">
+51.42
+</td>
+</tr>
+<tr>
+<td align="right">
+2.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+53.00
+</td>
+<td align="right">
+51.57
+</td>
+<td align="right">
+6.45
+</td>
+<td align="right">
+7
+</td>
+<td align="right">
+56.35
+</td>
+<td align="right">
+46.79
+</td>
+</tr>
+<tr>
+<td align="right">
+2.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+60.00
+</td>
+<td align="right">
+63.81
+</td>
+<td align="right">
+19.80
+</td>
+<td align="right">
+225
+</td>
+<td align="right">
+66.40
+</td>
+<td align="right">
+61.22
+</td>
+</tr>
+<tr>
+<td align="right">
+2.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+51.00
+</td>
+<td align="right">
+50.73
+</td>
+<td align="right">
+11.93
+</td>
+<td align="right">
+11
+</td>
+<td align="right">
+57.78
+</td>
+<td align="right">
+43.67
+</td>
+</tr>
+<tr>
+<td align="right">
+2.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+56.00
+</td>
+<td align="right">
+57.66
+</td>
+<td align="right">
+17.67
+</td>
+<td align="right">
+29
+</td>
+<td align="right">
+64.08
+</td>
+<td align="right">
+51.23
+</td>
+</tr>
+<tr>
+<td align="right">
+2.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+65.00
+</td>
+<td align="right">
+65.64
+</td>
+<td align="right">
+12.65
+</td>
+<td align="right">
+11
+</td>
+<td align="right">
+73.11
+</td>
+<td align="right">
+58.16
+</td>
+</tr>
+<tr>
+<td align="right">
+2.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+60.00
+</td>
+<td align="right">
+60.24
+</td>
+<td align="right">
+7.92
+</td>
+<td align="right">
+25
+</td>
+<td align="right">
+63.35
+</td>
+<td align="right">
+57.13
+</td>
+</tr>
+<tr>
+<td align="right">
+2.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+94.00
+</td>
+<td align="right">
+109.67
+</td>
+<td align="right">
+30.66
+</td>
+<td align="right">
+3
+</td>
+<td align="right">
+144.37
+</td>
+<td align="right">
+74.97
+</td>
+</tr>
+<tr>
+<td align="right">
+3.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+56.00
+</td>
+<td align="right">
+52.33
+</td>
+<td align="right">
+10.10
+</td>
+<td align="right">
+9
+</td>
+<td align="right">
+58.93
+</td>
+<td align="right">
+45.74
+</td>
+</tr>
+<tr>
+<td align="right">
+3.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+55.00
+</td>
+<td align="right">
+56.08
+</td>
+<td align="right">
+13.18
+</td>
+<td align="right">
+211
+</td>
+<td align="right">
+57.86
+</td>
+<td align="right">
+54.30
+</td>
+</tr>
+<tr>
+<td align="right">
+3.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+36.50
+</td>
+<td align="right">
+37.67
+</td>
+<td align="right">
+14.60
+</td>
+<td align="right">
+12
+</td>
+<td align="right">
+45.93
+</td>
+<td align="right">
+29.41
+</td>
+</tr>
+<tr>
+<td align="right">
+3.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+61.00
+</td>
+<td align="right">
+62.26
+</td>
+<td align="right">
+17.25
+</td>
+<td align="right">
+54
+</td>
+<td align="right">
+66.86
+</td>
+<td align="right">
+57.66
+</td>
+</tr>
+<tr>
+<td align="right">
+3.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+53.00
+</td>
+<td align="right">
+47.55
+</td>
+<td align="right">
+15.76
+</td>
+<td align="right">
+11
+</td>
+<td align="right">
+56.86
+</td>
+<td align="right">
+38.23
+</td>
+</tr>
+<tr>
+<td align="right">
+3.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+55.00
+</td>
+<td align="right">
+62.56
+</td>
+<td align="right">
+19.40
+</td>
+<td align="right">
+9
+</td>
+<td align="right">
+75.23
+</td>
+<td align="right">
+49.88
+</td>
+</tr>
+<tr>
+<td align="right">
+3.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+58.00
+</td>
+<td align="right">
+68.00
+</td>
+<td align="right">
+19.08
+</td>
+<td align="right">
+3
+</td>
+<td align="right">
+89.59
+</td>
+<td align="right">
+46.41
+</td>
+</tr>
+<tr>
+<td align="right">
+4.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+53.00
+</td>
+<td align="right">
+53.20
+</td>
+<td align="right">
+1.92
+</td>
+<td align="right">
+5
+</td>
+<td align="right">
+54.89
+</td>
+<td align="right">
+51.51
+</td>
+</tr>
+<tr>
+<td align="right">
+4.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+61.00
+</td>
+<td align="right">
+59.69
+</td>
+<td align="right">
+11.99
+</td>
+<td align="right">
+202
+</td>
+<td align="right">
+61.34
+</td>
+<td align="right">
+58.03
+</td>
+</tr>
+<tr>
+<td align="right">
+4.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+51.50
+</td>
+<td align="right">
+50.38
+</td>
+<td align="right">
+5.55
+</td>
+<td align="right">
+8
+</td>
+<td align="right">
+54.22
+</td>
+<td align="right">
+46.53
+</td>
+</tr>
+<tr>
+<td align="right">
+4.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+63.00
+</td>
+<td align="right">
+64.92
+</td>
+<td align="right">
+11.50
+</td>
+<td align="right">
+63
+</td>
+<td align="right">
+67.76
+</td>
+<td align="right">
+62.08
+</td>
+</tr>
+<tr>
+<td align="right">
+4.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+66.00
+</td>
+<td align="right">
+65.44
+</td>
+<td align="right">
+13.25
+</td>
+<td align="right">
+18
+</td>
+<td align="right">
+71.57
+</td>
+<td align="right">
+59.32
+</td>
+</tr>
+<tr>
+<td align="right">
+4.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+44.00
+</td>
+<td align="right">
+44.00
+</td>
+<td align="right">
+</td>
+<td align="right">
+1
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+</tr>
+<tr>
+<td align="right">
+4.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+58.00
+</td>
+<td align="right">
+55.33
+</td>
+<td align="right">
+24.11
+</td>
+<td align="right">
+3
+</td>
+<td align="right">
+82.62
+</td>
+<td align="right">
+28.05
+</td>
+</tr>
+<tr>
+<td align="right">
+5.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+55.00
+</td>
+<td align="right">
+53.20
+</td>
+<td align="right">
+6.05
+</td>
+<td align="right">
+15
+</td>
+<td align="right">
+56.26
+</td>
+<td align="right">
+50.14
+</td>
+</tr>
+<tr>
+<td align="right">
+5.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+60.50
+</td>
+<td align="right">
+60.35
+</td>
+<td align="right">
+10.30
+</td>
+<td align="right">
+136
+</td>
+<td align="right">
+62.08
+</td>
+<td align="right">
+58.61
+</td>
+</tr>
+<tr>
+<td align="right">
+5.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+52.50
+</td>
+<td align="right">
+51.41
+</td>
+<td align="right">
+12.80
+</td>
+<td align="right">
+22
+</td>
+<td align="right">
+56.76
+</td>
+<td align="right">
+46.06
+</td>
+</tr>
+<tr>
+<td align="right">
+5.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+65.00
+</td>
+<td align="right">
+66.33
+</td>
+<td align="right">
+10.10
+</td>
+<td align="right">
+105
+</td>
+<td align="right">
+68.26
+</td>
+<td align="right">
+64.40
+</td>
+</tr>
+<tr>
+<td align="right">
+5.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+64.50
+</td>
+<td align="right">
+62.61
+</td>
+<td align="right">
+8.23
+</td>
+<td align="right">
+28
+</td>
+<td align="right">
+65.66
+</td>
+<td align="right">
+59.56
+</td>
+</tr>
+<tr>
+<td align="right">
+5.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+56.50
+</td>
+<td align="right">
+56.50
+</td>
+<td align="right">
+4.95
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+63.36
+</td>
+<td align="right">
+49.64
+</td>
+</tr>
+<tr>
+<td align="right">
+5.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+59.50
+</td>
+<td align="right">
+59.50
+</td>
+<td align="right">
+2.12
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+62.44
+</td>
+<td align="right">
+56.56
+</td>
+</tr>
+<tr>
+<td align="right">
+6.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+55.00
+</td>
+<td align="right">
+56.77
+</td>
+<td align="right">
+9.78
+</td>
+<td align="right">
+13
+</td>
+<td align="right">
+62.09
+</td>
+<td align="right">
+51.45
+</td>
+</tr>
+<tr>
+<td align="right">
+6.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+62.00
+</td>
+<td align="right">
+62.57
+</td>
+<td align="right">
+9.04
+</td>
+<td align="right">
+112
+</td>
+<td align="right">
+64.25
+</td>
+<td align="right">
+60.90
+</td>
+</tr>
+<tr>
+<td align="right">
+6.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+57.00
+</td>
+<td align="right">
+58.29
+</td>
+<td align="right">
+8.91
+</td>
+<td align="right">
+24
+</td>
+<td align="right">
+61.86
+</td>
+<td align="right">
+54.73
+</td>
+</tr>
+<tr>
+<td align="right">
+6.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+72.00
+</td>
+<td align="right">
+72.72
+</td>
+<td align="right">
+10.47
+</td>
+<td align="right">
+129
+</td>
+<td align="right">
+74.53
+</td>
+<td align="right">
+70.91
+</td>
+</tr>
+<tr>
+<td align="right">
+6.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+63.50
+</td>
+<td align="right">
+63.28
+</td>
+<td align="right">
+5.05
+</td>
+<td align="right">
+18
+</td>
+<td align="right">
+65.61
+</td>
+<td align="right">
+60.94
+</td>
+</tr>
+<tr>
+<td align="right">
+6.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+67.00
+</td>
+<td align="right">
+57.33
+</td>
+<td align="right">
+20.31
+</td>
+<td align="right">
+3
+</td>
+<td align="right">
+80.31
+</td>
+<td align="right">
+34.36
+</td>
+</tr>
+<tr>
+<td align="right">
+7.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+62.00
+</td>
+<td align="right">
+60.67
+</td>
+<td align="right">
+3.44
+</td>
+<td align="right">
+6
+</td>
+<td align="right">
+63.42
+</td>
+<td align="right">
+57.91
+</td>
+</tr>
+<tr>
+<td align="right">
+7.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+66.50
+</td>
+<td align="right">
+72.88
+</td>
+<td align="right">
+25.75
+</td>
+<td align="right">
+124
+</td>
+<td align="right">
+77.41
+</td>
+<td align="right">
+68.35
+</td>
+</tr>
+<tr>
+<td align="right">
+7.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+63.50
+</td>
+<td align="right">
+66.39
+</td>
+<td align="right">
+15.61
+</td>
+<td align="right">
+18
+</td>
+<td align="right">
+73.60
+</td>
+<td align="right">
+59.18
+</td>
+</tr>
+<tr>
+<td align="right">
+7.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+70.00
+</td>
+<td align="right">
+72.56
+</td>
+<td align="right">
+18.63
+</td>
+<td align="right">
+136
+</td>
+<td align="right">
+75.69
+</td>
+<td align="right">
+69.43
+</td>
+</tr>
+<tr>
+<td align="right">
+7.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+64.50
+</td>
+<td align="right">
+66.32
+</td>
+<td align="right">
+7.54
+</td>
+<td align="right">
+22
+</td>
+<td align="right">
+69.47
+</td>
+<td align="right">
+63.17
+</td>
+</tr>
+<tr>
+<td align="right">
+7.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+52.00
+</td>
+<td align="right">
+52.00
+</td>
+<td align="right">
+</td>
+<td align="right">
+1
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+</tr>
+<tr>
+<td align="right">
+7.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+68.00
+</td>
+<td align="right">
+68.00
+</td>
+<td align="right">
+8.49
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+79.76
+</td>
+<td align="right">
+56.24
+</td>
+</tr>
+<tr>
+<td align="right">
+8.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+68.00
+</td>
+<td align="right">
+70.67
+</td>
+<td align="right">
+14.00
+</td>
+<td align="right">
+6
+</td>
+<td align="right">
+81.86
+</td>
+<td align="right">
+59.47
+</td>
+</tr>
+<tr>
+<td align="right">
+8.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+64.00
+</td>
+<td align="right">
+66.22
+</td>
+<td align="right">
+10.69
+</td>
+<td align="right">
+165
+</td>
+<td align="right">
+67.85
+</td>
+<td align="right">
+64.59
+</td>
+</tr>
+<tr>
+<td align="right">
+8.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+77.00
+</td>
+<td align="right">
+79.67
+</td>
+<td align="right">
+21.34
+</td>
+<td align="right">
+9
+</td>
+<td align="right">
+93.61
+</td>
+<td align="right">
+65.72
+</td>
+</tr>
+<tr>
+<td align="right">
+8.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+75.00
+</td>
+<td align="right">
+75.81
+</td>
+<td align="right">
+11.57
+</td>
+<td align="right">
+102
+</td>
+<td align="right">
+78.06
+</td>
+<td align="right">
+73.57
+</td>
+</tr>
+<tr>
+<td align="right">
+8.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+64.00
+</td>
+<td align="right">
+63.70
+</td>
+<td align="right">
+5.30
+</td>
+<td align="right">
+23
+</td>
+<td align="right">
+65.86
+</td>
+<td align="right">
+61.53
+</td>
+</tr>
+<tr>
+<td align="right">
+8.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+50.00
+</td>
+<td align="right">
+50.00
+</td>
+<td align="right">
+2.83
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+53.92
+</td>
+<td align="right">
+46.08
+</td>
+</tr>
+<tr>
+<td align="right">
+9.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+62.50
+</td>
+<td align="right">
+65.67
+</td>
+<td align="right">
+14.35
+</td>
+<td align="right">
+12
+</td>
+<td align="right">
+73.78
+</td>
+<td align="right">
+57.55
+</td>
+</tr>
+<tr>
+<td align="right">
+9.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+68.00
+</td>
+<td align="right">
+67.60
+</td>
+<td align="right">
+13.35
+</td>
+<td align="right">
+167
+</td>
+<td align="right">
+69.63
+</td>
+<td align="right">
+65.58
+</td>
+</tr>
+<tr>
+<td align="right">
+9.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+75.00
+</td>
+<td align="right">
+91.86
+</td>
+<td align="right">
+28.75
+</td>
+<td align="right">
+7
+</td>
+<td align="right">
+113.16
+</td>
+<td align="right">
+70.56
+</td>
+</tr>
+<tr>
+<td align="right">
+9.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+70.00
+</td>
+<td align="right">
+73.68
+</td>
+<td align="right">
+18.89
+</td>
+<td align="right">
+77
+</td>
+<td align="right">
+77.90
+</td>
+<td align="right">
+69.46
+</td>
+</tr>
+<tr>
+<td align="right">
+9.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+69.00
+</td>
+<td align="right">
+71.73
+</td>
+<td align="right">
+21.45
+</td>
+<td align="right">
+22
+</td>
+<td align="right">
+80.69
+</td>
+<td align="right">
+62.77
+</td>
+</tr>
+<tr>
+<td align="right">
+9.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+102.00
+</td>
+<td align="right">
+146.50
+</td>
+<td align="right">
+135.55
+</td>
+<td align="right">
+14
+</td>
+<td align="right">
+217.50
+</td>
+<td align="right">
+75.50
+</td>
+</tr>
+<tr>
+<td align="right">
+9.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+99.00
+</td>
+<td align="right">
+99.00
+</td>
+<td align="right">
+</td>
+<td align="right">
+1
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+</tr>
+<tr>
+<td align="right">
+10.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+63.50
+</td>
+<td align="right">
+64.50
+</td>
+<td align="right">
+4.36
+</td>
+<td align="right">
+4
+</td>
+<td align="right">
+68.77
+</td>
+<td align="right">
+60.23
+</td>
+</tr>
+<tr>
+<td align="right">
+10.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+65.00
+</td>
+<td align="right">
+67.18
+</td>
+<td align="right">
+14.82
+</td>
+<td align="right">
+212
+</td>
+<td align="right">
+69.17
+</td>
+<td align="right">
+65.18
+</td>
+</tr>
+<tr>
+<td align="right">
+10.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+55.00
+</td>
+<td align="right">
+68.33
+</td>
+<td align="right">
+36.44
+</td>
+<td align="right">
+12
+</td>
+<td align="right">
+88.95
+</td>
+<td align="right">
+47.72
+</td>
+</tr>
+<tr>
+<td align="right">
+10.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+65.50
+</td>
+<td align="right">
+67.50
+</td>
+<td align="right">
+11.41
+</td>
+<td align="right">
+54
+</td>
+<td align="right">
+70.54
+</td>
+<td align="right">
+64.46
+</td>
+</tr>
+<tr>
+<td align="right">
+10.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+66.50
+</td>
+<td align="right">
+74.04
+</td>
+<td align="right">
+20.30
+</td>
+<td align="right">
+24
+</td>
+<td align="right">
+82.16
+</td>
+<td align="right">
+65.92
+</td>
+</tr>
+<tr>
+<td align="right">
+10.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+56.50
+</td>
+<td align="right">
+56.50
+</td>
+<td align="right">
+4.95
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+63.36
+</td>
+<td align="right">
+49.64
+</td>
+</tr>
+<tr>
+<td align="right">
+10.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+71.00
+</td>
+<td align="right">
+71.00
+</td>
+<td align="right">
+15.56
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+92.56
+</td>
+<td align="right">
+49.44
+</td>
+</tr>
+<tr>
+<td align="right">
+11.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+56.50
+</td>
+<td align="right">
+58.17
+</td>
+<td align="right">
+4.88
+</td>
+<td align="right">
+6
+</td>
+<td align="right">
+62.07
+</td>
+<td align="right">
+54.27
+</td>
+</tr>
+<tr>
+<td align="right">
+11.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+64.00
+</td>
+<td align="right">
+69.81
+</td>
+<td align="right">
+19.18
+</td>
+<td align="right">
+215
+</td>
+<td align="right">
+72.37
+</td>
+<td align="right">
+67.25
+</td>
+</tr>
+<tr>
+<td align="right">
+11.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+54.00
+</td>
+<td align="right">
+55.00
+</td>
+<td align="right">
+6.73
+</td>
+<td align="right">
+17
+</td>
+<td align="right">
+58.20
+</td>
+<td align="right">
+51.80
+</td>
+</tr>
+<tr>
+<td align="right">
+11.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+66.00
+</td>
+<td align="right">
+70.85
+</td>
+<td align="right">
+15.31
+</td>
+<td align="right">
+13
+</td>
+<td align="right">
+79.17
+</td>
+<td align="right">
+62.53
+</td>
+</tr>
+<tr>
+<td align="right">
+11.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+67.00
+</td>
+<td align="right">
+74.73
+</td>
+<td align="right">
+28.58
+</td>
+<td align="right">
+15
+</td>
+<td align="right">
+89.20
+</td>
+<td align="right">
+60.27
+</td>
+</tr>
+<tr>
+<td align="right">
+11.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+61.00
+</td>
+<td align="right">
+59.91
+</td>
+<td align="right">
+8.93
+</td>
+<td align="right">
+33
+</td>
+<td align="right">
+62.96
+</td>
+<td align="right">
+56.86
+</td>
+</tr>
+<tr>
+<td align="right">
+11.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+80.00
+</td>
+<td align="right">
+80.00
+</td>
+<td align="right">
+</td>
+<td align="right">
+1
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+</tr>
+<tr>
+<td align="right">
+12.00
+</td>
+<td>
+06-071-0005
+</td>
+<td align="right">
+67.00
+</td>
+<td align="right">
+61.67
+</td>
+<td align="right">
+14.60
+</td>
+<td align="right">
+6
+</td>
+<td align="right">
+73.35
+</td>
+<td align="right">
+49.99
+</td>
+</tr>
+<tr>
+<td align="right">
+12.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+67.00
+</td>
+<td align="right">
+71.73
+</td>
+<td align="right">
+22.79
+</td>
+<td align="right">
+222
+</td>
+<td align="right">
+74.73
+</td>
+<td align="right">
+68.73
+</td>
+</tr>
+<tr>
+<td align="right">
+12.00
+</td>
+<td>
+06-071-0306
+</td>
+<td align="right">
+61.00
+</td>
+<td align="right">
+58.54
+</td>
+<td align="right">
+9.57
+</td>
+<td align="right">
+26
+</td>
+<td align="right">
+62.22
+</td>
+<td align="right">
+54.86
+</td>
+</tr>
+<tr>
+<td align="right">
+12.00
+</td>
+<td>
+06-071-1004
+</td>
+<td align="right">
+80.00
+</td>
+<td align="right">
+81.20
+</td>
+<td align="right">
+22.04
+</td>
+<td align="right">
+15
+</td>
+<td align="right">
+92.35
+</td>
+<td align="right">
+70.05
+</td>
+</tr>
+<tr>
+<td align="right">
+12.00
+</td>
+<td>
+06-071-2002
+</td>
+<td align="right">
+74.00
+</td>
+<td align="right">
+74.88
+</td>
+<td align="right">
+24.58
+</td>
+<td align="right">
+8
+</td>
+<td align="right">
+91.91
+</td>
+<td align="right">
+57.84
+</td>
+</tr>
+<tr>
+<td align="right">
+12.00
+</td>
+<td>
+06-071-8001
+</td>
+<td align="right">
+65.00
+</td>
+<td align="right">
+67.20
+</td>
+<td align="right">
+13.06
+</td>
+<td align="right">
+25
+</td>
+<td align="right">
+72.32
+</td>
+<td align="right">
+62.08
+</td>
+</tr>
+<tr>
+<td align="right">
+12.00
+</td>
+<td>
+06-071-9004
+</td>
+<td align="right">
+64.50
+</td>
+<td align="right">
+65.38
+</td>
+<td align="right">
+16.34
+</td>
+<td align="right">
+8
+</td>
+<td align="right">
+76.70
+</td>
+<td align="right">
+54.05
+</td>
+</tr>
+</table>
+<p>Note: My table is terribly messy because it has so many stations. Below I show one station to make it more aesthetic.</p>
+<pre class="r"><code>library(xtable)
+
+print(xtable(Monthly[Monthly$Site.ID==&#39;06-071-0027&#39;, ]), include.rownames=FALSE, type = &quot;html&quot;)</code></pre>
+<!-- html table generated in R 4.2.1 by xtable 1.8-4 package -->
+<!-- Mon Mar 10 21:53:17 2025 -->
+<table border="1">
+<tr>
+<th>
+Month
+</th>
+<th>
+Site.ID
+</th>
+<th>
+median
+</th>
+<th>
+mean
+</th>
+<th>
+sd
+</th>
+<th>
+N
+</th>
+<th>
+UCL95
+</th>
+<th>
+LCL95
+</th>
+</tr>
+<tr>
+<td align="right">
+1.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+65.00
+</td>
+<td align="right">
+68.74
+</td>
+<td align="right">
+20.32
+</td>
+<td align="right">
+250
+</td>
+<td align="right">
+71.26
+</td>
+<td align="right">
+66.22
+</td>
+</tr>
+<tr>
+<td align="right">
+2.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+60.00
+</td>
+<td align="right">
+63.81
+</td>
+<td align="right">
+19.80
+</td>
+<td align="right">
+225
+</td>
+<td align="right">
+66.40
+</td>
+<td align="right">
+61.22
+</td>
+</tr>
+<tr>
+<td align="right">
+3.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+55.00
+</td>
+<td align="right">
+56.08
+</td>
+<td align="right">
+13.18
+</td>
+<td align="right">
+211
+</td>
+<td align="right">
+57.86
+</td>
+<td align="right">
+54.30
+</td>
+</tr>
+<tr>
+<td align="right">
+4.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+61.00
+</td>
+<td align="right">
+59.69
+</td>
+<td align="right">
+11.99
+</td>
+<td align="right">
+202
+</td>
+<td align="right">
+61.34
+</td>
+<td align="right">
+58.03
+</td>
+</tr>
+<tr>
+<td align="right">
+5.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+60.50
+</td>
+<td align="right">
+60.35
+</td>
+<td align="right">
+10.30
+</td>
+<td align="right">
+136
+</td>
+<td align="right">
+62.08
+</td>
+<td align="right">
+58.61
+</td>
+</tr>
+<tr>
+<td align="right">
+6.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+62.00
+</td>
+<td align="right">
+62.57
+</td>
+<td align="right">
+9.04
+</td>
+<td align="right">
+112
+</td>
+<td align="right">
+64.25
+</td>
+<td align="right">
+60.90
+</td>
+</tr>
+<tr>
+<td align="right">
+7.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+66.50
+</td>
+<td align="right">
+72.88
+</td>
+<td align="right">
+25.75
+</td>
+<td align="right">
+124
+</td>
+<td align="right">
+77.41
+</td>
+<td align="right">
+68.35
+</td>
+</tr>
+<tr>
+<td align="right">
+8.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+64.00
+</td>
+<td align="right">
+66.22
+</td>
+<td align="right">
+10.69
+</td>
+<td align="right">
+165
+</td>
+<td align="right">
+67.85
+</td>
+<td align="right">
+64.59
+</td>
+</tr>
+<tr>
+<td align="right">
+9.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+68.00
+</td>
+<td align="right">
+67.60
+</td>
+<td align="right">
+13.35
+</td>
+<td align="right">
+167
+</td>
+<td align="right">
+69.63
+</td>
+<td align="right">
+65.58
+</td>
+</tr>
+<tr>
+<td align="right">
+10.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+65.00
+</td>
+<td align="right">
+67.18
+</td>
+<td align="right">
+14.82
+</td>
+<td align="right">
+212
+</td>
+<td align="right">
+69.17
+</td>
+<td align="right">
+65.18
+</td>
+</tr>
+<tr>
+<td align="right">
+11.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+64.00
+</td>
+<td align="right">
+69.81
+</td>
+<td align="right">
+19.18
+</td>
+<td align="right">
+215
+</td>
+<td align="right">
+72.37
+</td>
+<td align="right">
+67.25
+</td>
+</tr>
+<tr>
+<td align="right">
+12.00
+</td>
+<td>
+06-071-0027
+</td>
+<td align="right">
+67.00
+</td>
+<td align="right">
+71.73
+</td>
+<td align="right">
+22.79
+</td>
+<td align="right">
+222
+</td>
+<td align="right">
+74.73
+</td>
+<td align="right">
+68.73
+</td>
+</tr>
+</table>
 </div>
-<div id="hypothesis-testing" class="section level2">
-<h2>Hypothesis Testing</h2>
-<p>Later Stages – This section is for when we have our pi data (and not done yet :-)</p>
-<p>What if want to evalaute a single value and determine if the it the values in inside the confidence intervals – you can use the table above and determine the value, if the parameter is within the expected mean. We’ll use the t-test for the test.</p>
-<p>If we obtain a mean concentration of 14 using our sensors, we can easily test the value using t.test and all the Septmber values. So, we’ll create a vector of all the September readings.</p>
-<p>September = subset(SCZ, select=Daily.Mean.PM2.5.Concentration, subset = month(SCZ$Date)==9)
-The null hypothesis is that there is no difference between the mean from the sensor and the values currated by the EPA.</p>
+</div>
+<div id="raspberry-pi-data-analysis-week-of-march-24th" class="section level1">
+<h1>Raspberry Pi Data Analysis (Week of March 24th!)</h1>
+<div id="processing-our-pi-data" class="section level2">
+<h2>Processing Our Pi Data</h2>
+<p>Now, we will process the data from the Raspberry Pi. Marc downloaed all the data and converted them to CSV files – see Canvas to find your data.</p>
+</div>
+<div id="load-the-data" class="section level2">
+<h2>Load the Data</h2>
+<pre class="r"><code>RPi &lt;- read.csv(&quot;RPi_2021-03-24_2021-03-31.csv&quot;)
+head(RPi)</code></pre>
+</div>
+<div id="summarize-the-data-and-generate-confidence-intervals" class="section level2">
+<h2>Summarize the Data and Generate Confidence Intervals</h2>
+<pre class="r"><code>RPi$Date &lt;- ymd_hms(RPi$Date)
+RPi$Month &lt;- month(RPi$Date)
+RPi$Day &lt;- day(RPi$Date)
+RPi$Hour &lt;- hour(RPi$Date)
+RPi$Minute &lt;- minute(RPi$Date)
+RPi$Second &lt;- second(RPi$Date)</code></pre>
+</div>
+<div id="hypothesis-testing-are-epa-standards-exceeded" class="section level2">
+<h2>Hypothesis Testing – Are EPA Standards Exceeded?</h2>
+<p>The EPA has established standards for PM2.5. The 24-hour standard is 35 g/m3. The annual standard is 12 µg/m3.</p>
+<p>What if want to evaluate a single value and determine if the it the values in inside the confidence intervals – you can use the table above and determine the value, if the parameter is within the expected mean. We’ll use the t-test for the test.</p>
 <pre class="r"><code>t.test(September, mu=14)
 ## 
 ##  One Sample t-test
