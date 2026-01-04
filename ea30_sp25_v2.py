@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-# Depoloyed 3/1/2025
-# Customize log file: PiZ[1:15]_ea30_sp25_v1.log (line no 31)
+# Deployed 3/1/2025, Updated 1/3/2026
+# Customize log file: PiZ[1:15]_ea30_sp25_v1.log (line 35)
+# Customize CSV file: PiZ[1:15]_ea30_sp25_v1.csv (line 36)
 
 import colorsys
+import csv
+import os
 import sys
 import time
+from datetime import datetime
 
 import st7735
 
@@ -25,17 +29,58 @@ from pms5003 import ReadTimeoutError as pmsReadTimeoutError
 
 from enviroplus import gas
 
+# Configuration
+LOG_FILE = "/home/pi/EJnPi/PiZ15_ea30_sp25_v1.log"
+CSV_FILE = "/home/pi/EJnPi/PiZ15_ea30_sp25_v1.csv"
+
 logging.basicConfig(
     format="%(asctime)s.%(msecs)03d %(levelname)-8s %(message)s",
     level=logging.INFO,
     datefmt="%Y-%m-%d %H:%M",
-    filename="/home/pi/EJnPi/PiZ15_ea30_sp25_v1.log",
+    filename=LOG_FILE,
     filemode="a")
 
 logging.info("""
 RPi ZeroW Powered On (systemd service start)!
 
 """)
+
+# CSV Setup - create file with headers if it doesn't exist
+CSV_HEADERS = [
+    "timestamp", "temperature_C", "pressure_hPa", "humidity_pct",
+    "light_lux", "oxidised_kO", "reduced_kO", "nh3_kO",
+    "pm1_ug_m3", "pm25_ug_m3", "pm10_ug_m3"
+]
+
+def init_csv():
+    """Initialize CSV file with headers if it doesn't exist."""
+    if not os.path.exists(CSV_FILE):
+        with open(CSV_FILE, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(CSV_HEADERS)
+        logging.info(f"Created new CSV file: {CSV_FILE}")
+
+def write_csv_row(data_dict):
+    """Append a row of data to the CSV file."""
+    with open(CSV_FILE, "a", newline="") as f:
+        writer = csv.writer(f)
+        row = [
+            data_dict.get("timestamp", ""),
+            f"{data_dict.get('temperature', 0):.2f}",
+            f"{data_dict.get('pressure', 0):.2f}",
+            f"{data_dict.get('humidity', 0):.2f}",
+            f"{data_dict.get('light', 0):.2f}",
+            f"{data_dict.get('oxidised', 0):.2f}",
+            f"{data_dict.get('reduced', 0):.2f}",
+            f"{data_dict.get('nh3', 0):.2f}",
+            f"{data_dict.get('pm1', 0):.2f}",
+            f"{data_dict.get('pm25', 0):.2f}",
+            f"{data_dict.get('pm10', 0):.2f}",
+        ]
+        writer.writerow(row)
+
+# Initialize CSV
+init_csv()
 
 # BME280 temperature/pressure/humidity sensor
 bme280 = BME280()
@@ -58,47 +103,71 @@ st7735.begin()
 WIDTH = st7735.width
 HEIGHT = st7735.height
 
-# Set up canvas and font
+# Set up canvas and fonts
 img = Image.new("RGB", (WIDTH, HEIGHT), color=(0, 0, 0))
 draw = ImageDraw.Draw(img)
-font_size = 20
-font = ImageFont.truetype(UserFont, font_size)
-
-message = ""
-
-# The position of the top bar
-top_pos = 25
+font_large = ImageFont.truetype(UserFont, 20)
+font_medium = ImageFont.truetype(UserFont, 16)
+font_small = ImageFont.truetype(UserFont, 14)
 
 # Define output format
 def logging_text(variable, data, unit):
     output = f"{variable[:4]}: {data:.1f} {unit}"
     logging.info(output)
 
-# Displays data and text on the 0.96" LCD
-def display_text(variable, data, unit):
-    # Maintain length of list
-    values[variable] = values[variable][1:] + [data]
-    # Scale the values for the variable between 0 and 1
-    vmin = min(values[variable])
-    vmax = max(values[variable])
-    colours = [(v - vmin + 1) / (vmax - vmin + 1) for v in values[variable]]
-    # Format the variable name and value
-    message = f"{variable[:4]}: {data:.1f} {unit}"
-    # logging.info(message)
-    draw.rectangle((0, 0, WIDTH, HEIGHT), (255, 255, 255))
-    for i in range(len(colours)):
-        # Convert the values to colours from red to blue
-        colour = (1.0 - colours[i]) * 0.6
-        r, g, b = [int(x * 255.0) for x in colorsys.hsv_to_rgb(colour, 1.0, 1.0)]
-        # Draw a 1-pixel wide rectangle of colour
-        draw.rectangle((i, top_pos, i + 1, HEIGHT), (r, g, b))
-        # Draw a line graph in black
-        line_y = HEIGHT - (top_pos + (colours[i] * (HEIGHT - top_pos))) + top_pos
-        draw.rectangle((i, line_y, i + 1, line_y + 1), (0, 0, 0))
-    # Write the text at the top in black
-    draw.text((0, 0), message, font=font, fill=(0, 0, 0))
+# Display time and PM values on the 0.96" LCD
+def display_pm_readings(pm1, pm25, pm10):
+    """Display system time and PM1, PM2.5, PM10 readings."""
+    # Clear display with dark background
+    draw.rectangle((0, 0, WIDTH, HEIGHT), fill=(0, 0, 0))
+    
+    # Get current time
+    current_time = datetime.now().strftime("%H:%M:%S")
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    
+    # Display date and time at top
+    draw.text((2, 2), current_date, font=font_small, fill=(150, 150, 150))
+    draw.text((2, 18), current_time, font=font_large, fill=(255, 255, 255))
+    
+    # Draw separator line
+    draw.line((0, 42, WIDTH, 42), fill=(100, 100, 100), width=1)
+    
+    # PM readings with color coding based on air quality
+    y_offset = 46
+    line_height = 18
+    
+    # PM1
+    pm1_color = get_pm_color(pm1, thresholds=[12, 35, 55])
+    draw.text((2, y_offset), f"PM1.0:", font=font_small, fill=(200, 200, 200))
+    draw.text((60, y_offset), f"{pm1:.0f}", font=font_small, fill=pm1_color)
+    draw.text((95, y_offset), "µg/m³", font=font_small, fill=(150, 150, 150))
+    
+    # PM2.5
+    y_offset += line_height
+    pm25_color = get_pm_color(pm25, thresholds=[12, 35, 55])
+    draw.text((2, y_offset), f"PM2.5:", font=font_small, fill=(200, 200, 200))
+    draw.text((60, y_offset), f"{pm25:.0f}", font=font_small, fill=pm25_color)
+    draw.text((95, y_offset), "µg/m³", font=font_small, fill=(150, 150, 150))
+    
+    # PM10
+    y_offset += line_height
+    pm10_color = get_pm_color(pm10, thresholds=[54, 154, 254])
+    draw.text((2, y_offset), f"PM10:", font=font_small, fill=(200, 200, 200))
+    draw.text((60, y_offset), f"{pm10:.0f}", font=font_small, fill=pm10_color)
+    draw.text((95, y_offset), "µg/m³", font=font_small, fill=(150, 150, 150))
+    
     st7735.display(img)
 
+def get_pm_color(value, thresholds):
+    """Return color based on PM value - green/yellow/orange/red."""
+    if value <= thresholds[0]:
+        return (0, 255, 0)      # Green - Good
+    elif value <= thresholds[1]:
+        return (255, 255, 0)    # Yellow - Moderate
+    elif value <= thresholds[2]:
+        return (255, 165, 0)    # Orange - Unhealthy for sensitive
+    else:
+        return (255, 0, 0)      # Red - Unhealthy
 
 # Get the temperature of the CPU for compensation
 def get_cpu_temperature():
@@ -107,137 +176,102 @@ def get_cpu_temperature():
         temp = int(temp) / 1000.0
     return temp
 
-
-# Tuning factor for compensation. Decrease this number to adjust the
-# temperature down, and increase to adjust up
+# Tuning factor for compensation
 factor = 2.25
 
 cpu_temps = [get_cpu_temperature()] * 5
 
-delay = 0.5  # Debounce the proximity tap
-mode = 0     # The starting mode
+delay = 0.5
+mode = 0
 last_page = 0
-light = 1
 
 # Create a values dict to store the data
-variables = ["temperature",
-             "pressure",
-             "humidity",
-             "light",
-             "oxidised",
-             "reduced",
-             "nh3",
-             "pm1",
-             "pm25",
-             "pm10"]
+variables = ["temperature", "pressure", "humidity", "light",
+             "oxidised", "reduced", "nh3", "pm1", "pm25", "pm10"]
 
-values = {}
-
-for v in variables:
-    values[v] = [1] * WIDTH
+values = {v: [1] * WIDTH for v in variables}
 
 # The main loop
 try:
     while True:
         proximity = ltr559.get_proximity()
-        time.sleep(590) # 10 minutes
-        # If the proximity crosses the threshold, toggle the mode
-        #if proximity > 1500 and time.time() - last_page > delay:
-        #    mode += 1
-        #    mode %= len(variables)
-        last_page = time.time()
-        mode = 8
-
-        # One mode for each variable
-        if mode == 8:
-            # variable = "temperature"
-            unit = "Â°C"
-            cpu_temp = get_cpu_temperature()
-            # Smooth out with some averaging to decrease jitter
-            cpu_temps = cpu_temps[1:] + [cpu_temp]
-            avg_cpu_temp = sum(cpu_temps) / float(len(cpu_temps))
-            raw_temp = bme280.get_temperature()
-            data = raw_temp - ((avg_cpu_temp - raw_temp) / factor)
-            logging_text(variables[0], data, unit)
-            # display_text(variables[mode], data, unit)
-
-        if mode == 8:
-            # variable = "pressure"
-            unit = "hPa"
-            data = bme280.get_pressure()
-            logging_text(variables[1], data, unit)
-
-        if mode == 8:
-            # variable = "humidity"
-            unit = "%"
-            data = bme280.get_humidity()
-            logging_text(variables[2], data, unit)
-
-        if mode == 8:
-            # variable = "light"
-            unit = "Lux"
-            if proximity < 10:
-                data = ltr559.get_lux()
-            else:
-                data = 1
-            logging_text(variables[3], data, unit)
-
-        if mode == 8:
-            # variable = "oxidised"
-            unit = "kO"
-            data = gas.read_all()
-            data = data.oxidising / 1000
-            logging_text(variables[4], data, unit)
-
-        if mode == 8:
-            # variable = "reduced"
-            unit = "kO"
-            data = gas.read_all()
-            data = data.reducing / 1000
-            logging_text(variables[5], data, unit)
-
-        if mode == 8:
-            # variable = "nh3"
-            unit = "kO"
-            data = gas.read_all()
-            data = data.nh3 / 1000
-            logging_text(variables[6], data, unit)
-
-        if mode == 8:
-            # variable = "pm1"
-            unit = "ug/m3"
-            try:
-                data = pms5003.read()
-            except pmsReadTimeoutError:
-                logging.warning("Failed to read PMS5003")
-            else:
-                data = float(data.pm_ug_per_m3(1.0))
-                logging_text(variables[7], data, unit)
-
-        if mode == 8:
-            # variable = "pm25"
-            unit = "ug/m3"
-            try:
-                data = pms5003.read()
-            except pmsReadTimeoutError:
-                logging.warning("Failed to read PMS5003")
-            else:
-                data = float(data.pm_ug_per_m3(2.5))
-                display_text(variables[mode], data, unit)
-                logging_text(variables[mode], data, unit)
-
-        if mode == 8:
-            # variable = "pm10"
-            unit = "ug/m3"
-            try:
-                data = pms5003.read()
-            except pmsReadTimeoutError:
-                logging.warning("Failed to read PMS5003")
-            else:
-                data = float(data.pm_ug_per_m3(10))
-                logging_text(variables[9], data, unit)
+        
+        # Dictionary to hold current readings for CSV
+        current_data = {"timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        
+        # Temperature (compensated)
+        cpu_temp = get_cpu_temperature()
+        cpu_temps = cpu_temps[1:] + [cpu_temp]
+        avg_cpu_temp = sum(cpu_temps) / float(len(cpu_temps))
+        raw_temp = bme280.get_temperature()
+        temperature = raw_temp - ((avg_cpu_temp - raw_temp) / factor)
+        current_data["temperature"] = temperature
+        logging_text("temperature", temperature, "°C")
+        
+        # Pressure
+        pressure = bme280.get_pressure()
+        current_data["pressure"] = pressure
+        logging_text("pressure", pressure, "hPa")
+        
+        # Humidity
+        humidity = bme280.get_humidity()
+        current_data["humidity"] = humidity
+        logging_text("humidity", humidity, "%")
+        
+        # Light
+        if proximity < 10:
+            light = ltr559.get_lux()
+        else:
+            light = 1
+        current_data["light"] = light
+        logging_text("light", light, "Lux")
+        
+        # Gas readings
+        gas_data = gas.read_all()
+        
+        oxidised = gas_data.oxidising / 1000
+        current_data["oxidised"] = oxidised
+        logging_text("oxidised", oxidised, "kO")
+        
+        reduced = gas_data.reducing / 1000
+        current_data["reduced"] = reduced
+        logging_text("reduced", reduced, "kO")
+        
+        nh3 = gas_data.nh3 / 1000
+        current_data["nh3"] = nh3
+        logging_text("nh3", nh3, "kO")
+        
+        # PM readings
+        pm1, pm25, pm10 = 0, 0, 0
+        try:
+            pm_data = pms5003.read()
+            pm1 = float(pm_data.pm_ug_per_m3(1.0))
+            pm25 = float(pm_data.pm_ug_per_m3(2.5))
+            pm10 = float(pm_data.pm_ug_per_m3(10))
+            
+            current_data["pm1"] = pm1
+            current_data["pm25"] = pm25
+            current_data["pm10"] = pm10
+            
+            logging_text("pm1", pm1, "ug/m3")
+            logging_text("pm25", pm25, "ug/m3")
+            logging_text("pm10", pm10, "ug/m3")
+            
+        except pmsReadTimeoutError:
+            logging.warning("Failed to read PMS5003")
+            current_data["pm1"] = 0
+            current_data["pm25"] = 0
+            current_data["pm10"] = 0
+        
+        # Write all data to CSV
+        write_csv_row(current_data)
+        
+        # Update display with time and PM values
+        display_pm_readings(pm1, pm25, pm10)
+        
+        # Wait 10 minutes before next reading
+        time.sleep(590)
 
 # Exit cleanly
 except KeyboardInterrupt:
     sys.exit(0)
-
