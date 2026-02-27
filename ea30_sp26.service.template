@@ -5,7 +5,7 @@ After=multi-user.target
 [Service]
 User=pi
 Type=idle
-ExecStart=/home/pi/.virtualenvs/pimoroni/bin/python /home/pi/EJnPi/ea30_sp26_v0.04.py
+ExecStart=/home/pi/.virtualenvs/pimoroni/bin/python /home/pi/EJnPi/ea30_sp26_v05.py
 
 [Install]
 WantedBy=multi-user.target
