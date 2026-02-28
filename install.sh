@@ -3,7 +3,7 @@ set -euo pipefail
 
 SERVICE_NAME="ea30_sp26.service"
 SERVICE_SRC="./${SERVICE_NAME}"
-SERVICE_DST="/etc/systemd/system/${SERVICE_NAME}"
+SERVICE_DST="/lib/systemd/system/${SERVICE_NAME}"
 
 echo "[INFO] Installing ${SERVICE_NAME}"
 
