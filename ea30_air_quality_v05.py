@@ -31,8 +31,8 @@ from pms5003 import ReadTimeoutError as pmsReadTimeoutError
 from enviroplus import gas
 
 # Configuration
-LOG_FILE = "/home/pi/EJnPi/PiZ15_ea30_sp26_v05.log"
-CSV_FILE = "/home/pi/EJnPi/PiZ15_ea30_sp26_v05.csv"
+LOG_FILE = "/home/pi/EJnPi/PiZX_ea30_sp26_v05.log"
+CSV_FILE = "/home/pi/EJnPi/PiZX_ea30_sp26_v05.csv"
 
 logging.basicConfig(
     format="%(asctime)s.%(msecs)03d %(levelname)-8s %(message)s",
