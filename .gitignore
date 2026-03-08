@@ -10,6 +10,7 @@ docs/*.Rmd
 docs/*bib
 docs/index_cache/
 docs/index_files/
+docs/OLD
 EPA_PM_Data_Analysis/
 personal/
 Student_Guides/
